@@ -10,23 +10,20 @@ https://dice-chat-6b7e2.firebaseapp.com/
 
 ## What is dice-chat
 
-BCDice-APIを用いて、TRPG用のチャット機能を提供します。  
-[Firebase]() にデプロイすることで、サーバ管理をせずに環境を構築できます。
+[BCDice-API](https://github.com/NKMR6194/bcdice-api) を用いて、TRPG用のチャット機能を提供します。  
+[Firebase](https://firebase.google.com/) にデプロイすることで、サーバ管理をせずに環境を構築できます。
 
-イカの技術を利用しています。
+また、イカの技術を利用しています。
 
-* React
-* Flux
-* Immutable.js
-* jsonp
-* Material UI
-* firebase
-* react-grid-layout
-
+* [React](https://github.com/facebook/react)
+* [Flux](https://github.com/facebook/flux)
+* [Immutable.js](https://github.com/facebook/immutable-js)
+* [jsonp](https://github.com/webmodules/jsonp)
+* [Material UI](https://github.com/callemall/material-ui)
+* [firebase](https://github.com/firebase/firebase-tools)
+* [react-grid-layout](https://github.com/STRML/react-grid-layout)
 
 ## Setup
-
-**※Firebaseの設定が事前に必要です。**
 
 ### npm install まで
 
