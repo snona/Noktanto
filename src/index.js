@@ -4,9 +4,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import App from './containers/App';
-import myTheme from './myTheme';
 import registerServiceWorker from './registerServiceWorker';
+import myTheme from './myTheme';
+import App from './containers/App';
+import './index.css';
 
 const muiTheme = getMuiTheme(myTheme);
 injectTapEventPlugin();
