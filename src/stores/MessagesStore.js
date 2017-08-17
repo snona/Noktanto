@@ -5,27 +5,7 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 
 class MessagesStore extends ReduceStore {
   getInitialState() {
-    return Immutable.fromJS([{
-      id: 1,
-      name: 'A',
-      text: 'send message',
-    }, {
-      id: 2,
-      name: 'B',
-      text: 'send message',
-    }, {
-      id: 3,
-      name: 'C',
-      text: 'send message',
-    }, {
-      id: 4,
-      name: 'D',
-      text: 'send message',
-    }, {
-      id: 5,
-      name: 'A',
-      text: 'send message',
-    }]);
+    return Immutable.fromJS([]);
   }
 
   reduce(state, action) {

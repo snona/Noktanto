@@ -19,6 +19,10 @@ class _App extends Component {
     };
   }
 
+  componentWillMount() {
+    ChatAction.listenMessages();
+  }
+
   render() {
     return (
       <div className="App">
@@ -26,7 +30,7 @@ class _App extends Component {
           layouts={this.state.layouts}
           messages={this.state.messages}
           setLayouts={layouts => LayoutAction.setLayouts(layouts)}
-          sendMessage={message => ChatAction.addMessage(message)}
+          sendMessage={message => ChatAction.sendMessage(message)}
         />
       </div>
     );
