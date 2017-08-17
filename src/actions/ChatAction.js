@@ -1,9 +1,10 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import { messagesRef } from '../firebase';
 
+import DiceBotAction from '../actions/DiceBotAction';
+
 class ChatAction {
   static listenMessages() {
-    // messagesRef.once('value', (snapshot) => { console.log(snapshot); this.setMessages(snapshot.val())});
     messagesRef.on('child_added', (snapshot) => this.addMessage(snapshot.val()));
   }
 
@@ -15,7 +16,29 @@ class ChatAction {
   }
 
   static sendMessage(message) {
-    messagesRef.push(message);
+    DiceBotAction.getDiceRoll(message.system, message.text).then(response => {
+      if (!response.ok) {
+        messagesRef.push(message);
+      } else {
+        if (response.secret) {
+          this.addMessage(message);
+          const resultMessage = {
+            id: message.id + 1,
+            name: message.name,
+            text: response.result,
+          }
+          this.addMessage(resultMessage);
+        } else {
+          messagesRef.push(message);
+          const resultMessage = {
+            id: message.id + 1,
+            name: message.name,
+            text: response.result,
+          }
+          messagesRef.push(resultMessage);
+        }
+      }
+    });
   }
 
   static addMessage(message) {

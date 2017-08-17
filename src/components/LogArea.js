@@ -15,7 +15,7 @@ class LogArea extends Component {
     ));
     console.log(logs);
     return (
-      <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 110 }} >
+      <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 210 }} >
         {logs}
       </Paper>
     )

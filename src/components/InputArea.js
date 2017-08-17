@@ -5,6 +5,8 @@ import * as Colors from 'material-ui/styles/colors';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import DiceBotArea from '../components/DiceBotArea';
+
 class InputArea extends Component {
   componentWillMount() {
     this.setState({
@@ -15,9 +17,14 @@ class InputArea extends Component {
 
   render() {
     const { name, text } = this.state;
-    const { sendMessage } = this.props;
+    const { sendMessage, systems, system, selectSystem } = this.props;
     return (
-      <div style={{ margin: 10, height: '20%' }} >
+      <div style={{ margin: 10 }} >
+        <DiceBotArea
+          systems={systems}
+          system={system}
+          selectSystem={(value) => selectSystem(value)}
+        />
         <TextField
           floatingLabelText="Name"
           style={{ width: 100, marginRight: 10 }}
@@ -33,7 +40,7 @@ class InputArea extends Component {
         <RaisedButton
           label="Send Message"
           secondary={true}
-          onClick={() => { sendMessage({ name, text }); this.setState({ text: '' }); }}
+          onClick={() => { sendMessage({ system: system.gameType, name, text }); this.setState({ text: '' }); }}
         />
       </div>
     )
@@ -41,5 +48,8 @@ class InputArea extends Component {
 }
 InputArea.protoType = {
   sendMessage: PropTypes.func.isRequired,
+  systems: PropTypes.array.isRequired,
+  system: PropTypes.object.isRequired,
+  selectSystem: PropTypes.func.isRequired,
 };
 export default InputArea;

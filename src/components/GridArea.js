@@ -17,17 +17,6 @@ class GridArea extends Component {
   static wx = GridArea.width / GridArea.cols;
   static hx = GridArea.height / GridArea.rows;
 
-  updateLayouts(newLayouts) {
-    // const { layouts } = this.props;
-    // return newLayouts.map(newLayout => {
-    //   const layout = layouts.find(layout => layout.i === newLayout.i);
-    //   newLayout.style = layout.style;
-    //   newLayout.node = layout.node;
-    //   return newLayout;
-    // });
-    return newLayouts;
-  }
-
   _calWidthHight(layout) {
     const { w, h } = layout;
     const { wx, hx } = GridArea;
@@ -36,7 +25,8 @@ class GridArea extends Component {
 
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { layouts, setLayouts, messages, sendMessage } = this.props;
+    const { layouts, setLayouts, messages, sendMessage,
+      systems, system, selectSystem } = this.props;
     const chatLayout = layouts.find(layout => layout.i === 'chat-board');
 
     return (
@@ -44,14 +34,17 @@ class GridArea extends Component {
         <ReactGridLayout className="layout" layout={layouts}
           cols={cols} rowHeight={rows}
           width={width} height={height}
-          onDragStop={(newLayouts) => setLayouts(this.updateLayouts(newLayouts))}
-          onResizeStop={(newLayouts) => setLayouts(this.updateLayouts(newLayouts))}
+          onDragStop={(newLayouts) => setLayouts(newLayouts)}
+          onResizeStop={(newLayouts) => setLayouts(newLayouts)}
         >
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
             <ChatArea
               messages={messages}
               sendMessage={messages => sendMessage(messages)}
               layout={this._calWidthHight(chatLayout)}
+              systems={systems}
+              system={system}
+              selectSystem={(value) => selectSystem(value)}
             />
           </Paper>
         </ReactGridLayout>
@@ -64,5 +57,8 @@ GridArea.protoType = {
   setLayouts: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
   sendMessage: PropTypes.func.isRequired,
+  systems: PropTypes.array.isRequired,
+  system: PropTypes.object.isRequired,
+  selectSystem: PropTypes.func.isRequired,
 };
 export default GridArea;

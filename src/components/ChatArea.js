@@ -7,7 +7,7 @@ import InputArea from '../components/InputArea';
 
 class ChatBoard extends Component {
   render() {
-    const { messages, sendMessage, layout } = this.props;
+    const { messages, sendMessage, layout, systems, system, selectSystem } = this.props;
     return (
       <div style={{ margin: 10, height: '100%' }} >
         <LogArea
@@ -16,6 +16,9 @@ class ChatBoard extends Component {
         />
         <InputArea
           sendMessage={message => { message.id = messages.length + 1; sendMessage(message); }}
+          systems={systems}
+          system={system}
+          selectSystem={(value) => selectSystem(value)}
         />
       </div>
     )
@@ -25,5 +28,8 @@ ChatBoard.protoType = {
   messages: PropTypes.array.isRequired,
   sendMessage: PropTypes.func.isRequired,
   layout: PropTypes.object.isRequired,
+  systems: PropTypes.array.isRequired,
+  system: PropTypes.object.isRequired,
+  selectSystem: PropTypes.func.isRequired,
 };
 export default ChatBoard;
