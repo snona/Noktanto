@@ -13,10 +13,11 @@ import MessagesStore from '../stores/MessagesStore';
 import SystemsStore from '../stores/SystemsStore';
 import SystemStore from '../stores/SystemStore';
 import HexesStore from '../stores/HexesStore';
+import PiecesStore from '../stores/PiecesStore';
 
 class _App extends Component {
   static getStores() {
-    return [LayoutsStore, MessagesStore, SystemsStore, SystemStore, HexesStore];
+    return [LayoutsStore, MessagesStore, SystemsStore, SystemStore, HexesStore, PiecesStore];
   }
 
   static calculateState() {
@@ -26,6 +27,7 @@ class _App extends Component {
       systems: SystemsStore.getState().toJS(),
       system: SystemStore.getState().toJS(),
       hexes: HexesStore.getState().toJS(),
+      pieces: PiecesStore.getState().toJS(),
     };
   }
 
@@ -33,6 +35,7 @@ class _App extends Component {
     ChatAction.listenMessages();
     DiceBotAction.getSystems();
     MapAction.initHexes();
+    MapAction.initPieces();
   }
 
   render() {
@@ -47,6 +50,8 @@ class _App extends Component {
           system={this.state.system}
           selectSystem={(value) => DiceBotAction.getSystem(value)}
           hexes={this.state.hexes}
+          pieces={this.state.pieces}
+          movePiece={(pieces, key, piece) => MapAction.movePiece(pieces, key, piece)}
         />
       </div>
     );

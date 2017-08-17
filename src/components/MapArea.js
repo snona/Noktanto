@@ -5,25 +5,22 @@ import Hex from '../components/Hex';
 
 class MapArea extends Component {
     render() {
-      const { hexes } = this.props;
-      const viewHexes = Object.keys(hexes).map(key => <Hex hex={hexes[key]} />);
+      const { hexes, pieces, movePiece } = this.props;
+      const viewHexes = Object.keys(hexes).map(key => <Hex hex={hexes[key]} draggable={false} />);
+      const viewPieces = Object.keys(pieces).map(key => (
+        <Hex
+          hex={pieces[key]}
+          draggable={true}
+          movePiece={(key, piece) => movePiece(pieces, key, piece)}
+        />
+      ));
       return (
         <Stage width={700} height={700}>
           <Layer>
             {viewHexes}
           </Layer>
           <Layer>
-            <RegularPolygon
-              x={150}
-              y={150}
-              sides={6}
-              radius={15}
-              fill={'#1abc9c'}
-              stroke={'#16a085'}
-              strokeWidth={2}
-              key={'moveable'}
-              draggable={true}
-            />
+            {viewPieces}
           </Layer>
         </Stage>
       );
@@ -32,6 +29,8 @@ class MapArea extends Component {
 
 MapArea.propTypes = {
   hexes: PropTypes.object.isRequired,
+  pieces: PropTypes.object.isRequired,
+  movePiece: PropTypes.func.isRequired,
 };
 
 export default MapArea;

@@ -4,7 +4,7 @@ import { RegularPolygon } from 'react-konva';
 
 class Hex extends Component {
     render() {
-      const { hex } = this.props;
+      const { hex, draggable, movePiece } = this.props;
       const { drawX, drawY, radius, strokeWidth, color, key } = hex;
       return (
         <RegularPolygon
@@ -16,6 +16,8 @@ class Hex extends Component {
           stroke={color.stroke}
           strokeWidth={strokeWidth}
           key={key}
+          draggable={draggable}
+          onDragend={(v) => {if (draggable) movePiece(key, v.target.attrs)}}
         />
       );
     }
@@ -33,6 +35,8 @@ Hex.propTypes = {
     strokeWidth: PropTypes.number.isRequired,
     key: PropTypes.string.isRequired,
   }).isRequired,
+  draggable: PropTypes.bool.isRequired,
+  movePiece: PropTypes.func,
 };
 
 export default Hex;
