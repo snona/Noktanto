@@ -4,6 +4,7 @@ import { Container } from 'flux/utils';
 import LayoutAction from '../actions/LayoutAction';
 import ChatAction from '../actions/ChatAction';
 import DiceBotAction from '../actions/DiceBotAction';
+import MapAction from '../actions/MapAction';
 
 import GridArea from '../components/GridArea';
 
@@ -11,10 +12,11 @@ import LayoutsStore from '../stores/LayoutsStore';
 import MessagesStore from '../stores/MessagesStore';
 import SystemsStore from '../stores/SystemsStore';
 import SystemStore from '../stores/SystemStore';
+import HexesStore from '../stores/HexesStore';
 
 class _App extends Component {
   static getStores() {
-    return [LayoutsStore, MessagesStore, SystemsStore, SystemStore];
+    return [LayoutsStore, MessagesStore, SystemsStore, SystemStore, HexesStore];
   }
 
   static calculateState() {
@@ -23,12 +25,14 @@ class _App extends Component {
       messages: MessagesStore.getState().toJS(),
       systems: SystemsStore.getState().toJS(),
       system: SystemStore.getState().toJS(),
+      hexes: HexesStore.getState().toJS(),
     };
   }
 
   componentWillMount() {
     ChatAction.listenMessages();
     DiceBotAction.getSystems();
+    MapAction.initHexes();
   }
 
   render() {
@@ -42,6 +46,7 @@ class _App extends Component {
           systems={this.state.systems}
           system={this.state.system}
           selectSystem={(value) => DiceBotAction.getSystem(value)}
+          hexes={this.state.hexes}
         />
       </div>
     );
