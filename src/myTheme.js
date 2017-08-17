@@ -1,5 +1,5 @@
 import * as Colors from 'material-ui/styles/colors';
-import {fade} from 'material-ui/utils/colorManipulator';
+import { fade } from 'material-ui/utils/colorManipulator';
 import Spacing from 'material-ui/styles/spacing';
 
 const myTheme = {
