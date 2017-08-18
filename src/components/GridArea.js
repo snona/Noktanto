@@ -9,6 +9,7 @@ import '../../node_modules/react-resizable/css/styles.css';
 
 import Map from '../containers/Map';
 import Chat from '../containers/Chat';
+import Config from '../containers/Config';
 
 class GridArea extends Component {
   static width = 1200;
@@ -47,6 +48,9 @@ class GridArea extends Component {
             <Chat
               layout={this._calWidthHight('chat-board')}
             /> 
+          </Paper>
+          <Paper key={'config-board'}>
+            <Config />
           </Paper>
         </ReactGridLayout>
       </Paper>

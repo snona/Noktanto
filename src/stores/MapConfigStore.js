@@ -21,8 +21,8 @@ class MapConfigStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_background':
-        return Immutable.fromJS(action.background);
+      case 'set_mapConfig':
+        return Immutable.fromJS(action.mapConfig);
       default:
         return state;
     }

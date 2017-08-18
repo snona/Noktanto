@@ -59,5 +59,15 @@ class MapAction {
       pieces,
     });
   }
+
+  static setConfig(config) {
+    const image = new Image();
+    image.src = config.url;
+    config.backImage = image
+    AppDispatcher.dispatch({
+      type: 'set_mapConfig',
+      mapConfig: config,
+    });
+  }
 }
 export default MapAction;

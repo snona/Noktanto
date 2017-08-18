@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import DiceBotArea from '../components/DiceBotArea';
 
-class InputArea extends Component {
+class ChatInput extends Component {
   componentWillMount() {
     this.setState({
       name: 'A',
@@ -45,10 +45,10 @@ class InputArea extends Component {
     )
   }
 }
-InputArea.protoType = {
+ChatInput.protoType = {
   sendMessage: PropTypes.func.isRequired,
   systems: PropTypes.array.isRequired,
   system: PropTypes.object.isRequired,
   selectSystem: PropTypes.func.isRequired,
 };
-export default InputArea;
+export default ChatInput;
