@@ -1,4 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import { piecesRef } from '../firebase';
 
 class MapAction {
   static maxAround = 5;
@@ -58,44 +59,44 @@ class MapAction {
     return `(${x}, ${y}, ${z})`;
   }
 
-  static initPieces() {
+  static getRandomInt(max = 3, min = -3) {
+    return Math.floor( Math.random() * (max - min + 1) ) + min;
+  }
+
+  static addPiece(pieces) {
     const radius = this.radius;
     const strokeWidth = 2;
-    const pieces = {
-      'moveable1': {
-        radius,
-        strokeWidth,
-        drawX: (0 - 0) * 0.866 * (radius + strokeWidth) + this.maxAround * this.radius * 2.5,
-        drawY: 0 * 1.5 * (radius + strokeWidth) + this.maxAround * this.radius * 2,
-        color: { fill: '#3498db', stroke: '#2980b9' },
-        key: 'moveable1',
-      },
-      'moveable2': {
-        radius,
-        strokeWidth,
-        drawX: (1 - 1) * 0.866 * (radius + strokeWidth) + this.maxAround * this.radius * 2.5,
-        drawY: 1 * 1.5 * (radius + strokeWidth) + this.maxAround * this.radius * 2,
-        color: { fill: '#2ecc71', stroke: '#27ae60' },
-        key: 'moveable2',
-      },
-      'moveable3': {
-        radius,
-        strokeWidth,
-        drawX: (3 - 1) * 0.866 * (radius + strokeWidth) + this.maxAround * this.radius * 2.5,
-        drawY: 3 * 1.5 * (radius + strokeWidth) + this.maxAround * this.radius * 2,
-        color: { fill: '#f1c40f', stroke: '#f39c12' },
-        key: 'moveable3',
-      },
+    const x = this.getRandomInt();
+    const y = this.getRandomInt();
+    const z = this.getRandomInt();
+    const key = `moveable-${this.createKey({ x, y, z })}`;
+    pieces[key] = {
+      radius,
+      strokeWidth,
+      drawX: (x - y) * 0.866 * (radius + strokeWidth) + this.maxAround * this.radius * 2.5,
+      drawY: z * 1.5 * (radius + strokeWidth) + this.maxAround * this.radius * 2,
+      color: { fill: '#3498db', stroke: '#2980b9' },
+      key,
     };
-    AppDispatcher.dispatch({
-      type: 'set_pieces',
-      pieces,
-    });
+    piecesRef.push(pieces)
   }
 
   static movePiece(pieces, key, piece) {
     pieces[key].drawX = piece.x;
     pieces[key].drawY = piece.y;
+    piecesRef.push(pieces)
+    // AppDispatcher.dispatch({
+    //   type: 'set_pieces',
+    //   pieces,
+    // });
+  }
+
+  static listenPieces() {
+    piecesRef.on('child_added', (snapshot) => this.setPieces(snapshot.val()));
+    // piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.val()));
+  }
+
+  static setPieces(pieces) {
     AppDispatcher.dispatch({
       type: 'set_pieces',
       pieces,

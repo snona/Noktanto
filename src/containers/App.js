@@ -35,7 +35,7 @@ class _App extends Component {
     ChatAction.listenMessages();
     DiceBotAction.getSystems();
     MapAction.initHexes();
-    MapAction.initPieces();
+    MapAction.listenPieces();
   }
 
   render() {
@@ -52,6 +52,7 @@ class _App extends Component {
           hexes={this.state.hexes}
           pieces={this.state.pieces}
           movePiece={(pieces, key, piece) => MapAction.movePiece(pieces, key, piece)}
+          addPiece={(pieces) => MapAction.addPiece(pieces)}
         />
       </div>
     );

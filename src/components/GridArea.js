@@ -33,7 +33,7 @@ class GridArea extends Component {
     const { width, height, cols, rows } = GridArea;
     const { isStatic } = this.state;
     const { layouts, setLayouts, messages, sendMessage,
-      systems, system, selectSystem, hexes, pieces, movePiece } = this.props;
+      systems, system, selectSystem, hexes, pieces, movePiece, addPiece } = this.props;
     const chatLayout = layouts.find(layout => layout.i === 'chat-board');
 
     return (
@@ -49,6 +49,7 @@ class GridArea extends Component {
               hexes={hexes}
               pieces={pieces}
               movePiece={(pieces, key, piece) => movePiece(pieces, key, piece)}
+              addPiece={(pieces) => addPiece(pieces)}
             />
           </Paper>
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
@@ -77,5 +78,6 @@ GridArea.protoType = {
   hexes: PropTypes.object.isRequired,
   pieces: PropTypes.object.isRequired,
   movePiece: PropTypes.func.isRequired,
+  addPiece: PropTypes.func.isRequired,
 };
 export default GridArea;
