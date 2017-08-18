@@ -63,6 +63,11 @@ firebase init
 npm run build
 ```
 
+## 素材提供
+
+背景のマップ画像を利用させていただいています。  
+[恋と冒険の学園ＴＲＰＧエリュシオン オンラインセッションツール用素材](http://www.wtrpg9.com/trpg/)
+
 ## Author
 
 山田はじめ(@hajimeYamada)
