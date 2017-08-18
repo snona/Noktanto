@@ -23,7 +23,7 @@ class _Config extends Component {
   }
 
   componentWillMount() {
-    // MapAction.listenConfig();
+    MapAction.listenConfig();
     const { mapConfig } = this.state;
     const tmpMapConfig = {
       url: mapConfig.backImage.src,
@@ -54,7 +54,7 @@ class _Config extends Component {
       <FlatButton
         label="OK"
         primary={true}
-        onTouchTap={() => { MapAction.setConfig(tmpMapConfig); this.setState({ open: false }) }}
+        onTouchTap={() => { MapAction.sendConfig(tmpMapConfig); this.setState({ open: false }) }}
       />,
     ];
     return (

@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import { piecesRef } from '../firebase';
+import { piecesRef, mapConfigRef } from '../firebase';
 
 class MapAction {
   static radius = 15;
@@ -58,6 +58,14 @@ class MapAction {
       type: 'set_pieces',
       pieces,
     });
+  }
+
+  static listenConfig() {
+    mapConfigRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
+  }
+
+  static sendConfig(config) {
+    mapConfigRef.push(config);
   }
 
   static setConfig(config) {
