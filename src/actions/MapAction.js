@@ -5,6 +5,24 @@ class MapAction {
   static maxAround = 5;
   static radius = 15;
 
+  static createCells(max) {
+    const size = 30;
+    const cells = [];
+    for (let x = 0; x < max; x++) {
+      for (let y = 0; y < max; y++) {
+        cells.push({
+          x: x,
+          y: y,
+          width: size,
+          height: size,
+          stroke: '#B2FF59',
+          strokeWidth: 1,
+        });
+      } 
+    }
+    return cells;
+  }
+
   static createAround(max) {
     const round = [];
     const min = max * -1;
