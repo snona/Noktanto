@@ -2,15 +2,13 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import { piecesRef, mapConfigRef } from '../firebase';
 
 class MapAction {
-  static radius = 15;
-
   static createCells(xMax, yMax, size, color) {
     const cells = [];
     for (let x = 0; x < xMax; x++) {
       for (let y = 0; y < yMax; y++) {
         cells.push({
-          x: x,
-          y: y,
+          x: x * size,
+          y: y * size,
           width: size,
           height: size,
           stroke: color,
@@ -21,42 +19,62 @@ class MapAction {
     return cells;
   }
 
-  static getRandomInt(max = 3, min = -3) {
+  static getRandomInt(max = 3, min = 0) {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
   }
 
-  static addPiece(pieces) {
-    const radius = this.radius;
-    const strokeWidth = 2;
+  static addPiece(size, color) {
     const x = this.getRandomInt();
     const y = this.getRandomInt();
-    const z = this.getRandomInt();
-    const key = `moveable-${this.createKey({ x, y, z })}`;
-    pieces[key] = {
-      radius,
-      strokeWidth,
-      drawX: (x - y) * 0.866 * (radius + strokeWidth) + this.maxAround * this.radius * 2.5,
-      drawY: z * 1.5 * (radius + strokeWidth) + this.maxAround * this.radius * 2,
-      color: { fill: '#3498db', stroke: '#2980b9' },
-      key,
+    const piece = {
+      x: x * size,
+      y: y * size,
+      width: size,
+      height: size,
+      fill: color,
+      stroke: color,
+      strokeWidth: 1,
     };
-    piecesRef.push(pieces)
+    piecesRef.push(piece)
   }
 
-  static movePiece(pieces, key, piece) {
-    pieces[key].drawX = piece.x;
-    pieces[key].drawY = piece.y;
-    piecesRef.push(pieces)
+  static movePiece(value, piece) {
+    console.log(value, piece);
+    piece.x = value.x;
+    piece.y = value.y;
+    piecesRef.child(piece.id).set(piece);
+  }
+
+  static removePieces() {
+    piecesRef.set({});
+  }
+
+  static selectPiece(piece) {
+    console.log(piece);
+    AppDispatcher.dispatch({
+      type: 'set_selectPiece',
+      piece,
+    });
   }
 
   static listenPieces() {
-    piecesRef.on('child_added', (snapshot) => this.setPieces(snapshot.val()));
+    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
+    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
+    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));
   }
 
-  static setPieces(pieces) {
+  static setPiece(id, piece) {
+    piece.id = id;
     AppDispatcher.dispatch({
-      type: 'set_pieces',
-      pieces,
+      type: 'set_piece',
+      piece,
+    });
+  }
+
+  static removePiece(id) {
+    AppDispatcher.dispatch({
+      type: 'delete_piece',
+      id,
     });
   }
 

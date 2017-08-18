@@ -3,8 +3,8 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
-/** MapAreaに配置する駒一覧 */
-class PiecesStore extends ReduceStore {
+/** MapAreaに配置する駒の選択済み一覧 */
+class SelectPiecesStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({});
   }
@@ -15,12 +15,10 @@ class PiecesStore extends ReduceStore {
         return Immutable.fromJS(action.pieces);
       case 'set_piece':
         return state.set(action.piece.id, action.piece);
-      case 'delete_piece':
-        return state.delete(action.id);
       default:
         return state;
     }
   }
 }
 
-export default new PiecesStore(AppDispatcher);
+export default new SelectPiecesStore(AppDispatcher);
