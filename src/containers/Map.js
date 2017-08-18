@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 import PropTypes from 'prop-types';
-import { Layer, Stage, Image } from 'react-konva';
+import { Layer, Stage } from 'react-konva';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import Hex from '../components/Hex';
-
+import RectImage from '../components/RectImage';
+import Cell from '../components/Cell';
+import CellText from '../components/CellText';
 import MapAction from '../actions/MapAction';
-
-import HexesStore from '../stores/HexesStore';
 import PiecesStore from '../stores/PiecesStore';
+import MapConfigStore from '../stores/MapConfigStore';
 
 /**
  * 画面統括
  */
 class _Map extends Component {
   static getStores() {
-    return [HexesStore, PiecesStore];
+    return [PiecesStore, MapConfigStore];
   }
 
   static calculateState() {
     return {
-      hexes: HexesStore.getState().toJS(),
       pieces: PiecesStore.getState().toJS(),
+      config: MapConfigStore.getState().toJS(),
     };
   }
 
   componentWillMount() {
-    MapAction.initHexes();
+    // MapAction.initHexes();
     MapAction.listenPieces();
   }
 
   render() {
-    const { hexes, pieces } = this.state;
+    const { pieces, config } = this.state;
     const { layout } = this.props;
-    const viewHexes = Object.keys(hexes).map(key => <Hex hex={hexes[key]} draggable={false} />);
     const viewPieces = Object.keys(pieces).map(key => (
       <Hex
         hex={pieces[key]}
@@ -42,16 +42,36 @@ class _Map extends Component {
         movePiece={(key, piece) => MapAction.movePiece(pieces, key, piece)}
       />
     ));
+    const cells = MapAction.createCells(config.x, config.y, config.size, config.color);
+    const viewCells = cells.map(cell => (
+      <Cell cell={cell} />
+    ));
+    const viewTexts = cells.map(cell => (
+      <CellText cell={cell} />
+    ));
     return (
-      <div>
-        <RaisedButton
+      <div style={{ margin: 10 }}>
+        {/* <RaisedButton
           label="Add Piece"
           secondary={true}
           onClick={() => MapAction.addPiece(pieces)}
-        />
-        <Stage width={layout.w - 20} height={layout.h - 40}>
+        /> */}
+        <Stage width={layout.w - 40} height={layout.h - 40} draggable={true} >
           <Layer>
-            {viewHexes}
+            <RectImage
+              image={{
+                x: 0, y: 0,
+                width: config.x * config.size,
+                height: config.y * config.size,
+                src: config.backImage,
+              }}
+            />
+          </Layer>
+          <Layer>
+            {viewCells}
+          </Layer>
+          <Layer>
+            {viewTexts}
           </Layer>
           <Layer>
             {viewPieces}

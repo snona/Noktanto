@@ -9,7 +9,9 @@ class LayoutsStore extends ReduceStore {
     return Immutable.fromJS([{
       i: 'map-board', x: 0, y: 0, w: 8, h: 7, minW: 8, minH: 7, isDraggable: false,
     }, {
-      i: 'chat-board', x: 0, y: 0, w: 12, h: 6, minW: 12, minH: 6,
+      i: 'chat-board', x: 9, y: 3, w: 12, h: 7, minW: 12, minH: 6,
+    }, {
+      i: 'config-board', x: 9, y: 0, w: 4, h: 2, minW: 4, minH: 2,
     }]);
   }
 
