@@ -7,7 +7,7 @@ import * as Colors from 'material-ui/styles/colors';
 import '../../node_modules/react-grid-layout/css/styles.css';
 import '../../node_modules/react-resizable/css/styles.css';
 
-import MapArea from '../components/MapArea';
+import Map from '../containers/Map';
 import Chat from '../containers/Chat';
 
 class GridArea extends Component {
@@ -18,7 +18,9 @@ class GridArea extends Component {
   static wx = GridArea.width / GridArea.cols;
   static hx = GridArea.height / GridArea.rows;
 
-  _calWidthHight(layout) {
+  _calWidthHight(key) {
+    const { layouts } = this.props;
+    const layout = layouts.find(layout => layout.i === key);
     const { w, h } = layout;
     const { wx, hx } = GridArea;
     return { w: w * wx, h: h * hx };
@@ -26,8 +28,7 @@ class GridArea extends Component {
 
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { layouts, setLayouts, hexes, pieces, movePiece, addPiece } = this.props;
-    const chatLayout = layouts.find(layout => layout.i === 'chat-board');
+    const { layouts, setLayouts } = this.props;
 
     return (
       <Paper style={{ margin: 10 }}>
@@ -38,16 +39,13 @@ class GridArea extends Component {
           onResizeStop={(newLayouts) => setLayouts(newLayouts)}
         >
           <Paper key={'map-board'}>
-            <MapArea
-              hexes={hexes}
-              pieces={pieces}
-              movePiece={(pieces, key, piece) => movePiece(pieces, key, piece)}
-              addPiece={(pieces) => addPiece(pieces)}
+            <Map
+              layout={this._calWidthHight('map-board')}
             />
           </Paper>
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
             <Chat
-              layout={this._calWidthHight(chatLayout)}
+              layout={this._calWidthHight('chat-board')}
             /> 
           </Paper>
         </ReactGridLayout>
@@ -58,9 +56,5 @@ class GridArea extends Component {
 GridArea.protoType = {
   layouts: PropTypes.array.isRequired,
   setLayouts: PropTypes.func.isRequired,
-  hexes: PropTypes.object.isRequired,
-  pieces: PropTypes.object.isRequired,
-  movePiece: PropTypes.func.isRequired,
-  addPiece: PropTypes.func.isRequired,
 };
 export default GridArea;
