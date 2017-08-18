@@ -10,28 +10,30 @@ import Cell from '../components/Cell';
 import CellText from '../components/CellText';
 import MapAction from '../actions/MapAction';
 import PiecesStore from '../stores/PiecesStore';
+import MapConfigStore from '../stores/MapConfigStore';
 
 /**
  * 画面統括
  */
 class _Map extends Component {
   static getStores() {
-    return [PiecesStore];
+    return [PiecesStore, MapConfigStore];
   }
 
   static calculateState() {
     return {
       pieces: PiecesStore.getState().toJS(),
+      config: MapConfigStore.getState().toJS(),
     };
   }
 
   componentWillMount() {
-    MapAction.initHexes();
+    // MapAction.initHexes();
     MapAction.listenPieces();
   }
 
   render() {
-    const { pieces } = this.state;
+    const { pieces, config } = this.state;
     const { layout } = this.props;
     const viewPieces = Object.keys(pieces).map(key => (
       <Hex
@@ -40,15 +42,13 @@ class _Map extends Component {
         movePiece={(key, piece) => MapAction.movePiece(pieces, key, piece)}
       />
     ));
-    const cells = MapAction.createCells(12);
+    const cells = MapAction.createCells(config.x, config.y, config.size, config.color);
     const viewCells = cells.map(cell => (
       <Cell cell={cell} />
     ));
     const viewTexts = cells.map(cell => (
       <CellText cell={cell} />
     ));
-    const img = new Image();
-    img.src = 'http://www.wtrpg9.com/trpg/image/material/map01.jpg';
     return (
       <div style={{ margin: 10 }}>
         {/* <RaisedButton
@@ -60,11 +60,10 @@ class _Map extends Component {
           <Layer>
             <RectImage
               image={{
-                x: 0,
-                y: 0,
-                width: 12*30,
-                height: 12*30,
-                src: img,
+                x: 0, y: 0,
+                width: config.x * config.size,
+                height: config.y * config.size,
+                src: config.backImage,
               }}
             />
           </Layer>
