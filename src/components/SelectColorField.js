@@ -56,13 +56,13 @@ class SelectColorField extends Component {
     value: Colors.deepOrangeA200,
   }, {
     name: 'Brown',
-    value: Colors.brownA200,
+    value: Colors.brown400,
   }, {
     name: 'Grey',
-    value: Colors.greyA200,
+    value: Colors.grey400,
   }, {
     name: 'Blue Grey',
-    value: Colors.blueGreyA200,
+    value: Colors.blueGrey400,
   }];
   render() {
     const { selectedColor, selectColor } = this.props;
