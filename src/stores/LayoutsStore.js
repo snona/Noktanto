@@ -6,6 +6,8 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 class LayoutsStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS([{
+      i: 'map-board', x: 0, y: 0, w: 8, h: 7, minW: 8, minH: 7, isDraggable: false,
+    }, {
       i: 'chat-board', x: 0, y: 0, w: 12, h: 6, minW: 12, minH: 6,
     }]);
   }

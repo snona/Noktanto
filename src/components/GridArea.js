@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGridLayout from 'react-grid-layout';
 import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
 import * as Colors from 'material-ui/styles/colors';
 
 import '../../node_modules/react-grid-layout/css/styles.css';
 import '../../node_modules/react-resizable/css/styles.css';
 
+import MapArea from '../components/MapArea';
 import ChatArea from '../components/ChatArea';
 
 class GridArea extends Component {
@@ -17,6 +19,10 @@ class GridArea extends Component {
   static wx = GridArea.width / GridArea.cols;
   static hx = GridArea.height / GridArea.rows;
 
+  componentWillMount() {
+    this.setState({ isStatic: true });
+  }
+
   _calWidthHight(layout) {
     const { w, h } = layout;
     const { wx, hx } = GridArea;
@@ -25,8 +31,9 @@ class GridArea extends Component {
 
   render() {
     const { width, height, cols, rows } = GridArea;
+    const { isStatic } = this.state;
     const { layouts, setLayouts, messages, sendMessage,
-      systems, system, selectSystem } = this.props;
+      systems, system, selectSystem, hexes, pieces, movePiece, addPiece } = this.props;
     const chatLayout = layouts.find(layout => layout.i === 'chat-board');
 
     return (
@@ -37,6 +44,14 @@ class GridArea extends Component {
           onDragStop={(newLayouts) => setLayouts(newLayouts)}
           onResizeStop={(newLayouts) => setLayouts(newLayouts)}
         >
+          <Paper key={'map-board'}>
+            <MapArea
+              hexes={hexes}
+              pieces={pieces}
+              movePiece={(pieces, key, piece) => movePiece(pieces, key, piece)}
+              addPiece={(pieces) => addPiece(pieces)}
+            />
+          </Paper>
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
             <ChatArea
               messages={messages}
@@ -60,5 +75,9 @@ GridArea.protoType = {
   systems: PropTypes.array.isRequired,
   system: PropTypes.object.isRequired,
   selectSystem: PropTypes.func.isRequired,
+  hexes: PropTypes.object.isRequired,
+  pieces: PropTypes.object.isRequired,
+  movePiece: PropTypes.func.isRequired,
+  addPiece: PropTypes.func.isRequired,
 };
 export default GridArea;
