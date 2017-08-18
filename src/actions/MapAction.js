@@ -62,16 +62,20 @@ class MapAction {
 
   static listenConfig() {
     mapConfigRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
+    mapConfigRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
   }
 
   static sendConfig(config) {
-    mapConfigRef.push(config);
+    mapConfigRef.set({ 'map_config': config });
   }
 
   static setConfig(config) {
     const image = new Image();
     image.src = config.url;
-    config.backImage = image
+    config.backImage = image;
+    config.x = Number(config.x);
+    config.y = Number(config.y);
+    config.size = Number(config.size);
     AppDispatcher.dispatch({
       type: 'set_mapConfig',
       mapConfig: config,
