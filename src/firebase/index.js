@@ -3,5 +3,7 @@ import { firebaseConfig } from '../firebase/config.js';
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const firebaseDb = firebaseApp.database();
-export const messagesRef = firebaseDb.ref('messages')
-export const piecesRef = firebaseDb.ref('pieces')
+export const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */
+export const secretMessagesRef = firebaseDb.ref('secret_messages') /** チャット履歴(秘密) */
+export const piecesRef = firebaseDb.ref('pieces') /** 駒配置 */
+export const mapConfigRef = firebaseDb.ref('map_config') /** マップ設定 */

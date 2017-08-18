@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
+/** MapAreaに配置する駒一覧 */
 class PiecesStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({});

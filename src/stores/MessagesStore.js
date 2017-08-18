@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
+/** LogAreaに表示するチャット履歴 */
 class MessagesStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS([]);

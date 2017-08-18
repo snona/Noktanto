@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import * as Colors from 'material-ui/styles/colors';
 
-class LogArea extends Component {
+class ChatLog extends Component {
   render() {
     const { messages, layout } = this.props;
     const logs = messages.reverse().map(message => (
@@ -21,8 +21,8 @@ class LogArea extends Component {
     )
   }
 }
-LogArea.protoType = {
+ChatLog.protoType = {
   messages: PropTypes.array.isRequired,
   layout: PropTypes.object.isRequired,
 };
-export default LogArea;
+export default ChatLog;
