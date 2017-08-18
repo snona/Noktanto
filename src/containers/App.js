@@ -2,13 +2,8 @@ import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 
 import LayoutAction from '../actions/LayoutAction';
-import MapAction from '../actions/MapAction';
-
 import GridArea from '../components/GridArea';
-
 import LayoutsStore from '../stores/LayoutsStore';
-import HexesStore from '../stores/HexesStore';
-import PiecesStore from '../stores/PiecesStore';
 
 /**
  * 画面統括

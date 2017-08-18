@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 import PropTypes from 'prop-types';
-import { Layer, Stage } from 'react-konva';
+import { Layer, Stage, Image } from 'react-konva';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import Hex from '../components/Hex';

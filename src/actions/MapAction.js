@@ -85,15 +85,10 @@ class MapAction {
     pieces[key].drawX = piece.x;
     pieces[key].drawY = piece.y;
     piecesRef.push(pieces)
-    // AppDispatcher.dispatch({
-    //   type: 'set_pieces',
-    //   pieces,
-    // });
   }
 
   static listenPieces() {
     piecesRef.on('child_added', (snapshot) => this.setPieces(snapshot.val()));
-    // piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.val()));
   }
 
   static setPieces(pieces) {
