@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGridLayout from 'react-grid-layout';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 import * as Colors from 'material-ui/styles/colors';
 
 import '../../node_modules/react-grid-layout/css/styles.css';
 import '../../node_modules/react-resizable/css/styles.css';
 
 import MapArea from '../components/MapArea';
-import ChatArea from '../components/ChatArea';
+import Chat from '../containers/Chat';
 
 class GridArea extends Component {
   static width = 1200;
@@ -19,10 +18,6 @@ class GridArea extends Component {
   static wx = GridArea.width / GridArea.cols;
   static hx = GridArea.height / GridArea.rows;
 
-  componentWillMount() {
-    this.setState({ isStatic: true });
-  }
-
   _calWidthHight(layout) {
     const { w, h } = layout;
     const { wx, hx } = GridArea;
@@ -31,9 +26,7 @@ class GridArea extends Component {
 
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { isStatic } = this.state;
-    const { layouts, setLayouts, messages, sendMessage,
-      systems, system, selectSystem, hexes, pieces, movePiece, addPiece } = this.props;
+    const { layouts, setLayouts, hexes, pieces, movePiece, addPiece } = this.props;
     const chatLayout = layouts.find(layout => layout.i === 'chat-board');
 
     return (
@@ -53,14 +46,9 @@ class GridArea extends Component {
             />
           </Paper>
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
-            <ChatArea
-              messages={messages}
-              sendMessage={messages => sendMessage(messages)}
+            <Chat
               layout={this._calWidthHight(chatLayout)}
-              systems={systems}
-              system={system}
-              selectSystem={(value) => selectSystem(value)}
-            />
+            /> 
           </Paper>
         </ReactGridLayout>
       </Paper>
@@ -70,11 +58,6 @@ class GridArea extends Component {
 GridArea.protoType = {
   layouts: PropTypes.array.isRequired,
   setLayouts: PropTypes.func.isRequired,
-  messages: PropTypes.array.isRequired,
-  sendMessage: PropTypes.func.isRequired,
-  systems: PropTypes.array.isRequired,
-  system: PropTypes.object.isRequired,
-  selectSystem: PropTypes.func.isRequired,
   hexes: PropTypes.object.isRequired,
   pieces: PropTypes.object.isRequired,
   movePiece: PropTypes.func.isRequired,

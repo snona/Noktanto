@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
+/** GridAreaに表示する画面項目の配置, サイズ一覧 */
 class LayoutsStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS([{

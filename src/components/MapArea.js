@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Layer, Stage, RegularPolygon } from 'react-konva';
+import { Layer, Stage } from 'react-konva';
 import RaisedButton from 'material-ui/RaisedButton';
 import Hex from '../components/Hex';
 

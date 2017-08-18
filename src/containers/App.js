@@ -15,6 +15,9 @@ import SystemStore from '../stores/SystemStore';
 import HexesStore from '../stores/HexesStore';
 import PiecesStore from '../stores/PiecesStore';
 
+/**
+ * 画面統括
+ */
 class _App extends Component {
   static getStores() {
     return [LayoutsStore, MessagesStore, SystemsStore, SystemStore, HexesStore, PiecesStore];
@@ -32,10 +35,8 @@ class _App extends Component {
   }
 
   componentWillMount() {
-    ChatAction.listenMessages();
-    DiceBotAction.getSystems();
-    MapAction.initHexes();
-    MapAction.listenPieces();
+    // MapAction.initHexes();
+    // MapAction.listenPieces();
   }
 
   render() {
