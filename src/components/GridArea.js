@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGridLayout from 'react-grid-layout';
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 import * as Colors from 'material-ui/styles/colors';
 
 import '../../node_modules/react-grid-layout/css/styles.css';
 import '../../node_modules/react-resizable/css/styles.css';
 
-import MapArea from '../components/MapArea';
-import ChatArea from '../components/ChatArea';
+import Map from '../containers/Map';
+import Chat from '../containers/Chat';
 
 class GridArea extends Component {
   static width = 1200;
@@ -19,11 +18,9 @@ class GridArea extends Component {
   static wx = GridArea.width / GridArea.cols;
   static hx = GridArea.height / GridArea.rows;
 
-  componentWillMount() {
-    this.setState({ isStatic: true });
-  }
-
-  _calWidthHight(layout) {
+  _calWidthHight(key) {
+    const { layouts } = this.props;
+    const layout = layouts.find(layout => layout.i === key);
     const { w, h } = layout;
     const { wx, hx } = GridArea;
     return { w: w * wx, h: h * hx };
@@ -31,10 +28,7 @@ class GridArea extends Component {
 
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { isStatic } = this.state;
-    const { layouts, setLayouts, messages, sendMessage,
-      systems, system, selectSystem, hexes, pieces, movePiece, addPiece } = this.props;
-    const chatLayout = layouts.find(layout => layout.i === 'chat-board');
+    const { layouts, setLayouts } = this.props;
 
     return (
       <Paper style={{ margin: 10 }}>
@@ -45,22 +39,14 @@ class GridArea extends Component {
           onResizeStop={(newLayouts) => setLayouts(newLayouts)}
         >
           <Paper key={'map-board'}>
-            <MapArea
-              hexes={hexes}
-              pieces={pieces}
-              movePiece={(pieces, key, piece) => movePiece(pieces, key, piece)}
-              addPiece={(pieces) => addPiece(pieces)}
+            <Map
+              layout={this._calWidthHight('map-board')}
             />
           </Paper>
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
-            <ChatArea
-              messages={messages}
-              sendMessage={messages => sendMessage(messages)}
-              layout={this._calWidthHight(chatLayout)}
-              systems={systems}
-              system={system}
-              selectSystem={(value) => selectSystem(value)}
-            />
+            <Chat
+              layout={this._calWidthHight('chat-board')}
+            /> 
           </Paper>
         </ReactGridLayout>
       </Paper>
@@ -70,14 +56,5 @@ class GridArea extends Component {
 GridArea.protoType = {
   layouts: PropTypes.array.isRequired,
   setLayouts: PropTypes.func.isRequired,
-  messages: PropTypes.array.isRequired,
-  sendMessage: PropTypes.func.isRequired,
-  systems: PropTypes.array.isRequired,
-  system: PropTypes.object.isRequired,
-  selectSystem: PropTypes.func.isRequired,
-  hexes: PropTypes.object.isRequired,
-  pieces: PropTypes.object.isRequired,
-  movePiece: PropTypes.func.isRequired,
-  addPiece: PropTypes.func.isRequired,
 };
 export default GridArea;

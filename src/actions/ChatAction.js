@@ -1,11 +1,12 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import { messagesRef } from '../firebase';
+import { messagesRef, secretMessagesRef } from '../firebase';
 
 import DiceBotAction from '../actions/DiceBotAction';
 
 class ChatAction {
   static listenMessages() {
-    messagesRef.on('child_added', (snapshot) => this.addMessage(snapshot.val()));
+    messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
+    secretMessagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
   }
 
   static setMessages(messages) {
@@ -15,33 +16,28 @@ class ChatAction {
     });
   }
 
+  static _createResultMessage(message, response) {
+    return {
+      name: message.name,
+      text: response.result,
+    };
+  }
+
   static sendMessage(message) {
     DiceBotAction.getDiceRoll(message.system, message.text).then(response => {
       if (!response.ok) {
         messagesRef.push(message);
       } else {
-        if (response.secret) {
-          this.addMessage(message);
-          const resultMessage = {
-            id: message.id + 1,
-            name: message.name,
-            text: response.result,
-          }
-          this.addMessage(resultMessage);
-        } else {
-          messagesRef.push(message);
-          const resultMessage = {
-            id: message.id + 1,
-            name: message.name,
-            text: response.result,
-          }
-          messagesRef.push(resultMessage);
-        }
+        const sendFn = (msg) => response.secret ? secretMessagesRef.push(msg) : messagesRef.push(msg);
+        sendFn(message);
+        const resultMessage = this._createResultMessage(message, response)
+        sendFn(resultMessage);
       }
     });
   }
 
-  static addMessage(message) {
+  static addMessage(key, message) {
+    message.id = key;
     AppDispatcher.dispatch({
       type: 'add_message',
       message,

@@ -3,6 +3,9 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
+/**
+ * BCDiceの提供するシステム一覧
+ */
 class SystemsStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS([]);

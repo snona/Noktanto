@@ -3,6 +3,9 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 
+/**
+ * MapAreaに配置する背景
+ */
 class HexesStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({});

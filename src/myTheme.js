@@ -2,6 +2,7 @@ import * as Colors from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator';
 import Spacing from 'material-ui/styles/spacing';
 
+/** Material UI の独自テーマ */
 const myTheme = {
   spacing: Spacing,
   fontFamily: 'Roboto, sans-serif',
