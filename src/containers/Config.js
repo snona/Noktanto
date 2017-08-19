@@ -8,8 +8,10 @@ import MapAction from '../actions/MapAction';
 import CharacterAction from '../actions/CharacterAction';
 import MapConfigStore from '../stores/MapConfigStore';
 import CharacterConfigStore from '../stores/CharacterConfigStore';
+import PieceConfigStore from '../stores/PieceConfigStore';
 import MapConfig from '../components/MapConfig';
 import CharacterConfig from '../components/CharacterConfig';
+import PieceConfig from '../components/PieceConfig';
 import ConfigDialog from '../components/ConfigDialog';
 
 /**
@@ -17,13 +19,14 @@ import ConfigDialog from '../components/ConfigDialog';
  */
 class _Config extends Component {
   static getStores() {
-    return [MapConfigStore, CharacterConfigStore];
+    return [MapConfigStore, CharacterConfigStore, PieceConfigStore];
   }
 
   static calculateState() {
     return {
       mapConfig: MapConfigStore.getState().toJS(),
       characterConfig: CharacterConfigStore.getState().toJS(),
+      pieceConfig: PieceConfigStore.getState().toJS(),
     };
   }
 
@@ -34,7 +37,7 @@ class _Config extends Component {
   }
 
   render() {
-    const { mapConfig } = this.state;
+    const { mapConfig, characterConfig, pieceConfig } = this.state;
     const tmpMapConfig = {
       url: mapConfig.backImage.src,
       x: mapConfig.x,
@@ -64,9 +67,15 @@ class _Config extends Component {
         />
         <ConfigDialog
           label="Add Character"
-          config={this.state.characterConfig}
+          config={characterConfig}
           setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
           Config={CharacterConfig}
+        />
+        <ConfigDialog
+          label="Add Piece"
+          config={pieceConfig}
+          setConfig={(newConfig) => MapAction.addPiece(newConfig)}
+          Config={PieceConfig}
         />
       </div>
     );

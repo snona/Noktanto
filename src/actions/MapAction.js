@@ -24,18 +24,18 @@ class MapAction {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
   }
 
-  static addPiece(size, color) {
+  static addPiece(config) {
     const x = this.getRandomInt();
     const y = this.getRandomInt();
     const piece = {
-      x: x * size,
-      y: y * size,
-      width: size,
-      height: size,
-      fill: color,
-      stroke: color,
+      x: x * config.size,
+      y: y * config.size,
+      width: config.size,
+      height: config.size,
       strokeWidth: 1,
-      size,
+      size: config.size,
+      name: config.name,
+      url: config.url,
     };
     piecesRef.push(piece)
   }

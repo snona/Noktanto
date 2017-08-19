@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Group, Rect, Text } from 'react-konva';
 
+import RectImage from '../components/RectImage';
+
 class Piece extends Component {
     render() {
       const { cell, movePiece, selectPiece } = this.props;
-      const fontSize = 10;
+      const fontSize = 12;
+      const src = new Image();
+      src.src = cell.url;
+      const image = {
+        x: 0,
+        y: 0,
+        width: cell.width,
+        height: cell.width,
+        src,
+      }
       return (
         <Group
           x={cell.x}
@@ -14,19 +25,22 @@ class Piece extends Component {
           onDragend={(v) => movePiece(v.target.attrs) }
           onClick={() => selectPiece()}
         >
+          <RectImage
+            image={image}
+          />
           <Rect
             x={0}
-            y={0}
+            y={-10}
             width={cell.width}
-            height={cell.height}
-            fill={cell.fill}
-            stroke={cell.select ? '#263238' : '#263238'}
+            height={14}
+            fill={'#FAFAFA'}
+            stroke={'#263238'}
             strokeWidth={cell.strokeWidth}
           />
           <Text
             x={0}
-            y={0}
-            text={cell.id}
+            y={-10}
+            text={cell.name}
             fontSize={fontSize}
             fontFamily={'Roboto'}
             fill={'#263238'}
@@ -42,8 +56,9 @@ Piece.propTypes = {
     y: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
-    fill: PropTypes.string.isRequired,
-    stroke: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
     strokeWidth: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
   }).isRequired,
