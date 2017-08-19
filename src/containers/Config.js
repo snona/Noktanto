@@ -5,8 +5,11 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import MapAction from '../actions/MapAction';
+import CharacterAction from '../actions/CharacterAction';
 import MapConfigStore from '../stores/MapConfigStore';
+import CharacterConfigStore from '../stores/CharacterConfigStore';
 import MapConfig from '../components/MapConfig';
+import CharacterConfig from '../components/CharacterConfig';
 import ConfigDialog from '../components/ConfigDialog';
 
 /**
@@ -14,12 +17,13 @@ import ConfigDialog from '../components/ConfigDialog';
  */
 class _Config extends Component {
   static getStores() {
-    return [MapConfigStore];
+    return [MapConfigStore, CharacterConfigStore];
   }
 
   static calculateState() {
     return {
       mapConfig: MapConfigStore.getState().toJS(),
+      characterConfig: CharacterConfigStore.getState().toJS(),
     };
   }
 
@@ -55,6 +59,11 @@ class _Config extends Component {
           config={tmpMapConfig}
           setConfig={(newConfig) => MapAction.sendConfig(newConfig)}
           Config={MapConfig}
+        />
+        <ConfigDialog
+          config={this.state.characterConfig}
+          setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
+          Config={CharacterConfig}
         />
       </div>
     );

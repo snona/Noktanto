@@ -13,6 +13,7 @@ class MapAction {
           height: size,
           stroke: color,
           strokeWidth: 1,
+          size,
         });
       } 
     }
@@ -34,15 +35,24 @@ class MapAction {
       fill: color,
       stroke: color,
       strokeWidth: 1,
+      size,
     };
     piecesRef.push(piece)
   }
 
   static movePiece(value, piece) {
     console.log(value, piece);
-    piece.x = value.x;
-    piece.y = value.y;
+    piece.x = this._roundOff(value.x, piece.size);
+    piece.y = this._roundOff(value.y, piece.size);
     piecesRef.child(piece.id).set(piece);
+  }
+
+  static _roundOff(target, size) {
+    const rest = target % size;
+    if ( rest > size / 2) {
+      return target - rest + size;
+    }
+    return target - rest;
   }
 
   static removePieces() {

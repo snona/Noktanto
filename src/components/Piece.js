@@ -20,7 +20,7 @@ class Piece extends Component {
             width={cell.width}
             height={cell.height}
             fill={cell.fill}
-            stroke={cell.select ? '#263238' : cell.stroke}
+            stroke={cell.select ? '#263238' : '#263238'}
             strokeWidth={cell.strokeWidth}
           />
           <Text

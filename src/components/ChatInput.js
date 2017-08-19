@@ -5,18 +5,22 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import DiceBotArea from '../components/DiceBotArea';
+import SelectCharacterField from '../components/SelectCharacterField';
 
 class ChatInput extends Component {
   componentWillMount() {
     this.setState({
+      character: {
+        id: 'A',
+      },
       name: 'A',
       text: '',
     });
   }
 
   render() {
-    const { name, text } = this.state;
-    const { sendMessage, systems, system, selectSystem } = this.props;
+    const { character, name, text } = this.state;
+    const { sendMessage, systems, system, selectSystem, characters } = this.props;
     return (
       <div style={{ margin: 10 }} >
         <DiceBotArea
@@ -24,11 +28,16 @@ class ChatInput extends Component {
           system={system}
           selectSystem={(value) => selectSystem(value)}
         />
-        <TextField
+        {/* <TextField
           floatingLabelText="Name"
           style={{ width: 100, marginRight: 10 }}
           value={name}
           onChange={(e, v) => this.setState({ name: v })}
+        /> */}
+        <SelectCharacterField
+          characters={characters}
+          selectedCharacter={character}
+          selectCharacter={(key) => this.setState({ character: characters[key] })}
         />
         <TextField
           floatingLabelText="Text"
@@ -39,7 +48,7 @@ class ChatInput extends Component {
         <RaisedButton
           label="Send Message"
           secondary={true}
-          onClick={() => { sendMessage({ system: system.gameType, name, text }); this.setState({ text: '' }); }}
+          onClick={() => { sendMessage({ system: system.gameType, name: character.name, text, color: character.color }); this.setState({ text: '' }); }}
         />
       </div>
     )
@@ -50,5 +59,6 @@ ChatInput.protoType = {
   systems: PropTypes.array.isRequired,
   system: PropTypes.object.isRequired,
   selectSystem: PropTypes.func.isRequired,
+  characters: PropTypes.object.isRequired,
 };
 export default ChatInput;
