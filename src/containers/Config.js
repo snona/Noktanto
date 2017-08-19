@@ -48,12 +48,6 @@ class _Config extends Component {
     return (
       <div>
         <RaisedButton
-          label="Add Piece"
-          secondary={true}
-          onClick={() => MapAction.addPiece(mapConfig.size, mapConfig.color)}
-          style={{ marginTop: 10, marginLeft: 10 }}
-        />
-        <RaisedButton
           label="Remove Pieces"
           primary={true}
           onClick={() => MapAction.removePieces()}
