@@ -2,14 +2,13 @@ import { ReduceStore } from 'flux/utils';
 import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 /**
  * MapAreaの情報
  */
 class CharactersStore extends ReduceStore {
   getInitialState() {
-    // const image = new Image();
-    // image.src = 'http://www.wtrpg9.com/trpg/image/material/map01.jpg';
     return Immutable.fromJS({
       'A': {
         id: 'A',
@@ -22,7 +21,7 @@ class CharactersStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_character':
+      case ActionTypes.Characters.ADD:
         return state.set(action.character.id, action.character);
       default:
         return state;

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import * as Colors from 'material-ui/styles/colors';
 
 class ChatLog extends Component {
   shouldComponentUpdate(nextProps, nextState) {

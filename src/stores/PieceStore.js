@@ -2,11 +2,13 @@ import { ReduceStore } from 'flux/utils';
 import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 /**
- * MapAreaの情報
+ * 駒の情報
+ * @extends {ReduceStore}
  */
-class PieceConfigStore extends ReduceStore {
+class PieceStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({
       name: '',
@@ -17,9 +19,9 @@ class PieceConfigStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_characterConfig':
+      case ActionTypes.Piece.SET:
         return Immutable.fromJS(action.characterConfig);
-      case 'init_characterConfig':
+      case ActionTypes.Piece.INIT:
         return this.getInitialState();
       default:
         return state;
@@ -27,4 +29,4 @@ class PieceConfigStore extends ReduceStore {
   }
 }
 
-export default new PieceConfigStore(AppDispatcher);
+export default new PieceStore(AppDispatcher);

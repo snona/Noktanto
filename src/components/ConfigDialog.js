@@ -27,7 +27,7 @@ class ConfigDialog extends Component {
 
   render() {
     const { tmpConfig } = this.state;
-    const { label, config, setConfig, Config } = this.props;
+    const { label, setConfig, ConfigArea } = this.props;
     const actions = [
       <FlatButton
         label="Cancel"
@@ -55,7 +55,7 @@ class ConfigDialog extends Component {
           onRequestClose={() => this.setState({ open: false })}
           autoScrollBodyContent={true}
         >
-          <Config
+          <ConfigArea
             config={tmpConfig}
             setConfig={(newConfig) => { this.setState({ tmpConfig: this._setTmpConfig(newConfig, tmpConfig) })}}
           />
@@ -68,6 +68,6 @@ ConfigDialog.protoType = {
   label: PropTypes.string.isRequired,
   setConfig: PropTypes.func.isRequired,
   config: PropTypes.object.isRequired,
-  Config: PropTypes.node.isRequired,
+  ConfigArea: PropTypes.node.isRequired,
 };
 export default ConfigDialog;

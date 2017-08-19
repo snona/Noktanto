@@ -1,4 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 import { messagesRef, secretMessagesRef } from '../firebase';
 
 import DiceBotAction from '../actions/DiceBotAction';
@@ -11,7 +12,7 @@ class ChatAction {
 
   static setMessages(messages) {
     AppDispatcher.dispatch({
-      type: 'set_messages',
+      type: ActionTypes.Messages.SET,
       messages: messages === null ? [] : messages,
     });
   }
@@ -48,7 +49,7 @@ class ChatAction {
   static addMessage(key, message) {
     message.id = key;
     AppDispatcher.dispatch({
-      type: 'add_message',
+      type: ActionTypes.Messages.ADD,
       message,
     });
   }

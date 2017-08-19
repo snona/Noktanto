@@ -2,6 +2,7 @@ import { ReduceStore } from 'flux/utils';
 import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 /** GridAreaに表示する画面項目の配置, サイズ一覧 */
 class LayoutsStore extends ReduceStore {
@@ -17,9 +18,9 @@ class LayoutsStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_layouts':
+      case ActionTypes.Layouts.SET:
         return Immutable.fromJS(action.layouts);
-      case 'add_layout':
+      case ActionTypes.Layouts.ADD:
         return state.push(action.layout);
       default:
         return state;

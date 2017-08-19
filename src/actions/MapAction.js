@@ -1,4 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 import { piecesRef, mapConfigRef } from '../firebase';
 
 class MapAction {
@@ -62,7 +63,7 @@ class MapAction {
   static selectPiece(piece) {
     console.log(piece);
     AppDispatcher.dispatch({
-      type: 'set_selectPiece',
+      type: ActionTypes.Pieces.UPDATE,
       piece,
     });
   }
@@ -76,14 +77,14 @@ class MapAction {
   static setPiece(id, piece) {
     piece.id = id;
     AppDispatcher.dispatch({
-      type: 'set_piece',
+      type: ActionTypes.Pieces.ADD,
       piece,
     });
   }
 
   static removePiece(id) {
     AppDispatcher.dispatch({
-      type: 'delete_piece',
+      type: ActionTypes.Pieces.REMOVE,
       id,
     });
   }
@@ -105,7 +106,7 @@ class MapAction {
     config.y = Number(config.y);
     config.size = Number(config.size);
     AppDispatcher.dispatch({
-      type: 'set_mapConfig',
+      type: ActionTypes.Map.SET,
       mapConfig: config,
     });
   }

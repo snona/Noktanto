@@ -1,16 +1,17 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 class LayoutAction {
   static setLayouts(layouts) {
     AppDispatcher.dispatch({
-      type: 'set_layouts',
+      type: ActionTypes.Layouts.SET,
       layouts,
     });
   }
 
   static addLayout(layout) {
     AppDispatcher.dispatch({
-      type: 'add_layout',
+      type: ActionTypes.Layouts.ADD,
       layout,
     });
   }

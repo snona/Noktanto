@@ -1,4 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 import { charactersRef } from '../firebase';
 
 class CharacterAction {
@@ -19,14 +20,17 @@ class CharacterAction {
 
   static initConfig() {
     AppDispatcher.dispatch({
-      type: 'init_characterConfig',
+      type: ActionTypes.Piece.INIT,
     });
   }
+
+  // Todo
+  // FireBase <-> Store の変換Methodを各地に作成する
 
   static addCharacter(id, character) {
     character.id = id;
     AppDispatcher.dispatch({
-      type: 'set_character',
+      type: ActionTypes.Characters.ADD,
       character,
     });
   }

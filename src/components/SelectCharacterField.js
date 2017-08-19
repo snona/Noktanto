@@ -5,6 +5,16 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
 class SelectCharacterField extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    const { characters, selectedCharacter } = this.props;
+    if (Object.keys(characters).length === Object.keys(nextProps.characters).length) {
+      if (selectedCharacter.id === nextProps.selectedCharacter.id) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   render() {
     const { characters, selectedCharacter, selectCharacter } = this.props;
     const items = Object.keys(characters).map(key => {

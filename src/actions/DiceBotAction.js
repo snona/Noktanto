@@ -1,10 +1,13 @@
 import axios from 'axios';
+
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
+import BCDiceAPI from '../constants/BCDiceAPI';
 
 class DiceBotAction {
-  static url = 'https://bcdice-api.herokuapp.com';
-  static _request(url, params = {}) {
-    console.log(url, params);
+  static _request(uri, params = {}) {
+    console.log(uri, params);
+    const url = BCDiceAPI.URL + uri;
     return new Promise((resolve, reject) => {
       axios.request({
         url,
@@ -23,11 +26,10 @@ class DiceBotAction {
   }
 
   static getSystems() {
-    const uri = '/v1/systems';
-    this._request(this.url+uri).then(response => {
+    this._request(BCDiceAPI.uri.SYSTEMS).then(response => {
       const systems = response.data.systems;
       AppDispatcher.dispatch({
-        type: 'set_systems',
+        type: ActionTypes.Systems.SET,
         systems,
       });
     }).catch(err => {
@@ -35,12 +37,11 @@ class DiceBotAction {
   }
 
   static getSystem(system) {
-    const uri = '/v1/systeminfo';
     const param = { system };
-    this._request(this.url+uri, param).then(response => {
+    this._request(BCDiceAPI.uri.SYSTEM, param).then(response => {
       const system = response.data.systeminfo;
       AppDispatcher.dispatch({
-        type: 'set_system',
+        type: ActionTypes.System.SET,
         system,
       });
     }).catch(err => {
@@ -48,10 +49,9 @@ class DiceBotAction {
   }
 
   static getDiceRoll(system, text) {
-    const uri = '/v1/diceroll';
     const param = { system, command: text };
     return new Promise(resolve => {
-      this._request(this.url+uri, param).then(response => {
+      this._request(BCDiceAPI.uri.DICE, param).then(response => {
         if (!response.data.ok) {
           resolve({ result: text, secret: false });
         }

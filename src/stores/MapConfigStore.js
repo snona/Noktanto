@@ -2,6 +2,7 @@ import { ReduceStore } from 'flux/utils';
 import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 /**
  * MapAreaの情報
@@ -21,7 +22,7 @@ class MapConfigStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_mapConfig':
+      case ActionTypes.Map.SET:
         return Immutable.fromJS(action.mapConfig);
       default:
         return state;
