@@ -9,6 +9,7 @@ class SelectCharacterField extends Component {
     const { characters, selectedCharacter, selectCharacter } = this.props;
     const items = Object.keys(characters).map(key => {
       const character = characters[key];
+      console.log(key, character);
       return (
         <MenuItem
           key={key}
@@ -26,9 +27,19 @@ class SelectCharacterField extends Component {
           onChange={(e, i, v) => selectCharacter(v)}
           labelStyle={{ color: selectedCharacter.color }}
           selectedMenuItemStyle={{ color: selectedCharacter.color }}
+          style={{ marginRight: 10 }}
         >
           {items}
         </SelectField>
+        {/* <SelectField
+          floatingLabelText="Select Character"
+          value={selectedCharacter.id}
+          onChange={(e, i, v) => selectCharacter(v)}
+          labelStyle={{ color: selectedCharacter.color }}
+          selectedMenuItemStyle={{ color: selectedCharacter.color }}
+        >
+          {items}
+        </SelectField> */}
       </div>
     )
   }

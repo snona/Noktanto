@@ -22,7 +22,7 @@ class CharactersStore extends ReduceStore {
   reduce(state, action) {
     switch (action.type) {
       case 'set_character':
-        return Immutable.fromJS(action.mapConfig);
+        return state.set(action.character.id, action.character);
       default:
         return state;
     }

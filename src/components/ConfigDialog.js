@@ -27,7 +27,7 @@ class ConfigDialog extends Component {
 
   render() {
     const { tmpConfig } = this.state;
-    const { config, setConfig, Config } = this.props;
+    const { label, config, setConfig, Config } = this.props;
     const actions = [
       <FlatButton
         label="Cancel"
@@ -43,12 +43,12 @@ class ConfigDialog extends Component {
     return (
       <div style={{ margin: 10 }}>
         <RaisedButton
-          label="Map Config"
+          label={label}
           primary={true}
           onClick={() => this.setState({ open: true })}
         />
         <Dialog
-          title="Map Config"
+          title={label}
           actions={actions}
           modal={false}
           open={this.state.open}
@@ -65,6 +65,7 @@ class ConfigDialog extends Component {
   }
 }
 ConfigDialog.protoType = {
+  label: PropTypes.string.isRequired,
   setConfig: PropTypes.func.isRequired,
   config: PropTypes.object.isRequired,
   Config: PropTypes.node.isRequired,

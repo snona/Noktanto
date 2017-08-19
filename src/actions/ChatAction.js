@@ -18,8 +18,10 @@ class ChatAction {
 
   static _createResultMessage(message, response) {
     return {
+      system: message.system,
       name: message.name,
       text: `${message.system} ${response.result}`,
+      color: message.color,
     };
   }
 
@@ -33,6 +35,7 @@ class ChatAction {
             system: message.system,
             name: message.name,
             text: 'シークレットダイス',
+            color: message.color,
           };
           messagesRef.push(secretMessage);
         }

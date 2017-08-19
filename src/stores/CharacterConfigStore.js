@@ -8,9 +8,9 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
  */
 class CharacterConfigStore extends ReduceStore {
   getInitialState() {
-    // const image = new Image();
-    // image.src = 'http://www.wtrpg9.com/trpg/image/material/map01.jpg';
     return Immutable.fromJS({
+      name: '',
+      color: '#ff5252',
     });
   }
 
@@ -18,6 +18,8 @@ class CharacterConfigStore extends ReduceStore {
     switch (action.type) {
       case 'set_characterConfig':
         return Immutable.fromJS(action.characterConfig);
+      case 'init_characterConfig':
+        return this.getInitialState();
       default:
         return state;
     }

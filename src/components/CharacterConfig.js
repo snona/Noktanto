@@ -7,6 +7,7 @@ import SelectColorField from '../components/SelectColorField';
 class CharacterConfig extends Component {
   render() {
     const { config, setConfig } = this.props;
+    console.log(config);
     return (
       <div style={{ margin: 10 }} >
         <div>

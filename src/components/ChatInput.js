@@ -12,14 +12,15 @@ class ChatInput extends Component {
     this.setState({
       character: {
         id: 'A',
+        name: 'A',
+        color: '#f44336',
       },
-      name: 'A',
       text: '',
     });
   }
 
   render() {
-    const { character, name, text } = this.state;
+    const { character, text } = this.state;
     const { sendMessage, systems, system, selectSystem, characters } = this.props;
     return (
       <div style={{ margin: 10 }} >
@@ -28,12 +29,6 @@ class ChatInput extends Component {
           system={system}
           selectSystem={(value) => selectSystem(value)}
         />
-        {/* <TextField
-          floatingLabelText="Name"
-          style={{ width: 100, marginRight: 10 }}
-          value={name}
-          onChange={(e, v) => this.setState({ name: v })}
-        /> */}
         <SelectCharacterField
           characters={characters}
           selectedCharacter={character}

@@ -29,6 +29,7 @@ class _Config extends Component {
 
   componentWillMount() {
     MapAction.listenConfig();
+    CharacterAction.listenConfig();
     this.setState({ open: false });
   }
 
@@ -47,20 +48,22 @@ class _Config extends Component {
           label="Add Piece"
           secondary={true}
           onClick={() => MapAction.addPiece(mapConfig.size, mapConfig.color)}
-          style={{ margin: 10 }}
+          style={{ marginTop: 10, marginLeft: 10 }}
         />
         <RaisedButton
           label="Remove Pieces"
           primary={true}
           onClick={() => MapAction.removePieces()}
-          style={{ margin: 10 }}
+          style={{ marginTop: 10, marginLeft: 10 }}
         />
         <ConfigDialog
+          label="Config Map"
           config={tmpMapConfig}
           setConfig={(newConfig) => MapAction.sendConfig(newConfig)}
           Config={MapConfig}
         />
         <ConfigDialog
+          label="Add Character"
           config={this.state.characterConfig}
           setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
           Config={CharacterConfig}

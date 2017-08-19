@@ -19,7 +19,7 @@ class ChatLog extends Component {
     const { messages, layout } = this.props;
     const logs = messages.reverse().map(message => (
       <div key={`log-${message.id}`}>
-        <span style={{ color: Colors.deepPurple900 }} >
+        <span style={{ color: message.color }} >
           {`${message.name} : ${message.text}`}
         </span>
       </div>
