@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import Hex from '../components/Hex';
+import Piece from '../components/Piece';
 import RectImage from '../components/RectImage';
 import Cell from '../components/Cell';
 import CellText from '../components/CellText';
@@ -28,20 +28,12 @@ class _Map extends Component {
   }
 
   componentWillMount() {
-    // MapAction.initHexes();
     MapAction.listenPieces();
   }
 
   render() {
     const { pieces, config } = this.state;
     const { layout } = this.props;
-    const viewPieces = Object.keys(pieces).map(key => (
-      <Hex
-        hex={pieces[key]}
-        draggable={true}
-        movePiece={(key, piece) => MapAction.movePiece(pieces, key, piece)}
-      />
-    ));
     const cells = MapAction.createCells(config.x, config.y, config.size, config.color);
     const viewCells = cells.map(cell => (
       <Cell cell={cell} />
@@ -49,13 +41,16 @@ class _Map extends Component {
     const viewTexts = cells.map(cell => (
       <CellText cell={cell} />
     ));
+    const viewPieces = Object.keys(pieces).map(key => {
+      const piece = pieces[key];
+      return <Piece
+        cell={piece}
+        movePiece={(value) => MapAction.movePiece(value, piece)}
+        selectPiece={() => MapAction.selectPiece(piece)}
+      />
+    });
     return (
       <div style={{ margin: 10 }}>
-        {/* <RaisedButton
-          label="Add Piece"
-          secondary={true}
-          onClick={() => MapAction.addPiece(pieces)}
-        /> */}
         <Stage width={layout.w - 40} height={layout.h - 40} draggable={true} >
           <Layer>
             <RectImage

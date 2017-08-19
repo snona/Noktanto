@@ -9,7 +9,7 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 class MapConfigStore extends ReduceStore {
   getInitialState() {
     const image = new Image();
-    image.src = 'http://www.wtrpg9.com/trpg/image/material/map01.jpg';
+    image.src = './resources/map02.jpg';
     return Immutable.fromJS({
       x: 10,  // 横セル数
       y: 10,  // 縦セル数

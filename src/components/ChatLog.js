@@ -1,33 +1,57 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
 import * as Colors from 'material-ui/styles/colors';
 
 class ChatLog extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    const { layout } = this.props;
-    if (nextProps.layout !== layout) {
-      if (nextProps.layout.w === layout.w
-        && nextProps.layout.h === layout.h) {
-          return false;
-        }
+    const { messages, layout } = this.props;
+    if (messages.length === nextProps.messages.length) {
+      if (layout.w === nextProps.layout.w && layout.h === nextProps.layout.h) {
+        return false;
+      }
     }
     return true;
   }
 
   render() {
     const { messages, layout } = this.props;
-    const logs = messages.reverse().map(message => (
-      <div key={`log-${message.id}`}>
-        <span style={{ color: Colors.deepPurple900 }} >
-          {`${message.name} : ${message.text}`}
-        </span>
-      </div>
-    ));
+    const logs = messages.map(message => {
+      const avatar = (
+        <Avatar
+          src={message.character.url}
+          size={32}
+          style={{ top: 8 }}
+        />
+      );
+      const primaryText = (
+        <div style={{ color: message.character.color, fontSize: 10 }} >
+          {message.character.name}
+        </div>
+      );
+      const secondaryText = (
+        <div style={{ color: message.character.color, fontSize: 14 }} >
+          {message.text}
+        </div>
+      );
+      return (
+        <ListItem
+          key={`log-${message.id}`}
+          leftAvatar={avatar}
+          primaryText={primaryText}
+          secondaryText={secondaryText}
+          innerDivStyle={{ paddingTop: 5, paddingLeft: 60, paddingRight: 0, paddingBottom: 5 }}
+        />
+      );
+    }).reverse();
     console.log(logs);
     return (
-      <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 210 }} >
-        {logs}
+      <Paper style={{ overflow: 'scroll', height: layout.h - 260 }} >
+        <List>
+          {logs}
+        </List>
       </Paper>
     )
   }

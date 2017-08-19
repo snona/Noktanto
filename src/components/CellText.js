@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Rect, Text } from 'react-konva';
+import { Text } from 'react-konva';
 
 class CellText extends Component {
     render() {
@@ -8,9 +8,9 @@ class CellText extends Component {
       const fontSize = 10;
       return (
         <Text
-          x={cell.x * cell.width}
-          y={cell.y * cell.height}
-          text={`${cell.x}-${cell.y}`}
+          x={cell.x}
+          y={cell.y}
+          text={`${cell.x/cell.width}-${cell.y/cell.height}`}
           fontSize={fontSize}
           fontFamily={'Roboto'}
           fill={cell.stroke}
