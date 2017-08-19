@@ -11,13 +11,14 @@ import DiceBotAction from '../actions/DiceBotAction';
 import MessagesStore from '../stores/MessagesStore';
 import SystemsStore from '../stores/SystemsStore';
 import SystemStore from '../stores/SystemStore';
+import CharactersStore from '../stores/CharactersStore';
 
 /**
  * チャット画面
  */
 class _Chat extends Component {
   static getStores() {
-    return [MessagesStore, SystemsStore, SystemStore];
+    return [MessagesStore, SystemsStore, SystemStore, CharactersStore];
   }
 
   static calculateState() {
@@ -25,6 +26,7 @@ class _Chat extends Component {
       messages: MessagesStore.getState().toJS(),
       systems: SystemsStore.getState().toJS(),
       system: SystemStore.getState().toJS(),
+      characters: CharactersStore.getState().toJS(),
     };
   }
 
@@ -46,6 +48,7 @@ class _Chat extends Component {
           systems={this.state.systems}
           system={this.state.system}
           selectSystem={(system) => DiceBotAction.getSystem(system)}
+          characters={this.state.characters}
         />
       </div>
     );

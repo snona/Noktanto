@@ -18,10 +18,11 @@ https://dice-chat-6b7e2.firebaseapp.com/
 * [React](https://github.com/facebook/react)
 * [Flux](https://github.com/facebook/flux)
 * [Immutable.js](https://github.com/facebook/immutable-js)
-* [jsonp](https://github.com/webmodules/jsonp)
 * [Material UI](https://github.com/callemall/material-ui)
 * [firebase](https://github.com/firebase/firebase-tools)
 * [react-grid-layout](https://github.com/STRML/react-grid-layout)
+* [react-konva](https://github.com/lavrton/react-konva)
+* [axios](https://github.com/mzabriskie/axios)
 
 ## Setup
 

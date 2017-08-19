@@ -5,26 +5,39 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import MapAction from '../actions/MapAction';
+import CharacterAction from '../actions/CharacterAction';
 import MapConfigStore from '../stores/MapConfigStore';
+import CharacterConfigStore from '../stores/CharacterConfigStore';
+import PieceConfigStore from '../stores/PieceConfigStore';
 import MapConfig from '../components/MapConfig';
+import CharacterConfig from '../components/CharacterConfig';
+import PieceConfig from '../components/PieceConfig';
+import ConfigDialog from '../components/ConfigDialog';
 
 /**
  * 画面統括
  */
 class _Config extends Component {
   static getStores() {
-    return [MapConfigStore];
+    return [MapConfigStore, CharacterConfigStore, PieceConfigStore];
   }
 
   static calculateState() {
     return {
       mapConfig: MapConfigStore.getState().toJS(),
+      characterConfig: CharacterConfigStore.getState().toJS(),
+      pieceConfig: PieceConfigStore.getState().toJS(),
     };
   }
 
   componentWillMount() {
     MapAction.listenConfig();
-    const { mapConfig } = this.state;
+    CharacterAction.listenConfig();
+    this.setState({ open: false });
+  }
+
+  render() {
+    const { mapConfig, characterConfig, pieceConfig } = this.state;
     const tmpMapConfig = {
       url: mapConfig.backImage.src,
       x: mapConfig.x,
@@ -32,51 +45,38 @@ class _Config extends Component {
       size: mapConfig.size,
       color: mapConfig.color,
     };
-    this.setState({ open: false, tmpMapConfig });
-  }
-
-  _setTmpConfig(newConfig, tmpConfig) {
-    const obj = {};
-    Object.keys(tmpConfig).forEach(key => {
-      obj[key] = newConfig[key] !== undefined ? newConfig[key] : tmpConfig[key];
-    })
-    return obj;
-  }
-
-  render() {
-    const { mapConfig, tmpMapConfig } = this.state;
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        secondary={true}
-        onTouchTap={() => this.setState({ open: false })}
-      />,
-      <FlatButton
-        label="OK"
-        primary={true}
-        onTouchTap={() => { MapAction.sendConfig(tmpMapConfig); this.setState({ open: false }) }}
-      />,
-    ];
     return (
-      <div style={{ margin: 10 }}>
+      <div>
         <RaisedButton
-          label="Map Config"
-          primary={true}
-          onClick={() => this.setState({ open: true })}
+          label="Add Piece"
+          secondary={true}
+          onClick={() => MapAction.addPiece(mapConfig.size, mapConfig.color)}
+          style={{ marginTop: 10, marginLeft: 10 }}
         />
-        <Dialog
-          title="Map Config"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={() => this.setState({ open: false })}
-          autoScrollBodyContent={true}
-        >
-          <MapConfig
-            config={tmpMapConfig}
-            setConfig={(newConfig) => { console.log(newConfig); this.setState({ tmpMapConfig: this._setTmpConfig(newConfig, tmpMapConfig) })}}
-          />
-        </Dialog>
+        <RaisedButton
+          label="Remove Pieces"
+          primary={true}
+          onClick={() => MapAction.removePieces()}
+          style={{ marginTop: 10, marginLeft: 10 }}
+        />
+        <ConfigDialog
+          label="Config Map"
+          config={tmpMapConfig}
+          setConfig={(newConfig) => MapAction.sendConfig(newConfig)}
+          Config={MapConfig}
+        />
+        <ConfigDialog
+          label="Add Character"
+          config={characterConfig}
+          setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
+          Config={CharacterConfig}
+        />
+        <ConfigDialog
+          label="Add Piece"
+          config={pieceConfig}
+          setConfig={(newConfig) => MapAction.addPiece(newConfig)}
+          Config={PieceConfig}
+        />
       </div>
     );
   }
