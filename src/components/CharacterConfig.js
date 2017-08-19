@@ -22,6 +22,12 @@ class CharacterConfig extends Component {
           selectedColor={config.color}
           selectColor={(color) => setConfig({ color })}
         />
+        <TextField
+          floatingLabelText="Avatar URL"
+          style={{ width: 350 }}
+          value={config.url}
+          onChange={(e, v) => setConfig({ url: v })}
+        />
       </div>
     )
   }

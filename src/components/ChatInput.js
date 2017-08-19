@@ -14,6 +14,7 @@ class ChatInput extends Component {
         id: 'A',
         name: 'A',
         color: '#f44336',
+        url: './resources/31_ic.png',
       },
       text: '',
     });
@@ -43,7 +44,7 @@ class ChatInput extends Component {
         <RaisedButton
           label="Send Message"
           secondary={true}
-          onClick={() => { sendMessage({ system: system.gameType, name: character.name, text, color: character.color }); this.setState({ text: '' }); }}
+          onClick={() => { sendMessage({ system: system.gameType, character, text }); this.setState({ text: '' }); }}
         />
       </div>
     )

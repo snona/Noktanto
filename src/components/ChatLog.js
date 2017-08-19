@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
 import * as Colors from 'material-ui/styles/colors';
 
 class ChatLog extends Component {
@@ -16,17 +18,40 @@ class ChatLog extends Component {
 
   render() {
     const { messages, layout } = this.props;
-    const logs = messages.map(message => (
-      <div key={`log-${message.id}`}>
-        <span style={{ color: message.color }} >
-          {`${message.name} : ${message.text}`}
-        </span>
-      </div>
-    )).reverse();
+    const logs = messages.map(message => {
+      const avatar = (
+        <Avatar
+          src={message.character.url}
+          size={32}
+          style={{ top: 8 }}
+        />
+      );
+      const primaryText = (
+        <div style={{ color: message.character.color, fontSize: 10 }} >
+          {message.character.name}
+        </div>
+      );
+      const secondaryText = (
+        <div style={{ color: message.character.color, fontSize: 14 }} >
+          {message.text}
+        </div>
+      );
+      return (
+        <ListItem
+          key={`log-${message.id}`}
+          leftAvatar={avatar}
+          primaryText={primaryText}
+          secondaryText={secondaryText}
+          innerDivStyle={{ paddingTop: 5, paddingLeft: 60, paddingRight: 0, paddingBottom: 5 }}
+        />
+      );
+    }).reverse();
     console.log(logs);
     return (
-      <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 260 }} >
-        {logs}
+      <Paper style={{ overflow: 'scroll', height: layout.h - 260 }} >
+        <List>
+          {logs}
+        </List>
       </Paper>
     )
   }

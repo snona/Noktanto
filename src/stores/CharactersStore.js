@@ -15,6 +15,7 @@ class CharactersStore extends ReduceStore {
         id: 'A',
         name: 'A',
         color: '#f44336',
+        url: './resources/31_ic.png',
       },
     });
   }

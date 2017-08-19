@@ -11,6 +11,7 @@ class CharacterConfigStore extends ReduceStore {
     return Immutable.fromJS({
       name: '',
       color: '#ff5252',
+      url: '',
     });
   }
 

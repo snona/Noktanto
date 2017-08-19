@@ -19,9 +19,8 @@ class ChatAction {
   static _createResultMessage(message, response) {
     return {
       system: message.system,
-      name: message.name,
+      character: message.character,
       text: `${message.system} ${response.result}`,
-      color: message.color,
     };
   }
 
@@ -33,9 +32,8 @@ class ChatAction {
         if (response.secret) {
           const secretMessage = {
             system: message.system,
-            name: message.name,
+            character: message.character,
             text: 'シークレットダイス',
-            color: message.color,
           };
           messagesRef.push(secretMessage);
         }
