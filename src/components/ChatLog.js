@@ -5,12 +5,9 @@ import * as Colors from 'material-ui/styles/colors';
 
 class ChatLog extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    const { layout } = this.props;
-    if (nextProps.layout !== layout) {
-      if (nextProps.layout.w === layout.w
-        && nextProps.layout.h === layout.h) {
-          return false;
-        }
+    const { messages } = this.props;
+    if (messages.length === nextProps.messages.length) {
+      return false;
     }
     return true;
   }
@@ -26,7 +23,7 @@ class ChatLog extends Component {
     ));
     console.log(logs);
     return (
-      <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 210 }} >
+      <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 260 }} >
         {logs}
       </Paper>
     )
