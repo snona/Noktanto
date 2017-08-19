@@ -5,22 +5,24 @@ import * as Colors from 'material-ui/styles/colors';
 
 class ChatLog extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    const { messages } = this.props;
+    const { messages, layout } = this.props;
     if (messages.length === nextProps.messages.length) {
-      return false;
+      if (layout.w === nextProps.layout.w && layout.h === nextProps.layout.h) {
+        return false;
+      }
     }
     return true;
   }
 
   render() {
     const { messages, layout } = this.props;
-    const logs = messages.reverse().map(message => (
+    const logs = messages.map(message => (
       <div key={`log-${message.id}`}>
         <span style={{ color: message.color }} >
           {`${message.name} : ${message.text}`}
         </span>
       </div>
-    ));
+    )).reverse();
     console.log(logs);
     return (
       <Paper style={{ padding: 10, overflow: 'scroll', height: layout.h - 260 }} >
