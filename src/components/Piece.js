@@ -15,7 +15,7 @@ class Piece extends Component {
         x: 0,
         y: 0,
         width: cell.width,
-        height: cell.width,
+        height: cell.height,
         src: cell.url,
       }
       return (
@@ -24,7 +24,8 @@ class Piece extends Component {
           y={cell.y}
           draggable={true}
           onDragend={(v) => movePiece(v.target.attrs) }
-          onClick={() => selectPiece()}
+          onClick={() => selectPiece(true)}
+          onDoubleClick={() => selectPiece(false)}
         >
           {/* 画像 */}
           <RectImage

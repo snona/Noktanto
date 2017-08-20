@@ -24,19 +24,19 @@ class MapConfig extends Component {
           floatingLabelText="Cols"
           style={{ width: 50, marginRight: 10 }}
           value={config.cols}
-          onChange={(e, v) => setConfig({ cols: v })}
+          onChange={(e, v) => setConfig({ cols: Number(v) })}
         />
         <TextField
           floatingLabelText="Rows"
           style={{ width: 50, marginRight: 10 }}
           value={config.rows}
-          onChange={(e, v) => setConfig({ rows: v })}
+          onChange={(e, v) => setConfig({ rows: Number(v) })}
         />
         <TextField
           floatingLabelText="Size"
           style={{ width: 50, marginRight: 10 }}
           value={config.size}
-          onChange={(e, v) => setConfig({ size: v })}
+          onChange={(e, v) => setConfig({ size: Number(v) })}
         />
         <SelectColor
           selectedColor={config.color}

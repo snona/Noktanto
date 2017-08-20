@@ -25,7 +25,7 @@ class PieceStore extends ReduceStore {
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.Piece.SET:
-        return Immutable.fromJS(action.characterConfig);
+        return Immutable.fromJS(action.piece);
       case ActionTypes.Piece.INIT:
         return this.getInitialState();
       default:

@@ -70,7 +70,7 @@ class ConfigDialog extends Component {
         >
           <ConfigArea
             config={tmpConfig}
-            setConfig={(newConfig) => { this.setState({ tmpConfig: this._mergeObject(newConfig, tmpConfig) })}}
+            setConfig={(newConfig) => this.setState({ tmpConfig: this._mergeObject(newConfig, this.state.tmpConfig) })}
           />
         </Dialog>
       </div>

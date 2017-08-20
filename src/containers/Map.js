@@ -39,8 +39,8 @@ class _Map extends Component {
       <RectImage
         image={{
           x: 0, y: 0,
-          width: map.x * map.size,
-          height: map.y * map.size,
+          width: map.cols * map.size,
+          height: map.rows * map.size,
           src: map.url,
         }}
       />
@@ -83,7 +83,6 @@ class _Map extends Component {
 
     const backImage = this._createBackImage(map);
     const viewCells = this._createViewCells(map);
-    console.log(viewCells);
     const viewPieces = this._createViewPieces(pieces);
     return (
       <div style={{ margin: 10 }}>
