@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import TextField from 'material-ui/TextField';
-import SelectColorField from '../components/SelectColorField';
 
+import SelectColor from '../components/SelectColor';
+
+/**
+ * キャラクタ設定部品
+ */
 class CharacterConfig extends Component {
   render() {
     const { config, setConfig } = this.props;
-    console.log(config);
     return (
       <div style={{ margin: 10 }} >
         <div>
@@ -18,7 +20,7 @@ class CharacterConfig extends Component {
             onChange={(e, v) => setConfig({ name: v })}
           />
         </div>
-        <SelectColorField
+        <SelectColor
           selectedColor={config.color}
           selectColor={(color) => setConfig({ color })}
         />

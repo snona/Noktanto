@@ -1,0 +1,2331 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/actions/CharacterAction.js",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { charactersRef } from '../firebase';\n\n/**\n * キャラクタに関わる操作\n */\nclass CharacterAction {\n\n  /**\n   * キャラクタの追加を自動読込み\n   */\n  static listenConfig() {\n    charactersRef.on('child_added', (snapshot) => this.addCharacter(snapshot.key, snapshot.val()));\n  }\n\n  /**\n   * 設定値からキャラクタを作成\n   * @param {Object} config キャラクタの設定値\n   * @return {Object} キャラクタ情報\n   */\n  static _createCharacter(config) {\n    console.log(config);\n    return config;\n  }\n\n  /**\n   * キャラクタ情報を送信\n   * @param {Object} config キャラクタ情報\n   */\n  static sendConfig(config) {\n    charactersRef.push(this._createCharacter(config));\n    this.initConfig();  // 作成後は初期値に戻す\n  }\n\n  /**\n   * キャラクタ情報を初期値に設定\n   */\n  static initConfig() {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Character.INIT,\n    });\n  }\n\n  // Todo\n  // FireBase <-> Store の変換Methodを各地に作成する\n\n  /**\n   * キャラクタをStoreに追加\n   * @param {string} id キャラクタのID\n   * @param {Object} character 追加するキャラクタ情報\n   */\n  static addCharacter(id, character) {\n    character.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Characters.ADD,\n      character,\n    });\n  }\n}\nexport default CharacterAction;\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/actions/CharacterAction.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "name": "CharacterAction",
+    "memberof": "src/actions/CharacterAction.js",
+    "static": true,
+    "longname": "src/actions/CharacterAction.js~CharacterAction",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/actions/CharacterAction.js",
+    "importStyle": "CharacterAction",
+    "description": "キャラクタに関わる操作",
+    "lineNumber": 8,
+    "interface": false
+  },
+  {
+    "__docId__": 2,
+    "kind": "method",
+    "name": "listenConfig",
+    "memberof": "src/actions/CharacterAction.js~CharacterAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/CharacterAction.js~CharacterAction.listenConfig",
+    "access": null,
+    "description": "キャラクタの追加を自動読込み",
+    "lineNumber": 13
+  },
+  {
+    "__docId__": 3,
+    "kind": "method",
+    "name": "_createCharacter",
+    "memberof": "src/actions/CharacterAction.js~CharacterAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/CharacterAction.js~CharacterAction._createCharacter",
+    "access": null,
+    "description": "設定値からキャラクタを作成",
+    "lineNumber": 22,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "キャラクタの設定値"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "キャラクタ情報"
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "method",
+    "name": "sendConfig",
+    "memberof": "src/actions/CharacterAction.js~CharacterAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/CharacterAction.js~CharacterAction.sendConfig",
+    "access": null,
+    "description": "キャラクタ情報を送信",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "キャラクタ情報"
+      }
+    ]
+  },
+  {
+    "__docId__": 5,
+    "kind": "method",
+    "name": "initConfig",
+    "memberof": "src/actions/CharacterAction.js~CharacterAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/CharacterAction.js~CharacterAction.initConfig",
+    "access": null,
+    "description": "キャラクタ情報を初期値に設定",
+    "lineNumber": 39
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "name": "addCharacter",
+    "memberof": "src/actions/CharacterAction.js~CharacterAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/CharacterAction.js~CharacterAction.addCharacter",
+    "access": null,
+    "description": "キャラクタをStoreに追加",
+    "lineNumber": 53,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "キャラクタのID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "character",
+        "description": "追加するキャラクタ情報"
+      }
+    ]
+  },
+  {
+    "__docId__": 7,
+    "kind": "file",
+    "name": "src/actions/ChatAction.js",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { messagesRef } from '../firebase';\nimport DiceBotAction from '../actions/DiceBotAction';\n\n/**\n * チャットに関わる操作\n */\nclass ChatAction {\n\n  /**\n   * メッセージの自動読込み\n   */\n  static listenMessages() {\n    messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));\n  }\n\n  /**\n   * ダイスボットの結果メッセージを構築\n   * @param {Object} message ダイスボットに送信したメッセージ\n   * @param {Object} response ダイスボットの結果\n   * @return {Object} メッセージ形式のダイス結果\n   */\n  static _createResultMessage(message, response) {\n    return {\n      system: message.system,\n      character: message.character,\n      text: `${message.system} ${response.result}`,\n    };\n  }\n\n  /**\n   * メッセージを送信\n   * @param {Object} message 送信メッセージ\n   */\n  static sendMessage(message) {\n    DiceBotAction.getDiceRoll(message.system, message.text).then(response => {\n      if (!response.ok) {\n        // 正しく処理されていない場合、コマンドが正しくない(または含んでいない)\n        // そのまま送信\n        messagesRef.push(message);\n      } else {\n        if (response.secret) {\n          // シークレットダイスの場合\n          const secretMessage = {\n            system: message.system,\n            character: message.character,\n            text: 'シークレットダイス',\n          };\n          messagesRef.push(secretMessage);\n        }\n        messagesRef.push(message);\n        const resultMessage = this._createResultMessage(message, response)\n        messagesRef.push(resultMessage);\n      }\n    });\n  }\n\n  /**\n   * メッセージを Storeに追加\n   * @param {string} key メッセージの Key\n   * @param {Object} message 追加メッセージ\n   */\n  static addMessage(key, message) {\n    message.id = key;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Messages.ADD,\n      message,\n    });\n  }\n}\nexport default ChatAction;\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/actions/ChatAction.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 8,
+    "kind": "class",
+    "name": "ChatAction",
+    "memberof": "src/actions/ChatAction.js",
+    "static": true,
+    "longname": "src/actions/ChatAction.js~ChatAction",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/actions/ChatAction.js",
+    "importStyle": "ChatAction",
+    "description": "チャットに関わる操作",
+    "lineNumber": 9,
+    "interface": false
+  },
+  {
+    "__docId__": 9,
+    "kind": "method",
+    "name": "listenMessages",
+    "memberof": "src/actions/ChatAction.js~ChatAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/ChatAction.js~ChatAction.listenMessages",
+    "access": null,
+    "description": "メッセージの自動読込み",
+    "lineNumber": 14
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "name": "_createResultMessage",
+    "memberof": "src/actions/ChatAction.js~ChatAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/ChatAction.js~ChatAction._createResultMessage",
+    "access": null,
+    "description": "ダイスボットの結果メッセージを構築",
+    "lineNumber": 24,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "ダイスボットに送信したメッセージ"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "response",
+        "description": "ダイスボットの結果"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "メッセージ形式のダイス結果"
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "name": "sendMessage",
+    "memberof": "src/actions/ChatAction.js~ChatAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/ChatAction.js~ChatAction.sendMessage",
+    "access": null,
+    "description": "メッセージを送信",
+    "lineNumber": 36,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "送信メッセージ"
+      }
+    ]
+  },
+  {
+    "__docId__": 12,
+    "kind": "method",
+    "name": "addMessage",
+    "memberof": "src/actions/ChatAction.js~ChatAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/ChatAction.js~ChatAction.addMessage",
+    "access": null,
+    "description": "メッセージを Storeに追加",
+    "lineNumber": 64,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "メッセージの Key"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "追加メッセージ"
+      }
+    ]
+  },
+  {
+    "__docId__": 13,
+    "kind": "file",
+    "name": "src/actions/DiceBotAction.js",
+    "content": "import axios from 'axios';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport BCDiceAPI from '../constants/BCDiceAPI';\n\n/**\n * BCDiceAPIに関する操作\n */\nclass DiceBotAction {\n\n  /**\n   * APIと通信\n   * @param {string} uri 通信先URI\n   * @param {Object} [params={}] 通信先への送信クエリ\n   * @return {Promise<Object, Object>} 成功, または失敗結果をPromiseで返却\n   */\n  static _request(uri, params = {}) {\n    console.log(uri, params);\n    const url = BCDiceAPI.URL + uri;\n    return new Promise((resolve, reject) => {\n      axios.request({\n        url,\n        method: 'GET',\n        responseType: 'json',\n        ContentType: 'application/json',\n        params,\n      }).then((response) => { // 成功時\n        console.log(response);\n        resolve(response);\n      }).catch((err) => { // 失敗時\n        console.log(err);\n        reject(err);\n      });\n    });\n  }\n\n  /**\n   * システム一覧を取得\n   */\n  static getSystems() {\n    this._request(BCDiceAPI.uri.SYSTEMS).then(response => {\n      const systems = response.data.systems;\n      AppDispatcher.dispatch({\n        type: ActionTypes.Systems.SET,\n        systems,\n      });\n    }).catch(err => {\n      // 何もしない?\n    });\n  }\n\n  /**\n   * システム詳細を取得\n   * @param {string} system 取得システム\n   */\n  static getSystem(system) {\n    const param = { system };\n    this._request(BCDiceAPI.uri.SYSTEM, param).then(response => {\n      const system = response.data.systeminfo;\n      AppDispatcher.dispatch({\n        type: ActionTypes.System.SET,\n        system,\n      });\n    }).catch(err => {\n      // 何もしない?\n    });\n  }\n\n  /**\n   * DiceBotにコマンドを送信\n   * @param {string} system コマンド送信先のシステム\n   * @param {string} text コマンドを含んだメッセージ\n   */\n  static getDiceRoll(system, text) {\n    const param = { system, command: text };\n    return new Promise(resolve => {\n      this._request(BCDiceAPI.uri.DICE, param).then(response => { // 成功時\n        resolve(response.data);\n      }).catch(err => { // 失敗時\n        // コマンドでは無いとして処理\n        resolve({ ok: false });\n      });\n    });\n  }\n}\nexport default DiceBotAction;\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/actions/DiceBotAction.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 14,
+    "kind": "class",
+    "name": "DiceBotAction",
+    "memberof": "src/actions/DiceBotAction.js",
+    "static": true,
+    "longname": "src/actions/DiceBotAction.js~DiceBotAction",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/actions/DiceBotAction.js",
+    "importStyle": "DiceBotAction",
+    "description": "BCDiceAPIに関する操作",
+    "lineNumber": 10,
+    "interface": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "name": "_request",
+    "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/DiceBotAction.js~DiceBotAction._request",
+    "access": null,
+    "description": "APIと通信",
+    "lineNumber": 18,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "uri",
+        "description": "通信先URI"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "{}",
+        "defaultRaw": {},
+        "name": "params",
+        "description": "通信先への送信クエリ"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Object, Object>"
+      ],
+      "spread": false,
+      "description": "成功, または失敗結果をPromiseで返却"
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "name": "getSystems",
+    "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/DiceBotAction.js~DiceBotAction.getSystems",
+    "access": null,
+    "description": "システム一覧を取得",
+    "lineNumber": 41
+  },
+  {
+    "__docId__": 17,
+    "kind": "method",
+    "name": "getSystem",
+    "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/DiceBotAction.js~DiceBotAction.getSystem",
+    "access": null,
+    "description": "システム詳細を取得",
+    "lineNumber": 57,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "system",
+        "description": "取得システム"
+      }
+    ]
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "name": "getDiceRoll",
+    "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/DiceBotAction.js~DiceBotAction.getDiceRoll",
+    "access": null,
+    "description": "DiceBotにコマンドを送信",
+    "lineNumber": 75,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "system",
+        "description": "コマンド送信先のシステム"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "text",
+        "description": "コマンドを含んだメッセージ"
+      }
+    ]
+  },
+  {
+    "__docId__": 19,
+    "kind": "file",
+    "name": "src/actions/LayoutAction.js",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * レイアウトに関する操作\n */\nclass LayoutAction {\n\n  /**\n   * レイアウト情報を設定\n   * @param {Object} layouts レイアウト一覧\n   */\n  static setLayouts(layouts) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Layouts.SET,\n      layouts,\n    });\n  }\n}\nexport default LayoutAction;\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/actions/LayoutAction.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 20,
+    "kind": "class",
+    "name": "LayoutAction",
+    "memberof": "src/actions/LayoutAction.js",
+    "static": true,
+    "longname": "src/actions/LayoutAction.js~LayoutAction",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/actions/LayoutAction.js",
+    "importStyle": "LayoutAction",
+    "description": "レイアウトに関する操作",
+    "lineNumber": 7,
+    "interface": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "name": "setLayouts",
+    "memberof": "src/actions/LayoutAction.js~LayoutAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/LayoutAction.js~LayoutAction.setLayouts",
+    "access": null,
+    "description": "レイアウト情報を設定",
+    "lineNumber": 13,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "layouts",
+        "description": "レイアウト一覧"
+      }
+    ]
+  },
+  {
+    "__docId__": 22,
+    "kind": "file",
+    "name": "src/actions/MapAction.js",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { piecesRef, configRef } from '../firebase';\n\n/**\n * マップに関する操作\n */\nclass MapAction {\n\n  /**\n   * 枠線一覧の作成\n   * @param {number} cols 横の枠数\n   * @param {number} rows 縦の枠数\n   * @param {number} size 幅\n   * @param {string} color 線の色\n   * @return {Object[]} 枠線一覧\n   */\n  static createCells(cols, rows, size, color) {\n    const cells = [];\n    for (let x = 0; x < cols; x++) {\n      for (let y = 0; y < rows; y++) {\n        cells.push({\n          x: x * size,\n          y: y * size,\n          width: size,\n          height: size,\n          stroke: color,\n          strokeWidth: 1,\n          size,\n          key: `${x}-${y}`,\n        });\n      } \n    }\n    return cells;\n  }\n\n  /**\n   * 乱数(整数)を返す\n   * @param {number} [max=3] 発生乱数の最大値\n   * @param {number} [min=0] 発生乱数の最小値\n   */\n  static getRandomInt(max = 3, min = 0) {\n    return Math.floor( Math.random() * (max - min + 1) ) + min;\n  }\n\n  /**\n   * 駒を追加\n   * @param {Object} config 追加駒情報\n   */\n  static addPiece(config) {\n    const x = this.getRandomInt();\n    const y = this.getRandomInt();\n    const size = config.size;\n    const piece = {\n      x: x * size,\n      y: y * size,\n      width: size,\n      height: size,\n      strokeWidth: 1,\n      size: size,\n      name: config.name,\n      url: config.url,\n    };\n    piecesRef.push(piece)\n  }\n\n  /**\n   * 駒の移動情報を登録\n   * @param {Object} value 移動先配置情報\n   * @param {Object} piece 移動する駒\n   */\n  static movePiece(value, piece) {\n    piece.x = this._roundOff(value.x, piece.size);\n    piece.y = this._roundOff(value.y, piece.size);\n    piece.move = piece.move ? false : true;\n    piecesRef.child(piece.id).set(piece);\n  }\n\n  /**\n   * 対象に対して四捨五入し親しい方の値を計算\n   * @param {number} target 対象の値\n   * @param {number} size 四捨五入する値の幅\n   */\n  static _roundOff(target, size) {\n    const rest = target % size;\n    if ( rest > size / 2) {\n      return target - rest + size;\n    }\n    return target - rest;\n  }\n\n  /**\n   * 駒を全削除\n   */\n  static removePieces() {\n    piecesRef.set({});\n  }\n\n  /**\n   * 駒の選択\n   * @param {Object} piece 選択された駒\n   */\n  static selectPiece(isSelect, piece) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Piece.SET,\n      piece,\n    });\n  }\n\n  /**\n   * 駒情報の自動取得を設定\n   */\n  static listenPieces() {\n    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));\n  }\n\n  /**\n   * 駒情報をStoreに格納\n   * @param {string} id 格納する駒のID\n   * @param {Object} piece 格納する駒\n   */\n  static setPiece(id, piece) {\n    piece.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.ADD,\n      piece,\n    });\n  }\n\n  /**\n   * Storeから駒を削除\n   * @param {string} id 削除対象の駒ID\n   */\n  static removePiece(id) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.REMOVE,\n      id,\n    });\n  }\n\n  /**\n   * 設定情報を自動取得\n   */\n  static listenConfig() {\n    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));\n    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));\n  }\n\n  /**\n   * 設定情報を保存\n   * @param {Object} config マップの設定情報\n   */\n  static sendConfig(config) {\n    configRef.set({ 'map_config': config });\n  }\n\n  /**\n   * 設定情報を設定\n   * @param {Object} config マップの設定情報\n   */\n  static setConfig(config) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Map.SET,\n      map: config,\n    });\n  }\n}\nexport default MapAction;\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/actions/MapAction.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 23,
+    "kind": "class",
+    "name": "MapAction",
+    "memberof": "src/actions/MapAction.js",
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/actions/MapAction.js",
+    "importStyle": "MapAction",
+    "description": "マップに関する操作",
+    "lineNumber": 8,
+    "interface": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "method",
+    "name": "createCells",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.createCells",
+    "access": null,
+    "description": "枠線一覧の作成",
+    "lineNumber": 18,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "cols",
+        "description": "横の枠数"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "rows",
+        "description": "縦の枠数"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "size",
+        "description": "幅"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": "線の色"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object[]"
+      ],
+      "spread": false,
+      "description": "枠線一覧"
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "name": "getRandomInt",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.getRandomInt",
+    "access": null,
+    "description": "乱数(整数)を返す",
+    "lineNumber": 42,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "3",
+        "defaultRaw": 3,
+        "name": "max",
+        "description": "発生乱数の最大値"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "min",
+        "description": "発生乱数の最小値"
+      }
+    ]
+  },
+  {
+    "__docId__": 26,
+    "kind": "method",
+    "name": "addPiece",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.addPiece",
+    "access": null,
+    "description": "駒を追加",
+    "lineNumber": 50,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "追加駒情報"
+      }
+    ]
+  },
+  {
+    "__docId__": 27,
+    "kind": "method",
+    "name": "movePiece",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.movePiece",
+    "access": null,
+    "description": "駒の移動情報を登録",
+    "lineNumber": 72,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "移動先配置情報"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "piece",
+        "description": "移動する駒"
+      }
+    ]
+  },
+  {
+    "__docId__": 28,
+    "kind": "method",
+    "name": "_roundOff",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction._roundOff",
+    "access": null,
+    "description": "対象に対して四捨五入し親しい方の値を計算",
+    "lineNumber": 84,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "target",
+        "description": "対象の値"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "size",
+        "description": "四捨五入する値の幅"
+      }
+    ]
+  },
+  {
+    "__docId__": 29,
+    "kind": "method",
+    "name": "removePieces",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.removePieces",
+    "access": null,
+    "description": "駒を全削除",
+    "lineNumber": 95
+  },
+  {
+    "__docId__": 30,
+    "kind": "method",
+    "name": "selectPiece",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.selectPiece",
+    "access": null,
+    "description": "駒の選択",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "piece",
+        "description": "選択された駒"
+      }
+    ]
+  },
+  {
+    "__docId__": 31,
+    "kind": "method",
+    "name": "listenPieces",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.listenPieces",
+    "access": null,
+    "description": "駒情報の自動取得を設定",
+    "lineNumber": 113
+  },
+  {
+    "__docId__": 32,
+    "kind": "method",
+    "name": "setPiece",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.setPiece",
+    "access": null,
+    "description": "駒情報をStoreに格納",
+    "lineNumber": 124,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "格納する駒のID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "piece",
+        "description": "格納する駒"
+      }
+    ]
+  },
+  {
+    "__docId__": 33,
+    "kind": "method",
+    "name": "removePiece",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.removePiece",
+    "access": null,
+    "description": "Storeから駒を削除",
+    "lineNumber": 136,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "削除対象の駒ID"
+      }
+    ]
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "name": "listenConfig",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.listenConfig",
+    "access": null,
+    "description": "設定情報を自動取得",
+    "lineNumber": 146
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "name": "sendConfig",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.sendConfig",
+    "access": null,
+    "description": "設定情報を保存",
+    "lineNumber": 155,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "マップの設定情報"
+      }
+    ]
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "name": "setConfig",
+    "memberof": "src/actions/MapAction.js~MapAction",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/actions/MapAction.js~MapAction.setConfig",
+    "access": null,
+    "description": "設定情報を設定",
+    "lineNumber": 163,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "マップの設定情報"
+      }
+    ]
+  },
+  {
+    "__docId__": 37,
+    "kind": "file",
+    "name": "src/constants/ActionTypes.js",
+    "content": "/** アプリ内で利用する定数 */\nconst ActionTypes = {\n  Character: {\n    SET: 'Character.set',\n    INIT: 'Character.init',\n  },\n  Characters: {\n    SET: 'Characters.set',\n    ADD: 'Characters.add',\n  },\n  Layouts: {\n    SET: 'Layouts.set',\n    ADD: 'Layouts.add',\n  },\n  Map: {\n    SET: 'Map.set',\n  },\n  Messages: {\n    SET: 'Messages.set',\n    ADD: 'Messages.add',\n  },\n  Piece: {\n    SET: 'Piece.set',\n    INIT: 'Piece.init',\n  },\n  Pieces: {\n    SET: 'Pieces.set',\n    ADD: 'Pieces.add',\n    REMOVE: 'Pieces.remove',\n  },\n  Systems: {\n    SET: 'Systems.set',\n  },\n  System: {\n    SET: 'System.set',\n  },\n};\n\nexport default ActionTypes;\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/constants/ActionTypes.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 38,
+    "kind": "variable",
+    "name": "ActionTypes",
+    "memberof": "src/constants/ActionTypes.js",
+    "static": true,
+    "longname": "src/constants/ActionTypes.js~ActionTypes",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/constants/ActionTypes.js",
+    "importStyle": "ActionTypes",
+    "description": "アプリ内で利用する定数",
+    "lineNumber": 2
+  },
+  {
+    "__docId__": 39,
+    "kind": "file",
+    "name": "src/constants/BCDiceAPI.js",
+    "content": "/** BCDiceAPIに関する定数 */\nconst BCDiceAPI = {\n  URL: 'https://bcdice-api.herokuapp.com',\n  uri: {\n    SYSTEMS: '/v1/systems',\n    SYSTEM: '/v1/systeminfo',\n    DICE: '/v1/diceroll',\n  }\n};\nexport default BCDiceAPI;",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/constants/BCDiceAPI.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 40,
+    "kind": "variable",
+    "name": "BCDiceAPI",
+    "memberof": "src/constants/BCDiceAPI.js",
+    "static": true,
+    "longname": "src/constants/BCDiceAPI.js~BCDiceAPI",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/constants/BCDiceAPI.js",
+    "importStyle": "BCDiceAPI",
+    "description": "BCDiceAPIに関する定数",
+    "lineNumber": 2
+  },
+  {
+    "__docId__": 41,
+    "kind": "file",
+    "name": "src/dispatcher/AppDispatcher.js",
+    "content": "import { Dispatcher } from 'flux';\n\n/**\n * React Flux のDispatcher\n * @extends {Dispatcher}\n */\nclass AppDispatcher extends Dispatcher {\n  dispatch(action = {}) {\n    console.log(action);\n    super.dispatch(action);\n  }\n}\n\nexport default new AppDispatcher();",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/dispatcher/AppDispatcher.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 42,
+    "kind": "class",
+    "name": "AppDispatcher",
+    "memberof": "src/dispatcher/AppDispatcher.js",
+    "static": true,
+    "longname": "src/dispatcher/AppDispatcher.js~AppDispatcher",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/dispatcher/AppDispatcher.js",
+    "importStyle": null,
+    "description": "React Flux のDispatcher",
+    "lineNumber": 7,
+    "pseudoExport": true,
+    "interface": false,
+    "extends": [
+      "Dispatcher"
+    ]
+  },
+  {
+    "__docId__": 43,
+    "kind": "method",
+    "name": "dispatch",
+    "memberof": "src/dispatcher/AppDispatcher.js~AppDispatcher",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/dispatcher/AppDispatcher.js~AppDispatcher#dispatch",
+    "access": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "variable",
+    "name": "appDispatcher",
+    "memberof": "src/dispatcher/AppDispatcher.js",
+    "static": true,
+    "longname": "src/dispatcher/AppDispatcher.js~appDispatcher",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/dispatcher/AppDispatcher.js",
+    "importStyle": "appDispatcher",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "file",
+    "name": "src/firebase/config.js",
+    "content": "export const firebaseConfig = {\n  apiKey: \"AIzaSyDxxucOZXhqm3jPfMsJizhLE7rziDChIuU\",\n  authDomain: \"dice-chat-6b7e2.firebaseapp.com\",\n  databaseURL: \"https://dice-chat-6b7e2.firebaseio.com\",\n  projectId: \"dice-chat-6b7e2\",\n  storageBucket: \"dice-chat-6b7e2.appspot.com\",\n  messagingSenderId: \"883454024625\"\n};\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/firebase/config.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 46,
+    "kind": "variable",
+    "name": "firebaseConfig",
+    "memberof": "src/firebase/config.js",
+    "static": true,
+    "longname": "src/firebase/config.js~firebaseConfig",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/config.js",
+    "importStyle": "{firebaseConfig}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "file",
+    "name": "src/firebase/index.js",
+    "content": "import firebase from 'firebase';\nimport { firebaseConfig } from '../firebase/config.js';\n\nexport const firebaseApp = firebase.initializeApp(firebaseConfig);\nexport const firebaseDb = firebaseApp.database();\nexport const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */\nexport const charactersRef = firebaseDb.ref('characters') /** 発言キャラ */\nexport const piecesRef = firebaseDb.ref('pieces') /** 駒配置 */\nexport const configRef = firebaseDb.ref('config') /** 設定 */\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/firebase/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 48,
+    "kind": "variable",
+    "name": "firebaseApp",
+    "memberof": "src/firebase/index.js",
+    "static": true,
+    "longname": "src/firebase/index.js~firebaseApp",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/index.js",
+    "importStyle": "{firebaseApp}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "firebaseDb",
+    "memberof": "src/firebase/index.js",
+    "static": true,
+    "longname": "src/firebase/index.js~firebaseDb",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/index.js",
+    "importStyle": "{firebaseDb}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "name": "messagesRef",
+    "memberof": "src/firebase/index.js",
+    "static": true,
+    "longname": "src/firebase/index.js~messagesRef",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/index.js",
+    "importStyle": "{messagesRef}",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "variable",
+    "name": "charactersRef",
+    "memberof": "src/firebase/index.js",
+    "static": true,
+    "longname": "src/firebase/index.js~charactersRef",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/index.js",
+    "importStyle": "{charactersRef}",
+    "description": "チャット履歴",
+    "lineNumber": 7
+  },
+  {
+    "__docId__": 52,
+    "kind": "variable",
+    "name": "piecesRef",
+    "memberof": "src/firebase/index.js",
+    "static": true,
+    "longname": "src/firebase/index.js~piecesRef",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/index.js",
+    "importStyle": "{piecesRef}",
+    "description": "発言キャラ",
+    "lineNumber": 8
+  },
+  {
+    "__docId__": 53,
+    "kind": "variable",
+    "name": "configRef",
+    "memberof": "src/firebase/index.js",
+    "static": true,
+    "longname": "src/firebase/index.js~configRef",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/firebase/index.js",
+    "importStyle": "{configRef}",
+    "description": "駒配置",
+    "lineNumber": 9
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "name": "src/myTheme.js",
+    "content": "import * as Colors from 'material-ui/styles/colors';\nimport { fade } from 'material-ui/utils/colorManipulator';\nimport Spacing from 'material-ui/styles/spacing';\n\n/** Material UI の独自テーマ */\nconst myTheme = {\n  spacing: Spacing,\n  fontFamily: 'Roboto, sans-serif',\n  palette: {\n    primary1Color: Colors.deepPurple500,\n    primary2Color: Colors.deepPurple700,\n    primary3Color: Colors.deepPurple100,\n    accent1Color: Colors.pinkA200,\n    accent2Color: Colors.grey100,\n    accent3Color: Colors.grey500,\n    textColor: Colors.darkBlack,\n    alternateTextColor: Colors.white,\n    canvasColor: Colors.white,\n    borderColor: Colors.grey300,\n    disabledColor: fade(Colors.darkBlack, 0.3)\n  }\n};\n\nexport default myTheme;",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/myTheme.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 55,
+    "kind": "variable",
+    "name": "myTheme",
+    "memberof": "src/myTheme.js",
+    "static": true,
+    "longname": "src/myTheme.js~myTheme",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/myTheme.js",
+    "importStyle": "myTheme",
+    "description": "Material UI の独自テーマ",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 56,
+    "kind": "file",
+    "name": "src/registerServiceWorker.js",
+    "content": "// In production, we register a service worker to serve assets from local cache.\n\n// This lets the app load faster on subsequent visits in production, and gives\n// it offline capabilities. However, it also means that developers (and users)\n// will only see deployed updates on the \"N+1\" visit to a page, since previously\n// cached resources are updated in the background.\n\n// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.\n// This link also includes instructions on opting out of this behavior.\n\nconst isLocalhost = Boolean(\n  window.location.hostname === 'localhost' ||\n    // [::1] is the IPv6 localhost address.\n    window.location.hostname === '[::1]' ||\n    // 127.0.0.1/8 is considered localhost for IPv4.\n    window.location.hostname.match(\n      /^127(?:\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/\n    )\n);\n\nexport default function register() {\n  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {\n    // The URL constructor is available in all browsers that support SW.\n    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);\n    if (publicUrl.origin !== window.location.origin) {\n      // Our service worker won't work if PUBLIC_URL is on a different origin\n      // from what our page is served on. This might happen if a CDN is used to\n      // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374\n      return;\n    }\n\n    window.addEventListener('load', () => {\n      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;\n\n      if (!isLocalhost) {\n        // Is not local host. Just register service worker\n        registerValidSW(swUrl);\n      } else {\n        // This is running on localhost. Lets check if a service worker still exists or not.\n        checkValidServiceWorker(swUrl);\n      }\n    });\n  }\n}\n\nfunction registerValidSW(swUrl) {\n  navigator.serviceWorker\n    .register(swUrl)\n    .then(registration => {\n      registration.onupdatefound = () => {\n        const installingWorker = registration.installing;\n        installingWorker.onstatechange = () => {\n          if (installingWorker.state === 'installed') {\n            if (navigator.serviceWorker.controller) {\n              // At this point, the old content will have been purged and\n              // the fresh content will have been added to the cache.\n              // It's the perfect time to display a \"New content is\n              // available; please refresh.\" message in your web app.\n              console.log('New content is available; please refresh.');\n            } else {\n              // At this point, everything has been precached.\n              // It's the perfect time to display a\n              // \"Content is cached for offline use.\" message.\n              console.log('Content is cached for offline use.');\n            }\n          }\n        };\n      };\n    })\n    .catch(error => {\n      console.error('Error during service worker registration:', error);\n    });\n}\n\nfunction checkValidServiceWorker(swUrl) {\n  // Check if the service worker can be found. If it can't reload the page.\n  fetch(swUrl)\n    .then(response => {\n      // Ensure service worker exists, and that we really are getting a JS file.\n      if (\n        response.status === 404 ||\n        response.headers.get('content-type').indexOf('javascript') === -1\n      ) {\n        // No service worker found. Probably a different app. Reload the page.\n        navigator.serviceWorker.ready.then(registration => {\n          registration.unregister().then(() => {\n            window.location.reload();\n          });\n        });\n      } else {\n        // Service worker found. Proceed as normal.\n        registerValidSW(swUrl);\n      }\n    })\n    .catch(() => {\n      console.log(\n        'No internet connection found. App is running in offline mode.'\n      );\n    });\n}\n\nexport function unregister() {\n  if ('serviceWorker' in navigator) {\n    navigator.serviceWorker.ready.then(registration => {\n      registration.unregister();\n    });\n  }\n}\n",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/registerServiceWorker.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 57,
+    "kind": "variable",
+    "name": "isLocalhost",
+    "memberof": "src/registerServiceWorker.js",
+    "static": true,
+    "longname": "src/registerServiceWorker.js~isLocalhost",
+    "access": null,
+    "export": false,
+    "importPath": "dice-chat/src/registerServiceWorker.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "name": "register",
+    "memberof": "src/registerServiceWorker.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/registerServiceWorker.js~register",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/registerServiceWorker.js",
+    "importStyle": "register",
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "registerValidSW",
+    "memberof": "src/registerServiceWorker.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/registerServiceWorker.js~registerValidSW",
+    "access": null,
+    "export": false,
+    "importPath": "dice-chat/src/registerServiceWorker.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 46,
+    "undocument": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "function",
+    "name": "checkValidServiceWorker",
+    "memberof": "src/registerServiceWorker.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/registerServiceWorker.js~checkValidServiceWorker",
+    "access": null,
+    "export": false,
+    "importPath": "dice-chat/src/registerServiceWorker.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 75,
+    "undocument": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "unregister",
+    "memberof": "src/registerServiceWorker.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/registerServiceWorker.js~unregister",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/registerServiceWorker.js",
+    "importStyle": "{unregister}",
+    "description": null,
+    "lineNumber": 102,
+    "undocument": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
+    "name": "src/stores/CharacterStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 発言キャラクタ情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Character 発言キャラクタ\n * @property {string} id キャラクタのID\n * @property {string} name キャラクタ名\n * @property {string} color キャラクタ色\n * @property {string} url キャラクタ画像の参照先\n */\nclass CharacterStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      id: '',\n      name: '',\n      color: '#ff5252',\n      url: '',\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Character.SET:\n        return Immutable.fromJS(action.characterConfig);\n      case ActionTypes.Character.INIT:\n        return this.getInitialState();\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharacterStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/CharacterStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 63,
+    "kind": "typedef",
+    "name": "Character",
+    "memberof": "src/stores/CharacterStore.js",
+    "static": true,
+    "longname": "src/stores/CharacterStore.js~Character",
+    "access": null,
+    "description": "発言キャラクタ情報",
+    "lineNumber": 17,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "キャラクタのID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "キャラクタ名"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": "キャラクタ色"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": "キャラクタ画像の参照先"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Character"
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "variable",
+    "name": "characterStore",
+    "memberof": "src/stores/CharacterStore.js",
+    "static": true,
+    "longname": "src/stores/CharacterStore.js~characterStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/CharacterStore.js",
+    "importStyle": "characterStore",
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "file",
+    "name": "src/stores/CharactersStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 発言キャラクタの一覧\n * @extends {ReduceStore}\n * \n * @typedef {Object} Characters 発言キャラクタ一覧\n * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)\n * @property {string} {id}.id キャラクタのID\n * @property {string} {id}.name キャラクタ名\n * @property {string} {id}.color キャラクタ色\n * @property {string} {id}.url キャラクタ画像の参照先\n */\nclass CharactersStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      'A': {\n        id: 'A',\n        name: 'A',\n        color: '#f44336',\n        url: './resources/31_ic.png',\n      },\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Characters.ADD:\n        return state.set(action.character.id, action.character);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharactersStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/CharactersStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 66,
+    "kind": "typedef",
+    "name": "Characters",
+    "memberof": "src/stores/CharactersStore.js",
+    "static": true,
+    "longname": "src/stores/CharactersStore.js~Characters",
+    "access": null,
+    "description": "発言キャラクタの一覧",
+    "lineNumber": 18,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}",
+        "description": "キャラクタのID(※キー名称はキャラクタ毎に別)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.id",
+        "description": "キャラクタのID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.name",
+        "description": "キャラクタ名"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.color",
+        "description": "キャラクタ色"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.url",
+        "description": "キャラクタ画像の参照先"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Characters"
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "variable",
+    "name": "charactersStore",
+    "memberof": "src/stores/CharactersStore.js",
+    "static": true,
+    "longname": "src/stores/CharactersStore.js~charactersStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/CharactersStore.js",
+    "importStyle": "charactersStore",
+    "description": null,
+    "lineNumber": 40,
+    "undocument": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "file",
+    "name": "src/stores/LayoutsStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * GridAreaに表示する画面項目の配置, サイズ一覧\n * @extends {ReduceStore}\n * \n * @typedef {Layout[]} Layouts レイアウト一覧\n * \n * @typedef {Object} Layout レイアウト\n * @property {string} i レイアウトID\n * @property {number} x 座標(x)\n * @property {number} y 座標(y)\n * @property {number} w サイズ(横)\n * @property {number} h サイズ(縦)\n * @property {number} minW 最小サイズ(横)\n * @property {number} minH 最小サイズ(縦)\n * @property {bool} isDraggable ドラッグ移動の可否\n */\nclass LayoutsStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS([{\n      i: 'map-board', x: 0, y: 0, w: 8, h: 7, minW: 8, minH: 7, isDraggable: false,\n    }, {\n      i: 'chat-board', x: 12, y: 0, w: 12, h: 7, minW: 12, minH: 6,\n    }, {\n      i: 'config-board', x: 8, y: 0, w: 4, h: 7, minW: 4, minH: 4,\n    }]);\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Layouts.SET:\n        return Immutable.fromJS(action.layouts);\n      case ActionTypes.Layouts.ADD:\n        return state.push(action.layout);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new LayoutsStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/LayoutsStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 69,
+    "kind": "typedef",
+    "name": "Layout",
+    "memberof": "src/stores/LayoutsStore.js",
+    "static": true,
+    "longname": "src/stores/LayoutsStore.js~Layout",
+    "access": null,
+    "description": "GridAreaに表示する画面項目の配置, サイズ一覧",
+    "lineNumber": 23,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "i",
+        "description": "レイアウトID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "x",
+        "description": "座標(x)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "y",
+        "description": "座標(y)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "w",
+        "description": "サイズ(横)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "h",
+        "description": "サイズ(縦)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "minW",
+        "description": "最小サイズ(横)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "minH",
+        "description": "最小サイズ(縦)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "bool"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "isDraggable",
+        "description": "ドラッグ移動の可否"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Layout"
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "variable",
+    "name": "layoutsStore",
+    "memberof": "src/stores/LayoutsStore.js",
+    "static": true,
+    "longname": "src/stores/LayoutsStore.js~layoutsStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/LayoutsStore.js",
+    "importStyle": "layoutsStore",
+    "description": null,
+    "lineNumber": 46,
+    "undocument": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "file",
+    "name": "src/stores/MapStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * MapAreaの情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Map マップ情報\n * @property {number} cols 横セル数\n * @property {number} rows 縦セル数\n * @property {number} size セルの大きさ\n * @property {Image} url 背景画像の参照先\n * @property {string} color セルの色\n */\nclass MapStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      cols: 10,  // 横セル数\n      rows: 10,  // 縦セル数\n      size: 30, // セルのサイズ\n      url: './resources/map02.jpg',  // 背景イメージ\n      color: '#B2FF59',  // セル, 文字の色\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Map.SET:\n        return Immutable.fromJS(action.map);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new MapStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/MapStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 72,
+    "kind": "typedef",
+    "name": "Map",
+    "memberof": "src/stores/MapStore.js",
+    "static": true,
+    "longname": "src/stores/MapStore.js~Map",
+    "access": null,
+    "description": "MapAreaの情報",
+    "lineNumber": 18,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "cols",
+        "description": "横セル数"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "rows",
+        "description": "縦セル数"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "size",
+        "description": "セルの大きさ"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Image"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": "背景画像の参照先"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "color",
+        "description": "セルの色"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Map"
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "mapStore",
+    "memberof": "src/stores/MapStore.js",
+    "static": true,
+    "longname": "src/stores/MapStore.js~mapStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/MapStore.js",
+    "importStyle": "mapStore",
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "file",
+    "name": "src/stores/MessagesStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * LogAreaに表示するチャット履歴\n * @extends {ReduceStore}\n * \n * @typedef {Message[]} Messages メッセージ一覧\n * \n * @typedef {Object} Message メッセージ\n * @property {string} id メッセージID\n * @property {Object} character 発言者\n * @property {string} character.id 発言者ID\n * @property {string} character.name 発言者名\n * @property {string} character.color 表示色\n * @property {string} character.url 発言者画像の参照先\n * @property {string} system ダイスシステム\n * @property {string} text 発言内容\n */\nclass MessagesStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS([]);\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Messages.SET:\n        return Immutable.fromJS(action.messages);\n      case ActionTypes.Messages.ADD:\n        return state.push(action.message);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new MessagesStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/MessagesStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 75,
+    "kind": "typedef",
+    "name": "Message",
+    "memberof": "src/stores/MessagesStore.js",
+    "static": true,
+    "longname": "src/stores/MessagesStore.js~Message",
+    "access": null,
+    "description": "LogAreaに表示するチャット履歴",
+    "lineNumber": 23,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "メッセージID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "character",
+        "description": "発言者"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "character.id",
+        "description": "発言者ID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "character.name",
+        "description": "発言者名"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "character.color",
+        "description": "表示色"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "character.url",
+        "description": "発言者画像の参照先"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "system",
+        "description": "ダイスシステム"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "text",
+        "description": "発言内容"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Message"
+    }
+  },
+  {
+    "__docId__": 76,
+    "kind": "variable",
+    "name": "messagesStore",
+    "memberof": "src/stores/MessagesStore.js",
+    "static": true,
+    "longname": "src/stores/MessagesStore.js~messagesStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/MessagesStore.js",
+    "importStyle": "messagesStore",
+    "description": null,
+    "lineNumber": 40,
+    "undocument": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "file",
+    "name": "src/stores/PieceStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 駒の情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Piece\n * @property {string} name 駒名\n * @property {string} url 駒画像の参照先\n * @property {number} size 駒の大きさ\n */\nclass PieceStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      name: '',\n      url: '',\n      size: 45,\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Piece.SET:\n        return Immutable.fromJS(action.piece);\n      case ActionTypes.Piece.INIT:\n        return this.getInitialState();\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new PieceStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/PieceStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 78,
+    "kind": "typedef",
+    "name": "Piece",
+    "memberof": "src/stores/PieceStore.js",
+    "static": true,
+    "longname": "src/stores/PieceStore.js~Piece",
+    "access": null,
+    "description": "駒の情報",
+    "lineNumber": 16,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "駒名"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": "駒画像の参照先"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "size",
+        "description": "駒の大きさ"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Piece"
+    }
+  },
+  {
+    "__docId__": 79,
+    "kind": "variable",
+    "name": "pieceStore",
+    "memberof": "src/stores/PieceStore.js",
+    "static": true,
+    "longname": "src/stores/PieceStore.js~pieceStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/PieceStore.js",
+    "importStyle": "pieceStore",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "file",
+    "name": "src/stores/PiecesStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * MapAreaに配置する駒一覧\n * @extends {ReduceStore}\n * \n * @typedef {Object} Pieces\n * @property {Object} {id} 駒のID(※キー名称は駒ごとに別)\n * @property {string} {id}.id 駒のID\n * @property {string} {id}.name 駒名\n * @property {number} {id}.x 描画位置(x)\n * @property {number} {id}.y 描画位置(y)\n * @property {number} {id}.width 駒のサイズ(横)\n * @property {number} {id}.height 駒のサイズ(縦)\n * @property {number} {id}.size 駒のサイズ\n * @property {number} {id}.strokeWidth 駒の縁サイズ\n * @property {string} {id}.url 駒画像の参照先\n */\nclass PiecesStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({});\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Pieces.SET:\n        return Immutable.fromJS(action.pieces);\n      case ActionTypes.Pieces.ADD:\n        return state.set(action.piece.id, action.piece);\n      case ActionTypes.Pieces.REMOVE:\n        return state.delete(action.id);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new PiecesStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/PiecesStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 81,
+    "kind": "typedef",
+    "name": "Pieces",
+    "memberof": "src/stores/PiecesStore.js",
+    "static": true,
+    "longname": "src/stores/PiecesStore.js~Pieces",
+    "access": null,
+    "description": "MapAreaに配置する駒一覧",
+    "lineNumber": 23,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}",
+        "description": "駒のID(※キー名称は駒ごとに別)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.id",
+        "description": "駒のID"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.name",
+        "description": "駒名"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.x",
+        "description": "描画位置(x)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.y",
+        "description": "描画位置(y)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.width",
+        "description": "駒のサイズ(横)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.height",
+        "description": "駒のサイズ(縦)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.size",
+        "description": "駒のサイズ"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.strokeWidth",
+        "description": "駒の縁サイズ"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{id}.url",
+        "description": "駒画像の参照先"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "Pieces"
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "variable",
+    "name": "piecesStore",
+    "memberof": "src/stores/PiecesStore.js",
+    "static": true,
+    "longname": "src/stores/PiecesStore.js~piecesStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/PiecesStore.js",
+    "importStyle": "piecesStore",
+    "description": null,
+    "lineNumber": 42,
+    "undocument": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "file",
+    "name": "src/stores/SystemStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * BCDiceに指定するシステム情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} System\n * @property {string} name システム名\n * @property {string} gameType システム名の指定値\n * @property {string[]} prefixs システム特有のダイス表記リスト\n * @property {string} info システム特有のダイス表記に対する説明文\n */\nclass SystemStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      name: '',\n      gameType: 'Cthulhu',\n      prefixs: [],\n      info: '',\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.System.SET:\n        return Immutable.fromJS(action.system);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new SystemStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/SystemStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 84,
+    "kind": "typedef",
+    "name": "System",
+    "memberof": "src/stores/SystemStore.js",
+    "static": true,
+    "longname": "src/stores/SystemStore.js~System",
+    "access": null,
+    "description": "BCDiceに指定するシステム情報",
+    "lineNumber": 17,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "システム名"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "gameType",
+        "description": "システム名の指定値"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "prefixs",
+        "description": "システム特有のダイス表記リスト"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "info",
+        "description": "システム特有のダイス表記に対する説明文"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "System"
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "variable",
+    "name": "systemStore",
+    "memberof": "src/stores/SystemStore.js",
+    "static": true,
+    "longname": "src/stores/SystemStore.js~systemStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/SystemStore.js",
+    "importStyle": "systemStore",
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "file",
+    "name": "src/stores/SystemsStore.js",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * BCDiceの提供するシステム一覧\n * @extends {ReduceStore}\n * \n * @typedef {string[]} Systems システム名の指定値リスト\n */\nclass SystemsStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS([]);\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Systems.SET:\n        return Immutable.fromJS(action.systems);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new SystemsStore(AppDispatcher);",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/stores/SystemsStore.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 87,
+    "kind": "typedef",
+    "name": "Systems",
+    "memberof": "src/stores/SystemsStore.js",
+    "static": true,
+    "longname": "src/stores/SystemsStore.js~Systems",
+    "access": null,
+    "description": "BCDiceの提供するシステム一覧",
+    "lineNumber": 13,
+    "pseudoExport": true,
+    "unknown": [
+      {
+        "tagName": "@extends",
+        "tagValue": "{ReduceStore}"
+      }
+    ],
+    "type": {
+      "types": [
+        "string[]"
+      ],
+      "optional": false,
+      "name": "Systems"
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "variable",
+    "name": "systemsStore",
+    "memberof": "src/stores/SystemsStore.js",
+    "static": true,
+    "longname": "src/stores/SystemsStore.js~systemsStore",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/stores/SystemsStore.js",
+    "importStyle": "systemsStore",
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "file",
+    "name": "src/utils/ImagesManager.js",
+    "content": "/**\n * 画像管理\n */\nclass ImagesManager {\n  // 管理中画像一覧\n  static images = {};\n\n  /**\n   * 管理中画像一覧にscrの画像が含まれるか\n   * @param {string} src 検索対象URL\n   * @return {bool} 管理済みか?\n   */\n  static hasImage(src) {\n    return this.images[src] !== undefined;\n  }\n\n  /**\n   * 管理中画像一覧からscrの画像を取得  \n   * 未登録の場合は、管理に追加\n   * @param {string} src 対象URL\n   * @return {Image} 対象のImageオブジェクト\n   */\n  static getImage(src) {\n    return this.hasImage(src) ? this.images[src] : this.addImage(src);\n  }\n\n  /**\n   * 管理中画像一覧にscrの画像を追加\n   * @param {string} src 対象URL\n   * @return {Image} 対象のImageオブジェクト\n   */\n  static addImage(src) {\n    const image = new Image();\n    image.src = src;\n    this.images[src] = image;\n    return image; \n  }\n}\nexport default ImagesManager;",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/utils/ImagesManager.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 90,
+    "kind": "class",
+    "name": "ImagesManager",
+    "memberof": "src/utils/ImagesManager.js",
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/utils/ImagesManager.js",
+    "importStyle": "ImagesManager",
+    "description": "画像管理",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 91,
+    "kind": "member",
+    "name": "images",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.images",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "name": "hasImage",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.hasImage",
+    "access": null,
+    "description": "管理中画像一覧にscrの画像が含まれるか",
+    "lineNumber": 13,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "src",
+        "description": "検索対象URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "bool"
+      ],
+      "spread": false,
+      "description": "管理済みか?"
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "name": "getImage",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.getImage",
+    "access": null,
+    "description": "管理中画像一覧からscrの画像を取得  \n未登録の場合は、管理に追加",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "src",
+        "description": "対象URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Image"
+      ],
+      "spread": false,
+      "description": "対象のImageオブジェクト"
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "name": "addImage",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.addImage",
+    "access": null,
+    "description": "管理中画像一覧にscrの画像を追加",
+    "lineNumber": 32,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "src",
+        "description": "対象URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Image"
+      ],
+      "spread": false,
+      "description": "対象のImageオブジェクト"
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# dice-chat\n\nTRPG向けのWebサイト\n\n## Demo\n\nhttps://dice-chat-6b7e2.firebaseapp.com/\n\n**※Dice Botを選択してからメッセージを送信してください**\n\n## What is dice-chat\n\n[BCDice-API](https://github.com/NKMR6194/bcdice-api) を用いて、TRPG用のチャット機能を提供します。  \n[Firebase](https://firebase.google.com/) を利用することで、リアルタイム通信によりチャット, マップの同期を行っています。  \nまた、Firebaseにデプロイすることで、サーバを必要とせずに環境を構築できます。\n\nまた、イカの技術を利用しています。\n\n* [React](https://github.com/facebook/react)\n* [Flux](https://github.com/facebook/flux)\n* [Immutable.js](https://github.com/facebook/immutable-js)\n* [Material UI](https://github.com/callemall/material-ui)\n* [firebase](https://github.com/firebase/firebase-tools)\n* [react-grid-layout](https://github.com/STRML/react-grid-layout)\n* [react-konva](https://github.com/lavrton/react-konva)\n* [axios](https://github.com/mzabriskie/axios)\n\n## Setup\n\n### npm install まで\n\n```\ngit clone https://github.com/snona/dice-chat.git your-app-name\ncd your-app-name\nnpm install\n```\n\n### Firebaseの設定\n\n下記ファイルを `./src/firebase/config.js` として作成してください。\n```\nexport const firebaseConfig = {\n  apiKey: \"****************\",\n  authDomain: \"****************\",\n  databaseURL: \"****************\",\n  storageBucket: \"****************\",\n  messagingSenderId: \"****************\"\n};\n```\n\nFirebaseに登録し、*ウェブアプリに Firebase を追加* を参考に上記の設定を記載してください。\n\n### 起動\n\n```\nnpm start\n```\n\nデフォルトブラウザが自動で開き、 `localhost:3000` のページを表示します。\n\n### デプロイ\n\n```\nnpm install -g firebase-tools\nfireabse login\nfirebase init\nnpm run build\nfirebase deploy\n```\n\n## 素材提供\n\n背景, キャラの初期画像として利用させていただいています。  \n[恋と冒険の学園ＴＲＰＧエリュシオン オンラインセッションツール用素材](http://www.wtrpg9.com/trpg/)\n\n## Author\n\n山田はじめ(@hajimeYamada)\n",
+    "longname": "/Users/nona/Documents/work/dice-chat/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"dice-chat\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"axios\": \"^0.16.2\",\n    \"firebase\": \"^4.2.0\",\n    \"flux\": \"^3.1.3\",\n    \"immutable\": \"^3.8.1\",\n    \"konva\": \"^1.6.7\",\n    \"material-ui\": \"^0.19.0\",\n    \"react\": \"^15.6.1\",\n    \"react-dom\": \"^15.6.1\",\n    \"react-grid-layout\": \"^0.14.7\",\n    \"react-konva\": \"^1.1.4\",\n    \"react-scripts\": \"1.0.11\",\n    \"react-tap-event-plugin\": \"^2.0.1\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test --env=jsdom\",\n    \"eject\": \"react-scripts eject\",\n    \"esdoc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"devDependencies\": {\n    \"esdoc\": \"^1.0.1\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\"\n  }\n}\n",
+    "longname": "/Users/nona/Documents/work/dice-chat/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

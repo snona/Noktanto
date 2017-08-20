@@ -4,18 +4,19 @@ import { Group, Rect, Text } from 'react-konva';
 
 import RectImage from '../components/RectImage';
 
+/**
+ * マップ表示用駒部品
+ */
 class Piece extends Component {
     render() {
       const { cell, movePiece, selectPiece } = this.props;
       const fontSize = 12;
-      const src = new Image();
-      src.src = cell.url;
       const image = {
         x: 0,
         y: 0,
         width: cell.width,
-        height: cell.width,
-        src,
+        height: cell.height,
+        src: cell.url,
       }
       return (
         <Group
@@ -23,11 +24,14 @@ class Piece extends Component {
           y={cell.y}
           draggable={true}
           onDragend={(v) => movePiece(v.target.attrs) }
-          onClick={() => selectPiece()}
+          onClick={() => selectPiece(true)}
+          onDoubleClick={() => selectPiece(false)}
         >
+          {/* 画像 */}
           <RectImage
             image={image}
           />
+          {/* 名前枠 */}
           <Rect
             x={0}
             y={-10}
@@ -37,6 +41,7 @@ class Piece extends Component {
             stroke={'#263238'}
             strokeWidth={cell.strokeWidth}
           />
+          {/* 名前 */}
           <Text
             x={0}
             y={-10}
@@ -56,7 +61,6 @@ Piece.propTypes = {
     y: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     strokeWidth: PropTypes.number.isRequired,

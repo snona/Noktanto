@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import TextField from 'material-ui/TextField';
 
-import SelectColorField from '../components/SelectColorField';
+import SelectColor from '../components/SelectColor';
 
+/**
+ * マップ設定部品
+ */
 class MapConfig extends Component {
   render() {
     const { config, setConfig } = this.props;
-    console.log(config);
     return (
       <div style={{ margin: 10 }} >
         <div>
@@ -20,24 +21,24 @@ class MapConfig extends Component {
           />
         </div>
         <TextField
-          floatingLabelText="X"
+          floatingLabelText="Cols"
           style={{ width: 50, marginRight: 10 }}
-          value={config.x}
-          onChange={(e, v) => setConfig({ x: v })}
+          value={config.cols}
+          onChange={(e, v) => setConfig({ cols: Number(v) })}
         />
         <TextField
-          floatingLabelText="Y"
+          floatingLabelText="Rows"
           style={{ width: 50, marginRight: 10 }}
-          value={config.y}
-          onChange={(e, v) => setConfig({ y: v })}
+          value={config.rows}
+          onChange={(e, v) => setConfig({ rows: Number(v) })}
         />
         <TextField
           floatingLabelText="Size"
           style={{ width: 50, marginRight: 10 }}
           value={config.size}
-          onChange={(e, v) => setConfig({ size: v })}
+          onChange={(e, v) => setConfig({ size: Number(v) })}
         />
-        <SelectColorField
+        <SelectColor
           selectedColor={config.color}
           selectColor={(color) => setConfig({ color })}
         />

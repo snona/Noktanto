@@ -2,9 +2,13 @@ import { ReduceStore } from 'flux/utils';
 import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 /**
  * BCDiceの提供するシステム一覧
+ * @extends {ReduceStore}
+ * 
+ * @typedef {string[]} Systems システム名の指定値リスト
  */
 class SystemsStore extends ReduceStore {
   getInitialState() {
@@ -13,7 +17,7 @@ class SystemsStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_systems':
+      case ActionTypes.Systems.SET:
         return Immutable.fromJS(action.systems);
       default:
         return state;

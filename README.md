@@ -11,7 +11,8 @@ https://dice-chat-6b7e2.firebaseapp.com/
 ## What is dice-chat
 
 [BCDice-API](https://github.com/NKMR6194/bcdice-api) を用いて、TRPG用のチャット機能を提供します。  
-[Firebase](https://firebase.google.com/) にデプロイすることで、サーバ管理をせずに環境を構築できます。
+[Firebase](https://firebase.google.com/) を利用することで、リアルタイム通信によりチャット, マップの同期を行っています。  
+また、Firebaseにデプロイすることで、サーバを必要とせずに環境を構築できます。
 
 また、イカの技術を利用しています。
 
@@ -36,8 +37,8 @@ npm install
 
 ### Firebaseの設定
 
-Firebaseに登録し、*ウェブアプリに Firebase を追加* を参考に下記ファイルを作成してください。
-```./src/firebase/config.js
+下記ファイルを `./src/firebase/config.js` として作成してください。
+```
 export const firebaseConfig = {
   apiKey: "****************",
   authDomain: "****************",
@@ -46,6 +47,8 @@ export const firebaseConfig = {
   messagingSenderId: "****************"
 };
 ```
+
+Firebaseに登録し、*ウェブアプリに Firebase を追加* を参考に上記の設定を記載してください。
 
 ### 起動
 
@@ -62,11 +65,12 @@ npm install -g firebase-tools
 fireabse login
 firebase init
 npm run build
+firebase deploy
 ```
 
 ## 素材提供
 
-背景のマップ画像を利用させていただいています。  
+背景, キャラの初期画像として利用させていただいています。  
 [恋と冒険の学園ＴＲＰＧエリュシオン オンラインセッションツール用素材](http://www.wtrpg9.com/trpg/)
 
 ## Author
