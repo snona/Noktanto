@@ -25,7 +25,7 @@ class Piece extends Component {
           draggable={true}
           onDragend={(v) => movePiece(v.target.attrs) }
           onClick={() => selectPiece(true)}
-          onDoubleClick={() => selectPiece(false)}
+          onDoubleClick={(v) => { console.log(v.target.attrs); selectPiece(false); } }
         >
           {/* 画像 */}
           <RectImage

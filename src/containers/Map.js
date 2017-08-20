@@ -84,9 +84,11 @@ class _Map extends Component {
     const backImage = this._createBackImage(map);
     const viewCells = this._createViewCells(map);
     const viewPieces = this._createViewPieces(pieces);
+    const width = layout.w - 40;
+    const height = layout.h - 40;
     return (
       <div style={{ margin: 10 }}>
-        <Stage width={layout.w - 40} height={layout.h - 40} draggable={true} >
+        <Stage width={width} height={height} draggable={true} onDragend={(v) => console.log(v.target.attrs) }>
           <Layer>
             {backImage}
           </Layer>
