@@ -34,6 +34,9 @@ const ActionTypes = {
   System: {
     SET: 'System.set',
   },
+  Authentication: {
+    SET: 'Authentication.set',
+  },
 };
 
 export default ActionTypes;
