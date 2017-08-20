@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-class DiceBotArea extends Component {
+/**
+ * BCDiceAPIのシステム選択部品
+ */
+class SelectDiceSystem extends Component {
   render() {
     const { systems, system, selectSystem } = this.props;
+    // 選択肢作成
     const items = systems.map(system => <MenuItem key={system} value={system} primaryText={system} />);
     return (
       <div>
@@ -21,9 +24,9 @@ class DiceBotArea extends Component {
     )
   }
 }
-DiceBotArea.protoType = {
+SelectDiceSystem.protoType = {
   systems: PropTypes.array.isRequired,
   system: PropTypes.object.isRequired,
   selectSystem: PropTypes.func.isRequired,
 };
-export default DiceBotArea;
+export default SelectDiceSystem;

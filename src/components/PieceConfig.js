@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import TextField from 'material-ui/TextField';
 
+/**
+ * 駒設定部品
+ */
 class PieceConfig extends Component {
   render() {
     const { config, setConfig } = this.props;
-    console.log(config);
     return (
       <div style={{ margin: 10 }} >
         <div>

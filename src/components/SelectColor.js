@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import * as Colors from 'material-ui/styles/colors';
 
-class SelectColorField extends Component {
+/**
+ * 色選択部品
+ */
+class SelectColor extends Component {
+  /** 選択可能色 */
   static colors = [{
     name: 'Red',
     value: Colors.redA200,
@@ -64,9 +67,20 @@ class SelectColorField extends Component {
     name: 'Blue Grey',
     value: Colors.blueGrey400,
   }];
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // 選択中色が更新されていない場合は画面を再描画しない
+    const { selectedColor } = this.props;
+    if (selectedColor === nextProps.selectedColor) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     const { selectedColor, selectColor } = this.props;
-    const items = SelectColorField.colors.map(color => (
+    // 選択肢作成
+    const items = SelectColor.colors.map(color => (
       <MenuItem
         key={color.value}
         value={color.value}
@@ -89,8 +103,8 @@ class SelectColorField extends Component {
     )
   }
 }
-SelectColorField.protoType = {
+SelectColor.protoType = {
   selectedColor: PropTypes.string.isRequired,
   selectColor: PropTypes.func.isRequired,
 };
-export default SelectColorField;
+export default SelectColor;

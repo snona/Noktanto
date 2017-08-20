@@ -36,6 +36,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "dice-chat/src/utils/imagesmanager.js~imagesmanager",
+    "class/src/utils/ImagesManager.js~ImagesManager.html",
+    "<span>ImagesManager</span> <span class=\"search-result-import-path\">dice-chat/src/utils/ImagesManager.js</span>",
+    "class"
+  ],
+  [
     "dice-chat/src/actions/layoutaction.js~layoutaction",
     "class/src/actions/LayoutAction.js~LayoutAction.html",
     "<span>LayoutAction</span> <span class=\"search-result-import-path\">dice-chat/src/actions/LayoutAction.js</span>",
@@ -148,12 +154,6 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-register",
     "<span>register</span> <span class=\"search-result-import-path\">dice-chat/src/registerServiceWorker.js</span>",
     "function"
-  ],
-  [
-    "dice-chat/src/firebase/index.js~secretmessagesref",
-    "variable/index.html#static-variable-secretMessagesRef",
-    "<span>secretMessagesRef</span> <span class=\"search-result-import-path\">dice-chat/src/firebase/index.js</span>",
-    "variable"
   ],
   [
     "dice-chat/src/stores/systemstore.js~systemstore",
@@ -814,5 +814,35 @@ window.esdocSearchIndex = [
     "typedef/index.html#static-typedef-Systems",
     "src/stores/SystemsStore.js~Systems",
     "typedef"
+  ],
+  [
+    "src/utils/imagesmanager.js",
+    "file/src/utils/ImagesManager.js.html",
+    "src/utils/ImagesManager.js",
+    "file"
+  ],
+  [
+    "src/utils/imagesmanager.js~imagesmanager.addimage",
+    "class/src/utils/ImagesManager.js~ImagesManager.html#static-method-addImage",
+    "src/utils/ImagesManager.js~ImagesManager.addImage",
+    "method"
+  ],
+  [
+    "src/utils/imagesmanager.js~imagesmanager.getimage",
+    "class/src/utils/ImagesManager.js~ImagesManager.html#static-method-getImage",
+    "src/utils/ImagesManager.js~ImagesManager.getImage",
+    "method"
+  ],
+  [
+    "src/utils/imagesmanager.js~imagesmanager.hasimage",
+    "class/src/utils/ImagesManager.js~ImagesManager.html#static-method-hasImage",
+    "src/utils/ImagesManager.js~ImagesManager.hasImage",
+    "method"
+  ],
+  [
+    "src/utils/imagesmanager.js~imagesmanager.images",
+    "class/src/utils/ImagesManager.js~ImagesManager.html#static-member-images",
+    "src/utils/ImagesManager.js~ImagesManager.images",
+    "member"
   ]
 ]

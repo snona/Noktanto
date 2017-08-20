@@ -54,9 +54,9 @@ class _Map extends Component {
    */
   _createViewCells(map) {
     // セル枠を作成
-    const cells = MapAction.createCells(map.x, map.y, map.size, map.color);
+    const cells = MapAction.createCells(map.cols, map.rows, map.size, map.color);
     return cells.map(cell => (
-      <Cell cell={cell} />
+      <Cell key={cell.key} cell={cell} />
     ));
   }
 
@@ -69,6 +69,7 @@ class _Map extends Component {
     return Object.keys(pieces).map(key => {
       const piece = pieces[key];
       return <Piece
+        key={key}
         cell={piece}
         movePiece={(value) => MapAction.movePiece(value, piece)}
         selectPiece={(value) => MapAction.selectPiece(value, piece)}
@@ -82,6 +83,7 @@ class _Map extends Component {
 
     const backImage = this._createBackImage(map);
     const viewCells = this._createViewCells(map);
+    console.log(viewCells);
     const viewPieces = this._createViewPieces(pieces);
     return (
       <div style={{ margin: 10 }}>

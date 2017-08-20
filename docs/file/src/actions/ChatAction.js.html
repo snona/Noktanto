@@ -48,7 +48,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseDb">firebaseDb</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-messagesRef">messagesRef</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-piecesRef">piecesRef</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-secretMessagesRef">secretMessagesRef</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stores">stores</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-characterStore">characterStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-charactersStore">charactersStore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-layoutsStore">layoutsStore</a></span></span></li>
@@ -67,6 +66,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Pieces">Pieces</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-System">System</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Systems">Systems</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/utils/ImagesManager.js~ImagesManager.html">ImagesManager</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -74,14 +74,13 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/actions/ChatAction.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import AppDispatcher from &apos;../dispatcher/AppDispatcher&apos;;
 import ActionTypes from &apos;../constants/ActionTypes&apos;;
-import { messagesRef, secretMessagesRef } from &apos;../firebase&apos;;
+import { messagesRef } from &apos;../firebase&apos;;
 
 import DiceBotAction from &apos;../actions/DiceBotAction&apos;;
 
 class ChatAction {
   static listenMessages() {
     messagesRef.on(&apos;child_added&apos;, (snapshot, id) =&gt; this.addMessage(snapshot.key, snapshot.val()));
-    secretMessagesRef.on(&apos;child_added&apos;, (snapshot, id) =&gt; this.addMessage(snapshot.key, snapshot.val()));
   }
 
   static setMessages(messages) {
@@ -112,10 +111,9 @@ class ChatAction {
           };
           messagesRef.push(secretMessage);
         }
-        const sendFn = (msg) =&gt; response.secret ? secretMessagesRef.push(msg) : messagesRef.push(msg);
-        sendFn(message);
+        messagesRef.push(message);
         const resultMessage = this._createResultMessage(message, response)
-        sendFn(resultMessage);
+        messagesRef.push(resultMessage);
       }
     });
   }

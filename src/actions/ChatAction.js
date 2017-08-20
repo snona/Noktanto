@@ -1,13 +1,12 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import { messagesRef, secretMessagesRef } from '../firebase';
+import { messagesRef } from '../firebase';
 
 import DiceBotAction from '../actions/DiceBotAction';
 
 class ChatAction {
   static listenMessages() {
     messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
-    secretMessagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
   }
 
   static setMessages(messages) {
@@ -38,10 +37,9 @@ class ChatAction {
           };
           messagesRef.push(secretMessage);
         }
-        const sendFn = (msg) => response.secret ? secretMessagesRef.push(msg) : messagesRef.push(msg);
-        sendFn(message);
+        messagesRef.push(message);
         const resultMessage = this._createResultMessage(message, response)
-        sendFn(resultMessage);
+        messagesRef.push(resultMessage);
       }
     });
   }

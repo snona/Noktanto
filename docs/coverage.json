@@ -1,7 +1,7 @@
 {
-  "coverage": "12.9%",
-  "expectCount": 62,
-  "actualCount": 8,
+  "coverage": "16.66%",
+  "expectCount": 66,
+  "actualCount": 11,
   "files": {
     "src/actions/CharacterAction.js": {
       "expectCount": 6,
@@ -21,10 +21,10 @@
       "undocumentLines": [
         7,
         8,
-        13,
-        20,
-        28,
-        49
+        12,
+        19,
+        27,
+        47
       ]
     },
     "src/actions/DiceBotAction.js": {
@@ -53,18 +53,18 @@
       "undocumentLines": [
         5,
         6,
-        24,
-        28,
-        44,
-        51,
-        59,
-        63,
-        70,
-        76,
-        84,
-        91,
-        96,
-        100
+        25,
+        29,
+        45,
+        52,
+        60,
+        64,
+        71,
+        77,
+        85,
+        92,
+        97,
+        101
       ]
     },
     "src/constants/ActionTypes.js": {
@@ -93,8 +93,8 @@
       ]
     },
     "src/firebase/index.js": {
-      "expectCount": 7,
-      "actualCount": 4,
+      "expectCount": 6,
+      "actualCount": 3,
       "undocumentLines": [
         4,
         5,
@@ -178,6 +178,13 @@
       "actualCount": 0,
       "undocumentLines": [
         28
+      ]
+    },
+    "src/utils/ImagesManager.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        6
       ]
     }
   }

@@ -15,6 +15,7 @@ class MapAction {
           stroke: color,
           strokeWidth: 1,
           size,
+          key: `${x}-${y}`,
         });
       } 
     }
@@ -98,11 +99,8 @@ class MapAction {
   }
 
   static setConfig(config) {
-    const image = new Image();
-    image.src = config.url;
-    config.backImage = image;
-    config.x = Number(config.x);
-    config.y = Number(config.y);
+    config.cols = Number(config.cols);
+    config.rows = Number(config.rows);
     config.size = Number(config.size);
     AppDispatcher.dispatch({
       type: ActionTypes.Map.SET,

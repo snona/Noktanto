@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-class SelectCharacterField extends Component {
+/**
+ * 発言者選択部品
+ */
+class SelectCharacter extends Component {
   shouldComponentUpdate(nextProps, nextState) {
+    // 発言者一覧, 選択中発言者が更新されていない場合は画面を再描画しない
     const { characters, selectedCharacter } = this.props;
     if (Object.keys(characters).length === Object.keys(nextProps.characters).length) {
       if (selectedCharacter.id === nextProps.selectedCharacter.id) {
@@ -17,9 +20,9 @@ class SelectCharacterField extends Component {
 
   render() {
     const { characters, selectedCharacter, selectCharacter } = this.props;
+    // 選択肢作成
     const items = Object.keys(characters).map(key => {
       const character = characters[key];
-      console.log(key, character);
       return (
         <MenuItem
           key={key}
@@ -41,22 +44,14 @@ class SelectCharacterField extends Component {
         >
           {items}
         </SelectField>
-        {/* <SelectField
-          floatingLabelText="Select Character"
-          value={selectedCharacter.id}
-          onChange={(e, i, v) => selectCharacter(v)}
-          labelStyle={{ color: selectedCharacter.color }}
-          selectedMenuItemStyle={{ color: selectedCharacter.color }}
-        >
-          {items}
-        </SelectField> */}
+        {/* TODO: 表情の選択肢を追加 */}
       </div>
     )
   }
 }
-SelectCharacterField.protoType = {
+SelectCharacter.protoType = {
   characters: PropTypes.object.isRequired,
   selectedCharacter: PropTypes.object.isRequired,
   selectCharacter: PropTypes.func.isRequired,
 };
-export default SelectCharacterField;
+export default SelectCharacter;

@@ -4,9 +4,13 @@ import { Image } from 'react-konva';
 
 import ImagesManager from '../utils/ImagesManager';
 
+/**
+ * Konvaの画像描画部品
+ */
 class RectImage extends Component {
     render() {
       const { image } = this.props;
+      // 画像一覧より本データを取得
       const img = ImagesManager.getImage(image.src);
       return (
         <Image

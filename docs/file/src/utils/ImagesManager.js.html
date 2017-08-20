@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/firebase/index.js | dice-chat</title>
+  <title data-ice="title">src/utils/ImagesManager.js | dice-chat</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -71,17 +71,46 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/firebase/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import firebase from &apos;firebase&apos;;
-import { firebaseConfig } from &apos;../firebase/config.js&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/ImagesManager.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * &#x753B;&#x50CF;&#x7BA1;&#x7406;
+ */
+class ImagesManager {
+  // &#x7BA1;&#x7406;&#x4E2D;&#x753B;&#x50CF;&#x4E00;&#x89A7;
+  static images = {};
 
-export const firebaseApp = firebase.initializeApp(firebaseConfig);
-export const firebaseDb = firebaseApp.database();
-export const messagesRef = firebaseDb.ref(&apos;messages&apos;) /** &#x30C1;&#x30E3;&#x30C3;&#x30C8;&#x5C65;&#x6B74; */
-export const charactersRef = firebaseDb.ref(&apos;characters&apos;) /** &#x767A;&#x8A00;&#x30AD;&#x30E3;&#x30E9; */
-export const piecesRef = firebaseDb.ref(&apos;pieces&apos;) /** &#x99D2;&#x914D;&#x7F6E; */
-export const configRef = firebaseDb.ref(&apos;config&apos;) /** &#x8A2D;&#x5B9A; */
-</code></pre>
+  /**
+   * &#x7BA1;&#x7406;&#x4E2D;&#x753B;&#x50CF;&#x4E00;&#x89A7;&#x306B;scr&#x306E;&#x753B;&#x50CF;&#x304C;&#x542B;&#x307E;&#x308C;&#x308B;&#x304B;
+   * @param {string} src &#x691C;&#x7D22;&#x5BFE;&#x8C61;URL
+   * @return {bool} &#x7BA1;&#x7406;&#x6E08;&#x307F;&#x304B;?
+   */
+  static hasImage(src) {
+    return this.images[src] !== undefined;
+  }
+
+  /**
+   * &#x7BA1;&#x7406;&#x4E2D;&#x753B;&#x50CF;&#x4E00;&#x89A7;&#x304B;&#x3089;scr&#x306E;&#x753B;&#x50CF;&#x3092;&#x53D6;&#x5F97;  
+   * &#x672A;&#x767B;&#x9332;&#x306E;&#x5834;&#x5408;&#x306F;&#x3001;&#x7BA1;&#x7406;&#x306B;&#x8FFD;&#x52A0;
+   * @param {string} src &#x5BFE;&#x8C61;URL
+   * @return {Image} &#x5BFE;&#x8C61;&#x306E;Image&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;
+   */
+  static getImage(src) {
+    return this.hasImage(src) ? this.images[src] : this.addImage(src);
+  }
+
+  /**
+   * &#x7BA1;&#x7406;&#x4E2D;&#x753B;&#x50CF;&#x4E00;&#x89A7;&#x306B;scr&#x306E;&#x753B;&#x50CF;&#x3092;&#x8FFD;&#x52A0;
+   * @param {string} src &#x5BFE;&#x8C61;URL
+   * @return {Image} &#x5BFE;&#x8C61;&#x306E;Image&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;
+   */
+  static addImage(src) {
+    const image = new Image();
+    image.src = src;
+    this.images[src] = image;
+    return image; 
+  }
+}
+export default ImagesManager;</code></pre>
 
 </div>
 

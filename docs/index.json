@@ -1,587 +1,23 @@
 [
   {
-    "__docId__": 1,
-    "kind": "external",
-    "name": "Infinity",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Infinity",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 2,
-    "kind": "external",
-    "name": "NaN",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~NaN",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 3,
-    "kind": "external",
-    "name": "undefined",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~undefined",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 4,
-    "kind": "external",
-    "name": "null",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~null",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 5,
-    "kind": "external",
-    "name": "Object",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Object",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 6,
-    "kind": "external",
-    "name": "object",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~object",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 7,
-    "kind": "external",
-    "name": "Function",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Function",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 8,
-    "kind": "external",
-    "name": "function",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~function",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 9,
-    "kind": "external",
-    "name": "Boolean",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Boolean",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 10,
-    "kind": "external",
-    "name": "boolean",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~boolean",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 11,
-    "kind": "external",
-    "name": "Symbol",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Symbol",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 12,
-    "kind": "external",
-    "name": "Error",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Error",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 13,
-    "kind": "external",
-    "name": "EvalError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~EvalError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 14,
-    "kind": "external",
-    "name": "InternalError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~InternalError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 15,
-    "kind": "external",
-    "name": "RangeError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~RangeError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 16,
-    "kind": "external",
-    "name": "ReferenceError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~ReferenceError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 17,
-    "kind": "external",
-    "name": "SyntaxError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~SyntaxError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 18,
-    "kind": "external",
-    "name": "TypeError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~TypeError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 19,
-    "kind": "external",
-    "name": "URIError",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~URIError",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 20,
-    "kind": "external",
-    "name": "Number",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Number",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 21,
-    "kind": "external",
-    "name": "number",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~number",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 22,
-    "kind": "external",
-    "name": "Date",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Date",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 23,
-    "kind": "external",
-    "name": "String",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~String",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 24,
-    "kind": "external",
-    "name": "string",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~string",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 25,
-    "kind": "external",
-    "name": "RegExp",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~RegExp",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 26,
-    "kind": "external",
-    "name": "Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 27,
-    "kind": "external",
-    "name": "Int8Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Int8Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 28,
-    "kind": "external",
-    "name": "Uint8Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Uint8Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 29,
-    "kind": "external",
-    "name": "Uint8ClampedArray",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 30,
-    "kind": "external",
-    "name": "Int16Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Int16Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 31,
-    "kind": "external",
-    "name": "Uint16Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Uint16Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 32,
-    "kind": "external",
-    "name": "Int32Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Int32Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 33,
-    "kind": "external",
-    "name": "Uint32Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Uint32Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 34,
-    "kind": "external",
-    "name": "Float32Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Float32Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 35,
-    "kind": "external",
-    "name": "Float64Array",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Float64Array",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 36,
-    "kind": "external",
-    "name": "Map",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Map",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 37,
-    "kind": "external",
-    "name": "Set",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Set",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 38,
-    "kind": "external",
-    "name": "WeakMap",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~WeakMap",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 39,
-    "kind": "external",
-    "name": "WeakSet",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~WeakSet",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 40,
-    "kind": "external",
-    "name": "ArrayBuffer",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~ArrayBuffer",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 41,
-    "kind": "external",
-    "name": "DataView",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~DataView",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 42,
-    "kind": "external",
-    "name": "JSON",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~JSON",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 43,
-    "kind": "external",
-    "name": "Promise",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Promise",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 44,
-    "kind": "external",
-    "name": "Generator",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Generator",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 45,
-    "kind": "external",
-    "name": "GeneratorFunction",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~GeneratorFunction",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 46,
-    "kind": "external",
-    "name": "Reflect",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Reflect",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 47,
-    "kind": "external",
-    "name": "Proxy",
-    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
-    "memberof": "src/.external-ecmascript.js",
-    "static": true,
-    "longname": "src/.external-ecmascript.js~Proxy",
-    "access": "public",
-    "description": "",
-    "builtinExternal": true
-  },
-  {
-    "__docId__": 48,
+    "__docId__": 0,
     "kind": "file",
     "name": "src/actions/CharacterAction.js",
     "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { charactersRef } from '../firebase';\n\nclass CharacterAction {\n  static listenConfig() {\n    charactersRef.on('child_added', (snapshot) => this.addCharacter(snapshot.key, snapshot.val()));\n  }\n\n  static _createCharacter(config) {\n    return config;\n  }\n\n  static sendConfig(config) {\n    charactersRef.push(this._createCharacter(config));\n    this.initConfig();\n    // this.addCharacter(config.name, config);\n  }\n\n  static initConfig() {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Piece.INIT,\n    });\n  }\n\n  // Todo\n  // FireBase <-> Store の変換Methodを各地に作成する\n\n  static addCharacter(id, character) {\n    character.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Characters.ADD,\n      character,\n    });\n  }\n}\nexport default CharacterAction;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/actions/CharacterAction.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 49,
+    "__docId__": 1,
     "kind": "class",
     "name": "CharacterAction",
     "memberof": "src/actions/CharacterAction.js",
     "static": true,
     "longname": "src/actions/CharacterAction.js~CharacterAction",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/actions/CharacterAction.js",
     "importStyle": "CharacterAction",
@@ -591,7 +27,7 @@
     "interface": false
   },
   {
-    "__docId__": 50,
+    "__docId__": 2,
     "kind": "method",
     "name": "listenConfig",
     "memberof": "src/actions/CharacterAction.js~CharacterAction",
@@ -599,15 +35,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/CharacterAction.js~CharacterAction.listenConfig",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 6,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 51,
+    "__docId__": 3,
     "kind": "method",
     "name": "_createCharacter",
     "memberof": "src/actions/CharacterAction.js~CharacterAction",
@@ -615,26 +49,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/CharacterAction.js~CharacterAction._createCharacter",
-    "access": "private",
+    "access": null,
     "description": null,
     "lineNumber": 10,
-    "undocument": true,
-    "params": [
-      {
-        "name": "config",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 52,
+    "__docId__": 4,
     "kind": "method",
     "name": "sendConfig",
     "memberof": "src/actions/CharacterAction.js~CharacterAction",
@@ -642,22 +63,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/CharacterAction.js~CharacterAction.sendConfig",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 14,
-    "undocument": true,
-    "params": [
-      {
-        "name": "config",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 53,
+    "__docId__": 5,
     "kind": "method",
     "name": "initConfig",
     "memberof": "src/actions/CharacterAction.js~CharacterAction",
@@ -665,15 +77,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/CharacterAction.js~CharacterAction.initConfig",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 20,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 54,
+    "__docId__": 6,
     "kind": "method",
     "name": "addCharacter",
     "memberof": "src/actions/CharacterAction.js~CharacterAction",
@@ -681,45 +91,30 @@
     "async": false,
     "static": true,
     "longname": "src/actions/CharacterAction.js~CharacterAction.addCharacter",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 29,
-    "undocument": true,
-    "params": [
-      {
-        "name": "id",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "character",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 55,
+    "__docId__": 7,
     "kind": "file",
     "name": "src/actions/ChatAction.js",
-    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { messagesRef, secretMessagesRef } from '../firebase';\n\nimport DiceBotAction from '../actions/DiceBotAction';\n\nclass ChatAction {\n  static listenMessages() {\n    messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));\n    secretMessagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));\n  }\n\n  static setMessages(messages) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Messages.SET,\n      messages: messages === null ? [] : messages,\n    });\n  }\n\n  static _createResultMessage(message, response) {\n    return {\n      system: message.system,\n      character: message.character,\n      text: `${message.system} ${response.result}`,\n    };\n  }\n\n  static sendMessage(message) {\n    DiceBotAction.getDiceRoll(message.system, message.text).then(response => {\n      if (!response.ok) {\n        messagesRef.push(message);\n      } else {\n        if (response.secret) {\n          const secretMessage = {\n            system: message.system,\n            character: message.character,\n            text: 'シークレットダイス',\n          };\n          messagesRef.push(secretMessage);\n        }\n        const sendFn = (msg) => response.secret ? secretMessagesRef.push(msg) : messagesRef.push(msg);\n        sendFn(message);\n        const resultMessage = this._createResultMessage(message, response)\n        sendFn(resultMessage);\n      }\n    });\n  }\n\n  static addMessage(key, message) {\n    message.id = key;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Messages.ADD,\n      message,\n    });\n  }\n}\nexport default ChatAction;\n",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { messagesRef } from '../firebase';\n\nimport DiceBotAction from '../actions/DiceBotAction';\n\nclass ChatAction {\n  static listenMessages() {\n    messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));\n  }\n\n  static setMessages(messages) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Messages.SET,\n      messages: messages === null ? [] : messages,\n    });\n  }\n\n  static _createResultMessage(message, response) {\n    return {\n      system: message.system,\n      character: message.character,\n      text: `${message.system} ${response.result}`,\n    };\n  }\n\n  static sendMessage(message) {\n    DiceBotAction.getDiceRoll(message.system, message.text).then(response => {\n      if (!response.ok) {\n        messagesRef.push(message);\n      } else {\n        if (response.secret) {\n          const secretMessage = {\n            system: message.system,\n            character: message.character,\n            text: 'シークレットダイス',\n          };\n          messagesRef.push(secretMessage);\n        }\n        messagesRef.push(message);\n        const resultMessage = this._createResultMessage(message, response)\n        messagesRef.push(resultMessage);\n      }\n    });\n  }\n\n  static addMessage(key, message) {\n    message.id = key;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Messages.ADD,\n      message,\n    });\n  }\n}\nexport default ChatAction;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/actions/ChatAction.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 56,
+    "__docId__": 8,
     "kind": "class",
     "name": "ChatAction",
     "memberof": "src/actions/ChatAction.js",
     "static": true,
     "longname": "src/actions/ChatAction.js~ChatAction",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/actions/ChatAction.js",
     "importStyle": "ChatAction",
@@ -729,7 +124,7 @@
     "interface": false
   },
   {
-    "__docId__": 57,
+    "__docId__": 9,
     "kind": "method",
     "name": "listenMessages",
     "memberof": "src/actions/ChatAction.js~ChatAction",
@@ -737,15 +132,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/ChatAction.js~ChatAction.listenMessages",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 8,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 58,
+    "__docId__": 10,
     "kind": "method",
     "name": "setMessages",
     "memberof": "src/actions/ChatAction.js~ChatAction",
@@ -753,22 +146,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/ChatAction.js~ChatAction.setMessages",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "params": [
-      {
-        "name": "messages",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 12,
+    "undocument": true
   },
   {
-    "__docId__": 59,
+    "__docId__": 11,
     "kind": "method",
     "name": "_createResultMessage",
     "memberof": "src/actions/ChatAction.js~ChatAction",
@@ -776,32 +160,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/ChatAction.js~ChatAction._createResultMessage",
-    "access": "private",
+    "access": null,
     "description": null,
-    "lineNumber": 20,
-    "undocument": true,
-    "params": [
-      {
-        "name": "message",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "response",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "{\"system\": *, \"character\": *, \"text\": *}"
-      ]
-    }
+    "lineNumber": 19,
+    "undocument": true
   },
   {
-    "__docId__": 60,
+    "__docId__": 12,
     "kind": "method",
     "name": "sendMessage",
     "memberof": "src/actions/ChatAction.js~ChatAction",
@@ -809,22 +174,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/ChatAction.js~ChatAction.sendMessage",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 28,
-    "undocument": true,
-    "params": [
-      {
-        "name": "message",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 27,
+    "undocument": true
   },
   {
-    "__docId__": 61,
+    "__docId__": 13,
     "kind": "method",
     "name": "addMessage",
     "memberof": "src/actions/ChatAction.js~ChatAction",
@@ -832,45 +188,30 @@
     "async": false,
     "static": true,
     "longname": "src/actions/ChatAction.js~ChatAction.addMessage",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 49,
-    "undocument": true,
-    "params": [
-      {
-        "name": "key",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "message",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 47,
+    "undocument": true
   },
   {
-    "__docId__": 62,
+    "__docId__": 14,
     "kind": "file",
     "name": "src/actions/DiceBotAction.js",
     "content": "import axios from 'axios';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport BCDiceAPI from '../constants/BCDiceAPI';\n\nclass DiceBotAction {\n  static _request(uri, params = {}) {\n    console.log(uri, params);\n    const url = BCDiceAPI.URL + uri;\n    return new Promise((resolve, reject) => {\n      axios.request({\n        url,\n        method: 'GET',\n        responseType: 'json',\n        ContentType: 'application/json',\n        params,\n      }).then((response) => {\n        console.log(response);\n        resolve(response);\n      }).catch((err) => {\n        console.log(err);\n        reject(err);\n      });\n    });\n  }\n\n  static getSystems() {\n    this._request(BCDiceAPI.uri.SYSTEMS).then(response => {\n      const systems = response.data.systems;\n      AppDispatcher.dispatch({\n        type: ActionTypes.Systems.SET,\n        systems,\n      });\n    }).catch(err => {\n    });\n  }\n\n  static getSystem(system) {\n    const param = { system };\n    this._request(BCDiceAPI.uri.SYSTEM, param).then(response => {\n      const system = response.data.systeminfo;\n      AppDispatcher.dispatch({\n        type: ActionTypes.System.SET,\n        system,\n      });\n    }).catch(err => {\n    });\n  }\n\n  static getDiceRoll(system, text) {\n    const param = { system, command: text };\n    return new Promise(resolve => {\n      this._request(BCDiceAPI.uri.DICE, param).then(response => {\n        if (!response.data.ok) {\n          resolve({ result: text, secret: false });\n        }\n        resolve(response.data);\n      }).catch(err => {\n        resolve({ result: text, secret: false });\n      });\n    });\n  }\n}\nexport default DiceBotAction;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/actions/DiceBotAction.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 63,
+    "__docId__": 15,
     "kind": "class",
     "name": "DiceBotAction",
     "memberof": "src/actions/DiceBotAction.js",
     "static": true,
     "longname": "src/actions/DiceBotAction.js~DiceBotAction",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/actions/DiceBotAction.js",
     "importStyle": "DiceBotAction",
@@ -880,7 +221,7 @@
     "interface": false
   },
   {
-    "__docId__": 64,
+    "__docId__": 16,
     "kind": "method",
     "name": "_request",
     "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
@@ -888,35 +229,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/DiceBotAction.js~DiceBotAction._request",
-    "access": "private",
+    "access": null,
     "description": null,
     "lineNumber": 8,
-    "undocument": true,
-    "params": [
-      {
-        "name": "uri",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "params",
-        "optional": true,
-        "types": [
-          "{}"
-        ],
-        "defaultRaw": {},
-        "defaultValue": "{}"
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 65,
+    "__docId__": 17,
     "kind": "method",
     "name": "getSystems",
     "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
@@ -924,15 +243,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/DiceBotAction.js~DiceBotAction.getSystems",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 28,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 66,
+    "__docId__": 18,
     "kind": "method",
     "name": "getSystem",
     "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
@@ -940,22 +257,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/DiceBotAction.js~DiceBotAction.getSystem",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 39,
-    "undocument": true,
-    "params": [
-      {
-        "name": "system",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 67,
+    "__docId__": 19,
     "kind": "method",
     "name": "getDiceRoll",
     "memberof": "src/actions/DiceBotAction.js~DiceBotAction",
@@ -963,49 +271,30 @@
     "async": false,
     "static": true,
     "longname": "src/actions/DiceBotAction.js~DiceBotAction.getDiceRoll",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 51,
-    "undocument": true,
-    "params": [
-      {
-        "name": "system",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "text",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 68,
+    "__docId__": 20,
     "kind": "file",
     "name": "src/actions/LayoutAction.js",
     "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\nclass LayoutAction {\n  static setLayouts(layouts) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Layouts.SET,\n      layouts,\n    });\n  }\n\n  static addLayout(layout) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Layouts.ADD,\n      layout,\n    });\n  }\n}\nexport default LayoutAction;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/actions/LayoutAction.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 69,
+    "__docId__": 21,
     "kind": "class",
     "name": "LayoutAction",
     "memberof": "src/actions/LayoutAction.js",
     "static": true,
     "longname": "src/actions/LayoutAction.js~LayoutAction",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/actions/LayoutAction.js",
     "importStyle": "LayoutAction",
@@ -1015,7 +304,7 @@
     "interface": false
   },
   {
-    "__docId__": 70,
+    "__docId__": 22,
     "kind": "method",
     "name": "setLayouts",
     "memberof": "src/actions/LayoutAction.js~LayoutAction",
@@ -1023,22 +312,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/LayoutAction.js~LayoutAction.setLayouts",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 5,
-    "undocument": true,
-    "params": [
-      {
-        "name": "layouts",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 71,
+    "__docId__": 23,
     "kind": "method",
     "name": "addLayout",
     "memberof": "src/actions/LayoutAction.js~LayoutAction",
@@ -1046,39 +326,30 @@
     "async": false,
     "static": true,
     "longname": "src/actions/LayoutAction.js~LayoutAction.addLayout",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 12,
-    "undocument": true,
-    "params": [
-      {
-        "name": "layout",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 72,
+    "__docId__": 24,
     "kind": "file",
     "name": "src/actions/MapAction.js",
-    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { piecesRef, configRef } from '../firebase';\n\nclass MapAction {\n  static createCells(xMax, yMax, size, color) {\n    const cells = [];\n    for (let x = 0; x < xMax; x++) {\n      for (let y = 0; y < yMax; y++) {\n        cells.push({\n          x: x * size,\n          y: y * size,\n          width: size,\n          height: size,\n          stroke: color,\n          strokeWidth: 1,\n          size,\n        });\n      } \n    }\n    return cells;\n  }\n\n  static getRandomInt(max = 3, min = 0) {\n    return Math.floor( Math.random() * (max - min + 1) ) + min;\n  }\n\n  static addPiece(config) {\n    const x = this.getRandomInt();\n    const y = this.getRandomInt();\n    const piece = {\n      x: x * config.size,\n      y: y * config.size,\n      width: config.size,\n      height: config.size,\n      strokeWidth: 1,\n      size: config.size,\n      name: config.name,\n      url: config.url,\n    };\n    piecesRef.push(piece)\n  }\n\n  static movePiece(value, piece) {\n    console.log(value, piece);\n    piece.x = this._roundOff(value.x, piece.size);\n    piece.y = this._roundOff(value.y, piece.size);\n    piecesRef.child(piece.id).set(piece);\n  }\n\n  static _roundOff(target, size) {\n    const rest = target % size;\n    if ( rest > size / 2) {\n      return target - rest + size;\n    }\n    return target - rest;\n  }\n\n  static removePieces() {\n    piecesRef.set({});\n  }\n\n  static selectPiece(piece) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Piece.SET,\n      piece,\n    });\n  }\n\n  static listenPieces() {\n    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));\n  }\n\n  static setPiece(id, piece) {\n    piece.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.ADD,\n      piece,\n    });\n  }\n\n  static removePiece(id) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.REMOVE,\n      id,\n    });\n  }\n\n  static listenConfig() {\n    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));\n    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));\n  }\n\n  static sendConfig(config) {\n    configRef.set({ 'map_config': config });\n  }\n\n  static setConfig(config) {\n    const image = new Image();\n    image.src = config.url;\n    config.backImage = image;\n    config.x = Number(config.x);\n    config.y = Number(config.y);\n    config.size = Number(config.size);\n    AppDispatcher.dispatch({\n      type: ActionTypes.Map.SET,\n      map: config,\n    });\n  }\n}\nexport default MapAction;\n",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { piecesRef, configRef } from '../firebase';\n\nclass MapAction {\n  static createCells(xMax, yMax, size, color) {\n    const cells = [];\n    for (let x = 0; x < xMax; x++) {\n      for (let y = 0; y < yMax; y++) {\n        cells.push({\n          x: x * size,\n          y: y * size,\n          width: size,\n          height: size,\n          stroke: color,\n          strokeWidth: 1,\n          size,\n          key: `${x}-${y}`,\n        });\n      } \n    }\n    return cells;\n  }\n\n  static getRandomInt(max = 3, min = 0) {\n    return Math.floor( Math.random() * (max - min + 1) ) + min;\n  }\n\n  static addPiece(config) {\n    const x = this.getRandomInt();\n    const y = this.getRandomInt();\n    const piece = {\n      x: x * config.size,\n      y: y * config.size,\n      width: config.size,\n      height: config.size,\n      strokeWidth: 1,\n      size: config.size,\n      name: config.name,\n      url: config.url,\n    };\n    piecesRef.push(piece)\n  }\n\n  static movePiece(value, piece) {\n    console.log(value, piece);\n    piece.x = this._roundOff(value.x, piece.size);\n    piece.y = this._roundOff(value.y, piece.size);\n    piecesRef.child(piece.id).set(piece);\n  }\n\n  static _roundOff(target, size) {\n    const rest = target % size;\n    if ( rest > size / 2) {\n      return target - rest + size;\n    }\n    return target - rest;\n  }\n\n  static removePieces() {\n    piecesRef.set({});\n  }\n\n  static selectPiece(piece) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Piece.SET,\n      piece,\n    });\n  }\n\n  static listenPieces() {\n    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));\n  }\n\n  static setPiece(id, piece) {\n    piece.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.ADD,\n      piece,\n    });\n  }\n\n  static removePiece(id) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.REMOVE,\n      id,\n    });\n  }\n\n  static listenConfig() {\n    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));\n    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));\n  }\n\n  static sendConfig(config) {\n    configRef.set({ 'map_config': config });\n  }\n\n  static setConfig(config) {\n    config.cols = Number(config.cols);\n    config.rows = Number(config.rows);\n    config.size = Number(config.size);\n    AppDispatcher.dispatch({\n      type: ActionTypes.Map.SET,\n      map: config,\n    });\n  }\n}\nexport default MapAction;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/actions/MapAction.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 73,
+    "__docId__": 25,
     "kind": "class",
     "name": "MapAction",
     "memberof": "src/actions/MapAction.js",
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/actions/MapAction.js",
     "importStyle": "MapAction",
@@ -1088,7 +359,7 @@
     "interface": false
   },
   {
-    "__docId__": 74,
+    "__docId__": 26,
     "kind": "method",
     "name": "createCells",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1096,44 +367,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.createCells",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 6,
-    "undocument": true,
-    "params": [
-      {
-        "name": "xMax",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "yMax",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "size",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "color",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 75,
+    "__docId__": 27,
     "kind": "method",
     "name": "getRandomInt",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1141,38 +381,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.getRandomInt",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 24,
-    "undocument": true,
-    "params": [
-      {
-        "name": "max",
-        "optional": true,
-        "types": [
-          "number"
-        ],
-        "defaultRaw": 3,
-        "defaultValue": "3"
-      },
-      {
-        "name": "min",
-        "optional": true,
-        "types": [
-          "number"
-        ],
-        "defaultRaw": 0,
-        "defaultValue": "0"
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
+    "lineNumber": 25,
+    "undocument": true
   },
   {
-    "__docId__": 76,
+    "__docId__": 28,
     "kind": "method",
     "name": "addPiece",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1180,22 +395,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.addPiece",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 28,
-    "undocument": true,
-    "params": [
-      {
-        "name": "config",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 29,
+    "undocument": true
   },
   {
-    "__docId__": 77,
+    "__docId__": 29,
     "kind": "method",
     "name": "movePiece",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1203,28 +409,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.movePiece",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 44,
-    "undocument": true,
-    "params": [
-      {
-        "name": "value",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "piece",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 45,
+    "undocument": true
   },
   {
-    "__docId__": 78,
+    "__docId__": 30,
     "kind": "method",
     "name": "_roundOff",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1232,32 +423,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction._roundOff",
-    "access": "private",
+    "access": null,
     "description": null,
-    "lineNumber": 51,
-    "undocument": true,
-    "params": [
-      {
-        "name": "target",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "size",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
+    "lineNumber": 52,
+    "undocument": true
   },
   {
-    "__docId__": 79,
+    "__docId__": 31,
     "kind": "method",
     "name": "removePieces",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1265,15 +437,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.removePieces",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 59,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "lineNumber": 60,
+    "undocument": true
   },
   {
-    "__docId__": 80,
+    "__docId__": 32,
     "kind": "method",
     "name": "selectPiece",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1281,22 +451,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.selectPiece",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 63,
-    "undocument": true,
-    "params": [
-      {
-        "name": "piece",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 64,
+    "undocument": true
   },
   {
-    "__docId__": 81,
+    "__docId__": 33,
     "kind": "method",
     "name": "listenPieces",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1304,15 +465,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.listenPieces",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 70,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "lineNumber": 71,
+    "undocument": true
   },
   {
-    "__docId__": 82,
+    "__docId__": 34,
     "kind": "method",
     "name": "setPiece",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1320,28 +479,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.setPiece",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 76,
-    "undocument": true,
-    "params": [
-      {
-        "name": "id",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "piece",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 77,
+    "undocument": true
   },
   {
-    "__docId__": 83,
+    "__docId__": 35,
     "kind": "method",
     "name": "removePiece",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1349,22 +493,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.removePiece",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 84,
-    "undocument": true,
-    "params": [
-      {
-        "name": "id",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 85,
+    "undocument": true
   },
   {
-    "__docId__": 84,
+    "__docId__": 36,
     "kind": "method",
     "name": "listenConfig",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1372,15 +507,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.listenConfig",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 91,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "lineNumber": 92,
+    "undocument": true
   },
   {
-    "__docId__": 85,
+    "__docId__": 37,
     "kind": "method",
     "name": "sendConfig",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1388,22 +521,13 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.sendConfig",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 96,
-    "undocument": true,
-    "params": [
-      {
-        "name": "config",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 97,
+    "undocument": true
   },
   {
-    "__docId__": 86,
+    "__docId__": 38,
     "kind": "method",
     "name": "setConfig",
     "memberof": "src/actions/MapAction.js~MapAction",
@@ -1411,99 +535,80 @@
     "async": false,
     "static": true,
     "longname": "src/actions/MapAction.js~MapAction.setConfig",
-    "access": "public",
+    "access": null,
     "description": null,
-    "lineNumber": 100,
-    "undocument": true,
-    "params": [
-      {
-        "name": "config",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null
+    "lineNumber": 101,
+    "undocument": true
   },
   {
-    "__docId__": 87,
+    "__docId__": 39,
     "kind": "file",
     "name": "src/constants/ActionTypes.js",
     "content": "/** アプリ内で利用する定数 */\nconst ActionTypes = {\n  Character: {\n    SET: 'Character.set',\n    INIT: 'Character.init',\n  },\n  Characters: {\n    SET: 'Characters.set',\n    ADD: 'Characters.add',\n  },\n  Layouts: {\n    SET: 'Layouts.set',\n    ADD: 'Layouts.add',\n  },\n  Map: {\n    SET: 'Map.set',\n  },\n  Messages: {\n    SET: 'Messages.set',\n    ADD: 'Messages.add',\n  },\n  Piece: {\n    SET: 'Piece.set',\n    INIT: 'Piece.init',\n  },\n  Pieces: {\n    SET: 'Pieces.set',\n    ADD: 'Pieces.add',\n    REMOVE: 'Pieces.remove',\n  },\n  Systems: {\n    SET: 'Systems.set',\n  },\n  System: {\n    SET: 'System.set',\n  },\n};\n\nexport default ActionTypes;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/constants/ActionTypes.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 88,
+    "__docId__": 40,
     "kind": "variable",
     "name": "ActionTypes",
     "memberof": "src/constants/ActionTypes.js",
     "static": true,
     "longname": "src/constants/ActionTypes.js~ActionTypes",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/constants/ActionTypes.js",
     "importStyle": "ActionTypes",
     "description": "アプリ内で利用する定数",
-    "lineNumber": 2,
-    "type": {
-      "types": [
-        "{\"Character\": *, \"Characters\": *, \"Layouts\": *, \"Map\": *, \"Messages\": *, \"Piece\": *, \"Pieces\": *, \"Systems\": *, \"System\": *}"
-      ]
-    }
+    "lineNumber": 2
   },
   {
-    "__docId__": 89,
+    "__docId__": 41,
     "kind": "file",
     "name": "src/constants/BCDiceAPI.js",
     "content": "/** BCDiceAPIに関する定数 */\nconst BCDiceAPI = {\n  URL: 'https://bcdice-api.herokuapp.com',\n  uri: {\n    SYSTEMS: '/v1/systems',\n    SYSTEM: '/v1/systeminfo',\n    DICE: '/v1/diceroll',\n  }\n};\nexport default BCDiceAPI;",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/constants/BCDiceAPI.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 90,
+    "__docId__": 42,
     "kind": "variable",
     "name": "BCDiceAPI",
     "memberof": "src/constants/BCDiceAPI.js",
     "static": true,
     "longname": "src/constants/BCDiceAPI.js~BCDiceAPI",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/constants/BCDiceAPI.js",
     "importStyle": "BCDiceAPI",
     "description": "BCDiceAPIに関する定数",
-    "lineNumber": 2,
-    "type": {
-      "types": [
-        "{\"URL\": string, \"uri\": *}"
-      ]
-    }
+    "lineNumber": 2
   },
   {
-    "__docId__": 91,
+    "__docId__": 43,
     "kind": "file",
     "name": "src/dispatcher/AppDispatcher.js",
     "content": "import { Dispatcher } from 'flux';\n\n/**\n * React Flux のDispatcher\n * @extends {Dispatcher}\n */\nclass AppDispatcher extends Dispatcher {\n  dispatch(action = {}) {\n    console.log(action);\n    super.dispatch(action);\n  }\n}\n\nexport default new AppDispatcher();",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/dispatcher/AppDispatcher.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 92,
+    "__docId__": 44,
     "kind": "class",
     "name": "AppDispatcher",
     "memberof": "src/dispatcher/AppDispatcher.js",
     "static": true,
     "longname": "src/dispatcher/AppDispatcher.js~AppDispatcher",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/dispatcher/AppDispatcher.js",
     "importStyle": null,
@@ -1516,7 +621,7 @@
     ]
   },
   {
-    "__docId__": 93,
+    "__docId__": 45,
     "kind": "method",
     "name": "dispatch",
     "memberof": "src/dispatcher/AppDispatcher.js~AppDispatcher",
@@ -1524,285 +629,203 @@
     "async": false,
     "static": false,
     "longname": "src/dispatcher/AppDispatcher.js~AppDispatcher#dispatch",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 8,
-    "undocument": true,
-    "params": [
-      {
-        "name": "action",
-        "optional": true,
-        "types": [
-          "{}"
-        ],
-        "defaultRaw": {},
-        "defaultValue": "{}"
-      }
-    ],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 94,
+    "__docId__": 46,
     "kind": "variable",
     "name": "appDispatcher",
     "memberof": "src/dispatcher/AppDispatcher.js",
     "static": true,
     "longname": "src/dispatcher/AppDispatcher.js~appDispatcher",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/dispatcher/AppDispatcher.js",
     "importStyle": "appDispatcher",
     "description": null,
     "lineNumber": 14,
-    "undocument": true,
-    "type": {
-      "types": [
-        "src/dispatcher/AppDispatcher.js~AppDispatcher"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 95,
+    "__docId__": 47,
     "kind": "file",
     "name": "src/firebase/config.js",
     "content": "export const firebaseConfig = {\n  apiKey: \"AIzaSyDxxucOZXhqm3jPfMsJizhLE7rziDChIuU\",\n  authDomain: \"dice-chat-6b7e2.firebaseapp.com\",\n  databaseURL: \"https://dice-chat-6b7e2.firebaseio.com\",\n  projectId: \"dice-chat-6b7e2\",\n  storageBucket: \"dice-chat-6b7e2.appspot.com\",\n  messagingSenderId: \"883454024625\"\n};\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/firebase/config.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 96,
+    "__docId__": 48,
     "kind": "variable",
     "name": "firebaseConfig",
     "memberof": "src/firebase/config.js",
     "static": true,
     "longname": "src/firebase/config.js~firebaseConfig",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/config.js",
     "importStyle": "{firebaseConfig}",
     "description": null,
     "lineNumber": 1,
-    "undocument": true,
-    "type": {
-      "types": [
-        "{\"apiKey\": string, \"authDomain\": string, \"databaseURL\": string, \"projectId\": string, \"storageBucket\": string, \"messagingSenderId\": string}"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 97,
+    "__docId__": 49,
     "kind": "file",
     "name": "src/firebase/index.js",
-    "content": "import firebase from 'firebase';\nimport { firebaseConfig } from '../firebase/config.js';\n\nexport const firebaseApp = firebase.initializeApp(firebaseConfig);\nexport const firebaseDb = firebaseApp.database();\nexport const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */\nexport const secretMessagesRef = firebaseDb.ref('secret_messages') /** チャット履歴(秘密) */\nexport const charactersRef = firebaseDb.ref('characters') /** 発言キャラ */\nexport const piecesRef = firebaseDb.ref('pieces') /** 駒配置 */\nexport const configRef = firebaseDb.ref('config') /** 設定 */\n",
+    "content": "import firebase from 'firebase';\nimport { firebaseConfig } from '../firebase/config.js';\n\nexport const firebaseApp = firebase.initializeApp(firebaseConfig);\nexport const firebaseDb = firebaseApp.database();\nexport const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */\nexport const charactersRef = firebaseDb.ref('characters') /** 発言キャラ */\nexport const piecesRef = firebaseDb.ref('pieces') /** 駒配置 */\nexport const configRef = firebaseDb.ref('config') /** 設定 */\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/firebase/index.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 98,
+    "__docId__": 50,
     "kind": "variable",
     "name": "firebaseApp",
     "memberof": "src/firebase/index.js",
     "static": true,
     "longname": "src/firebase/index.js~firebaseApp",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/index.js",
     "importStyle": "{firebaseApp}",
     "description": null,
     "lineNumber": 4,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 99,
+    "__docId__": 51,
     "kind": "variable",
     "name": "firebaseDb",
     "memberof": "src/firebase/index.js",
     "static": true,
     "longname": "src/firebase/index.js~firebaseDb",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/index.js",
     "importStyle": "{firebaseDb}",
     "description": null,
     "lineNumber": 5,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 100,
+    "__docId__": 52,
     "kind": "variable",
     "name": "messagesRef",
     "memberof": "src/firebase/index.js",
     "static": true,
     "longname": "src/firebase/index.js~messagesRef",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/index.js",
     "importStyle": "{messagesRef}",
     "description": null,
     "lineNumber": 6,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 101,
-    "kind": "variable",
-    "name": "secretMessagesRef",
-    "memberof": "src/firebase/index.js",
-    "static": true,
-    "longname": "src/firebase/index.js~secretMessagesRef",
-    "access": "public",
-    "export": true,
-    "importPath": "dice-chat/src/firebase/index.js",
-    "importStyle": "{secretMessagesRef}",
-    "description": "チャット履歴",
-    "lineNumber": 7,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 102,
+    "__docId__": 53,
     "kind": "variable",
     "name": "charactersRef",
     "memberof": "src/firebase/index.js",
     "static": true,
     "longname": "src/firebase/index.js~charactersRef",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/index.js",
     "importStyle": "{charactersRef}",
-    "description": "チャット履歴(秘密)",
-    "lineNumber": 8,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "description": "チャット履歴",
+    "lineNumber": 7
   },
   {
-    "__docId__": 103,
+    "__docId__": 54,
     "kind": "variable",
     "name": "piecesRef",
     "memberof": "src/firebase/index.js",
     "static": true,
     "longname": "src/firebase/index.js~piecesRef",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/index.js",
     "importStyle": "{piecesRef}",
     "description": "発言キャラ",
-    "lineNumber": 9,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "lineNumber": 8
   },
   {
-    "__docId__": 104,
+    "__docId__": 55,
     "kind": "variable",
     "name": "configRef",
     "memberof": "src/firebase/index.js",
     "static": true,
     "longname": "src/firebase/index.js~configRef",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/firebase/index.js",
     "importStyle": "{configRef}",
     "description": "駒配置",
-    "lineNumber": 10,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "lineNumber": 9
   },
   {
-    "__docId__": 105,
+    "__docId__": 56,
     "kind": "file",
     "name": "src/myTheme.js",
     "content": "import * as Colors from 'material-ui/styles/colors';\nimport { fade } from 'material-ui/utils/colorManipulator';\nimport Spacing from 'material-ui/styles/spacing';\n\n/** Material UI の独自テーマ */\nconst myTheme = {\n  spacing: Spacing,\n  fontFamily: 'Roboto, sans-serif',\n  palette: {\n    primary1Color: Colors.deepPurple500,\n    primary2Color: Colors.deepPurple700,\n    primary3Color: Colors.deepPurple100,\n    accent1Color: Colors.pinkA200,\n    accent2Color: Colors.grey100,\n    accent3Color: Colors.grey500,\n    textColor: Colors.darkBlack,\n    alternateTextColor: Colors.white,\n    canvasColor: Colors.white,\n    borderColor: Colors.grey300,\n    disabledColor: fade(Colors.darkBlack, 0.3)\n  }\n};\n\nexport default myTheme;",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/myTheme.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 106,
+    "__docId__": 57,
     "kind": "variable",
     "name": "myTheme",
     "memberof": "src/myTheme.js",
     "static": true,
     "longname": "src/myTheme.js~myTheme",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/myTheme.js",
     "importStyle": "myTheme",
     "description": "Material UI の独自テーマ",
-    "lineNumber": 6,
-    "type": {
-      "types": [
-        "{\"spacing\": *, \"fontFamily\": string, \"palette\": *}"
-      ]
-    }
+    "lineNumber": 6
   },
   {
-    "__docId__": 107,
+    "__docId__": 58,
     "kind": "file",
     "name": "src/registerServiceWorker.js",
     "content": "// In production, we register a service worker to serve assets from local cache.\n\n// This lets the app load faster on subsequent visits in production, and gives\n// it offline capabilities. However, it also means that developers (and users)\n// will only see deployed updates on the \"N+1\" visit to a page, since previously\n// cached resources are updated in the background.\n\n// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.\n// This link also includes instructions on opting out of this behavior.\n\nconst isLocalhost = Boolean(\n  window.location.hostname === 'localhost' ||\n    // [::1] is the IPv6 localhost address.\n    window.location.hostname === '[::1]' ||\n    // 127.0.0.1/8 is considered localhost for IPv4.\n    window.location.hostname.match(\n      /^127(?:\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/\n    )\n);\n\nexport default function register() {\n  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {\n    // The URL constructor is available in all browsers that support SW.\n    const publicUrl = new URL(process.env.PUBLIC_URL, window.location);\n    if (publicUrl.origin !== window.location.origin) {\n      // Our service worker won't work if PUBLIC_URL is on a different origin\n      // from what our page is served on. This might happen if a CDN is used to\n      // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374\n      return;\n    }\n\n    window.addEventListener('load', () => {\n      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;\n\n      if (!isLocalhost) {\n        // Is not local host. Just register service worker\n        registerValidSW(swUrl);\n      } else {\n        // This is running on localhost. Lets check if a service worker still exists or not.\n        checkValidServiceWorker(swUrl);\n      }\n    });\n  }\n}\n\nfunction registerValidSW(swUrl) {\n  navigator.serviceWorker\n    .register(swUrl)\n    .then(registration => {\n      registration.onupdatefound = () => {\n        const installingWorker = registration.installing;\n        installingWorker.onstatechange = () => {\n          if (installingWorker.state === 'installed') {\n            if (navigator.serviceWorker.controller) {\n              // At this point, the old content will have been purged and\n              // the fresh content will have been added to the cache.\n              // It's the perfect time to display a \"New content is\n              // available; please refresh.\" message in your web app.\n              console.log('New content is available; please refresh.');\n            } else {\n              // At this point, everything has been precached.\n              // It's the perfect time to display a\n              // \"Content is cached for offline use.\" message.\n              console.log('Content is cached for offline use.');\n            }\n          }\n        };\n      };\n    })\n    .catch(error => {\n      console.error('Error during service worker registration:', error);\n    });\n}\n\nfunction checkValidServiceWorker(swUrl) {\n  // Check if the service worker can be found. If it can't reload the page.\n  fetch(swUrl)\n    .then(response => {\n      // Ensure service worker exists, and that we really are getting a JS file.\n      if (\n        response.status === 404 ||\n        response.headers.get('content-type').indexOf('javascript') === -1\n      ) {\n        // No service worker found. Probably a different app. Reload the page.\n        navigator.serviceWorker.ready.then(registration => {\n          registration.unregister().then(() => {\n            window.location.reload();\n          });\n        });\n      } else {\n        // Service worker found. Proceed as normal.\n        registerValidSW(swUrl);\n      }\n    })\n    .catch(() => {\n      console.log(\n        'No internet connection found. App is running in offline mode.'\n      );\n    });\n}\n\nexport function unregister() {\n  if ('serviceWorker' in navigator) {\n    navigator.serviceWorker.ready.then(registration => {\n      registration.unregister();\n    });\n  }\n}\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/registerServiceWorker.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 108,
+    "__docId__": 59,
     "kind": "variable",
     "name": "isLocalhost",
     "memberof": "src/registerServiceWorker.js",
     "static": true,
     "longname": "src/registerServiceWorker.js~isLocalhost",
-    "access": "public",
+    "access": null,
     "export": false,
     "importPath": "dice-chat/src/registerServiceWorker.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 11,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
+    "undocument": true
   },
   {
-    "__docId__": 109,
+    "__docId__": 60,
     "kind": "function",
     "name": "register",
     "memberof": "src/registerServiceWorker.js",
@@ -1810,18 +833,16 @@
     "async": false,
     "static": true,
     "longname": "src/registerServiceWorker.js~register",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/registerServiceWorker.js",
     "importStyle": "register",
     "description": null,
     "lineNumber": 21,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 110,
+    "__docId__": 61,
     "kind": "function",
     "name": "registerValidSW",
     "memberof": "src/registerServiceWorker.js",
@@ -1829,26 +850,16 @@
     "async": false,
     "static": true,
     "longname": "src/registerServiceWorker.js~registerValidSW",
-    "access": "public",
+    "access": null,
     "export": false,
     "importPath": "dice-chat/src/registerServiceWorker.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 46,
-    "undocument": true,
-    "params": [
-      {
-        "name": "swUrl",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null,
-    "ignore": true
+    "undocument": true
   },
   {
-    "__docId__": 111,
+    "__docId__": 62,
     "kind": "function",
     "name": "checkValidServiceWorker",
     "memberof": "src/registerServiceWorker.js",
@@ -1856,26 +867,16 @@
     "async": false,
     "static": true,
     "longname": "src/registerServiceWorker.js~checkValidServiceWorker",
-    "access": "public",
+    "access": null,
     "export": false,
     "importPath": "dice-chat/src/registerServiceWorker.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 75,
-    "undocument": true,
-    "params": [
-      {
-        "name": "swUrl",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": null,
-    "ignore": true
+    "undocument": true
   },
   {
-    "__docId__": 112,
+    "__docId__": 63,
     "kind": "function",
     "name": "unregister",
     "memberof": "src/registerServiceWorker.js",
@@ -1883,35 +884,33 @@
     "async": false,
     "static": true,
     "longname": "src/registerServiceWorker.js~unregister",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/registerServiceWorker.js",
     "importStyle": "{unregister}",
     "description": null,
     "lineNumber": 102,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "undocument": true
   },
   {
-    "__docId__": 113,
+    "__docId__": 64,
     "kind": "file",
     "name": "src/stores/CharacterStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 発言キャラクタ情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Character 発言キャラクタ\n * @property {string} id キャラクタのID\n * @property {string} name キャラクタ名\n * @property {string} color キャラクタ色\n * @property {string} url キャラクタ画像の参照先\n */\nclass CharacterStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      id: '',\n      name: '',\n      color: '#ff5252',\n      url: '',\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Character.SET:\n        return Immutable.fromJS(action.characterConfig);\n      case ActionTypes.Character.INIT:\n        return this.getInitialState();\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharacterStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/CharacterStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 114,
+    "__docId__": 65,
     "kind": "typedef",
     "name": "Character",
     "memberof": "src/stores/CharacterStore.js",
     "static": true,
     "longname": "src/stores/CharacterStore.js~Character",
-    "access": "public",
+    "access": null,
     "description": "発言キャラクタ情報",
     "lineNumber": 17,
     "pseudoExport": true,
@@ -1972,44 +971,39 @@
     }
   },
   {
-    "__docId__": 115,
+    "__docId__": 66,
     "kind": "variable",
     "name": "characterStore",
     "memberof": "src/stores/CharacterStore.js",
     "static": true,
     "longname": "src/stores/CharacterStore.js~characterStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/CharacterStore.js",
     "importStyle": "characterStore",
     "description": null,
     "lineNumber": 39,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 116,
+    "__docId__": 67,
     "kind": "file",
     "name": "src/stores/CharactersStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 発言キャラクタの一覧\n * @extends {ReduceStore}\n * \n * @typedef {Object} Characters 発言キャラクタ一覧\n * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)\n * @property {string} {id}.id キャラクタのID\n * @property {string} {id}.name キャラクタ名\n * @property {string} {id}.color キャラクタ色\n * @property {string} {id}.url キャラクタ画像の参照先\n */\nclass CharactersStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      'A': {\n        id: 'A',\n        name: 'A',\n        color: '#f44336',\n        url: './resources/31_ic.png',\n      },\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Characters.ADD:\n        return state.set(action.character.id, action.character);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharactersStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/CharactersStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 117,
+    "__docId__": 68,
     "kind": "typedef",
     "name": "Characters",
     "memberof": "src/stores/CharactersStore.js",
     "static": true,
     "longname": "src/stores/CharactersStore.js~Characters",
-    "access": "public",
+    "access": null,
     "description": "発言キャラクタの一覧",
     "lineNumber": 18,
     "pseudoExport": true,
@@ -2080,44 +1074,39 @@
     }
   },
   {
-    "__docId__": 118,
+    "__docId__": 69,
     "kind": "variable",
     "name": "charactersStore",
     "memberof": "src/stores/CharactersStore.js",
     "static": true,
     "longname": "src/stores/CharactersStore.js~charactersStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/CharactersStore.js",
     "importStyle": "charactersStore",
     "description": null,
     "lineNumber": 40,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 119,
+    "__docId__": 70,
     "kind": "file",
     "name": "src/stores/LayoutsStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * GridAreaに表示する画面項目の配置, サイズ一覧\n * @extends {ReduceStore}\n * \n * @typedef {Layout[]} Layouts レイアウト一覧\n * \n * @typedef {Object} Layout レイアウト\n * @property {string} i レイアウトID\n * @property {number} x 座標(x)\n * @property {number} y 座標(y)\n * @property {number} w サイズ(横)\n * @property {number} h サイズ(縦)\n * @property {number} minW 最小サイズ(横)\n * @property {number} minH 最小サイズ(縦)\n * @property {bool} isDraggable ドラッグ移動の可否\n */\nclass LayoutsStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS([{\n      i: 'map-board', x: 0, y: 0, w: 8, h: 7, minW: 8, minH: 7, isDraggable: false,\n    }, {\n      i: 'chat-board', x: 12, y: 0, w: 12, h: 7, minW: 12, minH: 6,\n    }, {\n      i: 'config-board', x: 8, y: 0, w: 4, h: 7, minW: 4, minH: 4,\n    }]);\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Layouts.SET:\n        return Immutable.fromJS(action.layouts);\n      case ActionTypes.Layouts.ADD:\n        return state.push(action.layout);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new LayoutsStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/LayoutsStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 120,
+    "__docId__": 71,
     "kind": "typedef",
     "name": "Layout",
     "memberof": "src/stores/LayoutsStore.js",
     "static": true,
     "longname": "src/stores/LayoutsStore.js~Layout",
-    "access": "public",
+    "access": null,
     "description": "GridAreaに表示する画面項目の配置, サイズ一覧",
     "lineNumber": 23,
     "pseudoExport": true,
@@ -2218,44 +1207,39 @@
     }
   },
   {
-    "__docId__": 121,
+    "__docId__": 72,
     "kind": "variable",
     "name": "layoutsStore",
     "memberof": "src/stores/LayoutsStore.js",
     "static": true,
     "longname": "src/stores/LayoutsStore.js~layoutsStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/LayoutsStore.js",
     "importStyle": "layoutsStore",
     "description": null,
     "lineNumber": 46,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 122,
+    "__docId__": 73,
     "kind": "file",
     "name": "src/stores/MapStore.js",
-    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * MapAreaの情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Map マップ情報\n * @property {number} x 横セル数\n * @property {number} y 縦セル数\n * @property {number} size セルの大きさ\n * @property {Image} url 背景画像の参照先\n * @property {string} color セルの色\n */\nclass MapStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      x: 10,  // 横セル数\n      y: 10,  // 縦セル数\n      size: 30, // セルのサイズ\n      url: './resources/map02.jpg',  // 背景イメージ\n      color: '#B2FF59',  // セル, 文字の色\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Map.SET:\n        return Immutable.fromJS(action.map);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new MapStore(AppDispatcher);",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * MapAreaの情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Map マップ情報\n * @property {number} cols 横セル数\n * @property {number} rows 縦セル数\n * @property {number} size セルの大きさ\n * @property {Image} url 背景画像の参照先\n * @property {string} color セルの色\n */\nclass MapStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      cols: 10,  // 横セル数\n      rows: 10,  // 縦セル数\n      size: 30, // セルのサイズ\n      url: './resources/map02.jpg',  // 背景イメージ\n      color: '#B2FF59',  // セル, 文字の色\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Map.SET:\n        return Immutable.fromJS(action.map);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new MapStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/MapStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 123,
+    "__docId__": 74,
     "kind": "typedef",
     "name": "Map",
     "memberof": "src/stores/MapStore.js",
     "static": true,
     "longname": "src/stores/MapStore.js~Map",
-    "access": "public",
+    "access": null,
     "description": "MapAreaの情報",
     "lineNumber": 18,
     "pseudoExport": true,
@@ -2273,7 +1257,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "x",
+        "name": "cols",
         "description": "横セル数"
       },
       {
@@ -2283,7 +1267,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "y",
+        "name": "rows",
         "description": "縦セル数"
       },
       {
@@ -2326,44 +1310,39 @@
     }
   },
   {
-    "__docId__": 124,
+    "__docId__": 75,
     "kind": "variable",
     "name": "mapStore",
     "memberof": "src/stores/MapStore.js",
     "static": true,
     "longname": "src/stores/MapStore.js~mapStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/MapStore.js",
     "importStyle": "mapStore",
     "description": null,
     "lineNumber": 39,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 125,
+    "__docId__": 76,
     "kind": "file",
     "name": "src/stores/MessagesStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * LogAreaに表示するチャット履歴\n * @extends {ReduceStore}\n * \n * @typedef {Message[]} Messages メッセージ一覧\n * \n * @typedef {Object} Message メッセージ\n * @property {string} id メッセージID\n * @property {Object} character 発言者\n * @property {string} character.id 発言者ID\n * @property {string} character.name 発言者名\n * @property {string} character.color 表示色\n * @property {string} character.url 発言者画像の参照先\n * @property {string} system ダイスシステム\n * @property {string} text 発言内容\n */\nclass MessagesStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS([]);\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Messages.SET:\n        return Immutable.fromJS(action.messages);\n      case ActionTypes.Messages.ADD:\n        return state.push(action.message);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new MessagesStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/MessagesStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 126,
+    "__docId__": 77,
     "kind": "typedef",
     "name": "Message",
     "memberof": "src/stores/MessagesStore.js",
     "static": true,
     "longname": "src/stores/MessagesStore.js~Message",
-    "access": "public",
+    "access": null,
     "description": "LogAreaに表示するチャット履歴",
     "lineNumber": 23,
     "pseudoExport": true,
@@ -2464,44 +1443,39 @@
     }
   },
   {
-    "__docId__": 127,
+    "__docId__": 78,
     "kind": "variable",
     "name": "messagesStore",
     "memberof": "src/stores/MessagesStore.js",
     "static": true,
     "longname": "src/stores/MessagesStore.js~messagesStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/MessagesStore.js",
     "importStyle": "messagesStore",
     "description": null,
     "lineNumber": 40,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 128,
+    "__docId__": 79,
     "kind": "file",
     "name": "src/stores/PieceStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 駒の情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Piece\n * @property {string} name 駒名\n * @property {string} url 駒画像の参照先\n * @property {number} size 駒の大きさ\n */\nclass PieceStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      name: '',\n      url: '',\n      size: 45,\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Piece.SET:\n        return Immutable.fromJS(action.characterConfig);\n      case ActionTypes.Piece.INIT:\n        return this.getInitialState();\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new PieceStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/PieceStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 129,
+    "__docId__": 80,
     "kind": "typedef",
     "name": "Piece",
     "memberof": "src/stores/PieceStore.js",
     "static": true,
     "longname": "src/stores/PieceStore.js~Piece",
-    "access": "public",
+    "access": null,
     "description": "駒の情報",
     "lineNumber": 16,
     "pseudoExport": true,
@@ -2552,44 +1526,39 @@
     }
   },
   {
-    "__docId__": 130,
+    "__docId__": 81,
     "kind": "variable",
     "name": "pieceStore",
     "memberof": "src/stores/PieceStore.js",
     "static": true,
     "longname": "src/stores/PieceStore.js~pieceStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/PieceStore.js",
     "importStyle": "pieceStore",
     "description": null,
     "lineNumber": 37,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 131,
+    "__docId__": 82,
     "kind": "file",
     "name": "src/stores/PiecesStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * MapAreaに配置する駒一覧\n * @extends {ReduceStore}\n * \n * @typedef {Object} Pieces\n * @property {Object} {id} 駒のID(※キー名称は駒ごとに別)\n * @property {string} {id}.id 駒のID\n * @property {string} {id}.name 駒名\n * @property {number} {id}.x 描画位置(x)\n * @property {number} {id}.y 描画位置(y)\n * @property {number} {id}.width 駒のサイズ(横)\n * @property {number} {id}.height 駒のサイズ(縦)\n * @property {number} {id}.size 駒のサイズ\n * @property {number} {id}.strokeWidth 駒の縁サイズ\n * @property {string} {id}.url 駒画像の参照先\n */\nclass PiecesStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({});\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Pieces.SET:\n        return Immutable.fromJS(action.pieces);\n      case ActionTypes.Pieces.ADD:\n        return state.set(action.piece.id, action.piece);\n      case ActionTypes.Pieces.REMOVE:\n        return state.delete(action.id);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new PiecesStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/PiecesStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 132,
+    "__docId__": 83,
     "kind": "typedef",
     "name": "Pieces",
     "memberof": "src/stores/PiecesStore.js",
     "static": true,
     "longname": "src/stores/PiecesStore.js~Pieces",
-    "access": "public",
+    "access": null,
     "description": "MapAreaに配置する駒一覧",
     "lineNumber": 23,
     "pseudoExport": true,
@@ -2710,44 +1679,39 @@
     }
   },
   {
-    "__docId__": 133,
+    "__docId__": 84,
     "kind": "variable",
     "name": "piecesStore",
     "memberof": "src/stores/PiecesStore.js",
     "static": true,
     "longname": "src/stores/PiecesStore.js~piecesStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/PiecesStore.js",
     "importStyle": "piecesStore",
     "description": null,
     "lineNumber": 42,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 134,
+    "__docId__": 85,
     "kind": "file",
     "name": "src/stores/SystemStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * BCDiceに指定するシステム情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} System\n * @property {string} name システム名\n * @property {string} gameType システム名の指定値\n * @property {string[]} prefixs システム特有のダイス表記リスト\n * @property {string} info システム特有のダイス表記に対する説明文\n */\nclass SystemStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      name: '',\n      gameType: 'Cthulhu',\n      prefixs: [],\n      info: '',\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.System.SET:\n        return Immutable.fromJS(action.system);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new SystemStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/SystemStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 135,
+    "__docId__": 86,
     "kind": "typedef",
     "name": "System",
     "memberof": "src/stores/SystemStore.js",
     "static": true,
     "longname": "src/stores/SystemStore.js~System",
-    "access": "public",
+    "access": null,
     "description": "BCDiceに指定するシステム情報",
     "lineNumber": 17,
     "pseudoExport": true,
@@ -2808,44 +1772,39 @@
     }
   },
   {
-    "__docId__": 136,
+    "__docId__": 87,
     "kind": "variable",
     "name": "systemStore",
     "memberof": "src/stores/SystemStore.js",
     "static": true,
     "longname": "src/stores/SystemStore.js~systemStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/SystemStore.js",
     "importStyle": "systemStore",
     "description": null,
     "lineNumber": 37,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "undocument": true
   },
   {
-    "__docId__": 137,
+    "__docId__": 88,
     "kind": "file",
     "name": "src/stores/SystemsStore.js",
     "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * BCDiceの提供するシステム一覧\n * @extends {ReduceStore}\n * \n * @typedef {string[]} Systems システム名の指定値リスト\n */\nclass SystemsStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS([]);\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Systems.SET:\n        return Immutable.fromJS(action.systems);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new SystemsStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/SystemsStore.js",
-    "access": "public",
+    "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 138,
+    "__docId__": 89,
     "kind": "typedef",
     "name": "Systems",
     "memberof": "src/stores/SystemsStore.js",
     "static": true,
     "longname": "src/stores/SystemsStore.js~Systems",
-    "access": "public",
+    "access": null,
     "description": "BCDiceの提供するシステム一覧",
     "lineNumber": 13,
     "pseudoExport": true,
@@ -2864,23 +1823,155 @@
     }
   },
   {
-    "__docId__": 139,
+    "__docId__": 90,
     "kind": "variable",
     "name": "systemsStore",
     "memberof": "src/stores/SystemsStore.js",
     "static": true,
     "longname": "src/stores/SystemsStore.js~systemsStore",
-    "access": "public",
+    "access": null,
     "export": true,
     "importPath": "dice-chat/src/stores/SystemsStore.js",
     "importStyle": "systemsStore",
     "description": null,
     "lineNumber": 28,
-    "undocument": true,
-    "type": {
+    "undocument": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "file",
+    "name": "src/utils/ImagesManager.js",
+    "content": "/**\n * 画像管理\n */\nclass ImagesManager {\n  // 管理中画像一覧\n  static images = {};\n\n  /**\n   * 管理中画像一覧にscrの画像が含まれるか\n   * @param {string} src 検索対象URL\n   * @return {bool} 管理済みか?\n   */\n  static hasImage(src) {\n    return this.images[src] !== undefined;\n  }\n\n  /**\n   * 管理中画像一覧からscrの画像を取得  \n   * 未登録の場合は、管理に追加\n   * @param {string} src 対象URL\n   * @return {Image} 対象のImageオブジェクト\n   */\n  static getImage(src) {\n    return this.hasImage(src) ? this.images[src] : this.addImage(src);\n  }\n\n  /**\n   * 管理中画像一覧にscrの画像を追加\n   * @param {string} src 対象URL\n   * @return {Image} 対象のImageオブジェクト\n   */\n  static addImage(src) {\n    const image = new Image();\n    image.src = src;\n    this.images[src] = image;\n    return image; \n  }\n}\nexport default ImagesManager;",
+    "static": true,
+    "longname": "/Users/nona/Documents/work/dice-chat/src/utils/ImagesManager.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 92,
+    "kind": "class",
+    "name": "ImagesManager",
+    "memberof": "src/utils/ImagesManager.js",
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager",
+    "access": null,
+    "export": true,
+    "importPath": "dice-chat/src/utils/ImagesManager.js",
+    "importStyle": "ImagesManager",
+    "description": "画像管理",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 93,
+    "kind": "member",
+    "name": "images",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.images",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "name": "hasImage",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.hasImage",
+    "access": null,
+    "description": "管理中画像一覧にscrの画像が含まれるか",
+    "lineNumber": 13,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "src",
+        "description": "検索対象URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "bool"
+      ],
+      "spread": false,
+      "description": "管理済みか?"
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "method",
+    "name": "getImage",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.getImage",
+    "access": null,
+    "description": "管理中画像一覧からscrの画像を取得  \n未登録の場合は、管理に追加",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "src",
+        "description": "対象URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Image"
+      ],
+      "spread": false,
+      "description": "対象のImageオブジェクト"
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "method",
+    "name": "addImage",
+    "memberof": "src/utils/ImagesManager.js~ImagesManager",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/ImagesManager.js~ImagesManager.addImage",
+    "access": null,
+    "description": "管理中画像一覧にscrの画像を追加",
+    "lineNumber": 32,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "src",
+        "description": "対象URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Image"
+      ],
+      "spread": false,
+      "description": "対象のImageオブジェクト"
     }
   },
   {
@@ -2893,7 +1984,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"dice-chat\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"axios\": \"^0.16.2\",\n    \"firebase\": \"^4.2.0\",\n    \"flux\": \"^3.1.3\",\n    \"immutable\": \"^3.8.1\",\n    \"konva\": \"^1.6.7\",\n    \"material-ui\": \"^0.19.0\",\n    \"react\": \"^15.6.1\",\n    \"react-dom\": \"^15.6.1\",\n    \"react-grid-layout\": \"^0.14.7\",\n    \"react-konva\": \"^1.1.4\",\n    \"react-scripts\": \"1.0.11\",\n    \"react-tap-event-plugin\": \"^2.0.1\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test --env=jsdom\",\n    \"eject\": \"react-scripts eject\",\n    \"esdoc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"devDependencies\": {\n    \"esdoc\": \"^1.0.1\",\n    \"esdoc-standard-plugin\": \"^1.0.0\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"dice-chat\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"axios\": \"^0.16.2\",\n    \"firebase\": \"^4.2.0\",\n    \"flux\": \"^3.1.3\",\n    \"immutable\": \"^3.8.1\",\n    \"konva\": \"^1.6.7\",\n    \"material-ui\": \"^0.19.0\",\n    \"react\": \"^15.6.1\",\n    \"react-dom\": \"^15.6.1\",\n    \"react-grid-layout\": \"^0.14.7\",\n    \"react-konva\": \"^1.1.4\",\n    \"react-scripts\": \"1.0.11\",\n    \"react-tap-event-plugin\": \"^2.0.1\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test --env=jsdom\",\n    \"eject\": \"react-scripts eject\",\n    \"esdoc\": \"./node_modules/.bin/esdoc\"\n  },\n  \"devDependencies\": {\n    \"esdoc\": \"^1.0.1\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\"\n  }\n}\n",
     "longname": "/Users/nona/Documents/work/dice-chat/package.json",
     "name": "package.json",
     "static": true,

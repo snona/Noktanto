@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "esdoc": "^1.0.1",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-standard-plugin": "^1.0.0"
   }
 }

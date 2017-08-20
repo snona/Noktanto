@@ -4,6 +4,9 @@ import { Group, Rect, Text } from 'react-konva';
 
 import RectImage from '../components/RectImage';
 
+/**
+ * マップ表示用駒部品
+ */
 class Piece extends Component {
     render() {
       const { cell, movePiece, selectPiece } = this.props;
@@ -23,9 +26,11 @@ class Piece extends Component {
           onDragend={(v) => movePiece(v.target.attrs) }
           onClick={() => selectPiece()}
         >
+          {/* 画像 */}
           <RectImage
             image={image}
           />
+          {/* 名前枠 */}
           <Rect
             x={0}
             y={-10}
@@ -35,6 +40,7 @@ class Piece extends Component {
             stroke={'#263238'}
             strokeWidth={cell.strokeWidth}
           />
+          {/* 名前 */}
           <Text
             x={0}
             y={-10}

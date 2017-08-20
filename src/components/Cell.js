@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Group, Rect, Text } from 'react-konva';
 
+/**
+ * マップ枠, 座標表示部品
+ */
 class Cell extends Component {
     render() {
       const { cell } = this.props;
@@ -22,7 +25,7 @@ class Cell extends Component {
           <Text
             x={0}
             y={0}
-            text={`${cell.x/cell.width}-${cell.y/cell.height}`}
+            text={cell.key}
             fontSize={fontSize}
             fontFamily={'Roboto'}
             fill={cell.stroke}
@@ -40,6 +43,7 @@ Cell.propTypes = {
     height: PropTypes.number.isRequired,
     stroke: PropTypes.string.isRequired,
     strokeWidth: PropTypes.number.isRequired,
+    key: PropTypes.string.isRequired,
   }).isRequired,
 };
 
