@@ -13,7 +13,8 @@ import PieceConfig from '../components/PieceConfig';
 import ConfigDialog from '../components/ConfigDialog';
 
 /**
- * 画面統括
+ * 設定画面統括  
+ * 現状開発用の画面置き場
  */
 class _Config extends Component {
   static getStores() {
@@ -44,18 +45,21 @@ class _Config extends Component {
           onClick={() => MapAction.removePieces()}
           style={{ marginTop: 10, marginLeft: 10 }}
         />
+        {/* マップ設定画面 */}
         <ConfigDialog
           label="Config Map"
           config={map}
           setConfig={(newConfig) => MapAction.sendConfig(newConfig)}
           ConfigArea={MapConfig}
         />
+        {/* キャラクタ設定画面 */}
         <ConfigDialog
           label="Add Character"
           config={character}
           setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
           ConfigArea={CharacterConfig}
         />
+        {/* 駒設定画面 */}
         <ConfigDialog
           label="Add Piece"
           config={piece}

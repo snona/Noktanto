@@ -5,10 +5,10 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
 /**
- * キャラクタの一覧
+ * 発言キャラクタの一覧
  * @extends {ReduceStore}
  * 
- * @typedef {Object} Characters キャラクタ一覧
+ * @typedef {Object} Characters 発言キャラクタ一覧
  * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)
  * @property {string} {id}.id キャラクタのID
  * @property {string} {id}.name キャラクタ名

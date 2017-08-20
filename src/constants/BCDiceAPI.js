@@ -1,3 +1,4 @@
+/** BCDiceAPIに関する定数 */
 const BCDiceAPI = {
   URL: 'https://bcdice-api.herokuapp.com',
   uri: {

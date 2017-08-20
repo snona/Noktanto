@@ -61,9 +61,8 @@ class MapAction {
   }
 
   static selectPiece(piece) {
-    console.log(piece);
     AppDispatcher.dispatch({
-      type: ActionTypes.Pieces.UPDATE,
+      type: ActionTypes.Piece.SET,
       piece,
     });
   }

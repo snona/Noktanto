@@ -7,7 +7,7 @@ import ImagesManager from '../utils/ImagesManager';
 class RectImage extends Component {
     render() {
       const { image } = this.props;
-      const img = ImagesManager.hasImage(image.src) ? ImagesManager.getImage(image.src) : ImagesManager.addImage(image.src);
+      const img = ImagesManager.getImage(image.src);
       return (
         <Image
           x={image.x}

@@ -1,7 +1,7 @@
 {
-  "coverage": "9.67%",
+  "coverage": "12.9%",
   "expectCount": 62,
-  "actualCount": 6,
+  "actualCount": 8,
   "files": {
     "src/actions/CharacterAction.js": {
       "expectCount": 6,
@@ -59,12 +59,12 @@
         51,
         59,
         63,
-        71,
-        77,
-        85,
-        92,
-        97,
-        101
+        70,
+        76,
+        84,
+        91,
+        96,
+        100
       ]
     },
     "src/constants/ActionTypes.js": {
@@ -74,18 +74,15 @@
     },
     "src/constants/BCDiceAPI.js": {
       "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        1
-      ]
+      "actualCount": 1,
+      "undocumentLines": []
     },
     "src/dispatcher/AppDispatcher.js": {
       "expectCount": 3,
-      "actualCount": 0,
+      "actualCount": 1,
       "undocumentLines": [
-        3,
-        4,
-        10
+        8,
+        14
       ]
     },
     "src/firebase/config.js": {

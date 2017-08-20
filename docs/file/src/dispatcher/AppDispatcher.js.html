@@ -74,6 +74,10 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/dispatcher/AppDispatcher.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Dispatcher } from &apos;flux&apos;;
 
+/**
+ * React Flux &#x306E;Dispatcher
+ * @extends {Dispatcher}
+ */
 class AppDispatcher extends Dispatcher {
   dispatch(action = {}) {
     console.log(action);

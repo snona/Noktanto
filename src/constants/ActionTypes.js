@@ -26,7 +26,6 @@ const ActionTypes = {
   Pieces: {
     SET: 'Pieces.set',
     ADD: 'Pieces.add',
-    UPDATE: 'Pieces.update',
     REMOVE: 'Pieces.remove',
   },
   Systems: {

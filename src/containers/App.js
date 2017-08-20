@@ -6,7 +6,7 @@ import GridArea from '../components/GridArea';
 import LayoutsStore from '../stores/LayoutsStore';
 
 /**
- * 画面統括
+ * 全画面統括
  */
 class _App extends Component {
   static getStores() {

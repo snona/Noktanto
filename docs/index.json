@@ -1064,7 +1064,7 @@
     "__docId__": 72,
     "kind": "file",
     "name": "src/actions/MapAction.js",
-    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { piecesRef, configRef } from '../firebase';\n\nclass MapAction {\n  static createCells(xMax, yMax, size, color) {\n    const cells = [];\n    for (let x = 0; x < xMax; x++) {\n      for (let y = 0; y < yMax; y++) {\n        cells.push({\n          x: x * size,\n          y: y * size,\n          width: size,\n          height: size,\n          stroke: color,\n          strokeWidth: 1,\n          size,\n        });\n      } \n    }\n    return cells;\n  }\n\n  static getRandomInt(max = 3, min = 0) {\n    return Math.floor( Math.random() * (max - min + 1) ) + min;\n  }\n\n  static addPiece(config) {\n    const x = this.getRandomInt();\n    const y = this.getRandomInt();\n    const piece = {\n      x: x * config.size,\n      y: y * config.size,\n      width: config.size,\n      height: config.size,\n      strokeWidth: 1,\n      size: config.size,\n      name: config.name,\n      url: config.url,\n    };\n    piecesRef.push(piece)\n  }\n\n  static movePiece(value, piece) {\n    console.log(value, piece);\n    piece.x = this._roundOff(value.x, piece.size);\n    piece.y = this._roundOff(value.y, piece.size);\n    piecesRef.child(piece.id).set(piece);\n  }\n\n  static _roundOff(target, size) {\n    const rest = target % size;\n    if ( rest > size / 2) {\n      return target - rest + size;\n    }\n    return target - rest;\n  }\n\n  static removePieces() {\n    piecesRef.set({});\n  }\n\n  static selectPiece(piece) {\n    console.log(piece);\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.UPDATE,\n      piece,\n    });\n  }\n\n  static listenPieces() {\n    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));\n  }\n\n  static setPiece(id, piece) {\n    piece.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.ADD,\n      piece,\n    });\n  }\n\n  static removePiece(id) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.REMOVE,\n      id,\n    });\n  }\n\n  static listenConfig() {\n    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));\n    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));\n  }\n\n  static sendConfig(config) {\n    configRef.set({ 'map_config': config });\n  }\n\n  static setConfig(config) {\n    const image = new Image();\n    image.src = config.url;\n    config.backImage = image;\n    config.x = Number(config.x);\n    config.y = Number(config.y);\n    config.size = Number(config.size);\n    AppDispatcher.dispatch({\n      type: ActionTypes.Map.SET,\n      map: config,\n    });\n  }\n}\nexport default MapAction;\n",
+    "content": "import AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\nimport { piecesRef, configRef } from '../firebase';\n\nclass MapAction {\n  static createCells(xMax, yMax, size, color) {\n    const cells = [];\n    for (let x = 0; x < xMax; x++) {\n      for (let y = 0; y < yMax; y++) {\n        cells.push({\n          x: x * size,\n          y: y * size,\n          width: size,\n          height: size,\n          stroke: color,\n          strokeWidth: 1,\n          size,\n        });\n      } \n    }\n    return cells;\n  }\n\n  static getRandomInt(max = 3, min = 0) {\n    return Math.floor( Math.random() * (max - min + 1) ) + min;\n  }\n\n  static addPiece(config) {\n    const x = this.getRandomInt();\n    const y = this.getRandomInt();\n    const piece = {\n      x: x * config.size,\n      y: y * config.size,\n      width: config.size,\n      height: config.size,\n      strokeWidth: 1,\n      size: config.size,\n      name: config.name,\n      url: config.url,\n    };\n    piecesRef.push(piece)\n  }\n\n  static movePiece(value, piece) {\n    console.log(value, piece);\n    piece.x = this._roundOff(value.x, piece.size);\n    piece.y = this._roundOff(value.y, piece.size);\n    piecesRef.child(piece.id).set(piece);\n  }\n\n  static _roundOff(target, size) {\n    const rest = target % size;\n    if ( rest > size / 2) {\n      return target - rest + size;\n    }\n    return target - rest;\n  }\n\n  static removePieces() {\n    piecesRef.set({});\n  }\n\n  static selectPiece(piece) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Piece.SET,\n      piece,\n    });\n  }\n\n  static listenPieces() {\n    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));\n    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));\n  }\n\n  static setPiece(id, piece) {\n    piece.id = id;\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.ADD,\n      piece,\n    });\n  }\n\n  static removePiece(id) {\n    AppDispatcher.dispatch({\n      type: ActionTypes.Pieces.REMOVE,\n      id,\n    });\n  }\n\n  static listenConfig() {\n    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));\n    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));\n  }\n\n  static sendConfig(config) {\n    configRef.set({ 'map_config': config });\n  }\n\n  static setConfig(config) {\n    const image = new Image();\n    image.src = config.url;\n    config.backImage = image;\n    config.x = Number(config.x);\n    config.y = Number(config.y);\n    config.size = Number(config.size);\n    AppDispatcher.dispatch({\n      type: ActionTypes.Map.SET,\n      map: config,\n    });\n  }\n}\nexport default MapAction;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/actions/MapAction.js",
     "access": "public",
@@ -1306,7 +1306,7 @@
     "longname": "src/actions/MapAction.js~MapAction.listenPieces",
     "access": "public",
     "description": null,
-    "lineNumber": 71,
+    "lineNumber": 70,
     "undocument": true,
     "params": [],
     "return": null
@@ -1322,7 +1322,7 @@
     "longname": "src/actions/MapAction.js~MapAction.setPiece",
     "access": "public",
     "description": null,
-    "lineNumber": 77,
+    "lineNumber": 76,
     "undocument": true,
     "params": [
       {
@@ -1351,7 +1351,7 @@
     "longname": "src/actions/MapAction.js~MapAction.removePiece",
     "access": "public",
     "description": null,
-    "lineNumber": 85,
+    "lineNumber": 84,
     "undocument": true,
     "params": [
       {
@@ -1374,7 +1374,7 @@
     "longname": "src/actions/MapAction.js~MapAction.listenConfig",
     "access": "public",
     "description": null,
-    "lineNumber": 92,
+    "lineNumber": 91,
     "undocument": true,
     "params": [],
     "return": null
@@ -1390,7 +1390,7 @@
     "longname": "src/actions/MapAction.js~MapAction.sendConfig",
     "access": "public",
     "description": null,
-    "lineNumber": 97,
+    "lineNumber": 96,
     "undocument": true,
     "params": [
       {
@@ -1413,7 +1413,7 @@
     "longname": "src/actions/MapAction.js~MapAction.setConfig",
     "access": "public",
     "description": null,
-    "lineNumber": 101,
+    "lineNumber": 100,
     "undocument": true,
     "params": [
       {
@@ -1429,7 +1429,7 @@
     "__docId__": 87,
     "kind": "file",
     "name": "src/constants/ActionTypes.js",
-    "content": "/** アプリ内で利用する定数 */\nconst ActionTypes = {\n  Character: {\n    SET: 'Character.set',\n    INIT: 'Character.init',\n  },\n  Characters: {\n    SET: 'Characters.set',\n    ADD: 'Characters.add',\n  },\n  Layouts: {\n    SET: 'Layouts.set',\n    ADD: 'Layouts.add',\n  },\n  Map: {\n    SET: 'Map.set',\n  },\n  Messages: {\n    SET: 'Messages.set',\n    ADD: 'Messages.add',\n  },\n  Piece: {\n    SET: 'Piece.set',\n    INIT: 'Piece.init',\n  },\n  Pieces: {\n    SET: 'Pieces.set',\n    ADD: 'Pieces.add',\n    UPDATE: 'Pieces.update',\n    REMOVE: 'Pieces.remove',\n  },\n  Systems: {\n    SET: 'Systems.set',\n  },\n  System: {\n    SET: 'System.set',\n  },\n};\n\nexport default ActionTypes;\n",
+    "content": "/** アプリ内で利用する定数 */\nconst ActionTypes = {\n  Character: {\n    SET: 'Character.set',\n    INIT: 'Character.init',\n  },\n  Characters: {\n    SET: 'Characters.set',\n    ADD: 'Characters.add',\n  },\n  Layouts: {\n    SET: 'Layouts.set',\n    ADD: 'Layouts.add',\n  },\n  Map: {\n    SET: 'Map.set',\n  },\n  Messages: {\n    SET: 'Messages.set',\n    ADD: 'Messages.add',\n  },\n  Piece: {\n    SET: 'Piece.set',\n    INIT: 'Piece.init',\n  },\n  Pieces: {\n    SET: 'Pieces.set',\n    ADD: 'Pieces.add',\n    REMOVE: 'Pieces.remove',\n  },\n  Systems: {\n    SET: 'Systems.set',\n  },\n  System: {\n    SET: 'System.set',\n  },\n};\n\nexport default ActionTypes;\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/constants/ActionTypes.js",
     "access": "public",
@@ -1459,7 +1459,7 @@
     "__docId__": 89,
     "kind": "file",
     "name": "src/constants/BCDiceAPI.js",
-    "content": "const BCDiceAPI = {\n  URL: 'https://bcdice-api.herokuapp.com',\n  uri: {\n    SYSTEMS: '/v1/systems',\n    SYSTEM: '/v1/systeminfo',\n    DICE: '/v1/diceroll',\n  }\n};\nexport default BCDiceAPI;",
+    "content": "/** BCDiceAPIに関する定数 */\nconst BCDiceAPI = {\n  URL: 'https://bcdice-api.herokuapp.com',\n  uri: {\n    SYSTEMS: '/v1/systems',\n    SYSTEM: '/v1/systeminfo',\n    DICE: '/v1/diceroll',\n  }\n};\nexport default BCDiceAPI;",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/constants/BCDiceAPI.js",
     "access": "public",
@@ -1477,9 +1477,8 @@
     "export": true,
     "importPath": "dice-chat/src/constants/BCDiceAPI.js",
     "importStyle": "BCDiceAPI",
-    "description": null,
-    "lineNumber": 1,
-    "undocument": true,
+    "description": "BCDiceAPIに関する定数",
+    "lineNumber": 2,
     "type": {
       "types": [
         "{\"URL\": string, \"uri\": *}"
@@ -1490,7 +1489,7 @@
     "__docId__": 91,
     "kind": "file",
     "name": "src/dispatcher/AppDispatcher.js",
-    "content": "import { Dispatcher } from 'flux';\n\nclass AppDispatcher extends Dispatcher {\n  dispatch(action = {}) {\n    console.log(action);\n    super.dispatch(action);\n  }\n}\n\nexport default new AppDispatcher();",
+    "content": "import { Dispatcher } from 'flux';\n\n/**\n * React Flux のDispatcher\n * @extends {Dispatcher}\n */\nclass AppDispatcher extends Dispatcher {\n  dispatch(action = {}) {\n    console.log(action);\n    super.dispatch(action);\n  }\n}\n\nexport default new AppDispatcher();",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/dispatcher/AppDispatcher.js",
     "access": "public",
@@ -1508,13 +1507,12 @@
     "export": true,
     "importPath": "dice-chat/src/dispatcher/AppDispatcher.js",
     "importStyle": null,
-    "description": null,
-    "lineNumber": 3,
+    "description": "React Flux のDispatcher",
+    "lineNumber": 7,
     "pseudoExport": true,
-    "undocument": true,
     "interface": false,
     "extends": [
-      "flux~Dispatcher"
+      "Dispatcher"
     ]
   },
   {
@@ -1528,7 +1526,7 @@
     "longname": "src/dispatcher/AppDispatcher.js~AppDispatcher#dispatch",
     "access": "public",
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 8,
     "undocument": true,
     "params": [
       {
@@ -1555,7 +1553,7 @@
     "importPath": "dice-chat/src/dispatcher/AppDispatcher.js",
     "importStyle": "appDispatcher",
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 14,
     "undocument": true,
     "type": {
       "types": [
@@ -1598,7 +1596,7 @@
     "__docId__": 97,
     "kind": "file",
     "name": "src/firebase/index.js",
-    "content": "import firebase from 'firebase';\nimport { firebaseConfig } from '../firebase/config.js';\n\nexport const firebaseApp = firebase.initializeApp(firebaseConfig);\nexport const firebaseDb = firebaseApp.database();\nexport const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */\nexport const secretMessagesRef = firebaseDb.ref('secret_messages') /** チャット履歴(秘密) */\nexport const charactersRef = firebaseDb.ref('characters') /** 発言キャラ */\nexport const piecesRef = firebaseDb.ref('pieces') /** 駒配置 */\nexport const configRef = firebaseDb.ref('config') /** マップ設定 */\n",
+    "content": "import firebase from 'firebase';\nimport { firebaseConfig } from '../firebase/config.js';\n\nexport const firebaseApp = firebase.initializeApp(firebaseConfig);\nexport const firebaseDb = firebaseApp.database();\nexport const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */\nexport const secretMessagesRef = firebaseDb.ref('secret_messages') /** チャット履歴(秘密) */\nexport const charactersRef = firebaseDb.ref('characters') /** 発言キャラ */\nexport const piecesRef = firebaseDb.ref('pieces') /** 駒配置 */\nexport const configRef = firebaseDb.ref('config') /** 設定 */\n",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/firebase/index.js",
     "access": "public",
@@ -1899,7 +1897,7 @@
     "__docId__": 113,
     "kind": "file",
     "name": "src/stores/CharacterStore.js",
-    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * キャラクタ情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Character キャラクタ\n * @property {string} id キャラクタのID\n * @property {string} name キャラクタ名\n * @property {string} color キャラクタ色\n * @property {string} url キャラクタ画像の参照先\n */\nclass CharacterStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      id: '',\n      name: '',\n      color: '#ff5252',\n      url: '',\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Character.SET:\n        return Immutable.fromJS(action.characterConfig);\n      case ActionTypes.Character.INIT:\n        return this.getInitialState();\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharacterStore(AppDispatcher);",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 発言キャラクタ情報\n * @extends {ReduceStore}\n * \n * @typedef {Object} Character 発言キャラクタ\n * @property {string} id キャラクタのID\n * @property {string} name キャラクタ名\n * @property {string} color キャラクタ色\n * @property {string} url キャラクタ画像の参照先\n */\nclass CharacterStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      id: '',\n      name: '',\n      color: '#ff5252',\n      url: '',\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Character.SET:\n        return Immutable.fromJS(action.characterConfig);\n      case ActionTypes.Character.INIT:\n        return this.getInitialState();\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharacterStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/CharacterStore.js",
     "access": "public",
@@ -1914,7 +1912,7 @@
     "static": true,
     "longname": "src/stores/CharacterStore.js~Character",
     "access": "public",
-    "description": "キャラクタ情報",
+    "description": "発言キャラクタ情報",
     "lineNumber": 17,
     "pseudoExport": true,
     "unknown": [
@@ -1997,7 +1995,7 @@
     "__docId__": 116,
     "kind": "file",
     "name": "src/stores/CharactersStore.js",
-    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * キャラクタの一覧\n * @extends {ReduceStore}\n * \n * @typedef {Object} Characters キャラクタ一覧\n * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)\n * @property {string} {id}.id キャラクタのID\n * @property {string} {id}.name キャラクタ名\n * @property {string} {id}.color キャラクタ色\n * @property {string} {id}.url キャラクタ画像の参照先\n */\nclass CharactersStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      'A': {\n        id: 'A',\n        name: 'A',\n        color: '#f44336',\n        url: './resources/31_ic.png',\n      },\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Characters.ADD:\n        return state.set(action.character.id, action.character);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharactersStore(AppDispatcher);",
+    "content": "import { ReduceStore } from 'flux/utils';\nimport Immutable from 'immutable';\n\nimport AppDispatcher from '../dispatcher/AppDispatcher';\nimport ActionTypes from '../constants/ActionTypes';\n\n/**\n * 発言キャラクタの一覧\n * @extends {ReduceStore}\n * \n * @typedef {Object} Characters 発言キャラクタ一覧\n * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)\n * @property {string} {id}.id キャラクタのID\n * @property {string} {id}.name キャラクタ名\n * @property {string} {id}.color キャラクタ色\n * @property {string} {id}.url キャラクタ画像の参照先\n */\nclass CharactersStore extends ReduceStore {\n  getInitialState() {\n    return Immutable.fromJS({\n      'A': {\n        id: 'A',\n        name: 'A',\n        color: '#f44336',\n        url: './resources/31_ic.png',\n      },\n    });\n  }\n\n  reduce(state, action) {\n    switch (action.type) {\n      case ActionTypes.Characters.ADD:\n        return state.set(action.character.id, action.character);\n      default:\n        return state;\n    }\n  }\n}\n\nexport default new CharactersStore(AppDispatcher);",
     "static": true,
     "longname": "/Users/nona/Documents/work/dice-chat/src/stores/CharactersStore.js",
     "access": "public",
@@ -2012,7 +2010,7 @@
     "static": true,
     "longname": "src/stores/CharactersStore.js~Characters",
     "access": "public",
-    "description": "キャラクタの一覧",
+    "description": "発言キャラクタの一覧",
     "lineNumber": 18,
     "pseudoExport": true,
     "unknown": [
