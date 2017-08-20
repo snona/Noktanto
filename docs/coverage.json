@@ -1,0 +1,201 @@
+{
+  "coverage": "15.66%",
+  "expectCount": 83,
+  "actualCount": 13,
+  "files": {
+    "src/actions/CharacterAction.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        11,
+        15,
+        21,
+        30
+      ]
+    },
+    "src/actions/ChatAction.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8,
+        13,
+        20,
+        28,
+        49
+      ]
+    },
+    "src/actions/DiceBotAction.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8,
+        28,
+        39,
+        51
+      ]
+    },
+    "src/actions/LayoutAction.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        12
+      ]
+    },
+    "src/actions/MapAction.js": {
+      "expectCount": 14,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        24,
+        28,
+        44,
+        51,
+        59,
+        63,
+        71,
+        77,
+        85,
+        92,
+        97,
+        101
+      ]
+    },
+    "src/constants/ActionTypes.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/constants/BCDiceAPI.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/dispatcher/AppDispatcher.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        10
+      ]
+    },
+    "src/firebase/config.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/firebase/index.js": {
+      "expectCount": 7,
+      "actualCount": 4,
+      "undocumentLines": [
+        4,
+        5,
+        6
+      ]
+    },
+    "src/myTheme.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/registerServiceWorker.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        21,
+        46,
+        75,
+        102
+      ]
+    },
+    "src/stores/CharacterConfigStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        11,
+        19,
+        31
+      ]
+    },
+    "src/stores/CharactersStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        11,
+        22,
+        32
+      ]
+    },
+    "src/stores/LayoutsStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        9,
+        19,
+        31
+      ]
+    },
+    "src/stores/MapConfigStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        11,
+        23,
+        33
+      ]
+    },
+    "src/stores/MessagesStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        9,
+        13,
+        25
+      ]
+    },
+    "src/stores/PieceStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        20,
+        32
+      ]
+    },
+    "src/stores/PiecesStore.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        16,
+        30
+      ]
+    },
+    "src/stores/SystemStore.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        36
+      ]
+    },
+    "src/stores/SystemsStore.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        27
+      ]
+    }
+  }
+}
