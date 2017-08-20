@@ -7,7 +7,8 @@ import ActionTypes from '../constants/ActionTypes';
 /**
  * BCDiceに指定するシステム情報
  * @extends {ReduceStore}
- * @typedef {Object} SystemStore
+ * 
+ * @typedef {Object} System
  * @property {string} name システム名
  * @property {string} gameType システム名の指定値
  * @property {string[]} prefixs システム特有のダイス表記リスト

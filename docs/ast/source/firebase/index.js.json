@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 562,
+  "end": 555,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 562,
+    "end": 555,
     "loc": {
       "start": {
         "line": 1,
@@ -1357,7 +1357,7 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 492,
-        "end": 548,
+        "end": 541,
         "loc": {
           "start": {
             "line": 10,
@@ -1365,7 +1365,7 @@
           },
           "end": {
             "line": 10,
-            "column": 56
+            "column": 49
           }
         },
         "specifiers": [],
@@ -1373,7 +1373,7 @@
         "declaration": {
           "type": "VariableDeclaration",
           "start": 499,
-          "end": 548,
+          "end": 541,
           "loc": {
             "start": {
               "line": 10,
@@ -1381,14 +1381,14 @@
             },
             "end": {
               "line": 10,
-              "column": 56
+              "column": 49
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
               "start": 505,
-              "end": 548,
+              "end": 541,
               "loc": {
                 "start": {
                   "line": 10,
@@ -1396,13 +1396,13 @@
                 },
                 "end": {
                   "line": 10,
-                  "column": 56
+                  "column": 49
                 }
               },
               "id": {
                 "type": "Identifier",
                 "start": 505,
-                "end": 517,
+                "end": 514,
                 "loc": {
                   "start": {
                     "line": 10,
@@ -1410,53 +1410,53 @@
                   },
                   "end": {
                     "line": 10,
-                    "column": 25
+                    "column": 22
                   },
-                  "identifierName": "mapConfigRef"
+                  "identifierName": "configRef"
                 },
-                "name": "mapConfigRef",
+                "name": "configRef",
                 "leadingComments": null
               },
               "init": {
                 "type": "CallExpression",
-                "start": 520,
-                "end": 548,
+                "start": 517,
+                "end": 541,
                 "loc": {
                   "start": {
                     "line": 10,
-                    "column": 28
+                    "column": 25
                   },
                   "end": {
                     "line": 10,
-                    "column": 56
+                    "column": 49
                   }
                 },
                 "callee": {
                   "type": "MemberExpression",
-                  "start": 520,
-                  "end": 534,
+                  "start": 517,
+                  "end": 531,
                   "loc": {
                     "start": {
                       "line": 10,
-                      "column": 28
+                      "column": 25
                     },
                     "end": {
                       "line": 10,
-                      "column": 42
+                      "column": 39
                     }
                   },
                   "object": {
                     "type": "Identifier",
-                    "start": 520,
-                    "end": 530,
+                    "start": 517,
+                    "end": 527,
                     "loc": {
                       "start": {
                         "line": 10,
-                        "column": 28
+                        "column": 25
                       },
                       "end": {
                         "line": 10,
-                        "column": 38
+                        "column": 35
                       },
                       "identifierName": "firebaseDb"
                     },
@@ -1464,16 +1464,16 @@
                   },
                   "property": {
                     "type": "Identifier",
-                    "start": 531,
-                    "end": 534,
+                    "start": 528,
+                    "end": 531,
                     "loc": {
                       "start": {
                         "line": 10,
-                        "column": 39
+                        "column": 36
                       },
                       "end": {
                         "line": 10,
-                        "column": 42
+                        "column": 39
                       },
                       "identifierName": "ref"
                     },
@@ -1484,23 +1484,23 @@
                 "arguments": [
                   {
                     "type": "StringLiteral",
-                    "start": 535,
-                    "end": 547,
+                    "start": 532,
+                    "end": 540,
                     "loc": {
                       "start": {
                         "line": 10,
-                        "column": 43
+                        "column": 40
                       },
                       "end": {
                         "line": 10,
-                        "column": 55
+                        "column": 48
                       }
                     },
                     "extra": {
-                      "rawValue": "map_config",
-                      "raw": "'map_config'"
+                      "rawValue": "config",
+                      "raw": "'config'"
                     },
-                    "value": "map_config"
+                    "value": "config"
                   }
                 ],
                 "trailingComments": null
@@ -1532,16 +1532,16 @@
             {
               "type": "CommentBlock",
               "value": "* マップ設定 ",
-              "start": 549,
-              "end": 561,
+              "start": 542,
+              "end": 554,
               "loc": {
                 "start": {
                   "line": 10,
-                  "column": 57
+                  "column": 50
                 },
                 "end": {
                   "line": 10,
-                  "column": 69
+                  "column": 62
                 }
               }
             }
@@ -1569,16 +1569,16 @@
           {
             "type": "CommentBlock",
             "value": "* マップ設定 ",
-            "start": 549,
-            "end": 561,
+            "start": 542,
+            "end": 554,
             "loc": {
               "start": {
                 "line": 10,
-                "column": 57
+                "column": 50
               },
               "end": {
                 "line": 10,
-                "column": 69
+                "column": 62
               }
             }
           }
@@ -1655,16 +1655,16 @@
     {
       "type": "CommentBlock",
       "value": "* マップ設定 ",
-      "start": 549,
-      "end": 561,
+      "start": 542,
+      "end": 554,
       "loc": {
         "start": {
           "line": 10,
-          "column": 57
+          "column": 50
         },
         "end": {
           "line": 10,
-          "column": 69
+          "column": 62
         }
       }
     }
@@ -3726,9 +3726,9 @@
         "postfix": false,
         "binop": null
       },
-      "value": "mapConfigRef",
+      "value": "configRef",
       "start": 505,
-      "end": 517,
+      "end": 514,
       "loc": {
         "start": {
           "line": 10,
@@ -3736,7 +3736,7 @@
         },
         "end": {
           "line": 10,
-          "column": 25
+          "column": 22
         }
       }
     },
@@ -3754,16 +3754,16 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 518,
-      "end": 519,
+      "start": 515,
+      "end": 516,
       "loc": {
         "start": {
           "line": 10,
-          "column": 26
+          "column": 23
         },
         "end": {
           "line": 10,
-          "column": 27
+          "column": 24
         }
       }
     },
@@ -3780,16 +3780,16 @@
         "binop": null
       },
       "value": "firebaseDb",
-      "start": 520,
-      "end": 530,
+      "start": 517,
+      "end": 527,
       "loc": {
         "start": {
           "line": 10,
-          "column": 28
+          "column": 25
         },
         "end": {
           "line": 10,
-          "column": 38
+          "column": 35
         }
       }
     },
@@ -3806,16 +3806,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 530,
-      "end": 531,
+      "start": 527,
+      "end": 528,
       "loc": {
         "start": {
           "line": 10,
-          "column": 38
+          "column": 35
         },
         "end": {
           "line": 10,
-          "column": 39
+          "column": 36
         }
       }
     },
@@ -3832,16 +3832,16 @@
         "binop": null
       },
       "value": "ref",
-      "start": 531,
-      "end": 534,
+      "start": 528,
+      "end": 531,
       "loc": {
         "start": {
           "line": 10,
-          "column": 39
+          "column": 36
         },
         "end": {
           "line": 10,
-          "column": 42
+          "column": 39
         }
       }
     },
@@ -3857,16 +3857,16 @@
         "postfix": false,
         "binop": null
       },
-      "start": 534,
-      "end": 535,
+      "start": 531,
+      "end": 532,
       "loc": {
         "start": {
           "line": 10,
-          "column": 42
+          "column": 39
         },
         "end": {
           "line": 10,
-          "column": 43
+          "column": 40
         }
       }
     },
@@ -3883,17 +3883,17 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "map_config",
-      "start": 535,
-      "end": 547,
+      "value": "config",
+      "start": 532,
+      "end": 540,
       "loc": {
         "start": {
           "line": 10,
-          "column": 43
+          "column": 40
         },
         "end": {
           "line": 10,
-          "column": 55
+          "column": 48
         }
       }
     },
@@ -3909,32 +3909,32 @@
         "postfix": false,
         "binop": null
       },
-      "start": 547,
-      "end": 548,
+      "start": 540,
+      "end": 541,
       "loc": {
         "start": {
           "line": 10,
-          "column": 55
+          "column": 48
         },
         "end": {
           "line": 10,
-          "column": 56
+          "column": 49
         }
       }
     },
     {
       "type": "CommentBlock",
       "value": "* マップ設定 ",
-      "start": 549,
-      "end": 561,
+      "start": 542,
+      "end": 554,
       "loc": {
         "start": {
           "line": 10,
-          "column": 57
+          "column": 50
         },
         "end": {
           "line": 10,
-          "column": 69
+          "column": 62
         }
       }
     },
@@ -3951,8 +3951,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 562,
-      "end": 562,
+      "start": 555,
+      "end": 555,
       "loc": {
         "start": {
           "line": 11,

@@ -6,16 +6,22 @@ import ActionTypes from '../constants/ActionTypes';
 
 /**
  * MapAreaの情報
+ * @extends {ReduceStore}
+ * 
+ * @typedef {Object} Map マップ情報
+ * @property {number} x 横セル数
+ * @property {number} y 縦セル数
+ * @property {number} size セルの大きさ
+ * @property {Image} url 背景画像の参照先
+ * @property {string} color セルの色
  */
-class MapConfigStore extends ReduceStore {
+class MapStore extends ReduceStore {
   getInitialState() {
-    const image = new Image();
-    image.src = './resources/map02.jpg';
     return Immutable.fromJS({
       x: 10,  // 横セル数
       y: 10,  // 縦セル数
       size: 30, // セルのサイズ
-      backImage: image,  // 背景イメージ
+      url: './resources/map02.jpg',  // 背景イメージ
       color: '#B2FF59',  // セル, 文字の色
     });
   }
@@ -23,11 +29,11 @@ class MapConfigStore extends ReduceStore {
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.Map.SET:
-        return Immutable.fromJS(action.mapConfig);
+        return Immutable.fromJS(action.map);
       default:
         return state;
     }
   }
 }
 
-export default new MapConfigStore(AppDispatcher);
+export default new MapStore(AppDispatcher);

@@ -1,7 +1,7 @@
 {
-  "coverage": "15.66%",
-  "expectCount": 83,
-  "actualCount": 13,
+  "coverage": "9.67%",
+  "expectCount": 62,
+  "actualCount": 6,
   "files": {
     "src/actions/CharacterAction.js": {
       "expectCount": 6,
@@ -9,10 +9,10 @@
       "undocumentLines": [
         5,
         6,
-        11,
-        15,
-        21,
-        30
+        10,
+        14,
+        20,
+        29
       ]
     },
     "src/actions/ChatAction.js": {
@@ -120,81 +120,67 @@
         102
       ]
     },
-    "src/stores/CharacterConfigStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+    "src/stores/CharacterStore.js": {
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        11,
-        19,
-        31
+        39
       ]
     },
     "src/stores/CharactersStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        11,
-        22,
-        32
+        40
       ]
     },
     "src/stores/LayoutsStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        9,
-        19,
-        31
+        46
       ]
     },
-    "src/stores/MapConfigStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+    "src/stores/MapStore.js": {
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        11,
-        23,
-        33
+        39
       ]
     },
     "src/stores/MessagesStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        9,
-        13,
-        25
+        40
       ]
     },
     "src/stores/PieceStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        12,
-        20,
-        32
+        37
       ]
     },
     "src/stores/PiecesStore.js": {
-      "expectCount": 4,
-      "actualCount": 1,
+      "expectCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
-        12,
-        16,
-        30
+        42
       ]
     },
     "src/stores/SystemStore.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        36
+        37
       ]
     },
     "src/stores/SystemsStore.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        27
+        28
       ]
     }
   }

@@ -24,18 +24,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dice-chat/src/stores/characterconfigstore.js~characterconfigstore",
-    "class/src/stores/CharacterConfigStore.js~CharacterConfigStore.html",
-    "<span>CharacterConfigStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/CharacterConfigStore.js</span>",
-    "class"
-  ],
-  [
-    "dice-chat/src/stores/charactersstore.js~charactersstore",
-    "class/src/stores/CharactersStore.js~CharactersStore.html",
-    "<span>CharactersStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/CharactersStore.js</span>",
-    "class"
-  ],
-  [
     "dice-chat/src/actions/chataction.js~chataction",
     "class/src/actions/ChatAction.js~ChatAction.html",
     "<span>ChatAction</span> <span class=\"search-result-import-path\">dice-chat/src/actions/ChatAction.js</span>",
@@ -54,39 +42,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dice-chat/src/stores/layoutsstore.js~layoutsstore",
-    "class/src/stores/LayoutsStore.js~LayoutsStore.html",
-    "<span>LayoutsStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/LayoutsStore.js</span>",
-    "class"
-  ],
-  [
     "dice-chat/src/actions/mapaction.js~mapaction",
     "class/src/actions/MapAction.js~MapAction.html",
     "<span>MapAction</span> <span class=\"search-result-import-path\">dice-chat/src/actions/MapAction.js</span>",
-    "class"
-  ],
-  [
-    "dice-chat/src/stores/mapconfigstore.js~mapconfigstore",
-    "class/src/stores/MapConfigStore.js~MapConfigStore.html",
-    "<span>MapConfigStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/MapConfigStore.js</span>",
-    "class"
-  ],
-  [
-    "dice-chat/src/stores/messagesstore.js~messagesstore",
-    "class/src/stores/MessagesStore.js~MessagesStore.html",
-    "<span>MessagesStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/MessagesStore.js</span>",
-    "class"
-  ],
-  [
-    "dice-chat/src/stores/piecestore.js~piecestore",
-    "class/src/stores/PieceStore.js~PieceStore.html",
-    "<span>PieceStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/PieceStore.js</span>",
-    "class"
-  ],
-  [
-    "dice-chat/src/stores/piecesstore.js~piecesstore",
-    "class/src/stores/PiecesStore.js~PiecesStore.html",
-    "<span>PiecesStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/PiecesStore.js</span>",
     "class"
   ],
   [
@@ -96,9 +54,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "dice-chat/src/stores/characterconfigstore.js~characterconfigstore",
-    "variable/index.html#static-variable-characterConfigStore",
-    "<span>characterConfigStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/CharacterConfigStore.js</span>",
+    "dice-chat/src/stores/characterstore.js~characterstore",
+    "variable/index.html#static-variable-characterStore",
+    "<span>characterStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/CharacterStore.js</span>",
     "variable"
   ],
   [
@@ -111,6 +69,12 @@ window.esdocSearchIndex = [
     "dice-chat/src/stores/charactersstore.js~charactersstore",
     "variable/index.html#static-variable-charactersStore",
     "<span>charactersStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/CharactersStore.js</span>",
+    "variable"
+  ],
+  [
+    "dice-chat/src/firebase/index.js~configref",
+    "variable/index.html#static-variable-configRef",
+    "<span>configRef</span> <span class=\"search-result-import-path\">dice-chat/src/firebase/index.js</span>",
     "variable"
   ],
   [
@@ -138,15 +102,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "dice-chat/src/firebase/index.js~mapconfigref",
-    "variable/index.html#static-variable-mapConfigRef",
-    "<span>mapConfigRef</span> <span class=\"search-result-import-path\">dice-chat/src/firebase/index.js</span>",
-    "variable"
-  ],
-  [
-    "dice-chat/src/stores/mapconfigstore.js~mapconfigstore",
-    "variable/index.html#static-variable-mapConfigStore",
-    "<span>mapConfigStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/MapConfigStore.js</span>",
+    "dice-chat/src/stores/mapstore.js~mapstore",
+    "variable/index.html#static-variable-mapStore",
+    "<span>mapStore</span> <span class=\"search-result-import-path\">dice-chat/src/stores/MapStore.js</span>",
     "variable"
   ],
   [
@@ -750,22 +708,16 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/characterconfigstore.js",
-    "file/src/stores/CharacterConfigStore.js.html",
-    "src/stores/CharacterConfigStore.js",
+    "src/stores/characterstore.js",
+    "file/src/stores/CharacterStore.js.html",
+    "src/stores/CharacterStore.js",
     "file"
   ],
   [
-    "src/stores/characterconfigstore.js~characterconfigstore#getinitialstate",
-    "class/src/stores/CharacterConfigStore.js~CharacterConfigStore.html#instance-method-getInitialState",
-    "src/stores/CharacterConfigStore.js~CharacterConfigStore#getInitialState",
-    "method"
-  ],
-  [
-    "src/stores/characterconfigstore.js~characterconfigstore#reduce",
-    "class/src/stores/CharacterConfigStore.js~CharacterConfigStore.html#instance-method-reduce",
-    "src/stores/CharacterConfigStore.js~CharacterConfigStore#reduce",
-    "method"
+    "src/stores/characterstore.js~character",
+    "typedef/index.html#static-typedef-Character",
+    "src/stores/CharacterStore.js~Character",
+    "typedef"
   ],
   [
     "src/stores/charactersstore.js",
@@ -774,16 +726,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/charactersstore.js~charactersstore#getinitialstate",
-    "class/src/stores/CharactersStore.js~CharactersStore.html#instance-method-getInitialState",
-    "src/stores/CharactersStore.js~CharactersStore#getInitialState",
-    "method"
-  ],
-  [
-    "src/stores/charactersstore.js~charactersstore#reduce",
-    "class/src/stores/CharactersStore.js~CharactersStore.html#instance-method-reduce",
-    "src/stores/CharactersStore.js~CharactersStore#reduce",
-    "method"
+    "src/stores/charactersstore.js~characters",
+    "typedef/index.html#static-typedef-Characters",
+    "src/stores/CharactersStore.js~Characters",
+    "typedef"
   ],
   [
     "src/stores/layoutsstore.js",
@@ -792,34 +738,22 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/layoutsstore.js~layoutsstore#getinitialstate",
-    "class/src/stores/LayoutsStore.js~LayoutsStore.html#instance-method-getInitialState",
-    "src/stores/LayoutsStore.js~LayoutsStore#getInitialState",
-    "method"
+    "src/stores/layoutsstore.js~layout",
+    "typedef/index.html#static-typedef-Layout",
+    "src/stores/LayoutsStore.js~Layout",
+    "typedef"
   ],
   [
-    "src/stores/layoutsstore.js~layoutsstore#reduce",
-    "class/src/stores/LayoutsStore.js~LayoutsStore.html#instance-method-reduce",
-    "src/stores/LayoutsStore.js~LayoutsStore#reduce",
-    "method"
-  ],
-  [
-    "src/stores/mapconfigstore.js",
-    "file/src/stores/MapConfigStore.js.html",
-    "src/stores/MapConfigStore.js",
+    "src/stores/mapstore.js",
+    "file/src/stores/MapStore.js.html",
+    "src/stores/MapStore.js",
     "file"
   ],
   [
-    "src/stores/mapconfigstore.js~mapconfigstore#getinitialstate",
-    "class/src/stores/MapConfigStore.js~MapConfigStore.html#instance-method-getInitialState",
-    "src/stores/MapConfigStore.js~MapConfigStore#getInitialState",
-    "method"
-  ],
-  [
-    "src/stores/mapconfigstore.js~mapconfigstore#reduce",
-    "class/src/stores/MapConfigStore.js~MapConfigStore.html#instance-method-reduce",
-    "src/stores/MapConfigStore.js~MapConfigStore#reduce",
-    "method"
+    "src/stores/mapstore.js~map",
+    "typedef/index.html#static-typedef-Map",
+    "src/stores/MapStore.js~Map",
+    "typedef"
   ],
   [
     "src/stores/messagesstore.js",
@@ -828,16 +762,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/messagesstore.js~messagesstore#getinitialstate",
-    "class/src/stores/MessagesStore.js~MessagesStore.html#instance-method-getInitialState",
-    "src/stores/MessagesStore.js~MessagesStore#getInitialState",
-    "method"
-  ],
-  [
-    "src/stores/messagesstore.js~messagesstore#reduce",
-    "class/src/stores/MessagesStore.js~MessagesStore.html#instance-method-reduce",
-    "src/stores/MessagesStore.js~MessagesStore#reduce",
-    "method"
+    "src/stores/messagesstore.js~message",
+    "typedef/index.html#static-typedef-Message",
+    "src/stores/MessagesStore.js~Message",
+    "typedef"
   ],
   [
     "src/stores/piecestore.js",
@@ -846,16 +774,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/piecestore.js~piecestore#getinitialstate",
-    "class/src/stores/PieceStore.js~PieceStore.html#instance-method-getInitialState",
-    "src/stores/PieceStore.js~PieceStore#getInitialState",
-    "method"
-  ],
-  [
-    "src/stores/piecestore.js~piecestore#reduce",
-    "class/src/stores/PieceStore.js~PieceStore.html#instance-method-reduce",
-    "src/stores/PieceStore.js~PieceStore#reduce",
-    "method"
+    "src/stores/piecestore.js~piece",
+    "typedef/index.html#static-typedef-Piece",
+    "src/stores/PieceStore.js~Piece",
+    "typedef"
   ],
   [
     "src/stores/piecesstore.js",
@@ -864,16 +786,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/piecesstore.js~piecesstore#getinitialstate",
-    "class/src/stores/PiecesStore.js~PiecesStore.html#instance-method-getInitialState",
-    "src/stores/PiecesStore.js~PiecesStore#getInitialState",
-    "method"
-  ],
-  [
-    "src/stores/piecesstore.js~piecesstore#reduce",
-    "class/src/stores/PiecesStore.js~PiecesStore.html#instance-method-reduce",
-    "src/stores/PiecesStore.js~PiecesStore#reduce",
-    "method"
+    "src/stores/piecesstore.js~pieces",
+    "typedef/index.html#static-typedef-Pieces",
+    "src/stores/PiecesStore.js~Pieces",
+    "typedef"
   ],
   [
     "src/stores/systemstore.js",
@@ -882,9 +798,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/systemstore.js~systemstore",
-    "typedef/index.html#static-typedef-SystemStore",
-    "src/stores/SystemStore.js~SystemStore",
+    "src/stores/systemstore.js~system",
+    "typedef/index.html#static-typedef-System",
+    "src/stores/SystemStore.js~System",
     "typedef"
   ],
   [
@@ -894,9 +810,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stores/systemsstore.js~systemsstore",
-    "typedef/index.html#static-typedef-SystemsStore",
-    "src/stores/SystemsStore.js~SystemsStore",
+    "src/stores/systemsstore.js~systems",
+    "typedef/index.html#static-typedef-Systems",
+    "src/stores/SystemsStore.js~Systems",
     "typedef"
   ]
 ]

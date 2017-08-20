@@ -4,8 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import MapAction from '../actions/MapAction';
 import CharacterAction from '../actions/CharacterAction';
-import MapConfigStore from '../stores/MapConfigStore';
-import CharacterConfigStore from '../stores/CharacterConfigStore';
+import MapStore from '../stores/MapStore';
+import CharacterStore from '../stores/CharacterStore';
 import PieceStore from '../stores/PieceStore';
 import MapConfig from '../components/MapConfig';
 import CharacterConfig from '../components/CharacterConfig';
@@ -17,13 +17,13 @@ import ConfigDialog from '../components/ConfigDialog';
  */
 class _Config extends Component {
   static getStores() {
-    return [MapConfigStore, CharacterConfigStore, PieceStore];
+    return [MapStore, CharacterStore, PieceStore];
   }
 
   static calculateState() {
     return {
-      mapConfig: MapConfigStore.getState().toJS(),
-      characterConfig: CharacterConfigStore.getState().toJS(),
+      map: MapStore.getState().toJS(),
+      character: CharacterStore.getState().toJS(),
       piece: PieceStore.getState().toJS(),
     };
   }
@@ -35,14 +35,7 @@ class _Config extends Component {
   }
 
   render() {
-    const { mapConfig, characterConfig, piece } = this.state;
-    const tmpMapConfig = {
-      url: mapConfig.backImage.src,
-      x: mapConfig.x,
-      y: mapConfig.y,
-      size: mapConfig.size,
-      color: mapConfig.color,
-    };
+    const { map, character, piece } = this.state;
     return (
       <div>
         <RaisedButton
@@ -53,13 +46,13 @@ class _Config extends Component {
         />
         <ConfigDialog
           label="Config Map"
-          config={tmpMapConfig}
+          config={map}
           setConfig={(newConfig) => MapAction.sendConfig(newConfig)}
           ConfigArea={MapConfig}
         />
         <ConfigDialog
           label="Add Character"
-          config={characterConfig}
+          config={character}
           setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
           ConfigArea={CharacterConfig}
         />

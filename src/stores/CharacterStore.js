@@ -5,11 +5,19 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
 /**
- * MapAreaの情報
+ * キャラクタ情報
+ * @extends {ReduceStore}
+ * 
+ * @typedef {Object} Character キャラクタ
+ * @property {string} id キャラクタのID
+ * @property {string} name キャラクタ名
+ * @property {string} color キャラクタ色
+ * @property {string} url キャラクタ画像の参照先
  */
-class CharacterConfigStore extends ReduceStore {
+class CharacterStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({
+      id: '',
       name: '',
       color: '#ff5252',
       url: '',
@@ -28,4 +36,4 @@ class CharacterConfigStore extends ReduceStore {
   }
 }
 
-export default new CharacterConfigStore(AppDispatcher);
+export default new CharacterStore(AppDispatcher);

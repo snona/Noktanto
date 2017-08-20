@@ -7,7 +7,8 @@ import ActionTypes from '../constants/ActionTypes';
 /**
  * BCDiceの提供するシステム一覧
  * @extends {ReduceStore}
- * @typedef {string[]} SystemsStore システム名の指定値リスト
+ * 
+ * @typedef {string[]} Systems システム名の指定値リスト
  */
 class SystemsStore extends ReduceStore {
   getInitialState() {

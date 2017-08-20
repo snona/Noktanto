@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import { piecesRef, mapConfigRef } from '../firebase';
+import { piecesRef, configRef } from '../firebase';
 
 class MapAction {
   static createCells(xMax, yMax, size, color) {
@@ -90,12 +90,12 @@ class MapAction {
   }
 
   static listenConfig() {
-    mapConfigRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
-    mapConfigRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
+    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
+    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
   }
 
   static sendConfig(config) {
-    mapConfigRef.set({ 'map_config': config });
+    configRef.set({ 'map_config': config });
   }
 
   static setConfig(config) {
@@ -107,7 +107,7 @@ class MapAction {
     config.size = Number(config.size);
     AppDispatcher.dispatch({
       type: ActionTypes.Map.SET,
-      mapConfig: config,
+      map: config,
     });
   }
 }

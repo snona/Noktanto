@@ -5,7 +5,6 @@ import { charactersRef } from '../firebase';
 class CharacterAction {
   static listenConfig() {
     charactersRef.on('child_added', (snapshot) => this.addCharacter(snapshot.key, snapshot.val()));
-    // mapConfigRef.on('child_changed', (snapshot) => this.setConfig(snapshot.key, snapshot.val()));
   }
 
   static _createCharacter(config) {

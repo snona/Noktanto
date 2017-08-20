@@ -8,14 +8,12 @@ class Piece extends Component {
     render() {
       const { cell, movePiece, selectPiece } = this.props;
       const fontSize = 12;
-      const src = new Image();
-      src.src = cell.url;
       const image = {
         x: 0,
         y: 0,
         width: cell.width,
         height: cell.width,
-        src,
+        src: cell.url,
       }
       return (
         <Group
@@ -56,7 +54,6 @@ Piece.propTypes = {
     y: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     strokeWidth: PropTypes.number.isRequired,

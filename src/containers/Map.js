@@ -9,20 +9,20 @@ import Cell from '../components/Cell';
 import CellText from '../components/CellText';
 import MapAction from '../actions/MapAction';
 import PiecesStore from '../stores/PiecesStore';
-import MapConfigStore from '../stores/MapConfigStore';
+import MapStore from '../stores/MapStore';
 
 /**
  * 画面統括
  */
 class _Map extends Component {
   static getStores() {
-    return [PiecesStore, MapConfigStore];
+    return [PiecesStore, MapStore];
   }
 
   static calculateState() {
     return {
       pieces: PiecesStore.getState().toJS(),
-      config: MapConfigStore.getState().toJS(),
+      map: MapStore.getState().toJS(),
     };
   }
 
@@ -31,9 +31,9 @@ class _Map extends Component {
   }
 
   render() {
-    const { pieces, config } = this.state;
+    const { pieces, map } = this.state;
     const { layout } = this.props;
-    const cells = MapAction.createCells(config.x, config.y, config.size, config.color);
+    const cells = MapAction.createCells(map.x, map.y, map.size, map.color);
     const viewCells = cells.map(cell => (
       <Cell cell={cell} />
     ));
@@ -55,9 +55,9 @@ class _Map extends Component {
             <RectImage
               image={{
                 x: 0, y: 0,
-                width: config.x * config.size,
-                height: config.y * config.size,
-                src: config.backImage,
+                width: map.x * map.size,
+                height: map.y * map.size,
+                src: map.url,
               }}
             />
           </Layer>

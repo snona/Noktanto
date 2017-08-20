@@ -5,7 +5,15 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
 /**
- * MapAreaの情報
+ * キャラクタの一覧
+ * @extends {ReduceStore}
+ * 
+ * @typedef {Object} Characters キャラクタ一覧
+ * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)
+ * @property {string} {id}.id キャラクタのID
+ * @property {string} {id}.name キャラクタ名
+ * @property {string} {id}.color キャラクタ色
+ * @property {string} {id}.url キャラクタ画像の参照先
  */
 class CharactersStore extends ReduceStore {
   getInitialState() {

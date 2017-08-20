@@ -7,6 +7,11 @@ import ActionTypes from '../constants/ActionTypes';
 /**
  * 駒の情報
  * @extends {ReduceStore}
+ * 
+ * @typedef {Object} Piece
+ * @property {string} name 駒名
+ * @property {string} url 駒画像の参照先
+ * @property {number} size 駒の大きさ
  */
 class PieceStore extends ReduceStore {
   getInitialState() {

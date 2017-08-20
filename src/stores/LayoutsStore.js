@@ -4,7 +4,22 @@ import Immutable from 'immutable';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
-/** GridAreaに表示する画面項目の配置, サイズ一覧 */
+/**
+ * GridAreaに表示する画面項目の配置, サイズ一覧
+ * @extends {ReduceStore}
+ * 
+ * @typedef {Layout[]} Layouts レイアウト一覧
+ * 
+ * @typedef {Object} Layout レイアウト
+ * @property {string} i レイアウトID
+ * @property {number} x 座標(x)
+ * @property {number} y 座標(y)
+ * @property {number} w サイズ(横)
+ * @property {number} h サイズ(縦)
+ * @property {number} minW 最小サイズ(横)
+ * @property {number} minH 最小サイズ(縦)
+ * @property {bool} isDraggable ドラッグ移動の可否
+ */
 class LayoutsStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS([{
