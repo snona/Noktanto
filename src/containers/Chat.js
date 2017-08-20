@@ -14,7 +14,7 @@ import SystemStore from '../stores/SystemStore';
 import CharactersStore from '../stores/CharactersStore';
 
 /**
- * チャット画面
+ * チャット画面の統括
  */
 class _Chat extends Component {
   static getStores() {
@@ -31,8 +31,8 @@ class _Chat extends Component {
   }
 
   componentWillMount() {
-    ChatAction.listenMessages();
-    DiceBotAction.getSystems();
+    ChatAction.listenMessages();  // 発言情報の自動取得
+    DiceBotAction.getSystems(); // BCDiceAPIのシステム一覧取得
   }
 
   render() {

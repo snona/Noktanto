@@ -1,21 +1,26 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import { messagesRef, secretMessagesRef } from '../firebase';
-
+import ActionTypes from '../constants/ActionTypes';
+import { messagesRef } from '../firebase';
 import DiceBotAction from '../actions/DiceBotAction';
 
+/**
+ * チャットに関わる操作
+ */
 class ChatAction {
+
+  /**
+   * メッセージの自動読込み
+   */
   static listenMessages() {
     messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
-    secretMessagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
   }
 
-  static setMessages(messages) {
-    AppDispatcher.dispatch({
-      type: 'set_messages',
-      messages: messages === null ? [] : messages,
-    });
-  }
-
+  /**
+   * ダイスボットの結果メッセージを構築
+   * @param {Object} message ダイスボットに送信したメッセージ
+   * @param {Object} response ダイスボットの結果
+   * @return {Object} メッセージ形式のダイス結果
+   */
   static _createResultMessage(message, response) {
     return {
       system: message.system,
@@ -24,12 +29,19 @@ class ChatAction {
     };
   }
 
+  /**
+   * メッセージを送信
+   * @param {Object} message 送信メッセージ
+   */
   static sendMessage(message) {
     DiceBotAction.getDiceRoll(message.system, message.text).then(response => {
       if (!response.ok) {
+        // 正しく処理されていない場合、コマンドが正しくない(または含んでいない)
+        // そのまま送信
         messagesRef.push(message);
       } else {
         if (response.secret) {
+          // シークレットダイスの場合
           const secretMessage = {
             system: message.system,
             character: message.character,
@@ -37,18 +49,22 @@ class ChatAction {
           };
           messagesRef.push(secretMessage);
         }
-        const sendFn = (msg) => response.secret ? secretMessagesRef.push(msg) : messagesRef.push(msg);
-        sendFn(message);
+        messagesRef.push(message);
         const resultMessage = this._createResultMessage(message, response)
-        sendFn(resultMessage);
+        messagesRef.push(resultMessage);
       }
     });
   }
 
+  /**
+   * メッセージを Storeに追加
+   * @param {string} key メッセージの Key
+   * @param {Object} message 追加メッセージ
+   */
   static addMessage(key, message) {
     message.id = key;
     AppDispatcher.dispatch({
-      type: 'add_message',
+      type: ActionTypes.Messages.ADD,
       message,
     });
   }

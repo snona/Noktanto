@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import DiceBotArea from '../components/DiceBotArea';
-import SelectCharacterField from '../components/SelectCharacterField';
+import SelectDiceSystem from '../components/SelectDiceSystem';
+import SelectCharacter from '../components/SelectCharacter';
 
+/**
+ * チャット入力部品
+ */
 class ChatInput extends Component {
   componentWillMount() {
     this.setState({
@@ -25,12 +27,14 @@ class ChatInput extends Component {
     const { sendMessage, systems, system, selectSystem, characters } = this.props;
     return (
       <div style={{ margin: 10 }} >
-        <DiceBotArea
+        {/* ダイスシステム選択 */}
+        <SelectDiceSystem
           systems={systems}
           system={system}
           selectSystem={(value) => selectSystem(value)}
         />
-        <SelectCharacterField
+        {/* 発言キャラクタ選択 */}
+        <SelectCharacter
           characters={characters}
           selectedCharacter={character}
           selectCharacter={(key) => this.setState({ character: characters[key] })}

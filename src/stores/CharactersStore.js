@@ -2,14 +2,21 @@ import { ReduceStore } from 'flux/utils';
 import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
+import ActionTypes from '../constants/ActionTypes';
 
 /**
- * MapAreaの情報
+ * 発言キャラクタの一覧
+ * @extends {ReduceStore}
+ * 
+ * @typedef {Object} Characters 発言キャラクタ一覧
+ * @property {Object} {id} キャラクタのID(※キー名称はキャラクタ毎に別)
+ * @property {string} {id}.id キャラクタのID
+ * @property {string} {id}.name キャラクタ名
+ * @property {string} {id}.color キャラクタ色
+ * @property {string} {id}.url キャラクタ画像の参照先
  */
 class CharactersStore extends ReduceStore {
   getInitialState() {
-    // const image = new Image();
-    // image.src = 'http://www.wtrpg9.com/trpg/image/material/map01.jpg';
     return Immutable.fromJS({
       'A': {
         id: 'A',
@@ -22,7 +29,7 @@ class CharactersStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case 'set_character':
+      case ActionTypes.Characters.ADD:
         return state.set(action.character.id, action.character);
       default:
         return state;

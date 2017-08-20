@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import MapAction from '../actions/MapAction';
 import CharacterAction from '../actions/CharacterAction';
-import MapConfigStore from '../stores/MapConfigStore';
-import CharacterConfigStore from '../stores/CharacterConfigStore';
-import PieceConfigStore from '../stores/PieceConfigStore';
+import MapStore from '../stores/MapStore';
+import CharacterStore from '../stores/CharacterStore';
+import PieceStore from '../stores/PieceStore';
 import MapConfig from '../components/MapConfig';
 import CharacterConfig from '../components/CharacterConfig';
 import PieceConfig from '../components/PieceConfig';
 import ConfigDialog from '../components/ConfigDialog';
 
 /**
- * 画面統括
+ * 設定画面統括  
+ * 現状開発用の画面置き場
  */
 class _Config extends Component {
   static getStores() {
-    return [MapConfigStore, CharacterConfigStore, PieceConfigStore];
+    return [MapStore, CharacterStore, PieceStore];
   }
 
   static calculateState() {
     return {
-      mapConfig: MapConfigStore.getState().toJS(),
-      characterConfig: CharacterConfigStore.getState().toJS(),
-      pieceConfig: PieceConfigStore.getState().toJS(),
+      map: MapStore.getState().toJS(),
+      character: CharacterStore.getState().toJS(),
+      piece: PieceStore.getState().toJS(),
     };
   }
 
@@ -37,14 +36,7 @@ class _Config extends Component {
   }
 
   render() {
-    const { mapConfig, characterConfig, pieceConfig } = this.state;
-    const tmpMapConfig = {
-      url: mapConfig.backImage.src,
-      x: mapConfig.x,
-      y: mapConfig.y,
-      size: mapConfig.size,
-      color: mapConfig.color,
-    };
+    const { map, character, piece } = this.state;
     return (
       <div>
         <RaisedButton
@@ -53,23 +45,26 @@ class _Config extends Component {
           onClick={() => MapAction.removePieces()}
           style={{ marginTop: 10, marginLeft: 10 }}
         />
+        {/* マップ設定画面 */}
         <ConfigDialog
           label="Config Map"
-          config={tmpMapConfig}
+          config={map}
           setConfig={(newConfig) => MapAction.sendConfig(newConfig)}
-          Config={MapConfig}
+          ConfigArea={MapConfig}
         />
+        {/* キャラクタ設定画面 */}
         <ConfigDialog
           label="Add Character"
-          config={characterConfig}
+          config={character}
           setConfig={(newConfig) => CharacterAction.sendConfig(newConfig)}
-          Config={CharacterConfig}
+          ConfigArea={CharacterConfig}
         />
+        {/* 駒設定画面 */}
         <ConfigDialog
           label="Add Piece"
-          config={pieceConfig}
+          config={piece}
           setConfig={(newConfig) => MapAction.addPiece(newConfig)}
-          Config={PieceConfig}
+          ConfigArea={PieceConfig}
         />
       </div>
     );
