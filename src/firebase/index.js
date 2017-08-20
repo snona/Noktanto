@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import { firebaseConfig } from '../firebase/config.js';
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const firebaseAuth = firebase.auth();
 export const firebaseDb = firebaseApp.database();
 export const messagesRef = firebaseDb.ref('messages') /** チャット履歴 */
 export const charactersRef = firebaseDb.ref('characters') /** 発言キャラ */
