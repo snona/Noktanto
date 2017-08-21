@@ -58,7 +58,7 @@ class RoomList extends Component {
         <TableRowColumn>{index}</TableRowColumn>
         <TableRowColumn>{room.name}</TableRowColumn>
         <TableRowColumn>{room.system}</TableRowColumn>
-        <TableRowColumn>{room.authentication ? 'O' : 'X'}</TableRowColumn>
+        <TableRowColumn>{room.authentication !== undefined ? 'O' : 'X'}</TableRowColumn>
         <TableRowColumn>{room.visit ? 'O' : 'X'}</TableRowColumn>
       </TableRow>
     ));
@@ -71,7 +71,7 @@ class RoomList extends Component {
     const roomListHeader = this._createRoomListHeader();
     const roomListBody = this._createRoomListBody(rooms, selectedRoom);
     return (
-      <Paper>
+      <Paper style={{ margin: 30 }}>
         <Table
           height={'300px'}
           onRowSelection={(v) => this._selectRow(v, rooms)}
@@ -103,8 +103,8 @@ class RoomList extends Component {
                   history={history}
                   loginRoom={(room, user, name, history) => loginRoom(room, user, name, history)}
                   checkRoomPassword={(room, password) => checkRoomPassword(room, password)}
-                  createRoom={(room, user, name, history) => createRoom(room, user, name, history)}
-                  deleteRoom={(room) => deleteRoom(room)}
+                  createRoom={(room, user, name, history, password) => createRoom(room, user, name, history, password)}
+                  deleteRoom={(room) => { deleteRoom(room); this.setState({selectedRoom: undefined}); }}
                 />
               </TableRowColumn>
             </TableRow>

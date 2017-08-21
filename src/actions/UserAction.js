@@ -15,13 +15,15 @@ class UserAction {
       console.log(error);
     });
     firebaseAuth.onAuthStateChanged(user => {
-      const uid = user.uid;
-      this.setUserId(uid);
-      usersRef.child(`${uid}/name`).once('value', name => {
-        if (name.val() !== null) {
-          this.setUserName(name.val());
-        }
-      })
+      if (user !== null) {
+        const uid = user.uid;
+        this.setUserId(uid);
+        usersRef.child(`${uid}/name`).once('value', name => {
+          if (name.val() !== null) {
+            this.setUserName(name.val());
+          }
+        });
+      }
     });
   }
 

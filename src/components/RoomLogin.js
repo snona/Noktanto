@@ -37,11 +37,13 @@ class RoomLogin extends Component {
 
   _checkPassword(password) {
     const { room, checkRoomPassword } = this.props;
-    const result = checkRoomPassword(room, password);
-    if (!result) {
-      this.setState({ errorText: 'Password wrong.' });
-    }
-    return result;
+    return Promise.resolve(checkRoomPassword(room, password).then(result => {
+      console.log(result);
+      if (!result) {
+        this.setState({ errorText: 'Password wrong.' });
+      }
+      return result;
+    }));
   }
 
   _createPasswordDialog(room) {
@@ -54,10 +56,13 @@ class RoomLogin extends Component {
       <FlatButton
         label="OK"
         primary={true}
-        onTouchTap={() => { if(this._checkPassword(this.state.password)) {
-            this._loginRoom();
-            this._closePasswordDialog(); 
-          }
+        onTouchTap={() => {
+          this._checkPassword(this.state.password).then(result => {
+            if(result) {
+              this._closePasswordDialog(); 
+              this._loginRoom();
+            }
+          });
         }}
       />,
     ];
@@ -89,8 +94,17 @@ class RoomLogin extends Component {
   render() {
     const { name } = this.state;
     const { room, user, createRoom, deleteRoom, history } = this.props;
+    // const sampleRoom = {
+    //   name: 'Sample Room with Password',
+    //   users: {
+    //     [user.id]: true,
+    //   },
+    //   authentication: true,
+    //   visit: false,
+    //   system: 'Cthulhu',
+    // };
     const sampleRoom = {
-      name: 'Sample Room',
+      name: 'Sample Room with Password',
       users: {
         [user.id]: true,
       },
@@ -98,7 +112,6 @@ class RoomLogin extends Component {
       visit: false,
       system: 'Cthulhu',
     };
-    console.log(room);
     const passwordDialog = this._createPasswordDialog(room);
     return (
       <div>
@@ -118,7 +131,7 @@ class RoomLogin extends Component {
         <RaisedButton
           label="Create"
           secondary={true}
-          onTouchTap={() => createRoom(sampleRoom, user, name, history)}
+          onTouchTap={() => createRoom(sampleRoom, user, name, history, 'password')}
           style={{ marginRight: 100, marginTop: 10, marginBottom: 10 }}
         />
         <RaisedButton
@@ -137,7 +150,7 @@ RoomLogin.propTypes = {
   room: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    authentication: PropTypes.bool.isRequired,
+    authentication: PropTypes.string,
   }),
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,

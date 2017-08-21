@@ -23,7 +23,7 @@
         user01: true,
         user02: true,
       },
-      authentication: true, // 認証必須/不要
+      authentication: authentication01, // 認証可否
       visit: true,  // 見学可否
       system: 'Cthulhu' // ダイスシステム
     },
@@ -120,10 +120,8 @@
     room02: {...},
   },
   authentications: {
-    room01: {
-      authentication: 'Password',
-    },
-    room02: {...},
+    authentication01: 'Password',
+    authentication02: {...},
   }
 },
 ```

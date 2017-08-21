@@ -54,14 +54,16 @@ class RoomAction {
   }
 
   static checkRoomPassword(room, password) {
-    authenticationsRef.child(room.id).once('value').then(result => {
+    console.log(room, password);
+    return Promise.resolve(authenticationsRef.child(room.authentication).once('value').then(result => {
+      console.log(result.val());
       return result.val() === password;
-    });
+    }));
   }
 
   static loginRoom(room, user, name, history) {
     this.setRoom(room);
-    // ユーザ
+    UserAction.setUserName(name),
     history.push(`/${room.id}`);
   }
 
@@ -72,15 +74,22 @@ class RoomAction {
     });
   }
 
-  static createRoom(room, user, name, history) {
+  static createRoom(room, user, name, history, password) {
     // 部屋を作成する処理
-    roomsRef.push(room);
+    if (room.authentication) {
+      room.authentication = authenticationsRef.push(password).key;
+    } else {
+      room.authentication = null;
+    }
+    room.id = roomsRef.push(room).key;
+    this.loginRoom(room, user, name, history);
   }
 
   static deleteRoom(room) {
     console.log(room);
     // 部屋を削除する処理
-    roomsRef.child(room.id).remove()
+    roomsRef.child(room.id).remove();
+    authenticationsRef.child(room.id).remove();
   }
 }
 export default RoomAction;
