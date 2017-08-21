@@ -7,6 +7,7 @@ const ActionTypes = {
   Characters: {
     SET: 'Characters.set',
     ADD: 'Characters.add',
+    INIT: 'Map.init',
   },
   Layouts: {
     SET: 'Layouts.set',
@@ -16,6 +17,7 @@ const ActionTypes = {
     SET: 'Map.set',
   },
   Messages: {
+    INIT: 'Messages.init',
     SET: 'Messages.set',
     ADD: 'Messages.add',
   },
@@ -27,6 +29,7 @@ const ActionTypes = {
     SET: 'Pieces.set',
     ADD: 'Pieces.add',
     REMOVE: 'Pieces.remove',
+    INIT: 'Map.init',
   },
   Systems: {
     SET: 'Systems.set',
@@ -34,8 +37,16 @@ const ActionTypes = {
   System: {
     SET: 'System.set',
   },
-  Authentication: {
-    SET: 'Authentication.set',
+  User: {
+    id: {
+      SET: 'User.id.set',
+    },
+    name: {
+      SET: 'User.name.set',
+    },
+  },
+  Rooms: {
+    ADD: 'Rooms.add',
   },
 };
 

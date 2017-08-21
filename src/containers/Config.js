@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
+import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import MapAction from '../actions/MapAction';
@@ -37,6 +38,7 @@ class _Config extends Component {
 
   render() {
     const { map, character, piece } = this.state;
+    const { history } = this.props;
     return (
       <div>
         <RaisedButton
@@ -66,9 +68,17 @@ class _Config extends Component {
           setConfig={(newConfig) => MapAction.addPiece(newConfig)}
           ConfigArea={PieceConfig}
         />
+        <RaisedButton
+          label="Go Rooms"
+          onClick={() => history.push('/')}
+          style={{ marginTop: 10, marginLeft: 10 }}
+        />
       </div>
     );
   }
 }
+_Config.protoType = {
+  history: PropTypes.object.isRequired,
+};
 const Config = Container.create(_Config);
 export default Config;

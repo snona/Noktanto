@@ -35,6 +35,10 @@ class _Chat extends Component {
     DiceBotAction.getSystems(); // BCDiceAPIのシステム一覧取得
   }
 
+  componentWillUnmount() {
+    ChatAction.unListenMessages();  // 発言情報の自動取得終了
+  }
+
   render() {
     const { layout } = this.props;
     return (

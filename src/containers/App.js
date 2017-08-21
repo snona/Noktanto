@@ -1,41 +1,32 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 
-import AuthAction from '../actions/AuthAction';
-import AuthStore from '../stores/AuthStore';
-
-import LayoutAction from '../actions/LayoutAction';
-import GridArea from '../components/GridArea';
-import LayoutsStore from '../stores/LayoutsStore';
-
+import UserAction from '../actions/UserAction';
+import UserStore from '../stores/UserStore';
+import Routes from '../components/Routes';
 
 /**
  * 全画面統括
  */
 class _App extends Component {
   static getStores() {
-    return [LayoutsStore, AuthStore];
+    return [UserStore];
   }
 
   static calculateState() {
     return {
-      layouts: LayoutsStore.getState().toJS(),
-      auth: AuthStore.getState().toJS(),
+      user: UserStore.getState().toJS(),
     };
   }
 
   componentWillMount() {
-    AuthAction.signIn();
+    UserAction.signIn();
   }
 
   render() {
-    console.log(this.state.auth);
     return (
       <div className="App">
-        <GridArea
-          layouts={this.state.layouts}
-          setLayouts={layouts => LayoutAction.setLayouts(layouts)}
-        />
+        <Routes />
       </div>
     );
   }

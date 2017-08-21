@@ -40,7 +40,7 @@ class GridArea extends Component {
 
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { layouts, setLayouts } = this.props;
+    const { layouts, setLayouts, history, roomId } = this.props;
 
     return (
       <Paper style={{ margin: 10 }}>
@@ -64,7 +64,9 @@ class GridArea extends Component {
           </Paper>
           {/* 設定画面 */}
           <Paper key={'config-board'}>
-            <Config />
+            <Config
+              history={history}
+            />
           </Paper>
         </ReactGridLayout>
       </Paper>
@@ -74,5 +76,7 @@ class GridArea extends Component {
 GridArea.protoType = {
   layouts: PropTypes.array.isRequired,
   setLayouts: PropTypes.func.isRequired,
+  roomId: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };
 export default GridArea;

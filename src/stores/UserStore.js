@@ -5,27 +5,31 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
 /**
- * ユーザ認証情報
+ * ユーザ情報
  * @extends {ReduceStore}
  * 
- * @typedef {Object} Authentication
+ * @typedef {Object} User
+ * @property {string} id 認証ID
  * @property {string} uid 認証ID
  */
-class AuthenticationStore extends ReduceStore {
+class UserStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({
-      uid: '',
+      id: '',
+      name: '',
     });
   }
 
   reduce(state, action) {
     switch (action.type) {
-      case ActionTypes.Authentication.SET:
-        return Immutable.fromJS(action.auth);
+      case ActionTypes.User.id.SET:
+        return state.set('id', action.id);
+      case ActionTypes.User.name.SET:
+        return state.set('name', action.name);
       default:
         return state;
     }
   }
 }
 
-export default new AuthenticationStore(AppDispatcher);
+export default new UserStore(AppDispatcher);

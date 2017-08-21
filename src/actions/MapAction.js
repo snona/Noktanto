@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import { piecesRef, configRef } from '../firebase';
+import { piecesRef, configsRef } from '../firebase';
 
 /**
  * マップに関する操作
@@ -144,8 +144,8 @@ class MapAction {
    * 設定情報を自動取得
    */
   static listenConfig() {
-    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
-    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
+    configsRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
+    configsRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
   }
 
   /**
@@ -153,7 +153,7 @@ class MapAction {
    * @param {Object} config マップの設定情報
    */
   static sendConfig(config) {
-    configRef.set({ 'map_config': config });
+    configsRef.set({ 'map_config': config });
   }
 
   /**

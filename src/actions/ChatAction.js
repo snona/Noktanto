@@ -12,7 +12,12 @@ class ChatAction {
    * メッセージの自動読込み
    */
   static listenMessages() {
+    this.initMessages();
     messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
+  }
+
+  static unListenMessages() {
+    messagesRef.off();
   }
 
   /**
@@ -53,6 +58,12 @@ class ChatAction {
         const resultMessage = this._createResultMessage(message, response)
         messagesRef.push(resultMessage);
       }
+    });
+  }
+
+  static initMessages() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Messages.INIT,
     });
   }
 

@@ -244,5 +244,8 @@
     color: '#ff4081',
     zoom: 1,
   },
+  user: {
+    name: 'Hajime',
+  }
 }
 ```
