@@ -55,9 +55,9 @@ class RoomAction {
 
   static checkRoomPassword(room, password) {
     console.log(room, password);
-    return Promise.resolve(authenticationsRef.child(room.authentication).once('value').then(result => {
+    return Promise.resolve(authenticationsRef.child(`${room.authentication}/${password}`).once('value').then(result => {
       console.log(result.val());
-      return result.val() === password;
+      return result.val() !== null;
     }));
   }
 
@@ -78,7 +78,7 @@ class RoomAction {
   static createRoom(room, user, name, history, password) {
     // 部屋を作成する処理
     if (room.authentication) {
-      room.authentication = authenticationsRef.push(password).key;
+      room.authentication = authenticationsRef.push({ [password]: true }).key;
     } else {
       room.authentication = null;
     }

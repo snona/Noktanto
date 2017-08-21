@@ -94,24 +94,24 @@ class RoomLogin extends Component {
   render() {
     const { name } = this.state;
     const { room, user, createRoom, deleteRoom, history } = this.props;
-    // const sampleRoom = {
-    //   name: 'Sample Room with Password',
-    //   users: {
-    //     [user.id]: true,
-    //   },
-    //   authentication: true,
-    //   visit: false,
-    //   system: 'Cthulhu',
-    // };
     const sampleRoom = {
       name: 'Sample Room with Password',
       users: {
         [user.id]: true,
       },
-      authentication: false,
+      authentication: true,
       visit: false,
       system: 'Cthulhu',
     };
+    // const sampleRoom = {
+    //   name: 'Sample Room',
+    //   users: {
+    //     [user.id]: true,
+    //   },
+    //   authentication: false,
+    //   visit: false,
+    //   system: 'Cthulhu',
+    // };
     const passwordDialog = this._createPasswordDialog(room);
     return (
       <div>

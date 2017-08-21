@@ -15,7 +15,7 @@
       },
       authentications: {
         authentication01: true,
-      }
+      },
     },
     user02: {...},
   },
@@ -123,8 +123,10 @@
     room02: {...},
   },
   authentications: {
-    authentication01: 'Password',
-    authentication02: {...},
+    authentication01: {
+      'Password': true,
+    },
+    room02: {...},
   }
 },
 ```
