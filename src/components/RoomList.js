@@ -58,7 +58,7 @@ class RoomList extends Component {
         <TableRowColumn>{index}</TableRowColumn>
         <TableRowColumn>{room.name}</TableRowColumn>
         <TableRowColumn>{room.system}</TableRowColumn>
-        <TableRowColumn>{room.password ? 'O' : 'X'}</TableRowColumn>
+        <TableRowColumn>{room.authentication ? 'O' : 'X'}</TableRowColumn>
         <TableRowColumn>{room.visit ? 'O' : 'X'}</TableRowColumn>
       </TableRow>
     ));
@@ -66,14 +66,14 @@ class RoomList extends Component {
 
   render() {
     const { selectedRoom } = this.state;
-    const { rooms, user, history, loginRoom, createRoom, removeRoom, checkRoomPassword } = this.props;
+    const { rooms, user, history, loginRoom, createRoom, deleteRoom, checkRoomPassword } = this.props;
     const tableData = [];
     for (let i = 0; i< 10; i++) {
       tableData.push({ id: `${i}`, no: i, name: 'name', system: 'system', password: i%2==0, visit: false });
     }
     const roomTitle = this._createRoomTitle();
     const roomListHeader = this._createRoomListHeader();
-    const roomListBody = this._createRoomListBody(tableData, selectedRoom);
+    const roomListBody = this._createRoomListBody(rooms, selectedRoom);
     return (
       <Paper>
         <Table
@@ -107,8 +107,8 @@ class RoomList extends Component {
                   history={history}
                   loginRoom={(room, user, name, history) => loginRoom(room, user, name, history)}
                   checkRoomPassword={(room, password) => checkRoomPassword(room, password)}
-                  createRoom={(room) => createRoom(room)}
-                  removeRoom={(room) => removeRoom(room)}
+                  createRoom={(room, user, name, history) => createRoom(room, user, name, history)}
+                  deleteRoom={(room) => deleteRoom(room)}
                 />
               </TableRowColumn>
             </TableRow>
@@ -139,7 +139,7 @@ RoomList.propTypes = {
   loginRoom: PropTypes.func.isRequired,
   checkRoomPassword: PropTypes.func.isRequired,
   createRoom: PropTypes.func.isRequired,
-  removeRoom: PropTypes.func.isRequired,
+  deleteRoom: PropTypes.func.isRequired,
 };
 
 export default RoomList;

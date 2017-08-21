@@ -88,7 +88,16 @@ class RoomLogin extends Component {
 
   render() {
     const { name } = this.state;
-    const { room, user, createRoom } = this.props;
+    const { room, user, createRoom, deleteRoom, history } = this.props;
+    const sampleRoom = {
+      name: 'Sample Room',
+      users: {
+        [user.id]: true,
+      },
+      authentication: false,
+      visit: false,
+      system: 'Cthulhu',
+    };
     // パスワードが必須の場合はパスワード確認ダイアログを表示する
     const passwordDialog = this._createPasswordDialog(room);
     return (
@@ -109,14 +118,14 @@ class RoomLogin extends Component {
         <RaisedButton
           label="Create"
           secondary={true}
-          onTouchTap={() => createRoom(user)}
+          onTouchTap={() => createRoom(sampleRoom, user, name, history)}
           style={{ marginRight: 100, marginTop: 10, marginBottom: 10 }}
         />
         <RaisedButton
           label="Delete"
           primary={true}
           disabled={room === undefined}
-          onTouchTap={() => console.log(`/${room.id}`)}
+          onTouchTap={() => deleteRoom(this.props.room)}
           style={{ marginTop: 10, marginBottom: 10 }}
         />
       </div>
@@ -137,7 +146,7 @@ RoomLogin.propTypes = {
   loginRoom: PropTypes.func.isRequired,
   checkRoomPassword: PropTypes.func.isRequired,
   createRoom: PropTypes.func.isRequired,
-  removeRoom: PropTypes.func.isRequired,
+  deleteRoom: PropTypes.func.isRequired,
 };
 
 export default RoomLogin;

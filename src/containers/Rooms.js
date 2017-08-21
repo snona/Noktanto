@@ -41,8 +41,8 @@ class _Rooms extends Component {
           history={history}
           loginRoom={(room, user, name, history) => RoomAction.loginRoom(room, user, name, history)}
           checkRoomPassword={(room, password) => RoomAction.checkRoomPassword(room, password)}
-          createRoom={(room) => RoomAction.createRoom(room)}
-          removeRoom={(room) => RoomAction.removeRoom(room)}
+          createRoom={(room, user, name, history) => RoomAction.createRoom(room, user, name, history)}
+          deleteRoom={(room) => RoomAction.deleteRoom(room)}
         />
       </div>
     );

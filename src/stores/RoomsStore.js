@@ -21,6 +21,9 @@ class RoomsStore extends ReduceStore {
         return state.push(action.room);
       case ActionTypes.Rooms.INIT:
         return this.getInitialState();
+      case ActionTypes.Pieces.REMOVE:
+        const idx = state.indexOf(action.room);
+        return idx !== -1 ? state.delete(idx) : state;
       default:
         return state;
     }

@@ -15,6 +15,7 @@ class RoomAction {
   static listenRooms() {
     this.initRooms();
     roomsRef.on('child_added', (snapshot) => this.addRoom(snapshot.key, snapshot.val()));
+    roomsRef.on('child_removed', (snapshot) => this.removeRoom(snapshot.key, snapshot.val()));
   }
 
   static unListenRooms() {
@@ -44,6 +45,14 @@ class RoomAction {
     });
   }
 
+  static removeRoom(key, room) {
+    room.id = key;
+    AppDispatcher.dispatch({
+      type: ActionTypes.Rooms.REMOVE,
+      room,
+    });
+  }
+
   static checkRoomPassword(room, password) {
     authenticationsRef.child(room.id).once('value').then(result => {
       return result.val() === password;
@@ -63,12 +72,15 @@ class RoomAction {
     });
   }
 
-  static createRoom(room) {
+  static createRoom(room, user, name, history) {
     // 部屋を作成する処理
+    roomsRef.push(room);
   }
 
-  static removeRoom(room) {
+  static deleteRoom(room) {
+    console.log(room);
     // 部屋を削除する処理
+    roomsRef.child(room.id).remove()
   }
 }
 export default RoomAction;
