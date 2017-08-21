@@ -13,6 +13,9 @@
         channel01: true,
         channel03: true,
       },
+      authentications: {
+        authentication01: true,
+      }
     },
     user02: {...},
   },

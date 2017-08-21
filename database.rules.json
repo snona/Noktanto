@@ -10,6 +10,9 @@
         },
         "channels": {
           ".read": "auth === $user_id"
+        },
+        "authentications": {
+          ".read": "auth === $user_id"
         }
       }
     },
@@ -88,8 +91,8 @@
     "authentications": {
       ".read": "auth !== null",
       ".write": "auth !== null",
-      "$room_id": {
-        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      "$auth_id": {
+        ".write": "root.child('users/'+auth.uid+'/authentications/'+$auth_id).exists()"
       }
     }
   }

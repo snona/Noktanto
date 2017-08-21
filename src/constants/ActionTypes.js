@@ -38,6 +38,7 @@ const ActionTypes = {
     SET: 'System.set',
   },
   User: {
+    SET: 'User.set',
     id: {
       SET: 'User.id.set',
     },

@@ -22,8 +22,25 @@ class UserAction {
           if (name.val() !== null) {
             this.setUserName(name.val());
           }
+          usersRef.child(`${uid}`).on('child_changed', user => {
+            this.setUser(user.key, user.val());
+          });
         });
       }
+    });
+  }
+
+  static sendUser(user) {
+    const uid = user.id;
+    user.id = null;
+    usersRef.child(`${uid}`).set(user);
+  }
+
+  static setUser(key, user) {
+    user.id = key;
+    AppDispatcher.dispatch({
+      type: ActionTypes.User.SET,
+      user,
     });
   }
 
