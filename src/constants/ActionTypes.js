@@ -47,7 +47,11 @@ const ActionTypes = {
   },
   Rooms: {
     ADD: 'Rooms.add',
+    INIT: 'Rooms.init',
   },
+  Room: {
+    SET: 'Room.set'
+  }
 };
 
 export default ActionTypes;

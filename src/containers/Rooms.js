@@ -26,14 +26,23 @@ class _Rooms extends Component {
     RoomAction.listenRooms();  // ルーム一覧の自動取得
   }
 
+  componentWillUnmount() {
+    RoomAction.unListenRooms();  // ルーム一覧の自動取得停止
+  }
+
   render() {
+    const { user, rooms } = this.state;
     const { history } = this.props;
     return (
       <div style={{ margin: 10, height: '100%' }} >
         <RoomList
-          user={this.state.user}
-          rooms={this.state.rooms}
+          user={user}
+          rooms={rooms}
           history={history}
+          loginRoom={(room, user, name, history) => RoomAction.loginRoom(room, user, name, history)}
+          checkRoomPassword={(room, password) => RoomAction.checkRoomPassword(room, password)}
+          createRoom={(room) => RoomAction.createRoom(room)}
+          removeRoom={(room) => RoomAction.removeRoom(room)}
         />
       </div>
     );

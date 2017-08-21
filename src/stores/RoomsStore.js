@@ -19,6 +19,8 @@ class RoomsStore extends ReduceStore {
     switch (action.type) {
       case ActionTypes.Rooms.ADD:
         return state.push(action.room);
+      case ActionTypes.Rooms.INIT:
+        return this.getInitialState();
       default:
         return state;
     }

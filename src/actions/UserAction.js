@@ -38,5 +38,9 @@ class UserAction {
       name,
     });
   }
+
+  static loginRoom(room, user) {
+    // name, room の許可を追加
+  }
 }
 export default UserAction;
