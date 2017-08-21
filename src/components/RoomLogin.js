@@ -98,7 +98,7 @@ class RoomLogin extends Component {
       visit: false,
       system: 'Cthulhu',
     };
-    // パスワードが必須の場合はパスワード確認ダイアログを表示する
+    console.log(room);
     const passwordDialog = this._createPasswordDialog(room);
     return (
       <div>
@@ -111,7 +111,7 @@ class RoomLogin extends Component {
         <RaisedButton
           label="Login"
           disabled={room === undefined}
-          onTouchTap={() => room.password ? this._openPasswordDialog() : this._loginRoom()}
+          onTouchTap={() => room.authentication ? this._openPasswordDialog() : this._loginRoom()}
           style={{ marginRight: 100 }}
         />
         {passwordDialog}
@@ -137,7 +137,7 @@ RoomLogin.propTypes = {
   room: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    password: PropTypes.bool.isRequired,
+    authentication: PropTypes.bool.isRequired,
   }),
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,

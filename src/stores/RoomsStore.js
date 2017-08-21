@@ -12,18 +12,17 @@ import ActionTypes from '../constants/ActionTypes';
  */
 class RoomsStore extends ReduceStore {
   getInitialState() {
-    return Immutable.fromJS([]);
+    return Immutable.fromJS({});
   }
 
   reduce(state, action) {
     switch (action.type) {
       case ActionTypes.Rooms.ADD:
-        return state.push(action.room);
+        return state.set(action.room.id, action.room);
       case ActionTypes.Rooms.INIT:
         return this.getInitialState();
-      case ActionTypes.Pieces.REMOVE:
-        const idx = state.indexOf(action.room);
-        return idx !== -1 ? state.delete(idx) : state;
+      case ActionTypes.Rooms.REMOVE:
+        return state.delete(action.room.id);
       default:
         return state;
     }

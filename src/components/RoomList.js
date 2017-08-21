@@ -54,7 +54,7 @@ class RoomList extends Component {
 
   _createRoomListBody(rooms, selectedRoom) {
     return rooms.map((room, index) => (
-      <TableRow key={index} selected={selectedRoom !== undefined && selectedRoom.no === index}>
+      <TableRow key={index} selected={selectedRoom !== undefined && selectedRoom.id === room.id}>
         <TableRowColumn>{index}</TableRowColumn>
         <TableRowColumn>{room.name}</TableRowColumn>
         <TableRowColumn>{room.system}</TableRowColumn>
@@ -67,10 +67,6 @@ class RoomList extends Component {
   render() {
     const { selectedRoom } = this.state;
     const { rooms, user, history, loginRoom, createRoom, deleteRoom, checkRoomPassword } = this.props;
-    const tableData = [];
-    for (let i = 0; i< 10; i++) {
-      tableData.push({ id: `${i}`, no: i, name: 'name', system: 'system', password: i%2==0, visit: false });
-    }
     const roomTitle = this._createRoomTitle();
     const roomListHeader = this._createRoomListHeader();
     const roomListBody = this._createRoomListBody(rooms, selectedRoom);
@@ -78,7 +74,7 @@ class RoomList extends Component {
       <Paper>
         <Table
           height={'300px'}
-          onRowSelection={(v) => this._selectRow(v, tableData)}
+          onRowSelection={(v) => this._selectRow(v, rooms)}
         >
           <TableHeader
             displaySelectAll={false}

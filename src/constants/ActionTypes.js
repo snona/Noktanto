@@ -48,6 +48,7 @@ const ActionTypes = {
   Rooms: {
     ADD: 'Rooms.add',
     INIT: 'Rooms.init',
+    REMOVE: 'Rooms.remove',
   },
   Room: {
     SET: 'Room.set'

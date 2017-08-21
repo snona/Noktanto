@@ -33,11 +33,12 @@ class _Rooms extends Component {
   render() {
     const { user, rooms } = this.state;
     const { history } = this.props;
+    const newRooms = Object.keys(rooms).map(key => rooms[key]);
     return (
       <div style={{ margin: 10, height: '100%' }} >
         <RoomList
           user={user}
-          rooms={rooms}
+          rooms={newRooms}
           history={history}
           loginRoom={(room, user, name, history) => RoomAction.loginRoom(room, user, name, history)}
           checkRoomPassword={(room, password) => RoomAction.checkRoomPassword(room, password)}
