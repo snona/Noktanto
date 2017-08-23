@@ -26,7 +26,14 @@ class _Map extends Component {
   }
 
   componentWillMount() {
-    MapAction.listenPieces(); // マップ情報の自動読込み
+    const { roomId } = this.props;
+    console.log(roomId);
+    MapAction.listenPieces(roomId); // マップ情報の自動読込み
+  }
+
+  componentWillUnmount() {
+    const { roomId } = this.props;
+    MapAction.unListenPieces(roomId);
   }
 
   /**
@@ -84,9 +91,11 @@ class _Map extends Component {
     const backImage = this._createBackImage(map);
     const viewCells = this._createViewCells(map);
     const viewPieces = this._createViewPieces(pieces);
+    const width = layout.w - 40;
+    const height = layout.h - 40;
     return (
       <div style={{ margin: 10 }}>
-        <Stage width={layout.w - 40} height={layout.h - 40} draggable={true} >
+        <Stage width={width} height={height} draggable={true} onDragend={(v) => console.log(v.target.attrs) }>
           <Layer>
             {backImage}
           </Layer>
@@ -102,6 +111,7 @@ class _Map extends Component {
   }
 }
 _Map.protoType = {
+  roomId: PropTypes.string.isRequired,
   layout: PropTypes.object.isRequired,
 };
 const Map = Container.create(_Map);

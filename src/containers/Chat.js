@@ -31,8 +31,14 @@ class _Chat extends Component {
   }
 
   componentWillMount() {
-    ChatAction.listenMessages();  // 発言情報の自動取得
+    const { roomId } = this.props;
+    ChatAction.listenMessages(roomId);  // 発言情報の自動取得
     DiceBotAction.getSystems(); // BCDiceAPIのシステム一覧取得
+  }
+
+  componentWillUnmount() {
+    const { roomId } = this.props;
+    ChatAction.unListenMessages(roomId);  // 発言情報の自動取得終了
   }
 
   render() {
@@ -44,7 +50,7 @@ class _Chat extends Component {
           layout={layout}
         />
         <ChatInput
-          sendMessage={message => ChatAction.sendMessage(message)}
+          sendMessage={message => ChatAction.sendMessage(this.props.roomId, message)}
           systems={this.state.systems}
           system={this.state.system}
           selectSystem={(system) => DiceBotAction.getSystem(system)}
@@ -55,6 +61,7 @@ class _Chat extends Component {
   }
 }
 _Chat.protoType = {
+  roomId: PropTypes.string.isRequired,
   layout: PropTypes.object.isRequired,
 };
 const Chat = Container.create(_Chat);

@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import { piecesRef, configRef } from '../firebase';
+import { piecesRef, configsRef } from '../firebase';
 
 /**
  * マップに関する操作
@@ -47,7 +47,7 @@ class MapAction {
    * 駒を追加
    * @param {Object} config 追加駒情報
    */
-  static addPiece(config) {
+  static addPiece(roomId, config) {
     const x = this.getRandomInt();
     const y = this.getRandomInt();
     const size = config.size;
@@ -61,7 +61,7 @@ class MapAction {
       name: config.name,
       url: config.url,
     };
-    piecesRef.push(piece)
+    piecesRef.child(roomId).push(piece)
   }
 
   /**
@@ -69,11 +69,11 @@ class MapAction {
    * @param {Object} value 移動先配置情報
    * @param {Object} piece 移動する駒
    */
-  static movePiece(value, piece) {
+  static movePiece(roomId, value, piece) {
     piece.x = this._roundOff(value.x, piece.size);
     piece.y = this._roundOff(value.y, piece.size);
     piece.move = piece.move ? false : true;
-    piecesRef.child(piece.id).set(piece);
+    piecesRef.child(`${roomId}/${piece.id}`).set(piece);
   }
 
   /**
@@ -92,8 +92,8 @@ class MapAction {
   /**
    * 駒を全削除
    */
-  static removePieces() {
-    piecesRef.set({});
+  static removePieces(roomId) {
+    piecesRef.child(roomId).set({});
   }
 
   /**
@@ -110,10 +110,15 @@ class MapAction {
   /**
    * 駒情報の自動取得を設定
    */
-  static listenPieces() {
-    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
-    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
-    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));
+  static listenPieces(roomId) {
+    this.initPieces();
+    piecesRef.child(roomId).on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
+    piecesRef.child(roomId).on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
+    piecesRef.child(roomId).on('child_removed', (snapshot) => this.removePiece(snapshot.key));
+  }
+
+  static unListenPieces(roomId) {
+    piecesRef.child(roomId).off();
   }
 
   /**
@@ -126,6 +131,12 @@ class MapAction {
     AppDispatcher.dispatch({
       type: ActionTypes.Pieces.ADD,
       piece,
+    });
+  }
+
+  static initPieces() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Pieces.INIT,
     });
   }
 
@@ -143,17 +154,21 @@ class MapAction {
   /**
    * 設定情報を自動取得
    */
-  static listenConfig() {
-    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
-    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
+  static listenConfig(roomId) {
+    this.initConfig();
+    configsRef.child(`${roomId}/mapConfig`).on('value', (snapshot) => this.setConfig(snapshot.val()));
+  }
+
+  static unListenConfig(roomId) {
+    configsRef.child(`${roomId}/mapConfig`).off();
   }
 
   /**
    * 設定情報を保存
    * @param {Object} config マップの設定情報
    */
-  static sendConfig(config) {
-    configRef.set({ 'map_config': config });
+  static sendConfig(roomId, config) {
+    configsRef.child(roomId).set({ 'mapConfig': config });
   }
 
   /**
@@ -161,9 +176,17 @@ class MapAction {
    * @param {Object} config マップの設定情報
    */
   static setConfig(config) {
+    if (config !== null) {
+      AppDispatcher.dispatch({
+        type: ActionTypes.Map.SET,
+        map: config,
+      });
+    }
+  }
+
+  static initConfig() {
     AppDispatcher.dispatch({
-      type: ActionTypes.Map.SET,
-      map: config,
+      type: ActionTypes.Map.INIT,
     });
   }
 }

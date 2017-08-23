@@ -31,6 +31,8 @@ class MessagesStore extends ReduceStore {
         return Immutable.fromJS(action.messages);
       case ActionTypes.Messages.ADD:
         return state.push(action.message);
+      case ActionTypes.Messages.INIT:
+        return this.getInitialState();
       default:
         return state;
     }

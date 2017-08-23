@@ -33,6 +33,8 @@ class PiecesStore extends ReduceStore {
         return state.set(action.piece.id, action.piece);
       case ActionTypes.Pieces.REMOVE:
         return state.delete(action.id);
+      case ActionTypes.Pieces.INIT:
+        return this.getInitialState();
       default:
         return state;
     }

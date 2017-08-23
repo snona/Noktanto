@@ -5,27 +5,24 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
 /**
- * ユーザ認証情報
+ * ルーム
  * @extends {ReduceStore}
  * 
- * @typedef {Object} Authentication
- * @property {string} uid 認証ID
+ * @typedef {Object} Room ルーム
  */
-class AuthenticationStore extends ReduceStore {
+class RoomStore extends ReduceStore {
   getInitialState() {
-    return Immutable.fromJS({
-      uid: '',
-    });
+    return Immutable.fromJS({});
   }
 
   reduce(state, action) {
     switch (action.type) {
-      case ActionTypes.Authentication.SET:
-        return Immutable.fromJS(action.auth);
+      case ActionTypes.Room.SET:
+        return Immutable.fromJS(action.room);
       default:
         return state;
     }
   }
 }
 
-export default new AuthenticationStore(AppDispatcher);
+export default new RoomStore(AppDispatcher);
