@@ -7,6 +7,7 @@ const ActionTypes = {
   Characters: {
     SET: 'Characters.set',
     ADD: 'Characters.add',
+    REMOVE: 'Characters.remove',
     INIT: 'Characters.init',
   },
   Layouts: {
@@ -48,8 +49,8 @@ const ActionTypes = {
   },
   Rooms: {
     ADD: 'Rooms.add',
-    INIT: 'Rooms.init',
     REMOVE: 'Rooms.remove',
+    INIT: 'Rooms.init',
   },
   Room: {
     SET: 'Room.set'

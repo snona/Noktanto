@@ -10,7 +10,10 @@ import ActionTypes from '../constants/ActionTypes';
  * 
  * @typedef {Object} User
  * @property {string} id 認証ID
- * @property {string} name 認証ID
+ * @property {string} name ユーザ名
+ * @property {Object} rooms ユーザがログイン可能な部屋
+ * @property {Object} channels ユーザが参照可能なチャット
+ * @property {Object} authentications ユーザが認証しているパスコード
  */
 class UserStore extends ReduceStore {
   getInitialState() {
