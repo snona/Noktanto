@@ -62,9 +62,8 @@ class RoomAction {
   }
 
   static loginRoom(room, user, name, history) {
+    UserAction.loginRoom(room, user, name);
     this.setRoom(room);
-    // DBのユーザ名, auth, roomを更新
-    UserAction.setUserName(name),
     history.push(`/${room.id}`);
   }
 

@@ -18,13 +18,10 @@ class UserAction {
       if (user !== null) {
         const uid = user.uid;
         this.setUserId(uid);
-        usersRef.child(`${uid}/name`).once('value', name => {
-          if (name.val() !== null) {
-            this.setUserName(name.val());
-          }
-          usersRef.child(`${uid}`).on('child_changed', user => {
+        usersRef.child(`${uid}`).on('value', user => {
+          if (user.val() !== null) {
             this.setUser(user.key, user.val());
-          });
+          }
         });
       }
     });
@@ -58,8 +55,13 @@ class UserAction {
     });
   }
 
-  static loginRoom(room, user) {
-    // name, room の許可を追加
+  static loginRoom(room, user, name) {
+    user.name = name;
+    user.rooms[room.id] = true;
+    if (room.authentication !== undefined) {
+      user.authentications[room.authentication] = true;
+    }
+    this.sendUser(user);
   }
 }
 export default UserAction;

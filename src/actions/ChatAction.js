@@ -11,13 +11,13 @@ class ChatAction {
   /**
    * メッセージの自動読込み
    */
-  static listenMessages() {
+  static listenMessages(roomId) {
     this.initMessages();
-    messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
+    messagesRef.child(roomId).on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
   }
 
-  static unListenMessages() {
-    messagesRef.off();
+  static unListenMessages(roomId) {
+    messagesRef.child(roomId).off();
   }
 
   /**
@@ -38,12 +38,12 @@ class ChatAction {
    * メッセージを送信
    * @param {Object} message 送信メッセージ
    */
-  static sendMessage(message) {
+  static sendMessage(roomId, message) {
     DiceBotAction.getDiceRoll(message.system, message.text).then(response => {
       if (!response.ok) {
         // 正しく処理されていない場合、コマンドが正しくない(または含んでいない)
         // そのまま送信
-        messagesRef.push(message);
+        messagesRef.child(roomId).push(message);
       } else {
         if (response.secret) {
           // シークレットダイスの場合
@@ -52,11 +52,11 @@ class ChatAction {
             character: message.character,
             text: 'シークレットダイス',
           };
-          messagesRef.push(secretMessage);
+          messagesRef.child(roomId).push(secretMessage);
         }
-        messagesRef.push(message);
+        messagesRef.child(roomId).push(message);
         const resultMessage = this._createResultMessage(message, response)
-        messagesRef.push(resultMessage);
+        messagesRef.child(roomId).push(resultMessage);
       }
     });
   }

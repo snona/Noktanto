@@ -26,7 +26,14 @@ class _Map extends Component {
   }
 
   componentWillMount() {
-    MapAction.listenPieces(); // マップ情報の自動読込み
+    const { roomId } = this.props;
+    console.log(roomId);
+    MapAction.listenPieces(roomId); // マップ情報の自動読込み
+  }
+
+  componentWillUnmount() {
+    const { roomId } = this.props;
+    MapAction.unListenPieces(roomId);
   }
 
   /**
@@ -104,6 +111,7 @@ class _Map extends Component {
   }
 }
 _Map.protoType = {
+  roomId: PropTypes.string.isRequired,
   layout: PropTypes.object.isRequired,
 };
 const Map = Container.create(_Map);

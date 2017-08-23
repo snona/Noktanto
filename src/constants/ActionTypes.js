@@ -7,7 +7,7 @@ const ActionTypes = {
   Characters: {
     SET: 'Characters.set',
     ADD: 'Characters.add',
-    INIT: 'Map.init',
+    INIT: 'Characters.init',
   },
   Layouts: {
     SET: 'Layouts.set',
@@ -29,7 +29,7 @@ const ActionTypes = {
     SET: 'Pieces.set',
     ADD: 'Pieces.add',
     REMOVE: 'Pieces.remove',
-    INIT: 'Map.init',
+    INIT: 'Pieces.init',
   },
   Systems: {
     SET: 'Systems.set',

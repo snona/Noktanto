@@ -19,6 +19,7 @@ class UserStore extends ReduceStore {
       name: '',
       rooms: {},
       channels: {},
+      authentications: {},
     });
   }
 

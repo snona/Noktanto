@@ -30,6 +30,8 @@ class MapStore extends ReduceStore {
     switch (action.type) {
       case ActionTypes.Map.SET:
         return Immutable.fromJS(action.map);
+      case ActionTypes.Map.INIT:
+        return this.getInitialState();
       default:
         return state;
     }

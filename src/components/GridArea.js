@@ -53,18 +53,21 @@ class GridArea extends Component {
           {/* マップ画面 */}
           <Paper key={'map-board'}>
             <Map
+              roomId={roomId}
               layout={this._calWidthHight('map-board')}
             />
           </Paper>
           {/* チャット画面 */}
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
             <Chat
+              roomId={roomId}
               layout={this._calWidthHight('chat-board')}
             /> 
           </Paper>
           {/* 設定画面 */}
           <Paper key={'config-board'}>
             <Config
+              roomId={roomId}
               history={history}
             />
           </Paper>

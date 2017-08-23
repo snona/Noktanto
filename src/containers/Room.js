@@ -21,7 +21,8 @@ class _Room extends Component {
   }
 
   render() {
-    const { history, roomId } = this.props;
+    const { history, match } = this.props;
+    const roomId = match.params.roomId;
     return (
       <GridArea
         layouts={this.state.layouts}
@@ -32,8 +33,5 @@ class _Room extends Component {
     );
   }
 }
-_Room.protoType = {
-  roomId: PropTypes.string.isRequired,
-};
 const Room = Container.create(_Room);
 export default Room;
