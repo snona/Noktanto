@@ -14,6 +14,7 @@ class RoomList extends Component {
   componentWillMount() {
     this.setState({
       selectedRoom: undefined,
+      name: '',
     });
   }
 
@@ -54,8 +55,8 @@ class RoomList extends Component {
     ));
   };
 
-  _loginRoom = (name) => {
-    const { selectedRoom } = this.state;
+  _loginRoom = () => {
+    const { selectedRoom, name } = this.state;
     const { user, history, loginRoom } = this.props;
     loginRoom(selectedRoom, user, name, history);
   };
@@ -66,7 +67,8 @@ class RoomList extends Component {
     return checkRoomPassword(selectedRoom, password);
   };
 
-  _createRoom = (room, name, password) => {
+  _createRoom = (room, password) => {
+    const { name } = this.state;
     const { createRoom, user, history } = this.props;
     createRoom(room, user, name, history, password);
   };
@@ -76,6 +78,10 @@ class RoomList extends Component {
     const { deleteRoom } = this.props;
     deleteRoom(selectedRoom);
     this.setState({ selectedRoom: undefined });
+  };
+
+  _inputName = (name) => {
+    this.setState({ name });
   };
 
   render() {
@@ -116,8 +122,8 @@ class RoomList extends Component {
                   user={user}
                   loginRoom={this._loginRoom}
                   checkRoomPassword={this._checkRoomPassword}
-                  createRoom={this._createRoom}
-                  deleteRoom={this._deleteRoom}
+                  name={user.name}
+                  inputName={this._inputName}
                 />
               </TableRowColumn>
             </TableRow>

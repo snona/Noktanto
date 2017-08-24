@@ -26,9 +26,8 @@ class RoomLogin extends Component {
   }
 
   _loginRoom = () => {
-    const { name } = this.state;
     const { loginRoom } = this.props;
-    loginRoom(name);
+    loginRoom();
   };
 
   _closePasswordDialog = () => {
@@ -107,47 +106,15 @@ class RoomLogin extends Component {
     this.setState({ open: true, password: '', errorText: '' });
   };
 
-  _createSampleRoom = () => {
-    const { user } = this.props;
-    return {
-      name: 'Sample Room with Password',
-      users: {
-        [user.id]: true,
-      },
-      authentication: true,
-      visit: false,
-      system: 'Cthulhu',
-    };
-    // return {
-    //   name: 'Sample Room',
-    //   users: {
-    //     [user.id]: true,
-    //   },
-    //   authentication: false,
-    //   visit: false,
-    //   system: 'Cthulhu',
-    // };
-  };
-
   _inputName = (e, value) => {
+    const { inputName } = this.props;
     this.setState({ name: value });
+    inputName(value);
   };
 
   _login = () => {
     const { room } = this.props;
     room.authentication ? this._openPasswordDialog() : this._loginRoom();
-  };
-
-  _createRoom = () => {
-    const { name } = this.state;
-    const { createRoom } = this.props;
-    const sampleRoom = this._createSampleRoom();
-    createRoom(sampleRoom, name, 'password');
-  };
-
-  _deleteRoom = () => {
-    const { deleteRoom } = this.props;
-    deleteRoom();
   };
 
   render() {
@@ -166,22 +133,8 @@ class RoomLogin extends Component {
           label="Login"
           disabled={room === undefined}
           onTouchTap={this._login}
-          style={{ marginRight: 100 }}
         />
         {passwordDialog}
-        <RaisedButton
-          label="Create"
-          secondary={true}
-          onTouchTap={this._createRoom}
-          style={{ marginRight: 100, marginTop: 10, marginBottom: 10 }}
-        />
-        <RaisedButton
-          label="Delete"
-          primary={true}
-          disabled={room === undefined}
-          onTouchTap={this._deleteRoom}
-          style={{ marginTop: 10, marginBottom: 10 }}
-        />
       </div>
     );
   }
@@ -200,6 +153,8 @@ RoomLogin.propTypes = {
   checkRoomPassword: PropTypes.func.isRequired,
   createRoom: PropTypes.func.isRequired,
   deleteRoom: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  inputName: PropTypes.func.isRequired,
 };
 
 export default RoomLogin;

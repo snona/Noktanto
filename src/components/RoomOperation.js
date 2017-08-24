@@ -7,11 +7,32 @@ import RaisedButton from 'material-ui/RaisedButton';
  * ルーム一覧表示部品
  */
 class RoomOperation extends Component {
+  _createSampleRoom = () => {
+    const { user } = this.props;
+    return {
+      name: 'Sample Room with Password',
+      users: {
+        [user.id]: true,
+      },
+      authentication: true,
+      visit: false,
+      system: 'Cthulhu',
+    };
+    // return {
+    //   name: 'Sample Room',
+    //   users: {
+    //     [user.id]: true,
+    //   },
+    //   authentication: false,
+    //   visit: false,
+    //   system: 'Cthulhu',
+    // };
+  };
+
   _createRoom = () => {
-    const { name } = this.state;
     const { createRoom } = this.props;
     const sampleRoom = this._createSampleRoom();
-    createRoom(sampleRoom, name, 'password');
+    createRoom(sampleRoom, 'password');
   };
 
   _deleteRoom = () => {
