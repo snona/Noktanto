@@ -121,17 +121,16 @@ class RoomList extends Component {
                 />
               </TableRowColumn>
             </TableRow>
-            {/* <TableRow>
+             <TableRow>
               <TableRowColumn colSpan="5" style={{textAlign: 'center'}}>
                 <RoomOperation
                   room={selectedRoom}
                   user={user}
-                  history={history}
-                  createRoom={(room) => createRoom(room)}
-                  removeRoom={(room) => removeRoom(room)}
+                  createRoom={this._createRoom}
+                  removeRoom={this._deleteRoom}
                 />
               </TableRowColumn>
-            </TableRow> */}
+            </TableRow> 
           </TableFooter>
         </Table>
       </Paper>

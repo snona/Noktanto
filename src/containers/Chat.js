@@ -12,13 +12,14 @@ import MessagesStore from '../stores/MessagesStore';
 import SystemsStore from '../stores/SystemsStore';
 import SystemStore from '../stores/SystemStore';
 import CharactersStore from '../stores/CharactersStore';
+import UserStore from '../stores/UserStore';
 
 /**
  * チャット画面の統括
  */
 class _Chat extends Component {
   static getStores() {
-    return [MessagesStore, SystemsStore, SystemStore, CharactersStore];
+    return [MessagesStore, SystemsStore, SystemStore, CharactersStore, UserStore];
   }
 
   static calculateState() {
@@ -27,6 +28,7 @@ class _Chat extends Component {
       systems: SystemsStore.getState().toJS(),
       system: SystemStore.getState().toJS(),
       characters: CharactersStore.getState().toJS(),
+      user: UserStore.getState().toJS(),
     };
   }
 
@@ -51,7 +53,7 @@ class _Chat extends Component {
   };
 
   render() {
-    const { system, systems, messages, characters } = this.state;
+    const { system, systems, messages, characters, user } = this.state;
     const { layout } = this.props;
     return (
       <div style={{ margin: 10, height: '100%' }} >
@@ -65,6 +67,7 @@ class _Chat extends Component {
           system={system}
           selectSystem={this._getDiceSystem}
           characters={characters}
+          user={user}
         />
       </div>
     );

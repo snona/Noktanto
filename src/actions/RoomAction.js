@@ -46,7 +46,8 @@ class RoomAction {
 
   static checkRoomPassword(room, password) {
     return Promise.resolve(authenticationsRef.child(`${room.authentication}/${password}`).once('value').then(result => {
-      return result.val() !== null;
+      console.log(result.val());
+      return result.val() !== null && result.val() === true;
     }));
   }
 

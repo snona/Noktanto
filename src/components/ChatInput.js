@@ -44,8 +44,8 @@ class ChatInput extends Component {
 
   _sendMessage = () => {
     const { character, text } = this.state;
-    const { sendMessage, system } = this.props;
-    sendMessage({ system: system.gameType, character, text });
+    const { sendMessage, system, user } = this.props;
+    sendMessage({ system: system.gameType, character, text, userName: user.name });
     this.setState({ text: '' });
   };
 
@@ -88,5 +88,6 @@ ChatInput.protoType = {
   system: PropTypes.object.isRequired,
   selectSystem: PropTypes.func.isRequired,
   characters: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 export default ChatInput;

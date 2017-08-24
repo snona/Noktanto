@@ -31,6 +31,7 @@ class ChatAction {
       system: message.system,
       character: message.character,
       text: `${message.system} ${response.result}`,
+      userName: message.userName,
     };
   }
 
@@ -51,6 +52,7 @@ class ChatAction {
             system: message.system,
             character: message.character,
             text: 'シークレットダイス',
+            userName: message.userName,
           };
           messagesRef.child(roomId).push(secretMessage);
         }

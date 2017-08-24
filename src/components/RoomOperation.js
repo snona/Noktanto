@@ -7,22 +7,34 @@ import RaisedButton from 'material-ui/RaisedButton';
  * ルーム一覧表示部品
  */
 class RoomOperation extends Component {
+  _createRoom = () => {
+    const { name } = this.state;
+    const { createRoom } = this.props;
+    const sampleRoom = this._createSampleRoom();
+    createRoom(sampleRoom, name, 'password');
+  };
+
+  _deleteRoom = () => {
+    const { deleteRoom } = this.props;
+    deleteRoom();
+  };
+
   render() {
-    const { room, user, history, createRoom } = this.props;
+    const { room } = this.props;
     console.log(room);
     return (
       <div>
         <RaisedButton
           label="Create"
           secondary={true}
-          onTouchTap={() => createRoom(user)}
+          onTouchTap={this._createRoom}
           style={{ marginRight: 100, marginTop: 10, marginBottom: 10 }}
         />
         <RaisedButton
           label="Delete"
           primary={true}
           disabled={room === undefined}
-          onTouchTap={() => console.log(`/${room.id}`)}
+          onTouchTap={this._deleteRoom}
           style={{ marginTop: 10, marginBottom: 10 }}
         />
       </div>
@@ -37,7 +49,6 @@ RoomOperation.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.object.isRequired,
   createRoom: PropTypes.func.isRequired,
   removeRoom: PropTypes.func.isRequired,
 };

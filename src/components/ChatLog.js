@@ -51,7 +51,7 @@ class ChatLog extends Component {
       // 発言者名
       const primaryText = (
         <div style={{ color: message.character.color, fontSize: 10 }} >
-          {message.character.name} ({message.character.name})
+          {message.character.name} ({message.userName})
         </div>
       );
       // 発言内容
