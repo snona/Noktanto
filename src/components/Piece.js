@@ -83,7 +83,7 @@ class Piece extends Component {
   };
 
   render() {
-    const { cell, movePiece, selectPiece } = this.props;
+    const { cell  } = this.props;
     const image = this._createImage(cell);
     const name = this._createName(cell);
     return (

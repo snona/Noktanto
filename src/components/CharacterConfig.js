@@ -24,7 +24,7 @@ class CharacterConfig extends Component {
   };
 
   render() {
-    const { config, setConfig } = this.props;
+    const { config } = this.props;
     return (
       <div style={{ margin: 10 }} >
         <div>

@@ -9,7 +9,6 @@ import Room from '../containers/Room';
  */
 class Routes extends Component {
   render() {
-    const { user } = this.props;
     return (
       <Router>
         <Switch>

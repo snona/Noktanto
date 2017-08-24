@@ -57,5 +57,9 @@ class _Room extends Component {
     );
   }
 }
+_Room.protoType = {
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+};
 const Room = Container.create(_Room);
 export default Room;

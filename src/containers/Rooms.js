@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 
 import UserStore from '../stores/UserStore';
-import UserAction from '../actions/UserAction';
 import RoomsStore from '../stores/RoomsStore';
 import RoomAction from '../actions/RoomAction';
 import RoomList from '../components/RoomList';
