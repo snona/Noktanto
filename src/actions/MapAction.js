@@ -39,7 +39,7 @@ class MapAction {
    * @param {number} [max=3] 発生乱数の最大値
    * @param {number} [min=0] 発生乱数の最小値
    */
-  static getRandomInt(max = 3, min = 0) {
+  static _getRandomInt(max = 3, min = 0) {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
   }
 
@@ -48,8 +48,8 @@ class MapAction {
    * @param {Object} config 追加駒情報
    */
   static addPiece(roomId, config) {
-    const x = this.getRandomInt();
-    const y = this.getRandomInt();
+    const x = this._getRandomInt();
+    const y = this._getRandomInt();
     const size = config.size;
     const piece = {
       x: x * size,
@@ -111,14 +111,20 @@ class MapAction {
    * 駒情報の自動取得を設定
    */
   static listenPieces(roomId) {
-    this.initPieces();
-    piecesRef.child(roomId).on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
-    piecesRef.child(roomId).on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
-    piecesRef.child(roomId).on('child_removed', (snapshot) => this.removePiece(snapshot.key));
+    this._initPieces();
+    piecesRef.child(roomId).on('child_added', (snapshot) => this._setPiece(snapshot.key, snapshot.val()));
+    piecesRef.child(roomId).on('child_changed', (snapshot) => this._setPiece(snapshot.key, snapshot.val()));
+    piecesRef.child(roomId).on('child_removed', (snapshot) => this._removePiece(snapshot.key));
   }
 
   static unListenPieces(roomId) {
     piecesRef.child(roomId).off();
+  }
+
+  static _initPieces() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Pieces.INIT,
+    });
   }
 
   /**
@@ -126,7 +132,7 @@ class MapAction {
    * @param {string} id 格納する駒のID
    * @param {Object} piece 格納する駒
    */
-  static setPiece(id, piece) {
+  static _setPiece(id, piece) {
     piece.id = id;
     AppDispatcher.dispatch({
       type: ActionTypes.Pieces.ADD,
@@ -134,17 +140,11 @@ class MapAction {
     });
   }
 
-  static initPieces() {
-    AppDispatcher.dispatch({
-      type: ActionTypes.Pieces.INIT,
-    });
-  }
-
   /**
    * Storeから駒を削除
    * @param {string} id 削除対象の駒ID
    */
-  static removePiece(id) {
+  static _removePiece(id) {
     AppDispatcher.dispatch({
       type: ActionTypes.Pieces.REMOVE,
       id,
@@ -155,12 +155,18 @@ class MapAction {
    * 設定情報を自動取得
    */
   static listenConfig(roomId) {
-    this.initConfig();
-    configsRef.child(`${roomId}/mapConfig`).on('value', (snapshot) => this.setConfig(snapshot.val()));
+    this._initConfig();
+    configsRef.child(`${roomId}/mapConfig`).on('value', (snapshot) => this._setConfig(snapshot.val()));
   }
 
   static unListenConfig(roomId) {
     configsRef.child(`${roomId}/mapConfig`).off();
+  }
+
+  static _initConfig() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Map.INIT,
+    });
   }
 
   /**
@@ -175,19 +181,13 @@ class MapAction {
    * 設定情報を設定
    * @param {Object} config マップの設定情報
    */
-  static setConfig(config) {
+  static _setConfig(config) {
     if (config !== null) {
       AppDispatcher.dispatch({
         type: ActionTypes.Map.SET,
         map: config,
       });
     }
-  }
-
-  static initConfig() {
-    AppDispatcher.dispatch({
-      type: ActionTypes.Map.INIT,
-    });
   }
 }
 export default MapAction;

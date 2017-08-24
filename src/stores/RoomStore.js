@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
+import FirebaseObject from '../utils/FirebaseObject';
 
 /**
  * ルーム
@@ -32,9 +33,15 @@ class RoomStore extends ReduceStore {
     switch (action.type) {
       case ActionTypes.Room.SET:
         return Immutable.fromJS(action.room);
+      case ActionTypes.Room.RECEIVE:
+        return Immutable.fromJS(this.dbToStore(action.id, action.room));
       default:
         return state;
     }
+  }
+
+  dbToStore(key, db) {
+    return FirebaseObject.dbToStore(key, db, this.getInitialState().toJS());
   }
 }
 

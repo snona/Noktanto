@@ -8,6 +8,21 @@ import SelectColor from '../components/SelectColor';
  * キャラクタ設定部品
  */
 class CharacterConfig extends Component {
+  _inputName = (e, value) => {
+    const { setConfig } = this.props;
+    setConfig({ name: value });
+  };
+
+  _selectColor = (color) => {
+    const { setConfig } = this.props;
+    setConfig({ color });
+  };
+
+  _inputURL = (e, value) => {
+    const { setConfig } = this.props;
+    setConfig({ url: value });
+  };
+
   render() {
     const { config, setConfig } = this.props;
     return (
@@ -17,18 +32,18 @@ class CharacterConfig extends Component {
             floatingLabelText="Name"
             style={{ width: 150 }}
             value={config.name}
-            onChange={(e, v) => setConfig({ name: v })}
+            onChange={this._inputName}
           />
         </div>
         <SelectColor
           selectedColor={config.color}
-          selectColor={(color) => setConfig({ color })}
+          selectColor={this._selectColor}
         />
         <TextField
           floatingLabelText="Avatar URL"
           style={{ width: 350 }}
           value={config.url}
-          onChange={(e, v) => setConfig({ url: v })}
+          onChange={this._inputURL}
         />
       </div>
     )

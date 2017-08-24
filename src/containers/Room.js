@@ -14,7 +14,7 @@ import UserStore from '../stores/UserStore';
  */
 class _Room extends Component {
   static getStores() {
-    return [LayoutsStore, RoomStore];
+    return [LayoutsStore, RoomStore, UserStore];
   }
 
   static calculateState() {
@@ -26,11 +26,16 @@ class _Room extends Component {
   }
 
   componentWillMount() {
-    const { history, match } = this.props
-    const { user } = this.state;
-    const roomId = match.params.roomId;
-    // ID からルーム情報を取得
-    RoomAction.getRoom(roomId, user.id, history);
+    LayoutAction.readLayouts();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    const { user } = nextState;
+    if (user.id !== '' && this.state.user.id !== user.id) {
+      const { history, match } = nextProps
+      const roomId = match.params.roomId;
+      RoomAction.getRoom(roomId, user.id, history);
+    }
   }
 
   _setLayouts = (layouts) => {
@@ -41,6 +46,7 @@ class _Room extends Component {
     const { layouts } = this.state;
     const { history, match } = this.props;
     const roomId = match.params.roomId;
+    console.log(this.state.user);
     return (
       <GridArea
         layouts={layouts}

@@ -67,6 +67,21 @@ class Piece extends Component {
     );
   }
 
+  _movePiece = (value) => {
+    const { movePiece } = this.props;
+    movePiece(value.target.attrs);
+  };
+
+  _selectPiece = () => {
+    const { selectPiece } = this.props;
+    selectPiece(true);
+  };
+
+  _doubleClick = (value) => {
+    const { selectPiece } = this.props;
+    selectPiece(false);
+  };
+
   render() {
     const { cell, movePiece, selectPiece } = this.props;
     const image = this._createImage(cell);
@@ -76,9 +91,9 @@ class Piece extends Component {
         x={cell.x}
         y={cell.y}
         draggable={true}
-        onDragend={(v) => movePiece(v.target.attrs) }
-        onClick={() => selectPiece(true)}
-        onDoubleClick={(v) => { console.log(v.target.attrs); selectPiece(false); } }
+        onDragend={this._movePiece}
+        onClick={this._selectPiece}
+        onDoubleClick={this._doubleClick}
       >
         {image}
         {name}

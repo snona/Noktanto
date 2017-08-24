@@ -51,7 +51,7 @@ class _Chat extends Component {
   };
 
   render() {
-    const { system, systems, messages, characters }
+    const { system, systems, messages, characters } = this.state;
     const { layout } = this.props;
     return (
       <div style={{ margin: 10, height: '100%' }} >

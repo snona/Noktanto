@@ -9,11 +9,12 @@ import Room from '../containers/Room';
  */
 class Routes extends Component {
   render() {
+    const { user } = this.props;
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Rooms}/>
-          <Route exact path="/:roomId" component={Room}/>
+          <Route exact path="/" component={Rooms} />
+          <Route exact path="/:roomId" component={Room} />
         </Switch>
       </Router>
     );
