@@ -26,6 +26,8 @@ class SystemStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
+      case ActionTypes.System.gameType.SET:
+        return state.set('gameType', action.gameType);
       case ActionTypes.System.SET:
         return Immutable.fromJS(action.system);
       default:

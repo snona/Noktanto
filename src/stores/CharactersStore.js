@@ -31,6 +31,10 @@ class CharactersStore extends ReduceStore {
     switch (action.type) {
       case ActionTypes.Characters.ADD:
         return state.set(action.character.id, action.character);
+      case ActionTypes.Characters.REMOVE:
+        return state.delete(action.id);
+      case ActionTypes.Characters.INIT:
+        return this.getInitialState();
       default:
         return state;
     }

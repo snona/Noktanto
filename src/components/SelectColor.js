@@ -77,10 +77,13 @@ class SelectColor extends Component {
     return true;
   }
 
-  render() {
-    const { selectedColor, selectColor } = this.props;
-    // 選択肢作成
-    const items = SelectColor.colors.map(color => (
+  _selectColor = (e, i, value) => {
+    const { selectColor } = this.props;
+    selectColor(value);
+  };
+
+  _createItems = () => {
+    return SelectColor.colors.map(color => (
       <MenuItem
         key={color.value}
         value={color.value}
@@ -88,12 +91,18 @@ class SelectColor extends Component {
         style={{ color: color.value }}
       />
     ));
+  };
+
+  render() {
+    const { selectedColor } = this.props;
+    // 選択肢作成
+    const items = this._createItems();
     return (
       <div>
         <SelectField
           floatingLabelText="Select Color"
           value={selectedColor}
-          onChange={(e, i, v) => selectColor(v)}
+          onChange={this.selectColor}
           labelStyle={{ color: selectedColor }}
           selectedMenuItemStyle={{ color: selectedColor }}
         >

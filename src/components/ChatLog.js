@@ -19,22 +19,39 @@ class ChatLog extends Component {
     return true;
   }
 
+  _createAvatar(character) {
+    if (character.url === '') {
+      return (
+        <Avatar
+          color={character.color}
+          backgroundColor={'#F5F5F5'}
+          size={32}
+          style={{ top: 8 }}
+        >
+          {character.name !== '' ? character.name[0] : '?'}
+        </Avatar>
+      );
+    }
+
+    return (
+      <Avatar
+        src={character.url}
+        size={32}
+        style={{ top: 8 }}
+      />
+    );
+  }
+
   render() {
     const { messages, layout } = this.props;
     // ログ一覧を作成
     const logs = messages.map(message => {
       // 発言者画像
-      const avatar = (
-        <Avatar
-          src={message.character.url}
-          size={32}
-          style={{ top: 8 }}
-        />
-      );
+      const avatar = this._createAvatar(message.character);
       // 発言者名
       const primaryText = (
         <div style={{ color: message.character.color, fontSize: 10 }} >
-          {message.character.name}
+          {message.character.name} ({message.userName})
         </div>
       );
       // 発言内容

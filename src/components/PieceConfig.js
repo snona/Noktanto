@@ -7,8 +7,23 @@ import TextField from 'material-ui/TextField';
  * 駒設定部品
  */
 class PieceConfig extends Component {
+  _inputName = (e, value) => {
+    const { setConfig } = this.props;
+    setConfig({ name: value });
+  };
+
+  _inputSize = (e, value) => {
+    const { setConfig } = this.props;
+    setConfig({ size: value });
+  };
+
+  _inputURL = (e, value) => {
+    const { setConfig } = this.props;
+    setConfig({ url: value })
+  };
+
   render() {
-    const { config, setConfig } = this.props;
+    const { config } = this.props;
     return (
       <div style={{ margin: 10 }} >
         <div>
@@ -16,7 +31,7 @@ class PieceConfig extends Component {
             floatingLabelText="Name"
             style={{ width: 150 }}
             value={config.name}
-            onChange={(e, v) => setConfig({ name: v })}
+            onChange={this._inputName}
           />
         </div>
         <div>
@@ -24,7 +39,7 @@ class PieceConfig extends Component {
             floatingLabelText="Size"
             style={{ width: 50 }}
             value={config.size}
-            onChange={(e, v) => setConfig({ size: v })}
+            onChange={this._inputSize}
           />
         </div>
         <div>
@@ -32,7 +47,7 @@ class PieceConfig extends Component {
             floatingLabelText="Image URL"
             style={{ width: 350 }}
             value={config.url}
-            onChange={(e, v) => setConfig({ url: v })}
+            onChange={this._inputURL}
           />
         </div>
       </div>

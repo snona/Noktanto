@@ -26,7 +26,13 @@ class _Map extends Component {
   }
 
   componentWillMount() {
-    MapAction.listenPieces(); // マップ情報の自動読込み
+    const { roomId } = this.props;
+    MapAction.listenPieces(roomId); // マップ情報の自動読込み
+  }
+
+  componentWillUnmount() {
+    const { roomId } = this.props;
+    MapAction.unListenPieces(roomId);
   }
 
   /**
@@ -84,9 +90,12 @@ class _Map extends Component {
     const backImage = this._createBackImage(map);
     const viewCells = this._createViewCells(map);
     const viewPieces = this._createViewPieces(pieces);
+    const width = layout.w - 40;
+    const height = layout.h - 40;
+    // Todo 駒選択時に画面中央に駒を表示したい
     return (
       <div style={{ margin: 10 }}>
-        <Stage width={layout.w - 40} height={layout.h - 40} draggable={true} >
+        <Stage width={width} height={height} draggable={true}>
           <Layer>
             {backImage}
           </Layer>
@@ -102,6 +111,7 @@ class _Map extends Component {
   }
 }
 _Map.protoType = {
+  roomId: PropTypes.string.isRequired,
   layout: PropTypes.object.isRequired,
 };
 const Map = Container.create(_Map);

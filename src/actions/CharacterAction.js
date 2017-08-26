@@ -10,8 +10,13 @@ class CharacterAction {
   /**
    * キャラクタの追加を自動読込み
    */
-  static listenConfig() {
-    charactersRef.on('child_added', (snapshot) => this.addCharacter(snapshot.key, snapshot.val()));
+  static listenConfig(roomId) {
+    this._initCharacters();
+    charactersRef.child(roomId).on('child_added', (snapshot) => this._addCharacter(snapshot.key, snapshot.val()));
+  }
+
+  static unListenConfig(roomId) {
+    charactersRef.child(roomId).off();
   }
 
   /**
@@ -28,15 +33,15 @@ class CharacterAction {
    * キャラクタ情報を送信
    * @param {Object} config キャラクタ情報
    */
-  static sendConfig(config) {
-    charactersRef.push(this._createCharacter(config));
-    this.initConfig();  // 作成後は初期値に戻す
+  static sendConfig(roomId, config) {
+    charactersRef.child(roomId).push(this._createCharacter(config));
+    this._initConfig();  // 作成後は初期値に戻す
   }
 
   /**
    * キャラクタ情報を初期値に設定
    */
-  static initConfig() {
+  static _initConfig() {
     AppDispatcher.dispatch({
       type: ActionTypes.Character.INIT,
     });
@@ -50,11 +55,17 @@ class CharacterAction {
    * @param {string} id キャラクタのID
    * @param {Object} character 追加するキャラクタ情報
    */
-  static addCharacter(id, character) {
+  static _addCharacter(id, character) {
     character.id = id;
     AppDispatcher.dispatch({
       type: ActionTypes.Characters.ADD,
       character,
+    });
+  }
+
+  static _initCharacters() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Characters.INIT,
     });
   }
 }

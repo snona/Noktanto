@@ -7,6 +7,8 @@ const ActionTypes = {
   Characters: {
     SET: 'Characters.set',
     ADD: 'Characters.add',
+    REMOVE: 'Characters.remove',
+    INIT: 'Characters.init',
   },
   Layouts: {
     SET: 'Layouts.set',
@@ -14,8 +16,10 @@ const ActionTypes = {
   },
   Map: {
     SET: 'Map.set',
+    INIT: 'Map.init',
   },
   Messages: {
+    INIT: 'Messages.init',
     SET: 'Messages.set',
     ADD: 'Messages.add',
   },
@@ -27,16 +31,32 @@ const ActionTypes = {
     SET: 'Pieces.set',
     ADD: 'Pieces.add',
     REMOVE: 'Pieces.remove',
+    INIT: 'Pieces.init',
   },
   Systems: {
     SET: 'Systems.set',
   },
   System: {
+    gameType: {
+      SET: 'System.gameType.set',
+    },
     SET: 'System.set',
   },
-  Authentication: {
-    SET: 'Authentication.set',
+  User: {
+    RECEIVE: 'User.receive',
+    id: {
+      SET: 'User.id.set',
+    },
   },
+  Rooms: {
+    ADD: 'Rooms.add',
+    REMOVE: 'Rooms.remove',
+    INIT: 'Rooms.init',
+  },
+  Room: {
+    SET: 'Room.set',
+    RECEIVE: 'Room.receive',
+  }
 };
 
 export default ActionTypes;

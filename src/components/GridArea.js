@@ -38,33 +38,43 @@ class GridArea extends Component {
     return { w: w * wx, h: h * hx };
   }
 
+  _setLayouts = (newLayouts) => {
+    const { setLayouts } = this.props;
+    setLayouts(newLayouts)
+  };
+
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { layouts, setLayouts } = this.props;
+    const { layouts, history, roomId } = this.props;
 
     return (
       <Paper style={{ margin: 10 }}>
         <ReactGridLayout className="layout" layout={layouts}
           cols={cols} rowHeight={rows}
           width={width} height={height}
-          onDragStop={(newLayouts) => setLayouts(newLayouts)}
-          onResizeStop={(newLayouts) => setLayouts(newLayouts)}
+          onDragStop={this._setLayouts}
+          onResizeStop={this._setLayouts}
         >
           {/* マップ画面 */}
           <Paper key={'map-board'}>
             <Map
+              roomId={roomId}
               layout={this._calWidthHight('map-board')}
             />
           </Paper>
           {/* チャット画面 */}
           <Paper key={'chat-board'} style={{ backgroundColor: Colors.lightGreen100 }}>
             <Chat
+              roomId={roomId}
               layout={this._calWidthHight('chat-board')}
             /> 
           </Paper>
           {/* 設定画面 */}
           <Paper key={'config-board'}>
-            <Config />
+            <Config
+              roomId={roomId}
+              history={history}
+            />
           </Paper>
         </ReactGridLayout>
       </Paper>
@@ -74,5 +84,7 @@ class GridArea extends Component {
 GridArea.protoType = {
   layouts: PropTypes.array.isRequired,
   setLayouts: PropTypes.func.isRequired,
+  roomId: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };
 export default GridArea;

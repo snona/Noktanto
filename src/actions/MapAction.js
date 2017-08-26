@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import { piecesRef, configRef } from '../firebase';
+import { piecesRef, configsRef } from '../firebase';
 
 /**
  * マップに関する操作
@@ -39,7 +39,7 @@ class MapAction {
    * @param {number} [max=3] 発生乱数の最大値
    * @param {number} [min=0] 発生乱数の最小値
    */
-  static getRandomInt(max = 3, min = 0) {
+  static _getRandomInt(max = 3, min = 0) {
     return Math.floor( Math.random() * (max - min + 1) ) + min;
   }
 
@@ -47,9 +47,9 @@ class MapAction {
    * 駒を追加
    * @param {Object} config 追加駒情報
    */
-  static addPiece(config) {
-    const x = this.getRandomInt();
-    const y = this.getRandomInt();
+  static addPiece(roomId, config) {
+    const x = this._getRandomInt();
+    const y = this._getRandomInt();
     const size = config.size;
     const piece = {
       x: x * size,
@@ -61,7 +61,7 @@ class MapAction {
       name: config.name,
       url: config.url,
     };
-    piecesRef.push(piece)
+    piecesRef.child(roomId).push(piece)
   }
 
   /**
@@ -69,11 +69,11 @@ class MapAction {
    * @param {Object} value 移動先配置情報
    * @param {Object} piece 移動する駒
    */
-  static movePiece(value, piece) {
+  static movePiece(roomId, value, piece) {
     piece.x = this._roundOff(value.x, piece.size);
     piece.y = this._roundOff(value.y, piece.size);
     piece.move = piece.move ? false : true;
-    piecesRef.child(piece.id).set(piece);
+    piecesRef.child(`${roomId}/${piece.id}`).set(piece);
   }
 
   /**
@@ -92,8 +92,8 @@ class MapAction {
   /**
    * 駒を全削除
    */
-  static removePieces() {
-    piecesRef.set({});
+  static removePieces(roomId) {
+    piecesRef.child(roomId).set({});
   }
 
   /**
@@ -110,10 +110,21 @@ class MapAction {
   /**
    * 駒情報の自動取得を設定
    */
-  static listenPieces() {
-    piecesRef.on('child_added', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
-    piecesRef.on('child_changed', (snapshot) => this.setPiece(snapshot.key, snapshot.val()));
-    piecesRef.on('child_removed', (snapshot) => this.removePiece(snapshot.key));
+  static listenPieces(roomId) {
+    this._initPieces();
+    piecesRef.child(roomId).on('child_added', (snapshot) => this._setPiece(snapshot.key, snapshot.val()));
+    piecesRef.child(roomId).on('child_changed', (snapshot) => this._setPiece(snapshot.key, snapshot.val()));
+    piecesRef.child(roomId).on('child_removed', (snapshot) => this._removePiece(snapshot.key));
+  }
+
+  static unListenPieces(roomId) {
+    piecesRef.child(roomId).off();
+  }
+
+  static _initPieces() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Pieces.INIT,
+    });
   }
 
   /**
@@ -121,7 +132,7 @@ class MapAction {
    * @param {string} id 格納する駒のID
    * @param {Object} piece 格納する駒
    */
-  static setPiece(id, piece) {
+  static _setPiece(id, piece) {
     piece.id = id;
     AppDispatcher.dispatch({
       type: ActionTypes.Pieces.ADD,
@@ -133,7 +144,7 @@ class MapAction {
    * Storeから駒を削除
    * @param {string} id 削除対象の駒ID
    */
-  static removePiece(id) {
+  static _removePiece(id) {
     AppDispatcher.dispatch({
       type: ActionTypes.Pieces.REMOVE,
       id,
@@ -143,28 +154,40 @@ class MapAction {
   /**
    * 設定情報を自動取得
    */
-  static listenConfig() {
-    configRef.on('child_added', (snapshot) => this.setConfig(snapshot.val()));
-    configRef.on('child_changed', (snapshot) => this.setConfig(snapshot.val()));
+  static listenConfig(roomId) {
+    this._initConfig();
+    configsRef.child(`${roomId}/mapConfig`).on('value', (snapshot) => this._setConfig(snapshot.val()));
+  }
+
+  static unListenConfig(roomId) {
+    configsRef.child(`${roomId}/mapConfig`).off();
+  }
+
+  static _initConfig() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Map.INIT,
+    });
   }
 
   /**
    * 設定情報を保存
    * @param {Object} config マップの設定情報
    */
-  static sendConfig(config) {
-    configRef.set({ 'map_config': config });
+  static sendConfig(roomId, config) {
+    configsRef.child(roomId).set({ 'mapConfig': config });
   }
 
   /**
    * 設定情報を設定
    * @param {Object} config マップの設定情報
    */
-  static setConfig(config) {
-    AppDispatcher.dispatch({
-      type: ActionTypes.Map.SET,
-      map: config,
-    });
+  static _setConfig(config) {
+    if (config !== null) {
+      AppDispatcher.dispatch({
+        type: ActionTypes.Map.SET,
+        map: config,
+      });
+    }
   }
 }
 export default MapAction;

@@ -11,8 +11,13 @@ class ChatAction {
   /**
    * メッセージの自動読込み
    */
-  static listenMessages() {
-    messagesRef.on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
+  static listenMessages(roomId) {
+    this._initMessages();
+    messagesRef.child(roomId).on('child_added', (snapshot, id) => this._addMessage(snapshot.key, snapshot.val()));
+  }
+
+  static unListenMessages(roomId) {
+    messagesRef.child(roomId).off();
   }
 
   /**
@@ -26,6 +31,7 @@ class ChatAction {
       system: message.system,
       character: message.character,
       text: `${message.system} ${response.result}`,
+      userName: message.userName,
     };
   }
 
@@ -33,12 +39,12 @@ class ChatAction {
    * メッセージを送信
    * @param {Object} message 送信メッセージ
    */
-  static sendMessage(message) {
+  static sendMessage(roomId, message) {
     DiceBotAction.getDiceRoll(message.system, message.text).then(response => {
       if (!response.ok) {
         // 正しく処理されていない場合、コマンドが正しくない(または含んでいない)
         // そのまま送信
-        messagesRef.push(message);
+        messagesRef.child(roomId).push(message);
       } else {
         if (response.secret) {
           // シークレットダイスの場合
@@ -46,13 +52,20 @@ class ChatAction {
             system: message.system,
             character: message.character,
             text: 'シークレットダイス',
+            userName: message.userName,
           };
-          messagesRef.push(secretMessage);
+          messagesRef.child(roomId).push(secretMessage);
         }
-        messagesRef.push(message);
+        messagesRef.child(roomId).push(message);
         const resultMessage = this._createResultMessage(message, response)
-        messagesRef.push(resultMessage);
+        messagesRef.child(roomId).push(resultMessage);
       }
+    });
+  }
+
+  static _initMessages() {
+    AppDispatcher.dispatch({
+      type: ActionTypes.Messages.INIT,
     });
   }
 
@@ -61,7 +74,7 @@ class ChatAction {
    * @param {string} key メッセージの Key
    * @param {Object} message 追加メッセージ
    */
-  static addMessage(key, message) {
+  static _addMessage(key, message) {
     message.id = key;
     AppDispatcher.dispatch({
       type: ActionTypes.Messages.ADD,

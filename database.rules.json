@@ -1,6 +1,99 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true"
+    "users": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$user_id": {
+        ".write": "auth === $user_id",
+        "rooms": {
+          ".read": "auth === $user_id"
+        },
+        "channels": {
+          ".read": "auth === $user_id"
+        },
+        "authentications": {
+          ".read": "auth === $user_id"
+        }
+      }
+    },
+    "rooms": {
+      ".read": "auth !== null",
+      ".write": "auth !== null"
+    },
+    "channels": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$channel_id": {
+          ".read": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
+          ".write": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()"
+        }
+      }
+    },
+    "characters": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    },
+    "pieces": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    },
+    "messages": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$channel_id": {
+          ".read": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
+          ".write": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()"
+        }
+      }
+    },
+    "memos": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    },
+    "pallets": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$user_id": {
+          ".read": "auth === $user_id",
+          ".write": "auth === $user_id"
+        }
+      }
+    },
+    "configs": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    },
+    "authentications": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    }
   }
 }
