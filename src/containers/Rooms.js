@@ -4,26 +4,30 @@ import { Container } from 'flux/utils';
 import UserStore from '../stores/UserStore';
 import RoomsStore from '../stores/RoomsStore';
 import RoomAction from '../actions/RoomAction';
+import DiceBotAction from '../actions/DiceBotAction';
 import RoomList from '../components/RoomList';
+import SystemsStore from '../stores/SystemsStore';
 
 /**
  * ルーム一覧画面の統括
  */
 class _Rooms extends Component {
   static getStores() {
-    return [UserStore, RoomsStore];
+    return [UserStore, RoomsStore, SystemsStore];
   }
 
   static calculateState() {
     return {
       user: UserStore.getState().toJS(),
       rooms: RoomsStore.getState().toJS(),
+      systems: SystemsStore.getState().toJS(),
     };
   }
 
   componentWillMount() {
     // ルーム一覧の自動取得
     RoomAction.listenRooms();
+    DiceBotAction.getSystems(); // BCDiceAPIのシステム一覧取得
   }
 
   componentWillUnmount() {
@@ -48,7 +52,7 @@ class _Rooms extends Component {
   };
 
   render() {
-    const { user, rooms } = this.state;
+    const { user, rooms, systems } = this.state;
     const { history } = this.props;
     const roomsList = Object.keys(rooms).map(key => rooms[key]);
     return (
@@ -56,6 +60,7 @@ class _Rooms extends Component {
         <RoomList
           user={user}
           rooms={roomsList}
+          systems={systems}
           history={history}
           loginRoom={this._loginRoom}
           checkRoomPassword={this._checkRoomPassword}

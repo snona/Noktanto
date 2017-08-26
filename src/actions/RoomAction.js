@@ -102,10 +102,12 @@ class RoomAction {
     Object.keys(room.users).forEach(uid => {
       // ルーム一覧から対象を削除
       usersRef.child(`${uid}/rooms/${rid}`).remove();
-      Object.keys(channels).forEach(cid => {
-        // ルーム一覧から対象を削除
-        usersRef.child(`${uid}/channels/${cid}`).remove();
-      });
+      if (channels !== undefined) {
+        Object.keys(channels).forEach(cid => {
+          // ルーム一覧から対象を削除
+          usersRef.child(`${uid}/channels/${cid}`).remove();
+        });
+      }
       if (room.authentication !== undefined) {
         // 認証一覧から対象を削除
         usersRef.child(`${uid}/authentications/${room.authentication}`).remove();

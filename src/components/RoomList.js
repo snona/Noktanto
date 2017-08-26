@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import * as Colors from 'material-ui/styles/colors';
 import { Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import RoomLogin from '../components/RoomLogin';
-import RoomOperation from '../components/RoomOperation';
+import RoomCreate from '../components/RoomCreate';
 
 /**
  * ルーム一覧表示部品
@@ -18,6 +20,13 @@ class RoomList extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { name } = this.props;
+    if (name === '' && nextProps.name !== '') {
+      this.setState({ name: nextProps.name });
+    }
+  }
+
   _selectRow = (selectedRows) => {
     const { rooms } = this.props;
     if (selectedRows.length === 0) {
@@ -27,7 +36,7 @@ class RoomList extends Component {
     }
   };
 
-  _createRoomTitl = () => {
+  _createRoomTitle = () => {
     return ('Select Room! and Login!');
   };
 
@@ -55,6 +64,49 @@ class RoomList extends Component {
     ));
   };
 
+  _createRoomListFooter = () => {
+    const { selectedRoom, name } = this.state;
+    const { user, systems } = this.props;
+    return (
+      <TableRow>
+        <TableRowColumn style={{textAlign: 'center'}}>
+        </TableRowColumn>
+        <TableRowColumn style={{textAlign: 'center'}}>
+          <TextField
+            floatingLabelText="User Name"
+            style={{ width: 150 }}
+            value={name}
+            onChange={this._inputName}
+          />
+        </TableRowColumn>
+        <TableRowColumn style={{textAlign: 'center'}}>
+          <RoomLogin
+            room={selectedRoom}
+            user={user}
+            loginRoom={this._loginRoom}
+            checkRoomPassword={this._checkRoomPassword}
+          />
+        </TableRowColumn>
+        <TableRowColumn style={{textAlign: 'center'}}>
+          <RoomCreate
+            user={user}
+            createRoom={this._createRoom}
+            systems={systems}
+          />
+        </TableRowColumn>
+        <TableRowColumn style={{textAlign: 'center'}}>
+          <RaisedButton
+            label="Delete"
+            primary={true}
+            disabled={selectedRoom === undefined}
+            onTouchTap={this._deleteRoom}
+            style={{ marginTop: 10, marginBottom: 10 }}
+          />
+        </TableRowColumn>
+      </TableRow> 
+    );
+  };
+
   _loginRoom = () => {
     const { selectedRoom, name } = this.state;
     const { user, history, loginRoom } = this.props;
@@ -80,16 +132,17 @@ class RoomList extends Component {
     this.setState({ selectedRoom: undefined });
   };
 
-  _inputName = (name) => {
-    this.setState({ name });
+  _inputName = (e, value) => {
+    this.setState({ name: value });
   };
 
   render() {
     const { selectedRoom } = this.state;
-    const { rooms, user } = this.props;
-    const roomTitle = this._createRoomTitle;
+    const { rooms } = this.props;
+    const roomTitle = this._createRoomTitle();
     const roomListHeader = this._createRoomListHeader();
     const roomListBody = this._createRoomListBody(rooms, selectedRoom);
+    const roomListFooter = this._createRoomListFooter();
     return (
       <Paper style={{ margin: 30 }}>
         <Table
@@ -113,30 +166,8 @@ class RoomList extends Component {
           >
             {roomListBody}
           </TableBody>
-          <TableFooter
-          >
-            <TableRow>
-              <TableRowColumn colSpan="5" style={{textAlign: 'center' }}>
-                <RoomLogin
-                  room={selectedRoom}
-                  user={user}
-                  loginRoom={this._loginRoom}
-                  checkRoomPassword={this._checkRoomPassword}
-                  name={user.name}
-                  inputName={this._inputName}
-                />
-              </TableRowColumn>
-            </TableRow>
-             <TableRow>
-              <TableRowColumn colSpan="5" style={{textAlign: 'center'}}>
-                <RoomOperation
-                  room={selectedRoom}
-                  user={user}
-                  createRoom={this._createRoom}
-                  removeRoom={this._deleteRoom}
-                />
-              </TableRowColumn>
-            </TableRow> 
+          <TableFooter>
+            {roomListFooter}
           </TableFooter>
         </Table>
       </Paper>
@@ -149,6 +180,7 @@ RoomList.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
+  systems: PropTypes.array.isRequired,
   history: PropTypes.object.isRequired,
   loginRoom: PropTypes.func.isRequired,
   checkRoomPassword: PropTypes.func.isRequired,

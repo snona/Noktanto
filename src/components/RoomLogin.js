@@ -11,18 +11,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 class RoomLogin extends Component {
   componentWillMount() {
     this.setState({
-      name: '',
       password: '',
       open: false,
       errorText: '',
     });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { name } = this.props;
-    if (name === '' && nextProps.name !== '') {
-      this.setState({ name: nextProps.name });
-    }
   }
 
   _loginRoom = () => {
@@ -106,36 +98,24 @@ class RoomLogin extends Component {
     this.setState({ open: true, password: '', errorText: '' });
   };
 
-  _inputName = (e, value) => {
-    const { inputName } = this.props;
-    this.setState({ name: value });
-    inputName(value);
-  };
-
   _login = () => {
     const { room } = this.props;
     room.authentication ? this._openPasswordDialog() : this._loginRoom();
   };
 
   render() {
-    const { name } = this.state;
     const { room } = this.props;
     const passwordDialog = this._createPasswordDialog(room);
     return (
-      <div>
-        <TextField
-          floatingLabelText="User Name"
-          style={{ width: 150, marginRight: 100 }}
-          value={name}
-          onChange={this._inputName}
-        />
+      <span>
         <RaisedButton
           label="Login"
           disabled={room === undefined}
           onTouchTap={this._login}
+          style={{ marginBottom: 10 }}
         />
         {passwordDialog}
-      </div>
+      </span>
     );
   }
 }
@@ -151,10 +131,6 @@ RoomLogin.propTypes = {
   }).isRequired,
   loginRoom: PropTypes.func.isRequired,
   checkRoomPassword: PropTypes.func.isRequired,
-  createRoom: PropTypes.func.isRequired,
-  deleteRoom: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  inputName: PropTypes.func.isRequired,
 };
 
 export default RoomLogin;
