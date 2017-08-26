@@ -12,13 +12,14 @@ import MessagesStore from '../stores/MessagesStore';
 import SystemsStore from '../stores/SystemsStore';
 import SystemStore from '../stores/SystemStore';
 import CharactersStore from '../stores/CharactersStore';
+import UserStore from '../stores/UserStore';
 
 /**
  * チャット画面の統括
  */
 class _Chat extends Component {
   static getStores() {
-    return [MessagesStore, SystemsStore, SystemStore, CharactersStore];
+    return [MessagesStore, SystemsStore, SystemStore, CharactersStore, UserStore];
   }
 
   static calculateState() {
@@ -27,6 +28,7 @@ class _Chat extends Component {
       systems: SystemsStore.getState().toJS(),
       system: SystemStore.getState().toJS(),
       characters: CharactersStore.getState().toJS(),
+      user: UserStore.getState().toJS(),
     };
   }
 
@@ -41,20 +43,31 @@ class _Chat extends Component {
     ChatAction.unListenMessages(roomId);  // 発言情報の自動取得終了
   }
 
+  _sendMessage = (message) => {
+    const { roomId } = this.props;
+    ChatAction.sendMessage(roomId, message);
+  };
+
+  _getDiceSystem = (system) => {
+    DiceBotAction.getSystem(system);
+  };
+
   render() {
+    const { system, systems, messages, characters, user } = this.state;
     const { layout } = this.props;
     return (
       <div style={{ margin: 10, height: '100%' }} >
         <ChatLog
-          messages={this.state.messages}
+          messages={messages}
           layout={layout}
         />
         <ChatInput
-          sendMessage={message => ChatAction.sendMessage(this.props.roomId, message)}
-          systems={this.state.systems}
-          system={this.state.system}
-          selectSystem={(system) => DiceBotAction.getSystem(system)}
-          characters={this.state.characters}
+          sendMessage={this._sendMessage}
+          systems={systems}
+          system={system}
+          selectSystem={this._getDiceSystem}
+          characters={characters}
+          user={user}
         />
       </div>
     );

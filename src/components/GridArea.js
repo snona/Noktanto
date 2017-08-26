@@ -38,17 +38,22 @@ class GridArea extends Component {
     return { w: w * wx, h: h * hx };
   }
 
+  _setLayouts = (newLayouts) => {
+    const { setLayouts } = this.props;
+    setLayouts(newLayouts)
+  };
+
   render() {
     const { width, height, cols, rows } = GridArea;
-    const { layouts, setLayouts, history, roomId } = this.props;
+    const { layouts, history, roomId } = this.props;
 
     return (
       <Paper style={{ margin: 10 }}>
         <ReactGridLayout className="layout" layout={layouts}
           cols={cols} rowHeight={rows}
           width={width} height={height}
-          onDragStop={(newLayouts) => setLayouts(newLayouts)}
-          onResizeStop={(newLayouts) => setLayouts(newLayouts)}
+          onDragStop={this._setLayouts}
+          onResizeStop={this._setLayouts}
         >
           {/* マップ画面 */}
           <Paper key={'map-board'}>

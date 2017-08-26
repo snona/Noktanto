@@ -17,51 +17,44 @@ class UserAction {
     firebaseAuth.onAuthStateChanged(user => {
       if (user !== null) {
         const uid = user.uid;
-        this.setUserId(uid);
+        this._setUserId(uid);
         usersRef.child(`${uid}`).on('value', user => {
           if (user.val() !== null) {
-            this.setUser(user.key, user.val());
+            this._receiveUser(user.key, user.val());
           }
         });
       }
     });
   }
 
-  static sendUser(user) {
+  static _sendUser(user) {
+    console.log(user);
     const uid = user.id;
     user.id = null;
     usersRef.child(`${uid}`).set(user);
   }
 
-  static setUser(key, user) {
-    user.id = key;
+  static _receiveUser(id, user) {
     AppDispatcher.dispatch({
-      type: ActionTypes.User.SET,
+      type: ActionTypes.User.RECEIVE,
+      id,
       user,
     });
   }
 
-  static setUserId(id) {
+  static _setUserId(id) {
     AppDispatcher.dispatch({
       type: ActionTypes.User.id.SET,
       id,
     });
   }
 
-  static setUserName(name) {
-    AppDispatcher.dispatch({
-      type: ActionTypes.User.name.SET,
-      name,
-    });
-  }
-
-  static loginRoom(room, user, name) {
-    user.name = name;
+  static loginRoom(room, user) {
     user.rooms[room.id] = true;
     if (room.authentication !== undefined) {
       user.authentications[room.authentication] = true;
     }
-    this.sendUser(user);
+    this._sendUser(user);
   }
 }
 export default UserAction;

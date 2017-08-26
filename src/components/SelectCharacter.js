@@ -18,10 +18,14 @@ class SelectCharacter extends Component {
     return true;
   }
 
-  render() {
-    const { characters, selectedCharacter, selectCharacter } = this.props;
-    // 選択肢作成
-    const items = Object.keys(characters).map(key => {
+  _selectCharacter = (e, i, value) => {
+    const { selectCharacter } = this.props;
+    selectCharacter(value);
+  };
+
+  _createItems = () => {
+    const { characters } = this.props;
+    return Object.keys(characters).map(key => {
       const character = characters[key];
       return (
         <MenuItem
@@ -32,12 +36,18 @@ class SelectCharacter extends Component {
         />
       );
     });
+  };
+
+  render() {
+    const { selectedCharacter } = this.props;
+    // 選択肢作成
+    const items = this._createItems();
     return (
       <div>
         <SelectField
           floatingLabelText="Select Character"
           value={selectedCharacter.id}
-          onChange={(e, i, v) => selectCharacter(v)}
+          onChange={this._selectCharacter}
           labelStyle={{ color: selectedCharacter.color }}
           selectedMenuItemStyle={{ color: selectedCharacter.color }}
           style={{ marginRight: 10 }}

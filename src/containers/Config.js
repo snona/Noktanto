@@ -43,6 +43,26 @@ class _Config extends Component {
     CharacterAction.unListenConfig(roomId);
   }
 
+  _addPiece = (newConfig) => {
+    const { roomId } = this.props;
+    MapAction.addPiece(roomId, newConfig)
+  }
+
+  _removePieces = () => {
+    const { roomId } = this.props;
+    MapAction.removePieces(roomId);
+  };
+
+  _sendMapConfig = (newConfig) => {
+    const { roomId } = this.props;
+    MapAction.sendConfig(roomId, newConfig)
+  };
+
+  _addCharacter = (newConfig) => {
+    const { roomId } = this.props;
+    CharacterAction.sendConfig(roomId, newConfig)
+  };
+
   render() {
     const { map, character, piece } = this.state;
     const { history } = this.props;
@@ -51,28 +71,28 @@ class _Config extends Component {
         <RaisedButton
           label="Remove Pieces"
           primary={true}
-          onClick={() => MapAction.removePieces(this.props.roomId)}
+          onClick={this._removePieces}
           style={{ marginTop: 10, marginLeft: 10 }}
         />
         {/* マップ設定画面 */}
         <ConfigDialog
           label="Config Map"
           config={map}
-          setConfig={(newConfig) => MapAction.sendConfig(this.props.roomId, newConfig)}
+          setConfig={this._sendMapConfig}
           ConfigArea={MapConfig}
         />
         {/* キャラクタ設定画面 */}
         <ConfigDialog
           label="Add Character"
           config={character}
-          setConfig={(newConfig) => CharacterAction.sendConfig(this.props.roomId, newConfig)}
+          setConfig={this._addCharacter}
           ConfigArea={CharacterConfig}
         />
         {/* 駒設定画面 */}
         <ConfigDialog
           label="Add Piece"
           config={piece}
-          setConfig={(newConfig) => MapAction.addPiece(this.props.roomId, newConfig)}
+          setConfig={this._addPiece}
           ConfigArea={PieceConfig}
         />
         <RaisedButton

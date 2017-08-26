@@ -12,8 +12,8 @@ class ChatAction {
    * メッセージの自動読込み
    */
   static listenMessages(roomId) {
-    this.initMessages();
-    messagesRef.child(roomId).on('child_added', (snapshot, id) => this.addMessage(snapshot.key, snapshot.val()));
+    this._initMessages();
+    messagesRef.child(roomId).on('child_added', (snapshot, id) => this._addMessage(snapshot.key, snapshot.val()));
   }
 
   static unListenMessages(roomId) {
@@ -31,6 +31,7 @@ class ChatAction {
       system: message.system,
       character: message.character,
       text: `${message.system} ${response.result}`,
+      userName: message.userName,
     };
   }
 
@@ -51,6 +52,7 @@ class ChatAction {
             system: message.system,
             character: message.character,
             text: 'シークレットダイス',
+            userName: message.userName,
           };
           messagesRef.child(roomId).push(secretMessage);
         }
@@ -61,7 +63,7 @@ class ChatAction {
     });
   }
 
-  static initMessages() {
+  static _initMessages() {
     AppDispatcher.dispatch({
       type: ActionTypes.Messages.INIT,
     });
@@ -72,7 +74,7 @@ class ChatAction {
    * @param {string} key メッセージの Key
    * @param {Object} message 追加メッセージ
    */
-  static addMessage(key, message) {
+  static _addMessage(key, message) {
     message.id = key;
     AppDispatcher.dispatch({
       type: ActionTypes.Messages.ADD,

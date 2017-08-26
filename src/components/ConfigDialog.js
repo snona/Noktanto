@@ -37,20 +37,40 @@ class ConfigDialog extends Component {
     return obj;
   }
 
-  render() {
+  _openDialog = () => {
+    this.setState({ open: true });
+  };
+
+  _closeDialog = () => {
+    this.setState({ open: false });
+  };
+
+  _setConfig = () => {
     const { tmpConfig } = this.state;
-    const { label, setConfig, ConfigArea } = this.props;
+    const { setConfig } = this.props;
+    setConfig(tmpConfig);
+    this._closeDialog();
+  };
+
+  _setNewConfig = (newConfig) => {
+    const { tmpConfig } = this.state;
+    this.setState({ tmpConfig: this._mergeObject(newConfig, tmpConfig) });
+  };
+
+  render() {
+    const { tmpConfig, open } = this.state;
+    const { label, ConfigArea } = this.props;
     // ダイアログに表示するOK, キャンセルボタン
     const actions = [
       <FlatButton
         label="Cancel"
         secondary={true}
-        onTouchTap={() => this.setState({ open: false })}
+        onTouchTap={this._closeDialog}
       />,
       <FlatButton
         label="OK"
         primary={true}
-        onTouchTap={() => { setConfig(tmpConfig); this.setState({ open: false }) }}
+        onTouchTap={this._setConfig}
       />,
     ];
     return (
@@ -58,19 +78,19 @@ class ConfigDialog extends Component {
         <RaisedButton
           label={label}
           primary={true}
-          onClick={() => this.setState({ open: true })}
+          onClick={this._openDialog}
         />
         <Dialog
           title={label}
           actions={actions}
           modal={false}
-          open={this.state.open}
-          onRequestClose={() => this.setState({ open: false })}
+          open={open}
+          onRequestClose={this._closeDialog}
           autoScrollBodyContent={true}
         >
           <ConfigArea
             config={tmpConfig}
-            setConfig={(newConfig) => this.setState({ tmpConfig: this._mergeObject(newConfig, this.state.tmpConfig) })}
+            setConfig={this._setNewConfig}
           />
         </Dialog>
       </div>

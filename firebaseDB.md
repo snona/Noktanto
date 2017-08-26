@@ -26,6 +26,10 @@
         user01: true,
         user02: true,
       },
+      channels: {
+        channel01: true,
+        channel03: true,
+      },
       authentication: authentication01, // 認証可否
       visit: true,  // 見学可否
       system: 'Cthulhu' // ダイスシステム
@@ -142,9 +146,11 @@
         .write: auth === $user_id,
         rooms: {
           .read: auth === $user_id,
+          .write: auth !== null,
         },
         channels: {
           .read: auth === $user_id,
+          .write: auth !== null,
         },
       },
     },

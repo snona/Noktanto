@@ -22,33 +22,61 @@ class ChatInput extends Component {
     });
   }
 
+  _selectSystem = (value) => {
+    const { selectSystem } = this.props;
+    selectSystem(value);
+  };
+
+  _selectCharacter = (key) => {
+    const { characters } = this.props;
+    this.setState({ character: characters[key] });
+  };
+
+  _inputText = (e, value) => {
+    this.setState({ text: value });
+  };
+
+  _enterKey = (event) => {
+    if (event.charCode === 13) {
+      this._sendMessage();
+    }
+  }
+
+  _sendMessage = () => {
+    const { character, text } = this.state;
+    const { sendMessage, system, user } = this.props;
+    sendMessage({ system: system.gameType, character, text, userName: user.name });
+    this.setState({ text: '' });
+  };
+
   render() {
     const { character, text } = this.state;
-    const { sendMessage, systems, system, selectSystem, characters } = this.props;
+    const { systems, system, characters } = this.props;
     return (
       <div style={{ margin: 10 }} >
         {/* ダイスシステム選択 */}
         <SelectDiceSystem
           systems={systems}
           system={system}
-          selectSystem={(value) => selectSystem(value)}
+          selectSystem={this._selectSystem}
         />
         {/* 発言キャラクタ選択 */}
         <SelectCharacter
           characters={characters}
           selectedCharacter={character}
-          selectCharacter={(key) => this.setState({ character: characters[key] })}
+          selectCharacter={this._selectCharacter}
         />
         <TextField
           floatingLabelText="Text"
           style={{ width: 250, marginRight: 10  }}
           value={text}
-          onChange={(e, v) => this.setState({ text: v })}
+          onChange={this._inputText}
+          onKeyPress={this._enterKey}
         />
         <RaisedButton
           label="Send Message"
           secondary={true}
-          onClick={() => { sendMessage({ system: system.gameType, character, text }); this.setState({ text: '' }); }}
+          onClick={this._sendMessage}
         />
       </div>
     )
@@ -60,5 +88,6 @@ ChatInput.protoType = {
   system: PropTypes.object.isRequired,
   selectSystem: PropTypes.func.isRequired,
   characters: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 export default ChatInput;

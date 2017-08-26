@@ -27,7 +27,6 @@ class _Map extends Component {
 
   componentWillMount() {
     const { roomId } = this.props;
-    console.log(roomId);
     MapAction.listenPieces(roomId); // マップ情報の自動読込み
   }
 
@@ -93,9 +92,10 @@ class _Map extends Component {
     const viewPieces = this._createViewPieces(pieces);
     const width = layout.w - 40;
     const height = layout.h - 40;
+    // Todo 駒選択時に画面中央に駒を表示したい
     return (
       <div style={{ margin: 10 }}>
-        <Stage width={width} height={height} draggable={true} onDragend={(v) => console.log(v.target.attrs) }>
+        <Stage width={width} height={height} draggable={true}>
           <Layer>
             {backImage}
           </Layer>

@@ -11,137 +11,111 @@ import RaisedButton from 'material-ui/RaisedButton';
 class RoomLogin extends Component {
   componentWillMount() {
     this.setState({
-      name: '',
       password: '',
       open: false,
       errorText: '',
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { name } = this.props;
-    if (name === '' && nextProps.name !== '') {
-      this.setState({ name: nextProps.name });
-    }
-  }
+  _loginRoom = () => {
+    const { loginRoom } = this.props;
+    loginRoom();
+  };
 
-  _loginRoom() {
-    const { name } = this.state;
-    const { room, user, history, loginRoom } = this.props;
-    loginRoom(room, user, name, history);
-  }
-
-  _closePasswordDialog() {
+  _closePasswordDialog = () => {
     this.setState({ open: false });
-  }
+  };
 
-  _checkPassword(password) {
-    const { room, checkRoomPassword } = this.props;
-    return Promise.resolve(checkRoomPassword(room, password).then(result => {
+  _checkPassword = (password) => {
+    const { checkRoomPassword } = this.props;
+    return Promise.resolve(checkRoomPassword(password).then(result => {
       console.log(result);
       if (!result) {
         this.setState({ errorText: 'Password wrong.' });
       }
       return result;
     }));
-  }
+  };
+
+  _checkAndLogin = () => {
+    const { password } = this.state;
+    this._checkPassword(password).then(result => {
+      if(result) {
+        this._closePasswordDialog(); 
+        this._loginRoom();
+      }
+    });
+  };
+
+  _inputPassword = (e, value) => {
+    this.setState({ password: value });
+  };
+
+  _enterKey = (event) => {
+    if (event.charCode === 13) {
+      this._checkAndLogin();
+    }
+  };
 
   _createPasswordDialog(room) {
+    const { open, password, errorText } = this.state;
     const actions = [
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={() => this._closePasswordDialog()}
+        onTouchTap={this._closePasswordDialog}
       />,
       <FlatButton
         label="OK"
         primary={true}
-        onTouchTap={() => {
-          this._checkPassword(this.state.password).then(result => {
-            if(result) {
-              this._closePasswordDialog(); 
-              this._loginRoom();
-            }
-          });
-        }}
+        onTouchTap={this._checkAndLogin}
       />,
     ];
+    const title = room !== undefined ? room.name : '';
     return (
       <Dialog
-        title={room !== undefined ? room.name : ''}
+        title={title}
         actions={actions}
         modal={false}
         contentStyle={{ width: 500 }}
-        open={this.state.open}
-        onRequestClose={() => this._closePasswordDialog()}
+        open={open}
+        onRequestClose={this._closePasswordDialog}
       >
         <TextField
           floatingLabelText="Password"
           style={{ width: 150 }}
           type="password"
-          value={this.state.password}
-          onChange={(e, v) => this.setState({ password: v })}
-          errorText={this.state.errorText}
+          value={password}
+          onChange={this._inputPassword}
+          onKeyPress={this._enterKey}
+          errorText={errorText}
         />
       </Dialog>
     );
   }
 
-  _openPasswordDialog() {
+  _openPasswordDialog = () => {
     this.setState({ open: true, password: '', errorText: '' });
-  }
+  };
+
+  _login = () => {
+    const { room } = this.props;
+    room.authentication ? this._openPasswordDialog() : this._loginRoom();
+  };
 
   render() {
-    const { name } = this.state;
-    const { room, user, createRoom, deleteRoom, history } = this.props;
-    const sampleRoom = {
-      name: 'Sample Room with Password',
-      users: {
-        [user.id]: true,
-      },
-      authentication: true,
-      visit: false,
-      system: 'Cthulhu',
-    };
-    // const sampleRoom = {
-    //   name: 'Sample Room',
-    //   users: {
-    //     [user.id]: true,
-    //   },
-    //   authentication: false,
-    //   visit: false,
-    //   system: 'Cthulhu',
-    // };
+    const { room } = this.props;
     const passwordDialog = this._createPasswordDialog(room);
     return (
-      <div>
-        <TextField
-          floatingLabelText="User Name"
-          style={{ width: 150, marginRight: 100 }}
-          value={this.state.name}
-          onChange={(e, v) => this.setState({ name: v })}
-        />
+      <span>
         <RaisedButton
           label="Login"
           disabled={room === undefined}
-          onTouchTap={() => room.authentication ? this._openPasswordDialog() : this._loginRoom()}
-          style={{ marginRight: 100 }}
+          onTouchTap={this._login}
+          style={{ marginBottom: 10 }}
         />
         {passwordDialog}
-        <RaisedButton
-          label="Create"
-          secondary={true}
-          onTouchTap={() => createRoom(sampleRoom, user, name, history, 'password')}
-          style={{ marginRight: 100, marginTop: 10, marginBottom: 10 }}
-        />
-        <RaisedButton
-          label="Delete"
-          primary={true}
-          disabled={room === undefined}
-          onTouchTap={() => deleteRoom(this.props.room)}
-          style={{ marginTop: 10, marginBottom: 10 }}
-        />
-      </div>
+      </span>
     );
   }
 }
@@ -155,11 +129,8 @@ RoomLogin.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.object.isRequired,
   loginRoom: PropTypes.func.isRequired,
   checkRoomPassword: PropTypes.func.isRequired,
-  createRoom: PropTypes.func.isRequired,
-  deleteRoom: PropTypes.func.isRequired,
 };
 
 export default RoomLogin;

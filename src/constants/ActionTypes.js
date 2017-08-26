@@ -7,6 +7,7 @@ const ActionTypes = {
   Characters: {
     SET: 'Characters.set',
     ADD: 'Characters.add',
+    REMOVE: 'Characters.remove',
     INIT: 'Characters.init',
   },
   Layouts: {
@@ -15,6 +16,7 @@ const ActionTypes = {
   },
   Map: {
     SET: 'Map.set',
+    INIT: 'Map.init',
   },
   Messages: {
     INIT: 'Messages.init',
@@ -35,24 +37,25 @@ const ActionTypes = {
     SET: 'Systems.set',
   },
   System: {
+    gameType: {
+      SET: 'System.gameType.set',
+    },
     SET: 'System.set',
   },
   User: {
-    SET: 'User.set',
+    RECEIVE: 'User.receive',
     id: {
       SET: 'User.id.set',
-    },
-    name: {
-      SET: 'User.name.set',
     },
   },
   Rooms: {
     ADD: 'Rooms.add',
-    INIT: 'Rooms.init',
     REMOVE: 'Rooms.remove',
+    INIT: 'Rooms.init',
   },
   Room: {
-    SET: 'Room.set'
+    SET: 'Room.set',
+    RECEIVE: 'Room.receive',
   }
 };
 
