@@ -18,7 +18,7 @@ class PieceStore extends ReduceStore {
     return Immutable.fromJS({
       name: '',
       url: '',
-      size: 45,
+      size: 50,
     });
   }
 
