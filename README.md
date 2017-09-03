@@ -5,7 +5,7 @@ TRPG向けチャット&マップツール
 
 ## Demo
 
-https://dice-chat-6b7e2.firebaseapp.com/
+https://noktanto-demo.firebaseapp.com
 
 **※Dice Botを選択してからメッセージを送信してください**
 
