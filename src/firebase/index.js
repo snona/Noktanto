@@ -10,6 +10,7 @@ export const channelsRef = firebaseDb.ref('channels') /** チャンネル一覧 
 export const charactersRef = firebaseDb.ref('characters') /** 発言キャラ一覧 */
 export const piecesRef = firebaseDb.ref('pieces') /** 駒一覧 */
 export const messagesRef = firebaseDb.ref('messages') /** メッセージ一覧 */
+export const secretMessagesRef = firebaseDb.ref('secret_messages') /** シークレット メッセージ一覧 */
 export const memosRef = firebaseDb.ref('memos') /** メモ一覧 */
 export const palletsRef = firebaseDb.ref('pallets') /** パレット一覧 */
 export const configsRef = firebaseDb.ref('configs') /** 設定一覧 */

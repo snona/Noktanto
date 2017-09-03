@@ -23,6 +23,11 @@ const ActionTypes = {
     SET: 'Messages.set',
     ADD: 'Messages.add',
   },
+  SecretMessages: {
+    INIT: 'SecretMessages.init',
+    SET: 'SecretMessages.set',
+    ADD: 'SecretMessages.add',
+  },
   Piece: {
     SET: 'Piece.set',
     INIT: 'Piece.init',

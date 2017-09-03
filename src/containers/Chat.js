@@ -9,6 +9,7 @@ import ChatAction from '../actions/ChatAction';
 import DiceBotAction from '../actions/DiceBotAction';
 
 import MessagesStore from '../stores/MessagesStore';
+import SecretMessagesStore from '../stores/SecretMessagesStore';
 import SystemsStore from '../stores/SystemsStore';
 import SystemStore from '../stores/SystemStore';
 import CharactersStore from '../stores/CharactersStore';
@@ -19,12 +20,13 @@ import UserStore from '../stores/UserStore';
  */
 class _Chat extends Component {
   static getStores() {
-    return [MessagesStore, SystemsStore, SystemStore, CharactersStore, UserStore];
+    return [MessagesStore, SecretMessagesStore, SystemsStore, SystemStore, CharactersStore, UserStore];
   }
 
   static calculateState() {
     return {
       messages: MessagesStore.getState().toJS(),
+      secretMessages: SecretMessagesStore.getState().toJS(),
       systems: SystemsStore.getState().toJS(),
       system: SystemStore.getState().toJS(),
       characters: CharactersStore.getState().toJS(),
@@ -33,9 +35,16 @@ class _Chat extends Component {
   }
 
   componentWillMount() {
-    const { roomId } = this.props;
-    ChatAction.listenMessages(roomId);  // 発言情報の自動取得
+    ChatAction.initMessages();
     DiceBotAction.getSystems(); // BCDiceAPIのシステム一覧取得
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    const { user } = nextState;
+    if (user.id !== '' && this.state.user.id !== user.id) {
+      const { roomId } = this.props;
+      ChatAction.listenMessages(roomId, user.id);  // 発言情報の自動取得
+    }
   }
 
   componentWillUnmount() {
@@ -44,8 +53,9 @@ class _Chat extends Component {
   }
 
   _sendMessage = (message) => {
+    const { user } = this.state;
     const { roomId } = this.props;
-    ChatAction.sendMessage(roomId, message);
+    ChatAction.sendMessage(roomId, user.id, message);
   };
 
   _getDiceSystem = (system) => {
@@ -53,12 +63,13 @@ class _Chat extends Component {
   };
 
   render() {
-    const { system, systems, messages, characters, user } = this.state;
+    const { system, systems, messages, secretMessages, characters, user } = this.state;
     const { layout } = this.props;
     return (
       <div style={{ margin: 10, height: '100%' }} >
         <ChatLog
           messages={messages}
+          secretMessages={secretMessages}
           layout={layout}
         />
         <ChatInput

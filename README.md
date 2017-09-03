@@ -74,6 +74,10 @@ firebase deploy
 背景, キャラの初期画像として利用させていただいています。  
 [恋と冒険の学園ＴＲＰＧエリュシオン オンラインセッションツール用素材](http://www.wtrpg9.com/trpg/)
 
+## License
+
+MIT
+
 ## Author
 
 山田はじめ(@hajimeYamada)

@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
-import { messagesRef } from '../firebase';
+import { messagesRef, secretMessagesRef } from '../firebase';
 import DiceBotAction from '../actions/DiceBotAction';
 
 /**
@@ -11,9 +11,8 @@ class ChatAction {
   /**
    * メッセージの自動読込み
    */
-  static listenMessages(roomId) {
-    this._initMessages();
-    messagesRef.child(roomId).on('child_added', (snapshot, id) => this._addMessage(snapshot.key, snapshot.val()));
+  static listenMessages(roomId, userId) {
+    messagesRef.child(roomId).on('child_added', (snapshot, id) => this._addMessage(roomId, userId, snapshot.key, snapshot.val()));
   }
 
   static unListenMessages(roomId) {
@@ -39,7 +38,7 @@ class ChatAction {
    * メッセージを送信
    * @param {Object} message 送信メッセージ
    */
-  static sendMessage(roomId, message) {
+  static sendMessage(roomId, userId, message) {
     DiceBotAction.getDiceRoll(message.system, message.text).then(response => {
       if (!response.ok) {
         // 正しく処理されていない場合、コマンドが正しくない(または含んでいない)
@@ -48,24 +47,38 @@ class ChatAction {
       } else {
         if (response.secret) {
           // シークレットダイスの場合
+          const resultMessage = this._createResultMessage(message, response);
+          const secretMessages = {
+            message: message.text,
+            result: resultMessage.text,
+          };
+          console.log(secretMessages);
+          const key = secretMessagesRef.child(roomId).push(secretMessages).key;
+          console.log(key);
           const secretMessage = {
             system: message.system,
             character: message.character,
             text: 'シークレットダイス',
             userName: message.userName,
+            secret: key,
+            users: { [userId]: true },
           };
           messagesRef.child(roomId).push(secretMessage);
+        } else {
+          messagesRef.child(roomId).push(message);
+          const resultMessage = this._createResultMessage(message, response);
+          messagesRef.child(roomId).push(resultMessage);
         }
-        messagesRef.child(roomId).push(message);
-        const resultMessage = this._createResultMessage(message, response)
-        messagesRef.child(roomId).push(resultMessage);
       }
     });
   }
 
-  static _initMessages() {
+  static initMessages() {
     AppDispatcher.dispatch({
       type: ActionTypes.Messages.INIT,
+    });
+    AppDispatcher.dispatch({
+      type: ActionTypes.SecretMessages.INIT,
     });
   }
 
@@ -74,10 +87,28 @@ class ChatAction {
    * @param {string} key メッセージの Key
    * @param {Object} message 追加メッセージ
    */
-  static _addMessage(key, message) {
+  static _addMessage(roomId, userId, key, message) {
+    message.id = key;
+    if (message.secret !== undefined && message.users !== undefined && message.users[userId] !== undefined) {
+      secretMessagesRef.child(roomId).child(message.secret).once('value', (snapshot, id) => {
+        this._addSecretMessage(snapshot.key, snapshot.val());
+        AppDispatcher.dispatch({
+          type: ActionTypes.Messages.ADD,
+          message,
+        });
+      });
+    } else {
+      AppDispatcher.dispatch({
+        type: ActionTypes.Messages.ADD,
+        message,
+      });
+    }
+  }
+
+  static _addSecretMessage(key, message) {
     message.id = key;
     AppDispatcher.dispatch({
-      type: ActionTypes.Messages.ADD,
+      type: ActionTypes.SecretMessages.ADD,
       message,
     });
   }

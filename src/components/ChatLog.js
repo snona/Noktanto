@@ -42,34 +42,66 @@ class ChatLog extends Component {
     );
   }
 
-  render() {
-    const { messages, layout } = this.props;
-    // ログ一覧を作成
-    const logs = messages.map(message => {
+  _cretePrimaryText = (color, name, userName) => {
+    return (
+      <div style={{ color: color, fontSize: 10 }} >
+        {name} ({userName})
+      </div>
+    );
+  };
+
+  _creteSecondaryText = (color, text) => {
+    return (
+      <div style={{ color: color, fontSize: 14 }} >
+        {text}
+      </div>
+    );
+  };
+
+  _createLog = (key, avatar, primaryText, secondaryText) => {
+    return (
+      <ListItem
+        key={key}
+        leftAvatar={avatar}
+        primaryText={primaryText}
+        secondaryText={secondaryText}
+        innerDivStyle={{ paddingTop: 5, paddingLeft: 60, paddingRight: 0, paddingBottom: 5 }}
+      />
+    );
+  }
+
+  _createLogs = () => {
+    const { messages, secretMessages } = this.props;
+    const logs = [];
+    messages.forEach(message => {
+      const character = message.character;
       // 発言者画像
-      const avatar = this._createAvatar(message.character);
+      const avatar = this._createAvatar(character);
       // 発言者名
-      const primaryText = (
-        <div style={{ color: message.character.color, fontSize: 10 }} >
-          {message.character.name} ({message.userName})
-        </div>
-      );
+      const primaryText = this._cretePrimaryText(character.color, character.name, message.userName);
       // 発言内容
-      const secondaryText = (
-        <div style={{ color: message.character.color, fontSize: 14 }} >
-          {message.text}
-        </div>
-      );
-      return (
-        <ListItem
-          key={`log-${message.id}`}
-          leftAvatar={avatar}
-          primaryText={primaryText}
-          secondaryText={secondaryText}
-          innerDivStyle={{ paddingTop: 5, paddingLeft: 60, paddingRight: 0, paddingBottom: 5 }}
-        />
-      );
-    }).reverse(); // 上に新規メッセージが欲しいので逆順にソート
+      const secondaryText = this._creteSecondaryText(character.color, message.text);
+      const log = this._createLog(`key-${message.id}`, avatar, primaryText, secondaryText);
+      logs.push(log);
+      if (message.secret !== undefined) {
+        const secretMessage = secretMessages[message.secret];
+        console.log(secretMessage);
+        const messageSecondaryText = this._creteSecondaryText(character.color, secretMessage.message);
+        const messageLog = this._createLog(`log-${message.secret}-message`, avatar, primaryText, messageSecondaryText);
+        const resultSecondaryText = this._creteSecondaryText(character.color, secretMessage.result);
+        const resultLog = this._createLog(`log-${message.secret}-result`, avatar, primaryText, resultSecondaryText);
+        logs.push(messageLog);
+        logs.push(resultLog);
+      }
+    });
+    logs.reverse(); // 上に新規メッセージが欲しいので逆順にソート
+    return logs;
+  };
+
+  render() {
+    const { layout } = this.props;
+    // ログ一覧を作成
+    const logs = this._createLogs();
     return (
       <Paper style={{ overflow: 'scroll', height: layout.h - 260 }} >
         <List>
@@ -81,6 +113,7 @@ class ChatLog extends Component {
 }
 ChatLog.protoType = {
   messages: PropTypes.array.isRequired,
+  secretMessages: PropTypes.object.isRequired,
   layout: PropTypes.object.isRequired,
 };
 export default ChatLog;

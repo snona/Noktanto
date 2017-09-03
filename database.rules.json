@@ -53,11 +53,15 @@
       ".write": "auth !== null",
       "$room_id": {
         ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
-        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
-        "$channel_id": {
-          ".read": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
-          ".write": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()"
-        }
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    },
+    "secret_messages": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
       }
     },
     "memos": {

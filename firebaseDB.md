@@ -88,7 +88,7 @@
           users: {
             user01: true,
           }, // 認証可否
-          secret_message: secret_message01,
+          secret: secret_message01,
         },
         message02: {...},
       },
@@ -155,119 +155,120 @@
 ## Firebase DB Rule
 ```
 {
-  rules: {
-    users: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $user_id: {
-        .write: auth === $user_id,
-        rooms: {
-          .read: auth === $user_id,
-          .write: auth !== null,
+  "rules": {
+    "users": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$user_id": {
+        ".write": "auth === $user_id",
+        "rooms": {
+          ".read": "auth === $user_id"
         },
-        channels: {
-          .read: auth === $user_id,
-          .write: auth !== null,
+        "channels": {
+          ".read": "auth === $user_id"
         },
-      },
+        "authentications": {
+          ".read": "auth === $user_id"
+        }
+      }
     },
-    rooms: {
-      .read: auth !== null,
-      .write: auth !== null,
+    "rooms": {
+      ".read": "auth !== null",
+      ".write": "auth !== null"
     },
-    channels: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        $channel_id: {
-          .read: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
-          .write: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
-        },
-      },
+    "channels": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$channel_id": {
+          ".read": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
+          ".write": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()"
+        }
+      }
     },
-    characters: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-      },
+    "characters": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
     },
-    pieces: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-      },
+    "pieces": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
     },
-    messages: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        $channel_id: {
-          .read: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
-          .write: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
-        },
-      },
+    "messages": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$channel_id": {
+          ".read": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
+          ".write": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()"
+        }
+      }
     },
-    secret_messages: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        $channel_id: {
-          .read: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
-          .write: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
-          $secret_message_id: {
-            .read: root.child(`messages/${room_id}/channels/${$channel_id}/users/${auth.id}`).exists(),
-            .write: root.child(`messages/${room_id}/channels/${$channel_id}/users/${auth.id}`).exists(),
-          },
-        },
-      },
+    "secret_messages": {
+      ".read": "auth !== null",
+      ".write": "auth !== nul",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$channel_id": {
+          ".read": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
+          ".write": "root.child('users/'+auth.uid+'/channels/'+$channel_id).exists()",
+          "$secret_message_id": {
+            ".read": "root.child('messages/'+$room_id+'/channels/'+$channel_id+'/users/'+auth.id).exists()",
+            ".write": "root.child('messages/'+$room_id+'/channels/'+$channel_id+'/users/'+auth.id).exists()"
+          }
+        }
+      }
     },
-    memos: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-      },
+    "memos": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
     },
-    pallets: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        $user_id: {
-          .read: auth === $user_id,
-          .write: auth === $user_id,
-        },
-      },
+    "pallets": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        "$user_id": {
+          ".read": "auth === $user_id",
+          ".write": "auth === $user_id"
+        }
+      }
     },
-    configs: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-      },
+    "configs": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".read": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()",
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
     },
-    authentications: {
-      .read: auth !== null,
-      .write: auth !== null,
-      $room_id: {
-        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
-      },
-    },
-  },
-},
+    "authentications": {
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      "$room_id": {
+        ".write": "root.child('users/'+auth.uid+'/rooms/'+$room_id).exists()"
+      }
+    }
+  }
+}
 ```
 
 ## LocalStorage
