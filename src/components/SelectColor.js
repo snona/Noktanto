@@ -102,7 +102,7 @@ class SelectColor extends Component {
         <SelectField
           floatingLabelText="Select Color"
           value={selectedColor}
-          onChange={this.selectColor}
+          onChange={this._selectColor}
           labelStyle={{ color: selectedColor }}
           selectedMenuItemStyle={{ color: selectedColor }}
         >

@@ -50,7 +50,7 @@ class MapAction {
   static addPiece(roomId, config) {
     const x = this._getRandomInt();
     const y = this._getRandomInt();
-    const size = config.size;
+    const size = Number(config.size);
     const piece = {
       x: x * size,
       y: y * size,
