@@ -85,8 +85,25 @@
             user: user01, // メッセージ送信ユーザ
             character: character01, // メッセージ送信キャラクタ
           },
+          users: {
+            user01: true,
+          }, // 認証可否
+          secret_message: secret_message01,
         },
         message02: {...},
+      },
+      channel02: {...},
+    },
+    room02: {...},
+  },
+  secret_messages: { // メッセージ一覧
+    room01: { // メッセージが属するルームID
+      channel01: {  // メッセージが属するチャンネルID
+        secret_message01: {  // メッセージID
+          result: '12',
+          text: '2d6',  // メッセージ本文
+        },
+        secret_message02: {...},
       },
       channel02: {...},
     },
@@ -198,6 +215,22 @@
         },
       },
     },
+    secret_messages: {
+      .read: auth !== null,
+      .write: auth !== null,
+      $room_id: {
+        .read: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
+        .write: root.child(`users/${auth.uid}/rooms/${$room_id}`).exists(),
+        $channel_id: {
+          .read: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
+          .write: root.child(`users/${auth.uid}/channels/${$channel_id}`).exists(),
+          $secret_message_id: {
+            .read: root.child(`messages/${room_id}/channels/${$channel_id}/users/${auth.id}`).exists(),
+            .write: root.child(`messages/${room_id}/channels/${$channel_id}/users/${auth.id}`).exists(),
+          },
+        },
+      },
+    },
     memos: {
       .read: auth !== null,
       .write: auth !== null,
@@ -253,8 +286,5 @@
     color: '#ff4081',
     zoom: 1,
   },
-  user: {
-    name: 'Hajime',
-  }
 }
 ```
