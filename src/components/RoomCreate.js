@@ -128,7 +128,7 @@ class RoomCreate extends Component {
   _createRoom = () => {
     const { room, password } = this.state;
     const { createRoom, user } = this.props;
-    room.users = [{ [user.id]: true }];
+    room.users = { [user.id]: true };
     room.authentication = password !== '';
     createRoom(room, password);
   };

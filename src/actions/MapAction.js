@@ -70,6 +70,7 @@ class MapAction {
    * @param {Object} piece 移動する駒
    */
   static movePiece(roomId, value, piece) {
+    console.log(piece);
     piece.x = this._roundOff(value.x, piece.size);
     piece.y = this._roundOff(value.y, piece.size);
     piece.move = piece.move ? false : true;
