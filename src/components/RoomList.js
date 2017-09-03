@@ -21,9 +21,9 @@ class RoomList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { name } = this.props;
-    if (name === '' && nextProps.name !== '') {
-      this.setState({ name: nextProps.name });
+    const { user } = this.props;
+    if (user.name === '' && nextProps.user.name !== '') {
+      this.setState({ name: nextProps.user.name });
     }
   }
 

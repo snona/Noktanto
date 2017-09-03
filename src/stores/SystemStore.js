@@ -18,7 +18,7 @@ class SystemStore extends ReduceStore {
   getInitialState() {
     return Immutable.fromJS({
       name: '',
-      gameType: 'Cthulhu',
+      gameType: '',
       prefixs: [],
       info: '',
     });
