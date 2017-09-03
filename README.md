@@ -1,6 +1,7 @@
-# dice-chat
+# Noktanto (Nokt/(i)/ant/o)
 
-TRPG向けのWebサイト
+ノクタント  
+TRPG向けチャット&マップツール
 
 ## Demo
 

@@ -72,12 +72,13 @@ class _Map extends Component {
    * @return {node[]} 描画用駒一覧
    */
   _createViewPieces(pieces) {
+    const { roomId } = this.props;
     return Object.keys(pieces).map(key => {
       const piece = pieces[key];
       return <Piece
         key={key}
         cell={piece}
-        movePiece={(value) => MapAction.movePiece(value, piece)}
+        movePiece={(value) => MapAction.movePiece(roomId, value, piece)}
         selectPiece={(value) => MapAction.selectPiece(value, piece)}
       />
     });
